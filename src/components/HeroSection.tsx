@@ -253,7 +253,7 @@ export default function HeroSection() {
 
             {/* Floating stat cards */}
             {[
-              { icon: '🤖', label: 'AI Accuracy', value: '99.2%', color: '#0066ff', pos: { top: 10, left: -10 } },
+              { icon: '🎯', label: 'AI Accuracy', value: '99.2%', color: '#0066ff', pos: { top: 10, left: -10 } },
               { icon: '⚡', label: 'Uptime SLA', value: '99.99%', color: '#00b4d8', pos: { bottom: 10, right: -10 } },
               { icon: '🌍', label: 'Global Clients', value: '80+', color: '#6366f1', pos: { top: '45%', right: -20 } },
             ].map((card, i) => (
