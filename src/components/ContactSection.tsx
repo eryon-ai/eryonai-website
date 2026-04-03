@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+import { getRecaptchaToken } from '@/lib/recaptcha-client';
 
 type Form = { name: string; email: string; company: string; service: string; budget: string; message: string };
 type Errors = Partial<Record<keyof Form, string>>;
@@ -10,8 +11,8 @@ const services = ['Web Development', 'Mobile App Development', 'AI / ML Solution
 const budgets = ['$5K – $15K', '$15K – $50K', '$50K – $150K', '$150K+', "Let's Discuss"];
 
 const contactInfo = [
-  { icon: '📧', label: 'Email', value: 'sales@eryonai.com', color: '#0066ff' },
-  { icon: '📞', label: 'Phone', value: '+1 (555) 000-ERYON', color: '#6366f1' },
+  { icon: '📧', label: 'Email', value: 'connect@eryonai.com', color: '#0066ff' },
+  { icon: '📞', label: 'Phone', value: '+91 82852 56571', color: '#6366f1' },
   { icon: '📍', label: 'Location', value: 'New Delhi, India', color: '#10b981' },
   { icon: '⏱️', label: 'Response Time', value: 'Within 24 hours', color: '#f59e0b' },
 ];
@@ -23,6 +24,9 @@ export default function ContactSection() {
   const [errors, setErrors] = useState<Errors>({});
   const [focused, setFocused] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [serverError, setServerError] = useState('');
+  const startedAt = useRef(Date.now());
 
   const validate = () => {
     const e: Errors = {};
@@ -134,39 +138,7 @@ export default function ContactSection() {
               </ul>
             </div>
 
-            {/* Social */}
-            <div className="card" style={{ padding: '18px 20px' }}>
-              <p style={{ fontSize: 11, fontWeight: 600, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>Connect</p>
-              <div className="flex gap-2 flex-wrap">
-                {[
-                  { icon: '𝕏', label: 'Twitter' },
-                  { icon: 'in', label: 'LinkedIn' },
-                  { icon: '🐙', label: 'GitHub' },
-                  { icon: '▶', label: 'YouTube' },
-                ].map((s, i) => (
-                  <button
-                    key={i}
-                    aria-label={s.label}
-                    style={{
-                      width: 36, height: 36,
-                      borderRadius: 8,
-                      border: '1.5px solid #e2e8f0',
-                      background: 'white',
-                      cursor: 'pointer',
-                      fontSize: 13,
-                      fontWeight: 700,
-                      color: '#64748b',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      transition: 'all 0.2s',
-                    }}
-                    onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#0066ff'; (e.currentTarget as HTMLElement).style.color = '#0066ff'; }}
-                    onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#e2e8f0'; (e.currentTarget as HTMLElement).style.color = '#64748b'; }}
-                  >
-                    {s.icon}
-                  </button>
-                ))}
-              </div>
-            </div>
+
           </motion.div>
 
           {/* Form */}
@@ -204,7 +176,34 @@ export default function ContactSection() {
               </motion.div>
             ) : (
               <form
-                onSubmit={(e) => { e.preventDefault(); if (validate()) setSubmitted(true); }}
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  if (!validate()) return;
+                  setSubmitting(true);
+                  setServerError('');
+                  try {
+                    const recaptchaToken = await getRecaptchaToken('contact').catch(() => '');
+                    const res = await fetch('/api/contact', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        ...form,
+                        recaptchaToken,
+                        _startedAt: startedAt.current,
+                        _trap: '',   // honeypot — always empty for real users
+                      }),
+                    });
+                    if (res.ok) {
+                      setSubmitted(true);
+                    } else {
+                      setServerError('Something went wrong. Please try again or email us directly.');
+                    }
+                  } catch {
+                    setServerError('Network error. Please check your connection.');
+                  } finally {
+                    setSubmitting(false);
+                  }
+                }}
                 className="card"
                 style={{ padding: '32px' }}
               >
@@ -286,11 +285,20 @@ export default function ContactSection() {
                   {errors.message && <p style={{ color: '#ef4444', fontSize: 11, marginTop: 4 }}>{errors.message}</p>}
                 </div>
 
-                <motion.button type="submit" whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                  className="btn-primary w-full" style={{ justifyContent: 'center', padding: '14px', fontSize: 15 }}>
-                  🚀 Start Your Project
+                <motion.button
+                  type="submit"
+                  disabled={submitting}
+                  whileHover={{ scale: submitting ? 1 : 1.02 }}
+                  whileTap={{ scale: submitting ? 1 : 0.98 }}
+                  className="btn-primary w-full"
+                  style={{ justifyContent: 'center', padding: '14px', fontSize: 15, opacity: submitting ? 0.75 : 1, cursor: submitting ? 'not-allowed' : 'pointer' }}
+                >
+                  {submitting ? '⏳ Sending...' : '🚀 Start Your Project'}
                 </motion.button>
-                <p style={{ textAlign: 'center', fontSize: 12, color: '#94a3b8', marginTop: 12 }}>
+                {serverError && (
+                  <p style={{ textAlign: 'center', fontSize: 13, color: '#ef4444', marginTop: 10 }}>{serverError}</p>
+                )}
+                <p style={{ textAlign: 'center', fontSize: 12, color: '#94a3b8', marginTop: 10 }}>
                   No commitment. Free project assessment included.
                 </p>
               </form>

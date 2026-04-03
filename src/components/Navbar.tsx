@@ -51,8 +51,8 @@ export default function Navbar() {
               🚀 Now Accepting Enterprise Clients — Get a Free Consultation
             </p>
             <div className="hidden md:flex items-center gap-4 text-white text-xs">
-              <span>📞 +1 (555) 000-ERYON</span>
-              <span>✉️ sales@eryonai.com</span>
+              <span>📞 +91 82852 56571</span>
+              <span>✉️ connect@eryonai.com</span>
             </div>
           </div>
         </div>

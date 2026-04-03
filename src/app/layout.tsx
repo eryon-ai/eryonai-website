@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -53,6 +54,11 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         {children}
+        {/* reCAPTCHA v3 — loaded globally so ContactSection + Footer can use it */}
+        <Script
+          src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useState } from 'react';
+import { getRecaptchaToken } from '@/lib/recaptcha-client';
 
 const navCols = [
   {
@@ -25,6 +27,37 @@ export default function Footer() {
   const scrollTo = (href: string) => {
     const id = href.replace('#', '');
     if (id) document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const [subEmail, setSubEmail] = useState('');
+  const [subStatus, setSubStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [subError, setSubError] = useState('');
+
+  const handleSubscribe = async () => {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(subEmail)) {
+      setSubError('Please enter a valid email.');
+      return;
+    }
+    setSubStatus('loading');
+    setSubError('');
+    try {
+      const recaptchaToken = await getRecaptchaToken('subscribe').catch(() => '');
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: subEmail, recaptchaToken }),
+      });
+      if (res.ok) {
+        setSubStatus('success');
+        setSubEmail('');
+      } else {
+        setSubStatus('error');
+        setSubError('Something went wrong. Try again.');
+      }
+    } catch {
+      setSubStatus('error');
+      setSubError('Network error. Try again.');
+    }
   };
 
   return (
@@ -155,25 +188,43 @@ export default function Footer() {
             </p>
             <div style={{ marginBottom: 10 }} />
           </div>
-          <div className="flex gap-2 w-full sm:w-auto">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              style={{
-                flex: 1,
-                minWidth: 200,
-                padding: '10px 14px',
-                borderRadius: 8,
-                border: '1px solid rgba(255,255,255,0.1)',
-                background: 'rgba(255,255,255,0.05)',
-                color: '#f1f5f9',
-                fontSize: 13,
-                outline: 'none',
-              }}
-            />
-            <button className="btn-primary" style={{ padding: '10px 20px', marginRight:10, fontSize: 13, whiteSpace: 'nowrap' }}>
-              Subscribe
-            </button>
+          <div className="flex flex-col gap-2 w-full sm:w-auto">
+            {subStatus === 'success' ? (
+              <p style={{ fontSize: 14, color: '#10b981', fontWeight: 600, padding: '10px 0' }}>
+                ✅ You&apos;re subscribed! We&apos;ll be in touch.
+              </p>
+            ) : (
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={subEmail}
+                  onChange={(e) => { setSubEmail(e.target.value); setSubError(''); }}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
+                  disabled={subStatus === 'loading'}
+                  style={{
+                    flex: 1,
+                    minWidth: 200,
+                    padding: '10px 14px',
+                    borderRadius: 8,
+                    border: subError ? '1px solid #ef4444' : '1px solid rgba(255,255,255,0.1)',
+                    background: 'rgba(255,255,255,0.05)',
+                    color: '#f1f5f9',
+                    fontSize: 13,
+                    outline: 'none',
+                  }}
+                />
+                <button
+                  onClick={handleSubscribe}
+                  disabled={subStatus === 'loading'}
+                  className="btn-primary"
+                  style={{ padding: '10px 20px', marginRight: 10, fontSize: 13, whiteSpace: 'nowrap', opacity: subStatus === 'loading' ? 0.7 : 1 }}
+                >
+                  {subStatus === 'loading' ? '...' : 'Subscribe'}
+                </button>
+              </div>
+            )}
+            {subError && <p style={{ fontSize: 12, color: '#ef4444', marginTop: 2 }}>{subError}</p>}
           </div>
         </div>
 
