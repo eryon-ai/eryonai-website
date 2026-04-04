@@ -3,6 +3,22 @@ import nodemailer from 'nodemailer';
 import { rateLimit } from '@/lib/rate-limit';
 import { verifyRecaptcha } from '@/lib/recaptcha-server';
 
+/* ─── Sync data to Google Sheets Webhook ───────────────────────────── */
+async function syncToGoogleSheet(data: any) {
+  const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
+  if (!webhookUrl) return;
+
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...data, type: 'contact', timestamp: new Date().toISOString() }),
+    });
+  } catch (err) {
+    console.warn('⚠️ Google Sheet sync failed (but inquiry was processed):', err);
+  }
+}
+
 export async function POST(req: NextRequest) {
   // ── 1. Rate limit: max 3 contact submissions per IP per 10 minutes ─────────
   const ip =
@@ -18,8 +34,11 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const body = await req.json();
+  const body = (await req.json());
   const { name, email, company, service, budget, message, _trap, _startedAt, recaptchaToken } = body;
+
+  // Sync to Google Sheet immediately (Async)
+  syncToGoogleSheet({ name, email, company, service, budget, message });
 
   // ── 2. Honeypot ───────────────────────────────────────────────────────────
   if (_trap) return NextResponse.json({ success: true });
@@ -41,6 +60,15 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
   }
 
+
+  // If SMTP is not configured, log the inquiry and return success gracefully
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    console.log('📋 [CONTACT — SMTP not configured, logging only]', {
+      name, email, company, service, budget, message,
+      receivedAt: new Date().toISOString(),
+    });
+    return NextResponse.json({ success: true });
+  }
 
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -132,11 +160,14 @@ export async function POST(req: NextRequest) {
   try {
     await transporter.sendMail({
       from: `"ERYON AI Contact Form" <${process.env.SMTP_USER}>`,
-      to: 'connect@eryonai.com',
+      to: process.env.LEAD_TO_EMAIL || 'connect@eryonai.com',
       replyTo: email,
       subject: `🚀 New Inquiry: ${service || 'General'} — ${name}`,
       html,
     });
+
+    // Sync to Google Sheet (async)
+    syncToGoogleSheet({ name, email, company, service, budget, message });
 
     return NextResponse.json({ success: true });
   } catch (err) {

@@ -9,6 +9,7 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import TechStackSection from '@/components/TechStackSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
+import ChatWidget from '@/components/ChatWidget';
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <TechStackSection />
       <ContactSection />
       <Footer />
+      <ChatWidget />
     </main>
   );
 }

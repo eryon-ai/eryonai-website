@@ -3,6 +3,22 @@ import nodemailer from 'nodemailer';
 import { rateLimit } from '@/lib/rate-limit';
 import { verifyRecaptcha } from '@/lib/recaptcha-server';
 
+/* ─── Sync data to Google Sheets Webhook ───────────────────────────── */
+async function syncToGoogleSheet(data: any) {
+  const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
+  if (!webhookUrl) return;
+
+  try {
+    await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...data, type: 'subscription', timestamp: new Date().toISOString() }),
+    });
+  } catch (err) {
+    console.warn('⚠️ Google Sheet sync failed (but subscription was processed):', err);
+  }
+}
+
 export async function POST(req: NextRequest) {
   // ── 1. Rate limit: 10 per IP per hour ─────────────────────────────────────
   const ip =
@@ -19,6 +35,9 @@ export async function POST(req: NextRequest) {
 
   const { email, recaptchaToken } = await req.json();
 
+  // Sync to Google Sheet immediately (Async)
+  syncToGoogleSheet({ email });
+  
   // ── 2. reCAPTCHA v3 ───────────────────────────────────────────────────────
   if (recaptchaToken) {
     const { success, score } = await verifyRecaptcha(recaptchaToken);
@@ -29,6 +48,15 @@ export async function POST(req: NextRequest) {
 
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return NextResponse.json({ error: 'Valid email required' }, { status: 400 });
+  }
+
+  // If SMTP is not configured, log the subscription and return success gracefully
+  if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    console.log('📨 [SUBSCRIPTION — SMTP not configured, logging only]', {
+      email,
+      receivedAt: new Date().toISOString(),
+    });
+    return NextResponse.json({ success: true });
   }
 
   const transporter = nodemailer.createTransport({
@@ -61,11 +89,15 @@ export async function POST(req: NextRequest) {
   try {
     await transporter.sendMail({
       from: `"ERYON AI Website" <${process.env.SMTP_USER}>`,
-      to: 'connect@eryonai.com',
+      to: process.env.LEAD_TO_EMAIL || 'connect@eryonai.com',
       replyTo: email,
       subject: `📨 New Newsletter Subscriber — ${email}`,
       html,
     });
+
+    // Sync to Google Sheet (async)
+    syncToGoogleSheet({ email });
+
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error('Subscribe mail error:', err);
