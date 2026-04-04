@@ -5,48 +5,38 @@ import { useRef, useState } from 'react';
 
 const testimonials = [
   {
-    name: 'Sarah Chen',
-    title: 'CTO, NovaMind Health',
-    company: 'NovaMind',
-    text: 'ERYON AI transformed our diagnostic workflow completely. Their ML pipeline reduced radiologist review time by 70% while improving accuracy. Professional, communicative, and delivered beyond expectations.',
-    rating: 5,
-    initials: 'SC',
+    name: 'Ananya Iyer',
+    text: 'ERYON AI streamlined our patient intake and triage flow. We cut nurse handoff time by 32% and saw a noticeable lift in patient satisfaction. The team communicated clearly and shipped on time.',
+    rating: 4,
+    initials: 'AI',
     color: '#0066ff',
   },
   {
-    name: 'Marcus Reid',
-    title: 'VP Engineering, TradeFlux',
-    company: 'TradeFlux',
-    text: 'The trading dashboard handles millions of WebSocket events per second without breaking a sweat. Their architecture decisions were spot-on. We\'ve scaled 10x since launch without a single incident.',
+    name: 'Rohit Mehta',
+    text: 'They rebuilt our real-time trading dashboard and the system now handles 3x the peak load with smoother latency. Architecture decisions were pragmatic and future-proof.',
     rating: 5,
-    initials: 'MR',
+    initials: 'RM',
     color: '#6366f1',
   },
   {
-    name: 'Priya Nair',
-    title: 'Product Director, UrbanFlow',
-    company: 'UrbanFlow',
-    text: 'Our smart city app reached 500K users in 3 months. ERYON delivered a rock-solid React Native app with real-time IoT data. Exceptional quality, great communication throughout the project.',
-    rating: 5,
-    initials: 'PN',
+    name: 'Nisha Kulkarni',
+    text: 'Their product team helped us ship a B2B SaaS onboarding revamp that reduced time-to-first-value by 38%. The UX was thoughtful and the implementation was clean.',
+    rating: 4,
+    initials: 'NK',
     color: '#10b981',
   },
   {
-    name: 'James Whitmore',
-    title: 'CEO, SecureShield',
-    company: 'SecureShield',
-    text: 'We hired ERYON AI to build our threat detection platform and they delivered a world-class product. The AI-driven anomaly detection catches threats we\'d never have caught manually.',
-    rating: 5,
-    initials: 'JW',
+    name: 'Michael Hart',
+    text: 'We engaged ERYON AI to build our threat detection platform, and the results exceeded expectations. Alert precision improved by roughly 25% without adding operational overhead.',
+    rating: 4,
+    initials: 'MH',
     color: '#ef4444',
   },
   {
-    name: 'Aisha Okonkwo',
-    title: 'Head of Growth, ShopSense',
-    company: 'ShopSense',
-    text: 'ERYON AI\'s recommendation engine increased our GMV by 35% in Q1. The personalization is accurate and the team understood our business goals deeply. Could not be happier.',
+    name: 'Sanya Rao',
+    text: 'ERYON AI built a personalization layer that lifted repeat purchase rate by 21% in eight weeks. The strategy was grounded in our goals and the rollout was smooth.',
     rating: 5,
-    initials: 'AO',
+    initials: 'SR',
     color: '#ec4899',
   },
 ];
@@ -192,7 +182,7 @@ export default function TestimonialsSection() {
                 </div>
                 <div>
                   <p style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', fontFamily: 'Space Grotesk,sans-serif' }}>{t.name}</p>
-                  <p style={{ fontSize: 12, color: '#64748b' }}>{t.title}</p>
+                  <div style={{ height: 6 }} />
                 </div>
               </div>
             </motion.div>
@@ -229,7 +219,7 @@ export default function TestimonialsSection() {
                 </div>
                 <div>
                   <p style={{ fontSize: 14, fontWeight: 700, color: '#0f172a' }}>{testimonials[current].name}</p>
-                  <p style={{ fontSize: 12, color: '#64748b' }}>{testimonials[current].title}</p>
+                  <div style={{ height: 6 }} />
                 </div>
               </div>
             </motion.div>
