@@ -318,7 +318,7 @@ export default function ChatWidget() {
             boxShadow: '0 4px 12px rgba(0,102,255,0.4)',
           }}
         >
-          🤖
+          <img src="/logo.png" alt="ERYON AI" style={{ width: '95%', height: '95%', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
         </div>
         <div style={{ flex: 1 }}>
           <div style={{ color: '#fff', fontWeight: 700, fontSize: 15, fontFamily: "'Space Grotesk', sans-serif" }}>
@@ -416,7 +416,7 @@ export default function ChatWidget() {
                       marginBottom: 2,
                     }}
                   >
-                    🤖
+                    <img src="/logo.png" alt="ERYON AI" style={{ width: '95%', height: '95%', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
                   </div>
                 )}
 
@@ -467,7 +467,7 @@ export default function ChatWidget() {
                     flexShrink: 0,
                   }}
                 >
-                  🤖
+                  <img src="/logo.png" alt="ERYON AI" style={{ width: '95%', height: '95%', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
                 </div>
                 <div
                   style={{
