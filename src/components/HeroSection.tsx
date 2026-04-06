@@ -233,7 +233,7 @@ export default function HeroSection() {
                   minWidth: 80,
                 }}
               >
-                <Image
+                <img
                   src="/logo.png"
                   alt="ERYON AI"
                   width={100}

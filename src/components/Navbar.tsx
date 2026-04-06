@@ -66,7 +66,7 @@ export default function Navbar() {
             className="flex items-center gap-0"
             style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
           >
-            <Image  
+            <img  
               src="/Full image1.png"
               alt="ERYON AI"
               width={240}
