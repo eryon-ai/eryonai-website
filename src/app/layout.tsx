@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     title: "ERYON AI",
     description: "Building Scalable Digital Systems for Modern Businesses",
   },
+  verification: {
+    google: "W-9fsg7BGB0XCqERSrFS80qZXMrZunh70mot4rYL-8s",
+  },
 };
 
 export const viewport: Viewport = {
