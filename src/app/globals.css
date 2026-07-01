@@ -8,6 +8,15 @@
   --color-primary-foreground: #ffffff;
   --color-muted-foreground: #64748b;
   --color-border: #e2e8f0;
+
+  --color-navy: #0f172a;
+  --color-navy-mid: #1e293b;
+  --color-navy-light: #334155;
+  --color-brand-blue: #0A5CFF;
+  --color-brand-blue-light: #3385ff;
+  --color-brand-cyan: #0096c7;
+  --color-brand-cyan-light: #0077b6;
+  --color-brand-purple: #6366f1;
 }
 
 /* ======================================
@@ -29,35 +38,35 @@
   --navy: #0f172a;
   --navy-mid: #1e293b;
   --navy-light: #334155;
-  --brand-blue: #0066ff;
+  --brand-blue: #0A5CFF;
   --brand-blue-light: #3385ff;
-  --brand-cyan: #00b4d8;
-  --brand-cyan-light: #0096c7;
+  --brand-cyan: #0096c7;
+  --brand-cyan-light: #0077b6;
   --brand-purple: #6366f1;
 
   /* Gradient */
-  --grad-brand: linear-gradient(135deg, #0066ff 0%, #00b4d8 100%);
-  --grad-hero: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+  --grad-brand: linear-gradient(135deg, #0A5CFF 0%, #0096c7 100%);
+  --grad-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
 
   /* Text */
   --text-dark: #0f172a;
-  --text-body: #374151;
-  --text-muted: #64748b;
-  --text-light: #94a3b8;
+  --text-body: #334155;
+  --text-muted: #475569;
+  --text-light: #64748b;
   --text-white: #f8fafc;
 
   /* Borders */
   --border: #e2e8f0;
   --border-light: #f1f5f9;
-  --border-blue: rgba(0, 102, 255, 0.2);
+  --border-blue: rgba(10, 92, 255, 0.2);
 
   /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
-  --shadow-blue: 0 8px 32px rgba(0, 102, 255, 0.15);
-  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.06);
-  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 40px rgba(15, 23, 42, 0.1), 0 4px 16px rgba(15, 23, 42, 0.05);
+  --shadow-blue: 0 8px 32px rgba(10, 92, 255, 0.2);
+  --shadow-card: 0 2px 8px rgba(15, 23, 42, 0.06), 0 0 1px rgba(15, 23, 42, 0.06);
+  --shadow-card-hover: 0 16px 48px rgba(15, 23, 42, 0.08), 0 4px 16px rgba(15, 23, 42, 0.04);
 
   /* Spacing */
   --section-py: 96px;
@@ -78,35 +87,39 @@
    reset here would override Tailwind utility classes (p-6, mt-4, etc.) because
    unlayered CSS wins over cascade-layered rules. Removed. */
 
-html {
-  scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-body {
-  background: var(--white);
-  color: var(--text-body);
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
+  body {
+    background: var(--white);
+    color: var(--text-body);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 }
 
 /* ---- Custom Scrollbar ---- */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #f1f5f9; }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #0066ff, #00b4d8);
+  background: linear-gradient(180deg, #0A5CFF, #0096c7);
   border-radius: 3px;
 }
 
 /* ---- Typography ---- */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
-  color: var(--text-dark);
-  line-height: 1.2;
-  font-weight: 700;
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.2;
+    font-weight: 700;
+  }
 }
 
 /* ---- Layout ---- */
@@ -175,7 +188,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.25s ease;
   text-decoration: none;
   white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(0, 102, 255, 0.25);
+  box-shadow: 0 4px 16px rgba(10, 92, 255, 0.25);
   position: relative;
   overflow: hidden;
 }
@@ -191,7 +204,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 102, 255, 0.35);
+  box-shadow: 0 8px 24px rgba(10, 92, 255, 0.35);
 }
 
 .btn-primary:hover::after { opacity: 1; }
@@ -246,7 +259,7 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0, 102, 255, 0.07);
+  background: rgba(10, 92, 255, 0.07);
   color: var(--brand-blue);
   font-size: 12px;
   font-weight: 700;
@@ -254,7 +267,7 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(0, 102, 255, 0.15);
+  border: 1px solid rgba(10, 92, 255, 0.15);
   margin-bottom: 16px;
 }
 
@@ -310,9 +323,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .tag-blue {
-  background: rgba(0, 102, 255, 0.08);
+  background: rgba(10, 92, 255, 0.08);
   color: var(--brand-blue);
-  border-color: rgba(0, 102, 255, 0.15);
+  border-color: rgba(10, 92, 255, 0.15);
 }
 
 /* ---- Divider ---- */
@@ -427,7 +440,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   font-size: 14px;
   font-family: 'Space Grotesk', sans-serif;
-  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(10, 92, 255, 0.3);
 }
 
 /* ---- Trust logos strip ---- */
@@ -466,6 +479,35 @@ h1, h2, h3, h4, h5, h6 {
   height: 200px;
   background: rgba(255,255,255,0.04);
   border-radius: 50%;
+}
+
+.cta-banner .btn-primary {
+  background: #ffffff;
+  color: var(--brand-blue);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cta-banner .btn-primary:hover {
+  background: #f8fafc;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.cta-banner .btn-primary::after {
+  display: none;
+}
+
+.cta-banner .btn-secondary {
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  background: transparent;
+}
+
+.cta-banner .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: none;
+  transform: translateY(-2px);
 }
 
 /* ---- Testimonial card ---- */

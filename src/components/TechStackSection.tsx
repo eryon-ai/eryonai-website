@@ -4,22 +4,22 @@ import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 
 const techs = [
-  { name: 'React', cat: 'Frontend', icon: '⚛️', color: '#0066ff' },
-  { name: 'Next.js', cat: 'Frontend', icon: '▲', color: '#0f172a' },
-  { name: 'TypeScript', cat: 'Language', icon: 'TS', color: '#3b82f6' },
-  { name: 'Spring Boot', cat: 'Backend', icon: '🍃', color: '#10b981' },
-  { name: 'Python', cat: 'AI/ML', icon: '🐍', color: '#f59e0b' },
-  { name: 'TensorFlow', cat: 'AI/ML', icon: '🧠', color: '#f97316' },
-  { name: 'PostgreSQL', cat: 'Database', icon: '🐘', color: '#3b82f6' },
-  { name: 'MongoDB', cat: 'Database', icon: '🍃', color: '#10b981' },
-  { name: 'Redis', cat: 'Cache', icon: '⚡', color: '#ef4444' },
-  { name: 'AWS', cat: 'Cloud', icon: '☁️', color: '#f97316' },
-  { name: 'Docker', cat: 'DevOps', icon: '🐳', color: '#0066ff' },
-  { name: 'Kubernetes', cat: 'DevOps', icon: '☸️', color: '#6366f1' },
-  { name: 'Terraform', cat: 'IaC', icon: '🏗️', color: '#7c3aed' },
-  { name: 'Kafka', cat: 'Streaming', icon: '📨', color: '#ec4899' },
-  { name: 'GraphQL', cat: 'API', icon: '◈', color: '#ec4899' },
-  { name: 'React Native', cat: 'Mobile', icon: '📱', color: '#0066ff' },
+  { name: 'React', cat: 'Frontend', iconUrl: 'https://img.icons8.com/color/48/react-native.png', color: '#0066ff' },
+  { name: 'Next.js', cat: 'Frontend', iconUrl: 'https://img.icons8.com/color/48/nextjs.png', color: '#0f172a' },
+  { name: 'TypeScript', cat: 'Language', iconUrl: 'https://img.icons8.com/color/48/typescript.png', color: '#3b82f6' },
+  { name: 'Spring Boot', cat: 'Backend', iconUrl: 'https://img.icons8.com/color/48/spring-logo.png', color: '#10b981' },
+  { name: 'Python', cat: 'AI/ML', iconUrl: 'https://img.icons8.com/color/48/python.png', color: '#f59e0b' },
+  { name: 'TensorFlow', cat: 'AI/ML', iconUrl: 'https://img.icons8.com/color/48/tensorflow.png', color: '#f97316' },
+  { name: 'PostgreSQL', cat: 'Database', iconUrl: 'https://img.icons8.com/color/48/postgreesql.png', color: '#3b82f6' },
+  { name: 'MongoDB', cat: 'Database', iconUrl: 'https://img.icons8.com/color/48/mongodb.png', color: '#10b981' },
+  { name: 'Redis', cat: 'Cache', iconUrl: 'https://img.icons8.com/color/48/redis.png', color: '#ef4444' },
+  { name: 'AWS', cat: 'Cloud', iconUrl: 'https://img.icons8.com/color/48/amazon-web-services.png', color: '#f97316' },
+  { name: 'Docker', cat: 'DevOps', iconUrl: 'https://img.icons8.com/color/48/docker.png', color: '#0066ff' },
+  { name: 'Kubernetes', cat: 'DevOps', iconUrl: 'https://img.icons8.com/color/48/kubernetes.png', color: '#6366f1' },
+  { name: 'Terraform', cat: 'IaC', iconUrl: 'https://img.icons8.com/color/48/terraform.png', color: '#7c3aed' },
+  { name: 'Kafka', cat: 'Streaming', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg', color: '#ec4899' },
+  { name: 'GraphQL', cat: 'API', iconUrl: 'https://img.icons8.com/color/48/graphql.png', color: '#ec4899' },
+  { name: 'React Native', cat: 'Mobile', iconUrl: 'https://img.icons8.com/color/48/react-native.png', color: '#0066ff' },
 ];
 
 const row1 = [...techs.slice(0, 8), ...techs.slice(0, 8)];
@@ -39,8 +39,6 @@ function TechCard({ tech }: { tech: typeof techs[0] }) {
     >
       <span
         style={{
-          fontSize: 13,
-          fontWeight: 700,
           width: 36,
           height: 36,
           borderRadius: 8,
@@ -48,12 +46,11 @@ function TechCard({ tech }: { tech: typeof techs[0] }) {
           alignItems: 'center',
           justifyContent: 'center',
           background: `${tech.color}12`,
-          color: tech.color,
           border: `1px solid ${tech.color}20`,
           flexShrink: 0,
         }}
       >
-        {tech.icon}
+        <img src={tech.iconUrl} alt={tech.name} style={{ width: 22, height: 22, objectFit: 'contain' }} loading="lazy" />
       </span>
       <div>
         <p style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', lineHeight: 1.2 }}>{tech.name}</p>

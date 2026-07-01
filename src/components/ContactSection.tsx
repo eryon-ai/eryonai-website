@@ -8,13 +8,16 @@ type Form = { name: string; email: string; company: string; service: string; bud
 type Errors = Partial<Record<keyof Form, string>>;
 
 const services = ['Web Development', 'Mobile App Development', 'AI / ML Solutions', 'Cloud & DevOps', 'Cybersecurity', 'UI/UX Design', 'Full-Stack Product', 'Consulting'];
-const budgets = ['$5K – $15K', '$15K – $50K', '$50K – $150K', '$150K+', "Let's Discuss"];
+const budgets = {
+  USD: ['$200 – $2K', '$5K – $15K', '$15K – $50K', '$50K – $150K', '$150K+', "Let's Discuss"],
+  INR: ['₹10K – ₹1L', '₹4L – ₹12L', '₹12L – ₹40L', '₹40L – ₹1.2Cr', '₹1.2Cr+', "Let's Discuss"]
+};
 
 const contactInfo = [
-  { icon: '📧', label: 'Email', value: 'connect@eryonai.com', color: '#0066ff' },
-  { icon: '📞', label: 'Phone', value: '+91 82852 56571', color: '#6366f1' },
-  { icon: '📍', label: 'Location', value: 'New Delhi, India', color: '#10b981' },
-  { icon: '⏱️', label: 'Response Time', value: 'Within 24 hours', color: '#f59e0b' },
+  { iconUrl: 'https://img.icons8.com/color/48/email.png', label: 'Email', value: 'connect@eryonai.com', color: '#0066ff' },
+  { iconUrl: 'https://img.icons8.com/color/48/phone.png', label: 'Phone', value: '+91 82852 56571\n+91 88518 35208', color: '#6366f1' },
+  { iconUrl: 'https://img.icons8.com/color/48/marker.png', label: 'Location', value: 'New Delhi, India', color: '#10b981' },
+  { iconUrl: 'https://img.icons8.com/color/48/time.png', label: 'Response Time', value: 'Within 24 hours', color: '#f59e0b' },
 ];
 
 export default function ContactSection() {
@@ -23,6 +26,15 @@ export default function ContactSection() {
   const [form, setForm] = useState<Form>({ name: '', email: '', company: '', service: '', budget: '', message: '' });
   const [errors, setErrors] = useState<Errors>({});
   const [focused, setFocused] = useState('');
+  const [currency, setCurrency] = useState<'USD' | 'INR'>('USD');
+  
+  const handleCurrencyChange = (newCurrency: 'USD' | 'INR') => {
+    const oldIndex = budgets[currency].indexOf(form.budget);
+    setCurrency(newCurrency);
+    if (oldIndex !== -1) {
+      setForm(prev => ({ ...prev, budget: budgets[newCurrency][oldIndex] }));
+    }
+  };
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [serverError, setServerError] = useState('');
@@ -56,7 +68,7 @@ export default function ContactSection() {
         {/* Header */}
         <div className="text-center mb-12">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}>
-            <div className="section-label mx-auto" style={{ display: 'inline-flex' }}>Let's Talk</div>
+            <div className="section-label mx-auto" style={{ display: 'inline-flex' }}>Let&apos;s Talk</div>
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
@@ -75,7 +87,7 @@ export default function ContactSection() {
             style={{ marginTop: 12 }}
           >
             
-            Tell us about your vision — we'll respond within 24 hours with a tailored proposal.
+            Tell us about your vision — we&apos;ll respond within 24 hours with a tailored proposal.
           </motion.p>
           <div style={{ marginBottom: 16 }} />
         </div>
@@ -100,13 +112,13 @@ export default function ContactSection() {
                   background: `${item.color}10`,
                   border: `1px solid ${item.color}20`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 18, flexShrink: 0,
+                  flexShrink: 0,
                 }}>
-                  {item.icon}
+                  <img src={item.iconUrl} alt={item.label} style={{ width: 24, height: 24, objectFit: 'contain' }} loading="lazy" />
                 </div>
                 <div>
                   <p style={{ fontSize: 11, fontWeight: 600, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 2 }}>{item.label}</p>
-                  <p style={{ fontSize: 14, fontWeight: 600, color: '#0f172a' }}>{item.value}</p>
+                  <p style={{ fontSize: 14, fontWeight: 600, color: '#0f172a', whiteSpace: 'pre-line' }}>{item.value}</p>
                 </div>
               </div>
             ))}
@@ -160,9 +172,9 @@ export default function ContactSection() {
                   background: 'linear-gradient(135deg, #0066ff15, #00b4d815)',
                   border: '1px solid rgba(0,102,255,0.2)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 32, margin: '0 auto 20px',
+                  margin: '0 auto 20px',
                 }}>
-                  ✅
+                  <img src="https://img.icons8.com/color/96/checkmark.png" alt="Success" style={{ width: 40, height: 40, objectFit: 'contain' }} />
                 </div>
                 <h3 style={{ fontFamily: 'Space Grotesk,sans-serif', fontSize: 22, fontWeight: 800, color: '#0f172a', marginBottom: 10 }}>
                   Message Sent!
@@ -195,6 +207,14 @@ export default function ContactSection() {
                     });
                     if (res.ok) {
                       setSubmitted(true);
+                      // Google Ads Conversion tracking
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      if (typeof window !== 'undefined' && (window as any).gtag) {
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                        (window as any).gtag('event', 'conversion', {
+                          'send_to': 'AW-18087795180/WReRCJ-PuZscEOyz97BD'
+                        });
+                      }
                     } else {
                       setServerError('Something went wrong. Please try again or email us directly.');
                     }
@@ -256,9 +276,15 @@ export default function ContactSection() {
                 <div style={{ marginBottom: 4 }} />
 
                 <div className="mb-4">
-                  <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', display: 'block', marginBottom: 8 }}>Project Budget</label>
+                  <div className="flex items-center justify-between mb-3">
+                    <label style={{ fontSize: 13, fontWeight: 600, color: '#374151', margin: 0 }}>Project Budget</label>
+                    <div style={{ display: 'flex', background: '#f1f5f9', borderRadius: 6, padding: 2 }}>
+                      <button type="button" onClick={() => handleCurrencyChange('USD')} style={{ padding: '4px 10px', fontSize: 12, fontWeight: 600, borderRadius: 4, background: currency === 'USD' ? '#fff' : 'transparent', color: currency === 'USD' ? '#0f172a' : '#64748b', boxShadow: currency === 'USD' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none', transition: 'all 0.2s' }}>USD ($)</button>
+                      <button type="button" onClick={() => handleCurrencyChange('INR')} style={{ padding: '4px 10px', fontSize: 12, fontWeight: 600, borderRadius: 4, background: currency === 'INR' ? '#fff' : 'transparent', color: currency === 'INR' ? '#0f172a' : '#64748b', boxShadow: currency === 'INR' ? '0 1px 2px rgba(0,0,0,0.05)' : 'none', transition: 'all 0.2s' }}>INR (₹)</button>
+                    </div>
+                  </div>
                   <div className="flex flex-wrap gap-2">
-                    {budgets.map((b) => (
+                    {budgets[currency].map((b) => (
                       <button key={b} type="button" onClick={() => setForm({ ...form, budget: b })}
                         style={{
                           padding: '7px 14px', borderRadius: 8, fontSize: 13, fontWeight: 500, cursor: 'pointer',

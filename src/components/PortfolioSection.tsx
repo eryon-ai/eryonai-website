@@ -6,6 +6,62 @@ import { ProjectCard } from '@/components/ui/project-card';
 
 const projects = [
   {
+    title: 'Gym & Fitness Management Dashboard',
+    description: 'A comprehensive admin panel tailored for fitness centers, featuring member tracking, subscription management, and analytics.',
+    imgSrc: '/portfolio/gym-home.png',
+    link: '/case-study/gym-dashboard',
+    linkText: 'View Case Study',
+  },
+  {
+    title: 'Hospital HRMS & Medical CRM',
+    description: 'Enterprise healthcare CRM designed for medical staff management, patient records, and hospital administration workflows.',
+    imgSrc: '/portfolio/hrms-home.png',
+    link: '/case-study/hospital-hrms',
+    linkText: 'View Case Study',
+  },
+  {
+    title: 'Velorian Luxury Watch E-Commerce',
+    description: 'Premium e-commerce storefront for luxury timepieces with sleek UI, cart management, and seamless checkout flow.',
+    imgSrc: '/portfolio/velorian-home.png',
+    link: '/case-study/velorian-watches',
+    linkText: 'View Case Study',
+  },
+  {
+    title: 'MarbleMart Custom CRM',
+    description: 'Bespoke internal operations dashboard managing multi-million dollar inventory and logistics across international warehouses.',
+    imgSrc: '/portfolio/marblemart-home.png',
+    link: '/case-study/marblemart-crm',
+    linkText: 'View Case Study',
+  },
+  {
+    title: 'MarbleMart Corporate Catalog',
+    description: 'A luxurious B2B catalog featuring high-resolution 3D models and edge-cached imagery for lightning-fast performance.',
+    imgSrc: '/portfolio/marblemart-web-home.png',
+    link: '/case-study/marblemart-web',
+    linkText: 'View Case Study',
+  },
+  {
+    title: 'EduNexus School ERP',
+    description: 'Comprehensive educational resource planning system with multi-campus support and parent portals.',
+    imgSrc: '/portfolio/edunexus-home.png',
+    link: '/case-study/edunexus-erp',
+    linkText: 'View Case Study',
+  },
+  {
+    title: 'Atelier Boutique E-Commerce',
+    description: 'Premium luxury fashion and streetwear e-commerce platform with an immersive shopping experience.',
+    imgSrc: '/portfolio/atelier-home.png',
+    link: '/case-study/atelier-clothing',
+    linkText: 'View Case Study',
+  },
+  {
+    title: 'Realist CRM',
+    description: 'Sleek property management and CRM solution for high-end real estate agencies, with advanced filtering and listings.',
+    imgSrc: '/portfolio/realist-home.png',
+    link: '/case-study/realist-crm',
+    linkText: 'View Case Study',
+  },
+  {
     title: 'CraveRush — Food Delivery Platform',
     description:
       'Event-driven microservices architecture built with Spring Boot, Apache Kafka, React, and seamless Stripe payment integration.',

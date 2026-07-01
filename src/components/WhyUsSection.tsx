@@ -5,37 +5,37 @@ import { useRef } from 'react';
 
 const features = [
   {
-    icon: '🏗️',
+    iconUrl: 'https://img.icons8.com/color/48/building.png',
     title: 'Scalable Architecture',
     description: 'Microservices and cloud-native patterns designed to grow from 10 to 10 million users without rewrites.',
     color: '#0066ff',
   },
   {
-    icon: '⚡',
+    iconUrl: 'https://img.icons8.com/color/48/flash-on.png',
     title: 'High Performance',
     description: 'Sub-second load times with edge caching, optimized queries, and Lighthouse scores of 95+.',
     color: '#f59e0b',
   },
   {
-    icon: '🔒',
+    iconUrl: 'https://img.icons8.com/color/48/security-checked.png',
     title: 'Secure by Design',
     description: 'Zero-trust security, OWASP compliance, automated vulnerability scanning built into every sprint.',
     color: '#ef4444',
   },
   {
-    icon: '🚀',
+    iconUrl: 'https://img.icons8.com/color/48/rocket.png',
     title: 'Modern Tech Stack',
     description: 'Battle-tested, actively maintained technologies. No legacy baggage — maintainable code from day one.',
     color: '#6366f1',
   },
   {
-    icon: '🤝',
+    iconUrl: 'https://img.icons8.com/color/48/handshake.png',
     title: 'Transparent Delivery',
     description: 'Weekly demos, real-time dashboards, and Slack-based communication. You always know where things stand.',
     color: '#10b981',
   },
   {
-    icon: '📈',
+    iconUrl: 'https://img.icons8.com/color/48/graph.png',
     title: 'ROI-Focused',
     description: 'Every feature decision is tied to business outcomes. We build what moves the needle, not what sounds cool.',
     color: '#00b4d8',
@@ -62,7 +62,7 @@ export default function WhyUsSection() {
             className="section-title"
             style={{ marginTop: 12 }}
           >
-            Built for <span className="gradient-text">Enterprise Scale</span>
+            Why Choose ERYON AI for <span className="gradient-text">Digital Transformation</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -94,10 +94,10 @@ export default function WhyUsSection() {
                 style={{
                   background: `${f.color}10`,
                   border: `1px solid ${f.color}20`,
-                  fontSize: 22,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}
               >
-                {f.icon}
+                <img src={f.iconUrl} alt={f.title} style={{ width: 28, height: 28, objectFit: 'contain' }} loading="lazy" />
               </div>
               <h3 style={{ fontFamily: 'Space Grotesk,sans-serif', fontSize: 16, fontWeight: 700, color: '#0f172a', marginBottom: 10 }}>
                 {f.title}
@@ -124,7 +124,7 @@ export default function WhyUsSection() {
                 Transform your business with AI-powered digital solutions
               </h3>
               <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 15, lineHeight: 1.65 }}>
-                Free consultation, no commitment. We'll analyze your requirements and send a detailed proposal within 24 hours.
+                Free consultation, no commitment. We&apos;ll analyze your requirements and send a detailed proposal within 24 hours.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 lg:justify-end">
@@ -132,18 +132,7 @@ export default function WhyUsSection() {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                style={{
-                  background: 'white',
-                  color: '#0066ff',
-                  fontWeight: 700,
-                  fontSize: 15,
-                  padding: '14px 28px',
-                  borderRadius: 12,
-                  border: 'none',
-                  cursor: 'pointer',
-                  boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-                  whiteSpace: 'nowrap',
-                }}
+                className="btn-primary w-full sm:w-auto justify-center"
               >
                 Start a Conversation →
               </motion.button>
@@ -151,17 +140,7 @@ export default function WhyUsSection() {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
-                style={{
-                  background: 'transparent',
-                  color: 'white',
-                  fontWeight: 600,
-                  fontSize: 15,
-                  padding: '13px 28px',
-                  borderRadius: 12,
-                  border: '1.5px solid rgba(255,255,255,0.35)',
-                  cursor: 'pointer',
-                  whiteSpace: 'nowrap',
-                }}
+                className="btn-secondary w-full sm:w-auto justify-center"
               >
                 View Our Work
               </motion.button>

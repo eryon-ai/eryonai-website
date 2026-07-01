@@ -4,7 +4,7 @@ import { rateLimit } from '@/lib/rate-limit';
 import { verifyRecaptcha } from '@/lib/recaptcha-server';
 
 /* ─── Sync data to Google Sheets Webhook ───────────────────────────── */
-async function syncToGoogleSheet(data: any) {
+async function syncToGoogleSheet(data: Record<string, unknown>) {
   const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
   if (!webhookUrl) return;
 

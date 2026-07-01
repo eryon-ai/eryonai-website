@@ -161,7 +161,7 @@ export default function TestimonialsSection() {
               </div>
 
               <p style={{ fontSize: 14, color: '#475569', lineHeight: 1.75, fontStyle: 'italic', marginBottom: 20, flex: 1 }}>
-                "{t.text}"
+                &quot;{t.text}&quot;
               </p>
 
               <div className="flex items-center gap-3 mt-auto pt-4" style={{ borderTop: '1px solid #f1f5f9' }}>
@@ -206,7 +206,7 @@ export default function TestimonialsSection() {
                 ))}
               </div>
               <p style={{ fontSize: 14, color: '#475569', lineHeight: 1.75, fontStyle: 'italic', marginBottom: 20 }}>
-                "{testimonials[current].text}"
+                &quot;{testimonials[current].text}&quot;
               </p>
               <div className="flex items-center gap-3 pt-4" style={{ borderTop: '1px solid #f1f5f9' }}>
                 <div style={{

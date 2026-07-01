@@ -8,37 +8,37 @@ const steps = [
     num: '01',
     title: 'Discovery & Requirements',
     desc: 'We start with deep-dive workshops to understand your business goals, technical constraints, and user needs. Deliverable: detailed requirements document and project roadmap.',
-    icon: '🔍',
+    iconUrl: 'https://img.icons8.com/color/48/search.png',
   },
   {
     num: '02',
     title: 'Architecture & Design',
     desc: 'Our architects design scalable system blueprints while designers create user-tested UI prototypes. You review and approve before a single line of code is written.',
-    icon: '📐',
+    iconUrl: 'https://img.icons8.com/color/48/design.png',
   },
   {
     num: '03',
     title: 'Agile Development',
     desc: 'Two-week sprints with weekly demos. You have full visibility via a real-time project dashboard, Slack channel, and dedicated project manager.',
-    icon: '⚡',
+    iconUrl: 'https://img.icons8.com/color/48/flash-on.png',
   },
   {
     num: '04',
     title: 'Quality Assurance',
     desc: 'Rigorous automated testing, manual QA, security audits, and performance benchmarking ensure your product ships without compromise.',
-    icon: '✅',
+    iconUrl: 'https://img.icons8.com/color/48/checkmark.png',
   },
   {
     num: '05',
     title: 'Deployment & Launch',
     desc: 'Zero-downtime CI/CD deployments with rollback capability. We configure monitoring, alerting, and logging before going live.',
-    icon: '🚀',
+    iconUrl: 'https://img.icons8.com/color/48/rocket.png',
   },
   {
     num: '06',
     title: 'Post-Launch Support',
     desc: 'Dedicated SLA-backed support, proactive monitoring, monthly performance reports, and quarterly strategy reviews included in all engagements.',
-    icon: '🛡️',
+    iconUrl: 'https://img.icons8.com/color/48/shield.png',
   },
 ];
 
@@ -157,7 +157,7 @@ export default function ProcessSection() {
                   {/* Right: content */}
                   <div style={{ flex: 1, paddingTop: 4 }}>
                     <div className="flex items-center gap-2 mb-2">
-                      <span style={{ fontSize: 18 }}>{step.icon}</span>
+                      <span style={{ display: 'inline-flex' }}><img src={step.iconUrl} alt={step.title} style={{ width: 22, height: 22, objectFit: 'contain' }} loading="lazy" /></span>
                       <h3 style={{
                         fontFamily: 'Space Grotesk,sans-serif',
                         fontSize: 16,

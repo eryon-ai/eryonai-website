@@ -5,16 +5,16 @@ import { useRef } from 'react';
 
 const services = [
   {
-    icon: '🌐',
+    iconUrl: 'https://img.icons8.com/color/48/domain.png',
     title: 'Web Development',
-    description: 'High-performance, SEO-optimized web applications built with Next.js, React, and modern frameworks. From landing pages to complex enterprise SaaS platforms.',
+    description: 'High-performance, SEO-optimized custom web applications built with Next.js, React, and modern frameworks. From responsive B2B SaaS platforms to complex enterprise portals.',
     features: ['Next.js & React', 'TypeScript', 'REST & GraphQL APIs', 'CMS Integration'],
     iconBg: 'rgba(0,102,255,0.08)',
     iconColor: '#0066ff',
     borderTop: '#0066ff',
   },
   {
-    icon: '📱',
+    iconUrl: 'https://img.icons8.com/color/48/smartphone.png',
     title: 'Mobile App Development',
     description: 'Cross-platform and native mobile applications with exceptional UX. React Native & Flutter solutions that work seamlessly on iOS and Android.',
     features: ['React Native', 'Flutter', 'iOS & Android', 'Offline-First'],
@@ -23,16 +23,16 @@ const services = [
     borderTop: '#6366f1',
   },
   {
-    icon: '🤖',
+    iconUrl: 'https://img.icons8.com/color/48/artificial-intelligence.png',
     title: 'AI / ML Solutions',
-    description: 'Intelligent systems powered by machine learning, NLP, and computer vision. Transform raw data into actionable insights and automated workflows.',
+    description: 'Intelligent systems powered by machine learning, generative AI, NLP, and computer vision. Transform raw data into actionable insights and build custom LLM-based automated workflows.',
     features: ['LLM Integration', 'Computer Vision', 'NLP & Chatbots', 'Predictive Analytics'],
     iconBg: 'rgba(0,180,216,0.08)',
     iconColor: '#00b4d8',
     borderTop: '#00b4d8',
   },
   {
-    icon: '☁️',
+    iconUrl: 'https://img.icons8.com/color/48/cloud.png',
     title: 'Cloud & DevOps',
     description: 'Scalable cloud infrastructure on AWS, GCP, and Azure with CI/CD pipelines, Kubernetes orchestration, and infrastructure-as-code for zero-downtime deployments.',
     features: ['AWS / GCP / Azure', 'Docker & Kubernetes', 'CI/CD Pipelines', 'Terraform IaC'],
@@ -41,7 +41,7 @@ const services = [
     borderTop: '#10b981',
   },
   {
-    icon: '🔒',
+    iconUrl: 'https://img.icons8.com/color/48/security-checked.png',
     title: 'Cybersecurity',
     description: 'Zero-trust security frameworks, OWASP compliance, automated vulnerability scanning, and penetration testing to keep your systems secure at every layer.',
     features: ['Zero-Trust Model', 'Pen Testing', 'OWASP Compliance', 'SOC 2 Audit'],
@@ -50,7 +50,7 @@ const services = [
     borderTop: '#ef4444',
   },
   {
-    icon: '📊',
+    iconUrl: 'https://img.icons8.com/color/48/design.png',
     title: 'UI/UX Design',
     description: 'Research-driven product design that converts. We create intuitive interfaces backed by user research, accessibility standards, and world-class design systems.',
     features: ['Figma Prototyping', 'Design Systems', 'Accessibility (WCAG)', 'User Research'],
@@ -86,8 +86,8 @@ export default function ServicesSection() {
             className="section-title"
             style={{ marginTop: 12 }}
           >
-            Services That{' '}
-            <span className="gradient-text">Drive Results</span>
+            Our Core{' '}
+            <span className="gradient-text">Software Engineering &amp; AI Services</span>
           </motion.h2>
 
           <motion.p
@@ -120,9 +120,9 @@ export default function ServicesSection() {
               {/* Icon */}
               <div
                 className="icon-box"
-                style={{ background: s.iconBg, fontSize: 24 }}
+                style={{ background: s.iconBg, fontSize: 24, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               >
-                {s.icon}
+                <img src={s.iconUrl} alt={s.title} style={{ width: 32, height: 32, objectFit: 'contain' }} loading="lazy" />
               </div>
 
               {/* Title */}
@@ -180,10 +180,10 @@ export default function ServicesSection() {
         >
           <div>
             <p style={{ fontFamily: 'Space Grotesk,sans-serif', fontWeight: 700, fontSize: 17, color: '#0f172a', marginBottom: 4 ,marginLeft : 4}}>
-              Don't see what you need?
+              Don&apos;t see what you need?
             </p>
             <p style={{ fontSize: 14, color: '#64748b',marginBottom: 4 ,marginLeft : 4 }}>
-              We offer custom solutions. Let's discuss your unique requirements.
+              We offer custom solutions. Let&apos;s discuss your unique requirements.
             </p>
           </div>
           <button

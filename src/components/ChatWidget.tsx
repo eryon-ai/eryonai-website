@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { siteContent } from '@/lib/site-content';
 
 /* ─── Types ─────────────────────────────────────────────────────────────── */
@@ -80,6 +81,7 @@ export default function ChatWidget() {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const widgetRef = useRef<HTMLDivElement>(null);
   const msgId = useRef(1);
 
   const services = useMemo(() => siteContent.services.map((s) => s.title), []);
@@ -108,6 +110,17 @@ export default function ChatWidget() {
     }, 3000);
     return () => clearTimeout(t);
   }, [hasGreeted, open]);
+
+  /* ── close on click outside ─────────────────────────────────────── */
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (open && widgetRef.current && !widgetRef.current.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [open]);
 
   /* ── Build API history from messages ────────────────────────────── */
   const buildHistory = useCallback((): ApiHistory[] => {
@@ -273,14 +286,19 @@ export default function ChatWidget() {
 
   /* ── Chat Panel ─────────────────────────────────────────────────── */
   const chatPanel = open && (
-    <div
+    <motion.div
+      key="chat-panel"
+      initial={{ opacity: 0, y: 24, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 24, scale: 0.95 }}
+      transition={{ duration: 0.35, ease: [0.34, 1.56, 0.64, 1] }}
       id="eryon-chat-panel"
       style={{
         position: 'absolute',
         bottom: 76,
         right: 0,
-        width: 380,
-        maxWidth: 'calc(100vw - 24px)',
+        width: 'calc(100vw - 48px)',
+        maxWidth: 380,
         borderRadius: 20,
         background: '#ffffff',
         boxShadow: '0 24px 80px rgba(0,0,0,0.18), 0 8px 32px rgba(0,102,255,0.12)',
@@ -288,7 +306,6 @@ export default function ChatWidget() {
         overflow: 'hidden',
         display: 'flex',
         flexDirection: 'column',
-        animation: 'chatBotSlideUp 0.35s cubic-bezier(0.34,1.56,0.64,1)',
         maxHeight: '80vh',
       }}
     >
@@ -296,11 +313,12 @@ export default function ChatWidget() {
       <div
         style={{
           background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0066ff 150%)',
-          padding: '16px 18px',
+          padding: '14px 16px',
           display: 'flex',
           alignItems: 'center',
-          gap: 12,
+          gap: 10,
           flexShrink: 0,
+          overflow: 'hidden',
         }}
       >
         {/* Avatar */}
@@ -320,8 +338,8 @@ export default function ChatWidget() {
         >
           <img src="/logo.png" alt="ERYON AI" style={{ width: '95%', height: '95%', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
         </div>
-        <div style={{ flex: 1 }}>
-          <div style={{ color: '#fff', fontWeight: 700, fontSize: 15, fontFamily: "'Space Grotesk', sans-serif" }}>
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ color: '#fff', fontWeight: 700, fontSize: 14, fontFamily: "'Space Grotesk', sans-serif", whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
             ERYON AI Assistant
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 2 }}>
@@ -335,7 +353,7 @@ export default function ChatWidget() {
                 animation: 'chatBotPulse 2s ease-in-out infinite',
               }}
             />
-            <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12 }}>Online · Replies instantly</span>
+            <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: 11, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Online · Replies instantly</span>
           </div>
         </div>
 
@@ -343,7 +361,7 @@ export default function ChatWidget() {
         <div
           style={{
             display: 'flex',
-            gap: 4,
+            gap: 2,
             background: 'rgba(255,255,255,0.1)',
             borderRadius: 10,
             padding: 3,
@@ -354,11 +372,11 @@ export default function ChatWidget() {
               key={t}
               onClick={() => setTab(t)}
               style={{
-                padding: '4px 10px',
+                padding: '4px 6px',
                 borderRadius: 7,
                 border: 'none',
                 cursor: 'pointer',
-                fontSize: 12,
+                fontSize: 11,
                 fontWeight: 600,
                 background: tab === t ? '#0066ff' : 'transparent',
                 color: tab === t ? '#fff' : 'rgba(255,255,255,0.6)',
@@ -785,7 +803,7 @@ export default function ChatWidget() {
           )}
         </div>
       )}
-    </div>
+    </motion.div>
   );
 
   return (
@@ -816,8 +834,10 @@ export default function ChatWidget() {
         }
       `}</style>
 
-      <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 9999 }}>
-        {chatPanel}
+      <div ref={widgetRef} style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 9999 }}>
+        <AnimatePresence>
+          {chatPanel}
+        </AnimatePresence>
         {toggleBtn}
       </div>
     </>

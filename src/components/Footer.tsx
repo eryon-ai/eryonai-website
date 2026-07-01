@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import { getRecaptchaToken } from '@/lib/recaptcha-client';
 
@@ -9,25 +10,22 @@ const navCols = [
   {
     title: 'Services',
     links: ['Web Development', 'Mobile App Development', 'AI / ML Solutions', 'Cloud & DevOps', 'Cybersecurity', 'UI/UX Design'],
-    hrefs: ['#services', '#services', '#services', '#services', '#services', '#services'],
+    hrefs: ['/services', '/services', '/services', '/services', '/services', '/services'],
   },
   {
     title: 'Company',
-    links: ['About Us', 'Portfolio', 'Our Process', 'Testimonials', 'Careers', 'Blog'],
-    hrefs: ['#about', '#portfolio', '#process', '#testimonials', '#', '#'],
+    links: ['About Us', 'Portfolio', 'Our Process', 'Blogs', 'Careers', 'Contact'],
+    hrefs: ['/about', '/portfolio', '/process', '/blogs', '#', '/contact'],
   },
   {
     title: 'Contact',
     links: ['Get a Quote', 'Start a Project', 'Schedule a Call', 'Privacy Policy', 'Terms of Service', 'Sitemap'],
-    hrefs: ['#contact', '#contact', '#contact', '#', '#', '#'],
+    hrefs: ['/contact', '/contact', '/contact', '#', '#', '#'],
   },
 ];
 
 export default function Footer() {
-  const scrollTo = (href: string) => {
-    const id = href.replace('#', '');
-    if (id) document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
+
 
   const [subEmail, setSubEmail] = useState('');
   const [subStatus, setSubStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -70,12 +68,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            <Link
+              href="/"
               className="flex items-center gap-2 mb-5"
-              style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+              style={{ textDecoration: 'none', padding: 0 }}
             >
-              <img src="/FooterLogo.png" alt="ERYON AI" width={220} height={100} style={{ objectFit: 'contain' }} />
+              <Image src="/FooterLogo.png" alt="ERYON AI" width={220} height={100} style={{ objectFit: 'contain' }} />
               {/* <span style={{
                 fontFamily: 'Space Grotesk,sans-serif',
                 fontSize: 20,
@@ -84,7 +82,7 @@ export default function Footer() {
               }}>
                 ERYON<span style={{ color: '#00b4d8' }}>AI</span>
               </span> */}
-            </button>
+            </Link>
             <div style={{ marginBottom: 16 }} />
 
             <p style={{ fontSize: 14, lineHeight: 1.7, marginBottom: 20, color: '#64748b' }}>
@@ -94,13 +92,15 @@ export default function Footer() {
             {/* Socials */}
             <div className="flex gap-2">
               {[
-                { icon: '𝕏', label: 'Twitter' },
-                { icon: 'in', label: 'LinkedIn' },
-                { icon: '🐙', label: 'GitHub' },
-                { icon: '▶', label: 'YouTube' },
+                { iconUrl: 'https://img.icons8.com/color/48/instagram-new.png', label: 'Instagram', href: 'https://www.instagram.com/eryonai.solutions' },
+                { iconUrl: 'https://img.icons8.com/color/48/linkedin.png', label: 'LinkedIn', href: 'https://www.linkedin.com/company/113904195' },
+                { iconUrl: 'https://img.icons8.com/color/48/github.png', label: 'GitHub', href: 'https://github.com/eryon-ai' },
               ].map((s, i) => (
-                <motion.button
+                <motion.a
                   key={i}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
                   aria-label={s.label}
                   style={{
@@ -109,17 +109,15 @@ export default function Footer() {
                     border: '1px solid rgba(255,255,255,0.1)',
                     background: 'rgba(255,255,255,0.05)',
                     cursor: 'pointer',
-                    fontSize: 13,
-                    fontWeight: 700,
-                    color: '#64748b',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    transition: 'color 0.2s, border-color 0.2s',
+                    transition: 'border-color 0.2s',
+                    textDecoration: 'none',
                   }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#00b4d8'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,180,216,0.4)'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#64748b'; (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.1)'; }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,180,216,0.4)'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.1)'; }}
                 >
-                  {s.icon}
-                </motion.button>
+                  <img src={s.iconUrl} alt={s.label} style={{ width: 20, height: 20, objectFit: 'contain' }} loading="lazy" />
+                </motion.a>
               ))}
             </div>
           </div>
@@ -141,8 +139,8 @@ export default function Footer() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {col.links.map((link, li) => (
                   <li key={li}>
-                    <button
-                      onClick={() => scrollTo(col.hrefs[li])}
+                    <Link
+                      href={col.hrefs[li]}
                       style={{
                         background: 'none',
                         border: 'none',
@@ -155,12 +153,13 @@ export default function Footer() {
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: 4,
+                        textDecoration: 'none',
                       }}
                       onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#00b4d8'; }}
                       onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#64748b'; }}
                     >
                       {link}
-                    </button>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -232,7 +231,7 @@ export default function Footer() {
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 24 }}>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p style={{ fontSize: 13, color: '#475569' }}>
-              © {new Date().getFullYear()} ERYON AI Software Solutions. All rights reserved.
+              © 2019 ERYON AI Software Solutions. All rights reserved.
             </p>
             <div className="flex items-center gap-2">
               <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10b981', display: 'inline-block', animation: 'pulse-dot 2s ease-in-out infinite' }} />
