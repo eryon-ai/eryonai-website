@@ -15,7 +15,7 @@ const budgets = {
 
 const contactInfo = [
   { iconUrl: 'https://img.icons8.com/color/48/email.png', label: 'Email', value: 'connect@eryonai.com', color: '#0066ff' },
-  { iconUrl: 'https://img.icons8.com/color/48/phone.png', label: 'Phone', value: '+91 82852 56571\n+91 88518 35208', color: '#6366f1' },
+  { iconUrl: 'https://img.icons8.com/color/48/phone.png', label: 'Phone', value: '+91 78278 86571', color: '#6366f1' },
   { iconUrl: 'https://img.icons8.com/color/48/marker.png', label: 'Location', value: 'New Delhi, India', color: '#10b981' },
   { iconUrl: 'https://img.icons8.com/color/48/time.png', label: 'Response Time', value: 'Within 24 hours', color: '#f59e0b' },
 ];

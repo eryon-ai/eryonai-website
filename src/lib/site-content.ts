@@ -2,7 +2,7 @@ export const siteContent = {
   company: {
     name: 'ERYON AI',
     email: 'connect@eryonai.com',
-    phone: '+91 82852 56571',
+    phone: '+91 78278 86571',
     location: 'New Delhi, India',
     responseTime: 'Within 24 hours',
     tagline: 'Building Scalable Digital Systems for Modern Businesses.',

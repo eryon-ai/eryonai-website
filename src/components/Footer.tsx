@@ -73,7 +73,7 @@ export default function Footer() {
               className="flex items-center gap-2 mb-5"
               style={{ textDecoration: 'none', padding: 0 }}
             >
-              <Image src="/FooterLogo.png" alt="ERYON AI" width={220} height={100} style={{ objectFit: 'contain' }} />
+              <Image src="/logo-removebg-preview.png" alt="ERYON AI" width={220} height={100} style={{ objectFit: 'contain' }} />
               {/* <span style={{
                 fontFamily: 'Space Grotesk,sans-serif',
                 fontSize: 20,

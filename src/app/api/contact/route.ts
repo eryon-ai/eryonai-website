@@ -152,7 +152,7 @@ export async function POST(req: NextRequest) {
 
       <!-- Footer -->
       <div style="padding: 20px 40px; background: #f8fafc; border-top: 1px solid #e2e8f0; text-align: center;">
-        <p style="margin: 0; font-size: 12px; color: #94a3b8;">ERYON AI · connect@eryonai.com · +91 82852 56571</p>
+        <p style="margin: 0; font-size: 12px; color: #94a3b8;">ERYON AI · connect@eryonai.com · +91 78278 86571</p>
       </div>
     </div>
   `;

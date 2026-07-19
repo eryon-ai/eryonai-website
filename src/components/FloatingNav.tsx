@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
@@ -73,23 +74,25 @@ export default function FloatingNav() {
           className={`flex w-[95%] lg:w-auto lg:max-w-fit fixed inset-x-0 mx-auto rounded-full transition-all duration-300 z-[5000] px-3 lg:px-6 py-2 lg:py-3 items-center justify-between gap-4 lg:gap-10 ${
             isAtTop ? 'top-14 lg:top-16' : 'top-4 lg:top-6'
           } ${
-            isHome ? 'bg-transparent border border-white/20 shadow-[0px_8px_32px_rgba(0,0,0,0.1)]' : 'border border-transparent shadow-[0_20px_60px_rgba(10,92,255,0.3)] ring-2 ring-brand-blue/30'
+            isHome
+              ? 'bg-transparent border border-white/20 shadow-[0px_8px_32px_rgba(0,0,0,0.1)]'
+              : 'bg-white border border-slate-200 shadow-md ring-2 ring-brand-blue/10'
           }`}
-          style={!isHome ? {
-            backgroundImage: "url('/nav-bg.png')",
-            backgroundSize: '130%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          } : {}}
         >
 
 
-          {/* Left Circular Logo */}
+          {/* Left Logo Link */}
           <Link
             href="/"
-            className={`relative flex items-center justify-center w-10 h-10 rounded-full text-black shrink-0 overflow-hidden ${isHome ? 'bg-white' : 'bg-transparent'}`}
+            className="relative flex items-center justify-center shrink-0"
           >
-            <img src="/logo.png" alt="ERYON AI" className="w-7 h-7 object-contain" />
+            <Image
+              src="/logo-removebg-preview.png"
+              alt="ERYON AI"
+              width={40}
+              height={40}
+              style={{ objectFit: 'contain' }}
+            />
           </Link>
 
           {/* Middle Links (Desktop) */}
@@ -101,7 +104,7 @@ export default function FloatingNav() {
                     <Link
                       href={navItem.href}
                       className={`flex items-center gap-1 relative text-sm font-bold transition-colors ${
-                        isHome ? 'text-slate-200 hover:text-white' : 'text-navy hover:text-brand-blue'
+                        isHome ? 'text-slate-200 hover:text-white' : 'text-slate-800 hover:text-brand-blue'
                       }`}
                     >
                       <span>{navItem.label}</span>
@@ -144,7 +147,7 @@ export default function FloatingNav() {
                   key={`link=${idx}`}
                   href={navItem.href}
                   className={`relative text-sm font-bold transition-colors py-4 ${
-                    isHome ? 'text-slate-200 hover:text-white' : 'text-navy hover:text-brand-blue'
+                    isHome ? 'text-slate-200 hover:text-white' : 'text-slate-800 hover:text-brand-blue'
                   }`}
                 >
                   <span>{navItem.label}</span>
@@ -157,9 +160,7 @@ export default function FloatingNav() {
           <Link
             href="/contact"
             className={`border text-[11px] lg:text-sm font-bold relative border-transparent px-3 py-2 lg:px-5 lg:py-2.5 rounded-full transition-colors shrink-0 ${
-              isHome 
-                ? 'bg-white text-navy hover:bg-slate-200' 
-                : 'bg-navy text-white hover:bg-slate-800'
+              isHome ? 'bg-white text-navy hover:bg-slate-200' : 'bg-navy text-white hover:bg-slate-800'
             }`}
           >
             <span>Get a Free Quote →</span>
@@ -168,7 +169,7 @@ export default function FloatingNav() {
           {/* Mobile Menu Toggle */}
           <button
             className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-full shrink-0 ${
-              isHome ? 'bg-white/10 text-white' : 'bg-slate-100 text-navy'
+              isHome ? 'bg-white/10 text-white' : 'bg-slate-100 text-slate-800'
             }`}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
@@ -190,9 +191,7 @@ export default function FloatingNav() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className={`fixed top-32 inset-x-4 z-[4900] backdrop-blur-xl border rounded-2xl shadow-2xl lg:hidden overflow-hidden ${
-              isHome ? 'bg-navy/95 border-white/10' : 'bg-white/95 border-slate-200'
-            }`}
+            className="fixed top-32 inset-x-4 z-[4900] backdrop-blur-xl border rounded-2xl shadow-2xl lg:hidden overflow-hidden bg-white/95 border-slate-200"
           >
             <div className="flex flex-col p-2 max-h-[70vh] overflow-y-auto">
               {navLinks.map((link) => {
@@ -202,11 +201,7 @@ export default function FloatingNav() {
                       <Link
                         href={link.href}
                         onClick={() => setMobileOpen(false)}
-                        className={`px-4 py-3 text-base font-bold rounded-xl transition-colors text-center ${
-                          isHome 
-                            ? 'text-white bg-white/5' 
-                            : 'text-navy bg-slate-50'
-                        }`}
+                        className="px-4 py-3 text-base font-bold rounded-xl transition-colors text-center text-slate-800 bg-slate-50"
                       >
                         {link.label}
                       </Link>
@@ -216,9 +211,7 @@ export default function FloatingNav() {
                             key={sIdx}
                             href={service.href}
                             onClick={() => setMobileOpen(false)}
-                            className={`py-2 text-[14px] font-medium transition-colors text-center rounded-lg ${
-                              isHome ? 'text-slate-300 hover:text-white hover:bg-white/5' : 'text-slate-600 hover:text-brand-blue hover:bg-blue-50'
-                            }`}
+                            className="py-2 text-[14px] font-medium transition-colors text-center rounded-lg text-slate-600 hover:text-brand-blue hover:bg-blue-50"
                           >
                             {service.label}
                           </Link>
@@ -233,11 +226,7 @@ export default function FloatingNav() {
                     key={link.label}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`px-4 py-3 text-base font-bold rounded-xl transition-colors text-center mb-1 ${
-                      isHome 
-                        ? 'text-slate-200 hover:text-white hover:bg-white/5' 
-                        : 'text-navy hover:text-brand-blue hover:bg-slate-50'
-                    }`}
+                    className="px-4 py-3 text-base font-bold rounded-xl transition-colors text-center mb-1 text-slate-800 hover:text-brand-blue hover:bg-slate-50"
                   >
                     {link.label}
                   </Link>

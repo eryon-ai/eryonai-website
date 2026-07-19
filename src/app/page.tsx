@@ -50,7 +50,7 @@ export default function Home() {
     image: 'https://www.eryonai.com/logo-full.jpg',
     description:
       'ERYON AI is a premium enterprise software development agency specializing in custom Web Development, AI/ML integrations, Mobile Apps, SaaS platforms, and Cloud DevOps.',
-    telephone: '+91-82852-56571',
+    telephone: '+91-78278-86571',
     email: 'connect@eryonai.com',
     address: {
       '@type': 'PostalAddress',

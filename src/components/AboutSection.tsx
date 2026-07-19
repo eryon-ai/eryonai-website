@@ -193,7 +193,7 @@ const organizationSchema = {
   },
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+91-82852-56571',
+    telephone: '+91-78278-86571',
     contactType: 'customer service',
     availableLanguage: ['English', 'Hindi'],
   },

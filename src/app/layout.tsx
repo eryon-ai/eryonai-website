@@ -83,7 +83,7 @@ export default function RootLayout({
                 "description": "Premium software development agency specializing in Web Development, AI/ML integrations, and Mobile Apps.",
                 "contactPoint": {
                   "@type": "ContactPoint",
-                  "telephone": "+91-82852-56571",
+                  "telephone": "+91-78278-86571",
                   "contactType": "customer service",
                   "email": "connect@eryonai.com"
                 },
