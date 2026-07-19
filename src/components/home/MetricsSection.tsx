@@ -97,7 +97,7 @@ export default function MetricsSection() {
   return (
     <section
       className="relative overflow-hidden py-20 md:py-28"
-      style={{ background: 'linear-gradient(180deg, #0a0f1e 0%, #0d1526 50%, #0a0f1e 100%)' }}
+      style={{ background: '#0f172a' }}
     >
       {/* Background grid */}
       <div className="absolute inset-0 opacity-[0.03]" style={{

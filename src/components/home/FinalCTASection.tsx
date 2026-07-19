@@ -11,7 +11,7 @@ export default function FinalCTASection() {
   return (
     <section
       className="relative overflow-hidden py-24 md:py-36"
-      style={{ background: '#070c1a' }}
+      style={{ background: '#0f172a' }}
     >
       {/* Animated background blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">

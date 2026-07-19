@@ -54,7 +54,7 @@ export default function CaseStudiesSection() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0a0f1e' }}>
+    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0f172a' }}>
       <div className="container-custom relative z-10" ref={ref}>
         {/* Header */}
         <motion.div

@@ -152,10 +152,10 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
   const currentProject = GALLERY_PROJECTS.find(p => p.id === activeProject) || GALLERY_PROJECTS[0];
 
   return (
-    <div className="w-full bg-[#030712] text-slate-100 font-sans selection:bg-brand-blue selection:text-white overflow-hidden">
+    <div className="w-full bg-[#0f172a] text-slate-100 font-sans selection:bg-brand-blue selection:text-white overflow-hidden">
       
       {/* 1. HERO SECTION (Dark & Glossy) */}
-      <section className="relative overflow-hidden pt-32 lg:pt-44 pb-20 lg:pb-36 bg-gradient-to-b from-slate-950 via-[#030712] to-slate-950 border-b border-slate-900">
+      <section className="relative overflow-hidden pt-32 lg:pt-44 pb-20 lg:pb-36 bg-gradient-to-b from-[#0f172a] via-[#0f172a] to-[#0f172a] border-b border-slate-900">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-blue/15 via-transparent to-transparent opacity-70 pointer-events-none"></div>
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
         
@@ -217,9 +217,9 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
               <div className="absolute -top-12 -right-12 w-64 h-64 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none"></div>
               
               {/* Chrome Mockup Window */}
-              <div className="relative rounded-2xl overflow-hidden border border-slate-850 bg-slate-950/80 shadow-[0_15px_40px_rgba(0,0,0,0.6)] aspect-[4/3] backdrop-blur-xl">
+              <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-950/80 shadow-[0_15px_40px_rgba(0,0,0,0.6)] aspect-[4/3] backdrop-blur-xl">
                 {/* Window header */}
-                <div className="h-10 bg-slate-900 border-b border-slate-850 flex items-center px-4 gap-2">
+                <div className="h-10 bg-slate-900 border-b border-slate-800 flex items-center px-4 gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500/70"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500/70"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500/70"></div>
@@ -231,7 +231,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                 {/* Inner Mockup Image */}
                 <div className="relative w-full h-[calc(100%-40px)] group">
                   <Image src={data.hero.heroImage} alt={data.hero.headline} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover opacity-90 transition-transform duration-700 group-hover:scale-105" priority />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-slate-950/30 to-transparent"></div>
                   
                   {/* Floating Metric Tag */}
                   <div className="absolute bottom-6 left-6 p-4 rounded-xl border border-slate-800 bg-slate-900/90 backdrop-blur-md shadow-2xl flex items-center gap-3">
@@ -252,7 +252,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       </section>
 
       {/* 2. WHAT WE BUILD (Cards Grid) */}
-      <section className="py-24 bg-slate-950 border-b border-slate-900">
+      <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">{data.buildLabel}</span>
@@ -301,7 +301,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       </section>
 
       {/* 3. INDUSTRIES WE SERVE (With Dynamic Glows) */}
-      <section className="py-24 bg-[#030712] border-b border-slate-900">
+      <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">{data.industryLabel}</span>
@@ -321,7 +321,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 key={i}
-                className="bg-slate-900/30 p-6 rounded-2xl border border-slate-805 hover:border-slate-700/80 shadow-md hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
+                className="bg-slate-900/30 p-6 rounded-2xl border border-slate-800 hover:border-slate-700/80 shadow-md hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
               >
                 {/* Glowing border top */}
                 <div className="absolute top-0 left-0 w-full h-1 opacity-40 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: ind.color }}></div>
@@ -350,7 +350,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       </section>
 
       {/* 4. FEATURE SHOWCASE (Alternating Detailed Demos) */}
-      <section className="py-24 bg-slate-950 border-b border-slate-900">
+      <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-20 max-w-3xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">{data.featureLabel}</span>
@@ -402,9 +402,9 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                     <div className="absolute inset-0 bg-brand-blue/5 group-hover:bg-transparent transition-colors z-10 duration-500"></div>
                     {/* Simulated Header */}
                     <div className="h-9 bg-slate-900/90 border-b border-slate-800 flex items-center px-4 gap-1.5">
-                      <div className="w-2.5 h-2.5 rounded-full bg-slate-750"></div>
-                      <div className="w-2.5 h-2.5 rounded-full bg-slate-750"></div>
-                      <div className="w-2.5 h-2.5 rounded-full bg-slate-750"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-slate-700"></div>
                     </div>
                     <Image src={feat.image} alt={feat.imageAlt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-103 transition-transform duration-700" />
                   </div>
@@ -417,7 +417,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       </section>
 
       {/* 5. PROJECT GALLERY (Section 5 - Interactive Showcase) */}
-      <section id="gallery" className="py-24 bg-[#030712] border-b border-slate-900">
+      <section id="gallery" className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">Section 05 — Project Gallery</span>
@@ -444,7 +444,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                     <span className="text-[10px] font-bold uppercase tracking-wider text-brand-blue mb-1">{proj.category}</span>
                     <span className="text-base font-bold text-white font-space">{proj.title}</span>
                   </div>
-                  <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${activeProject === proj.id ? 'translate-x-1 text-brand-blue' : 'text-slate-650'}`} />
+                  <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${activeProject === proj.id ? 'translate-x-1 text-brand-blue' : 'text-slate-600'}`} />
                 </button>
               ))}
             </div>
@@ -481,7 +481,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                     </div>
                   </div>
 
-                  <p className="text-slate-355 text-sm leading-relaxed mb-6 font-inter max-w-3xl">
+                  <p className="text-slate-400 text-sm leading-relaxed mb-6 font-inter max-w-3xl">
                     {currentProject.description}
                   </p>
 
@@ -496,7 +496,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                 </div>
 
                 {/* Mockup Display */}
-                <div className={`relative w-full overflow-hidden transition-all duration-500 rounded-2xl border border-slate-800 bg-slate-955 shadow-2xl flex flex-col ${
+                <div className={`relative w-full overflow-hidden transition-all duration-500 rounded-2xl border border-slate-800 bg-slate-950 shadow-2xl flex flex-col ${
                   projectViewMode === 'desktop' ? 'aspect-[16/9]' : projectViewMode === 'tablet' ? 'aspect-[4/3] max-w-xl mx-auto' : 'aspect-[9/16] max-w-xs mx-auto'
                 }`}>
                   {/* Browser Bar / Status Bar */}
@@ -546,7 +546,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       </section>
 
       {/* 6. DEVELOPMENT PROCESS (Section 6 - Timeline) */}
-      <section className="py-24 bg-slate-950 border-b border-slate-900">
+      <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">Section 06 — Development Process</span>
@@ -561,7 +561,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
             {/* Timeline Stepper Dots */}
             <div className="w-full relative flex items-center justify-between overflow-x-auto pb-4 max-w-5xl mx-auto border-b border-slate-900">
               {/* Horizontal connecting line */}
-              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-850 -translate-y-1/2 z-0 hidden md:block"></div>
+              <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-800 -translate-y-1/2 z-0 hidden md:block"></div>
               
               {TIMELINE_STEPS.map((step) => {
                 const IconComponent = step.icon;
@@ -609,7 +609,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                         <h3 className="text-2xl font-bold font-space text-white">
                           Phase 0{step.step}: {step.title}
                         </h3>
-                        <span className="px-3 py-1 rounded-full border border-slate-850 text-xs font-semibold font-mono bg-slate-950 text-slate-400">
+                        <span className="px-3 py-1 rounded-full border border-slate-800 text-xs font-semibold font-mono bg-slate-950 text-slate-400">
                           {step.duration}
                         </span>
                       </div>
@@ -632,7 +632,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       </section>
 
       {/* 7. TECHNOLOGY STACK (Section 7 - Interactive Presentation) */}
-      <section className="py-24 bg-[#030712] border-b border-slate-900">
+      <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">Section 07 — Technology Stack</span>
@@ -644,7 +644,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
 
           <div className="max-w-5xl mx-auto">
             {/* Tech Category Selector Tabs */}
-            <div className="flex flex-wrap justify-center gap-2 mb-10 p-1.5 rounded-2xl bg-slate-950 border border-slate-850 max-w-3xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-2 mb-10 p-1.5 rounded-2xl bg-slate-950 border border-slate-800 max-w-3xl mx-auto">
               {data.techGroups.map((group) => (
                 <button
                   key={group.category}
@@ -683,12 +683,12 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       </section>
 
       {/* 8. BUSINESS BENEFITS (Measurable Outcomes) */}
-      <section className="py-24 bg-slate-950 border-b border-slate-900">
+      <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-16 max-w-3xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">Section 08 — Business Benefits</span>
             <h2 className="text-3xl md:text-4xl font-space font-bold text-white mt-6 mb-4">Measurable Business Outcomes</h2>
-            <p className="text-slate-450 text-base md:text-lg font-inter">
+            <p className="text-slate-400 text-base md:text-lg font-inter">
               We focus on solving bottom-line operational problems, driving direct ROI, and improving workflows.
             </p>
           </div>
@@ -720,7 +720,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       </section>
 
       {/* 9. FAQ (Accordion) */}
-      <section className="py-24 bg-[#030712] border-b border-slate-900">
+      <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom max-w-4xl">
           <div className="text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">Section 09 — FAQ</span>
@@ -734,16 +734,16 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
             {data.faqs.map((faq, index) => (
               <div 
                 key={index} 
-                className="bg-slate-900/30 border border-slate-850 hover:border-slate-800 rounded-2xl overflow-hidden shadow-sm backdrop-blur-xl"
+                className="bg-slate-900/30 border border-slate-800 hover:border-slate-800 rounded-2xl overflow-hidden shadow-sm backdrop-blur-xl"
               >
                 <button 
                   onClick={() => toggleFaq(index)}
                   className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
                 >
                   <span className="font-bold text-white pr-8 font-space text-base md:text-lg">{faq.q}</span>
-                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${openFaq === index ? 'bg-brand-blue text-white' : 'bg-slate-950 border border-slate-850 text-slate-400'}`}>
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${openFaq === index ? 'bg-brand-blue text-white' : 'bg-slate-950 border border-slate-800 text-slate-400'}`}>
                     <svg 
-                      className={`w-4.5 h-4.5 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-white' : 'text-slate-450'}`} 
+                      className={`w-4.5 h-4.5 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-white' : 'text-slate-400'}`} 
                       fill="none" 
                       viewBox="0 0 24 24" 
                       stroke="currentColor"
@@ -760,7 +760,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                     >
-                      <div className="px-6 pb-6 text-slate-400 font-inter border-t border-slate-850 pt-4 leading-relaxed text-sm md:text-base text-left">
+                      <div className="px-6 pb-6 text-slate-400 font-inter border-t border-slate-800 pt-4 leading-relaxed text-sm md:text-base text-left">
                         {faq.a}
                       </div>
                     </motion.div>
@@ -773,16 +773,16 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       </section>
 
       {/* 10. FINAL CTA (Close strategic session banner) */}
-      <section className="py-24 bg-slate-950 relative overflow-hidden">
+      <section className="py-24 bg-[#0f172a] relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-brand-blue/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         <div className="container-custom relative z-10">
-          <div className="p-8 md:p-14 rounded-3xl border border-slate-850 bg-gradient-to-b from-slate-900 to-slate-950 text-center max-w-4xl mx-auto shadow-2xl relative">
+          <div className="p-8 md:p-14 rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900 to-[#0f172a] text-center max-w-4xl mx-auto shadow-2xl relative">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-blue to-cyan-400"></div>
             
             <h2 className="text-3xl md:text-5xl font-space font-bold text-white mb-6 tracking-tight">
               {data.ctaTitle}
             </h2>
-            <p className="text-base md:text-lg text-slate-355 mb-10 font-inter max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg text-slate-400 mb-10 font-inter max-w-2xl mx-auto leading-relaxed">
               {data.ctaDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -65,7 +65,7 @@ export default function CapabilitiesSection() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: '#070c1a' }}>
+    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0f172a' }}>
       {/* Radial background glow */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,102,255,0.08) 0%, transparent 70%)',

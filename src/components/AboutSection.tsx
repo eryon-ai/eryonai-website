@@ -89,17 +89,17 @@ function ProgressBar({ pct, color, delay }: { pct: number; color: string; delay:
 
 /* ─── Data ──────────────────────────────────────────────────────────── */
 const stats = [
-  { value: 150, suffix: '+', label: 'Projects Delivered', caption: 'Shipped on time, on budget', color: '#0A5CFF' },
+  { value: 150, suffix: '+', label: 'Projects Delivered', caption: 'Shipped on time, on budget', color: '#0066ff' },
   { value: 80,  suffix: '+', label: 'Enterprise Clients',  caption: 'From seed-stage to Fortune 500', color: '#6366f1' },
-  { value: 5,   suffix: '+', label: 'Years of Excellence', caption: 'Consistent growth since 2019', color: '#0096c7' },
+  { value: 5,   suffix: '+', label: 'Years of Excellence', caption: 'Consistent growth since 2019', color: '#00b4d8' },
   { value: 98,  suffix: '%', label: 'Satisfaction Rate',   caption: 'Verified across all engagements', color: '#059669' },
 ];
 
 const benchmarks = [
-  { label: 'Client Satisfaction', pct: 98, color: '#0A5CFF' },
+  { label: 'Client Satisfaction', pct: 98, color: '#0066ff' },
   { label: 'On-Time Delivery',    pct: 94, color: '#6366f1' },
   { label: 'Project Success Rate', pct: 97, color: '#059669' },
-  { label: 'Code Quality Score',  pct: 96, color: '#0096c7' },
+  { label: 'Code Quality Score',  pct: 96, color: '#00b4d8' },
 ];
 
 const techStack = [
@@ -346,7 +346,7 @@ export default function AboutSection() {
           >
             {[
               {
-                iconUrl: 'https://img.icons8.com/color/48/target.png', color: '#0A5CFF', gradBg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
+                iconUrl: 'https://img.icons8.com/color/48/target.png', color: '#0066ff', gradBg: 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
                 border: '#bfdbfe',
                 title: 'Our Mission',
                 text: 'To democratize access to cutting-edge technology — making world-class software engineering accessible to every business, from bold startups to established enterprises, empowering them to achieve more through intelligent digital systems.',
@@ -421,7 +421,7 @@ export default function AboutSection() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 22 }}>
                 <div style={{
                   width: 36, height: 36, borderRadius: 10,
-                  background: 'linear-gradient(135deg, #0A5CFF, #0096c7)',
+                  background: 'linear-gradient(135deg, #0066ff, #00b4d8)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: 16, flexShrink: 0,
                 }}>

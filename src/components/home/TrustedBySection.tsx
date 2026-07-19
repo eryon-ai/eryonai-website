@@ -21,12 +21,12 @@ const marqueeItems = [...brands, ...brands];
 
 export default function TrustedBySection() {
   return (
-    <section className="relative overflow-hidden py-12 md:py-16" style={{ background: '#0a0f1e', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+    <section className="relative overflow-hidden py-12 md:py-16" style={{ background: '#0f172a', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
       {/* Fade edges */}
       <div className="absolute inset-y-0 left-0 w-24 md:w-40 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to right, #0a0f1e, transparent)' }} />
+        style={{ background: 'linear-gradient(to right, #0f172a, transparent)' }} />
       <div className="absolute inset-y-0 right-0 w-24 md:w-40 z-10 pointer-events-none"
-        style={{ background: 'linear-gradient(to left, #0a0f1e, transparent)' }} />
+        style={{ background: 'linear-gradient(to left, #0f172a, transparent)' }} />
 
       <div className="text-center mb-8 md:mb-10 px-4">
         <p className="text-xs font-semibold tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.3)' }}>

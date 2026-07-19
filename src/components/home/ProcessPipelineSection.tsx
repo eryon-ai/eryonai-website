@@ -60,7 +60,7 @@ export default function ProcessPipelineSection() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: '#070c1a' }}>
+    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0f172a' }}>
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none" style={{
         background: 'radial-gradient(ellipse 60% 50% at 50% 100%, rgba(0,102,255,0.07) 0%, transparent 70%)',
@@ -119,7 +119,7 @@ export default function ProcessPipelineSection() {
                   <div
                     className="w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300"
                     style={{
-                      background: i === activeStep ? step.color : '#070c1a',
+                      background: i === activeStep ? step.color : '#0f172a',
                       border: `2px solid ${i === activeStep ? step.color : 'rgba(255,255,255,0.15)'}`,
                       boxShadow: i === activeStep ? `0 0 28px ${step.color}70` : 'none',
                       position: 'relative',

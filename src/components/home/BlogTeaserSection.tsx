@@ -16,7 +16,7 @@ export default function BlogTeaserSection() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0a0f1e' }}>
+    <section className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0f172a' }}>
       {/* Subtle grid */}
       <div className="absolute inset-0 opacity-[0.025]" style={{
         backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',

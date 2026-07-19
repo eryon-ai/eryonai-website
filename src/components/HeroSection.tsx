@@ -110,10 +110,10 @@ export default function HeroSection() {
               style={{ fontSize: 18, color: '#94a3b8', lineHeight: 1.7, marginBottom: 36, maxWidth: 560 }}
             >
               ERYON AI delivers enterprise-grade{' '}
-              <span style={{ color: '#38bdf8', fontWeight: 600 }}>Custom Web Applications</span>,{' '}
-              <span style={{ color: '#60a5fa', fontWeight: 600 }}>Generative AI</span>,{' '}
-              <span style={{ color: '#a78bfa', fontWeight: 600 }}>Mobile Apps</span> &{' '}
-              <span style={{ color: '#34d399', fontWeight: 600 }}>Cloud Solutions</span>{' '}
+              <span style={{ color: '#00b4d8', fontWeight: 600 }}>Custom Web Applications</span>,{' '}
+              <span style={{ color: '#0066ff', fontWeight: 600 }}>Generative AI</span>,{' '}
+              <span style={{ color: '#6366f1', fontWeight: 600 }}>Mobile Apps</span> &{' '}
+              <span style={{ color: '#10b981', fontWeight: 600 }}>Cloud Solutions</span>{' '}
               engineered for performance, security, and long-term growth.
             </motion.p>
 
