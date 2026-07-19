@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
@@ -81,18 +80,14 @@ export default function FloatingNav() {
         >
 
 
-          {/* Left Logo Link */}
+          {/* Left Home Link */}
           <Link
             href="/"
-            className="relative flex items-center justify-center shrink-0"
+            className={`relative flex items-center justify-center rounded-full font-bold text-sm shrink-0 transition-colors ${
+              isHome ? 'text-white hover:text-cyan-300' : 'text-slate-800 hover:text-brand-blue'
+            }`}
           >
-            <Image
-              src="/logo-removebg-preview.png"
-              alt="ERYON AI"
-              width={40}
-              height={40}
-              style={{ objectFit: 'contain' }}
-            />
+            <span>Home</span>
           </Link>
 
           {/* Middle Links (Desktop) */}
