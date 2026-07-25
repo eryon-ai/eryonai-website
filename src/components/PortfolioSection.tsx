@@ -2,7 +2,10 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { FolderKanban } from 'lucide-react';
 import { ProjectCard } from '@/components/ui/project-card';
+import SectionBadge from '@/components/ui/SectionBadge';
+import MovingBorderButton from '@/components/ui/MovingBorderButton';
 
 const projects = [
   {
@@ -119,31 +122,26 @@ const projects = [
 
 export default function PortfolioSection() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="portfolio" className="section-pad" style={{ background: '#ffffff' }}>
-      <div className="container-custom" ref={ref}>
+    <section id="portfolio" className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0f172a' }}>
+      <div className="container-custom relative z-10" ref={ref}>
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-            >
-              <div className="section-label">Case Studies</div>
-            </motion.div>
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.08 }}
-              className="section-title"
-              style={{ marginTop: 10, maxWidth: 480 }}
-            >
-              Work That <span className="gradient-text">Speaks</span>
-            </motion.h2>
-          </div>
-        </div>
+        <motion.div
+          className="text-center mb-14 max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <SectionBadge icon={FolderKanban} label="Portfolio" color="#0066ff" className="mx-auto" />
+          <h2 className="text-3xl md:text-5xl font-extrabold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+            Work That <span className="gradient-text">Speaks</span>
+          </h2>
+          <p className="mt-4 text-base md:text-lg" style={{ color: '#94a3b8' }}>
+            150+ projects delivered across fintech, healthcare, e-commerce, and beyond.
+          </p>
+        </motion.div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -161,12 +159,6 @@ export default function PortfolioSection() {
                 link={p.link}
                 linkText={p.linkText}
                 className="h-full"
-                style={
-                  {
-                    '--tw-shadow': '0 4px 24px rgba(0,0,0,0.07)',
-                    border: '1px solid #e2e8f0',
-                  } as React.CSSProperties
-                }
               />
             </motion.div>
           ))}
@@ -179,15 +171,12 @@ export default function PortfolioSection() {
           transition={{ delay: 0.55 }}
           className="text-center mt-16 pt-4"
         >
-          <p style={{ color: '#64748b', marginBottom: 20, fontSize: 15 }}>
-            These are just a few highlights — we&apos;ve delivered 150+ projects across industries.
+          <p style={{ color: '#94a3b8', marginBottom: 24, fontSize: 15 }}>
+            These are just a few highlights — let&apos;s build your next success story.
           </p>
-          <button
-            className="btn-secondary"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Discuss Your Project →
-          </button>
+          <MovingBorderButton href="/contact">
+            Discuss Your Project
+          </MovingBorderButton>
         </motion.div>
       </div>
     </section>

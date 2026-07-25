@@ -1,12 +1,15 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import { Lock, Zap, CheckCircle2, Globe2 } from 'lucide-react';
+import MovingBorderButton from '@/components/ui/MovingBorderButton';
 
 export default function FinalCTASection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const reduceMotion = useReducedMotion();
 
   return (
     <section
@@ -16,20 +19,20 @@ export default function FinalCTASection() {
       {/* Animated background blobs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
-          animate={{ scale: [1, 1.15, 1], opacity: [0.12, 0.2, 0.12] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          animate={reduceMotion ? { opacity: 0.16 } : { scale: [1, 1.15, 1], opacity: [0.12, 0.2, 0.12] }}
+          transition={{ duration: 8, repeat: reduceMotion ? 0 : Infinity, ease: 'easeInOut' }}
           className="absolute -top-40 -left-40 w-96 h-96 rounded-full"
           style={{ background: 'radial-gradient(circle, #0066ff, transparent 70%)' }}
         />
         <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.18, 0.1] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+          animate={reduceMotion ? { opacity: 0.14 } : { scale: [1, 1.2, 1], opacity: [0.1, 0.18, 0.1] }}
+          transition={{ duration: 10, repeat: reduceMotion ? 0 : Infinity, ease: 'easeInOut', delay: 2 }}
           className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full"
           style={{ background: 'radial-gradient(circle, #6366f1, transparent 70%)' }}
         />
         <motion.div
-          animate={{ scale: [1, 1.1, 1], opacity: [0.08, 0.15, 0.08] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 4 }}
+          animate={reduceMotion ? { opacity: 0.11 } : { scale: [1, 1.1, 1], opacity: [0.08, 0.15, 0.08] }}
+          transition={{ duration: 12, repeat: reduceMotion ? 0 : Infinity, ease: 'easeInOut', delay: 4 }}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full"
           style={{ background: 'radial-gradient(circle, #00b4d8, transparent 70%)' }}
         />
@@ -96,22 +99,10 @@ export default function FinalCTASection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <Link
-            href="/contact"
-            className="group relative inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-sm font-bold overflow-hidden"
-            style={{
-              background: 'linear-gradient(135deg, #0066ff, #00b4d8)',
-              color: 'white',
-              boxShadow: '0 0 32px rgba(0,102,255,0.5)',
-              textDecoration: 'none',
-            }}
-          >
-            <span className="relative z-10">Start Your Project</span>
-            <span className="relative z-10 group-hover:translate-x-1 transition-transform duration-300">→</span>
-            {/* Shimmer */}
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.2), transparent)' }} />
-          </Link>
+          <MovingBorderButton href="/contact">
+            Start Your Project
+            <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+          </MovingBorderButton>
 
           <Link
             href="/portfolio"
@@ -145,8 +136,16 @@ export default function FinalCTASection() {
           className="flex flex-wrap items-center justify-center gap-6 mt-12 text-xs font-semibold"
           style={{ color: '#475569' }}
         >
-          {['🔒 NDA on request', '⚡ Response in 24h', '✅ No commitment needed', '🌍 Remote-first team'].map((item, i) => (
-            <span key={i}>{item}</span>
+          {[
+            { icon: Lock, label: 'NDA on request' },
+            { icon: Zap, label: 'Response in 24h' },
+            { icon: CheckCircle2, label: 'No commitment needed' },
+            { icon: Globe2, label: 'Remote-first team' },
+          ].map((item, i) => (
+            <span key={i} className="inline-flex items-center gap-1.5">
+              <item.icon size={13} strokeWidth={2.5} aria-hidden="true" />
+              {item.label}
+            </span>
           ))}
         </motion.div>
       </div>

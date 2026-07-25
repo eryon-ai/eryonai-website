@@ -23,7 +23,7 @@ export default function ProcessPage() {
   return (
     <main>
 
-      <div className="pt-20">
+      <div className="pt-20 bg-[#0f172a]">
         <ProcessSection />
       </div>
 

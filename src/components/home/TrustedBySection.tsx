@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 const brands = [
   { name: 'AWS', url: 'https://img.icons8.com/color/96/amazon-web-services.png' },
@@ -20,6 +20,8 @@ const brands = [
 const marqueeItems = [...brands, ...brands];
 
 export default function TrustedBySection() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section className="relative overflow-hidden py-12 md:py-16" style={{ background: '#0f172a', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
       {/* Fade edges */}
@@ -37,8 +39,8 @@ export default function TrustedBySection() {
       <div className="overflow-hidden">
         <motion.div
           className="flex gap-8 md:gap-12"
-          animate={{ x: ['0%', '-50%'] }}
-          transition={{ duration: 28, ease: 'linear', repeat: Infinity }}
+          animate={reduceMotion ? {} : { x: ['0%', '-50%'] }}
+          transition={{ duration: 28, ease: 'linear', repeat: reduceMotion ? 0 : Infinity }}
           style={{ width: 'max-content' }}
         >
           {marqueeItems.map((brand, i) => (

@@ -3,6 +3,30 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Link from 'next/link';
+import {
+  type LucideIcon,
+  Globe,
+  Smartphone,
+  Rocket,
+  BarChart3,
+  Building2,
+  Dumbbell,
+  ShoppingCart,
+  Workflow,
+  Brain,
+  LineChart,
+  Cloud,
+  Palette,
+  Layers,
+  Check,
+  ChevronDown,
+  Lock,
+  Zap,
+  CheckCircle2,
+} from 'lucide-react';
+import GlowCard from '@/components/ui/GlowCard';
+import SectionBadge from '@/components/ui/SectionBadge';
+import MovingBorderButton from '@/components/ui/MovingBorderButton';
 
 /* ─────────────────────────────────────────────
    DATA
@@ -241,6 +265,23 @@ const categories = [
 
 const PREVIEW_COUNT = 5;
 
+/* Lucide replacements for the old icons8.com raster icons, keyed by category id.
+   Kept separate from `categories` so the data array itself stays untouched. */
+const CATEGORY_ICONS: Record<string, LucideIcon> = {
+  'web-applications': Globe,
+  'mobile-applications': Smartphone,
+  'custom-saas': Rocket,
+  'crm-erp-solutions': BarChart3,
+  'real-estate-software': Building2,
+  'gym-management-software': Dumbbell,
+  'ecommerce-solutions': ShoppingCart,
+  'business-automation': Workflow,
+  'ai-solutions': Brain,
+  'data-analytics': LineChart,
+  'devops-cloud': Cloud,
+  'ui-ux-design': Palette,
+};
+
 /* ─────────────────────────────────────────────
    SINGLE CATEGORY CARD
 ───────────────────────────────────────────── */
@@ -248,6 +289,7 @@ function CategoryCard({ cat, index }: { cat: typeof categories[0]; index: number
   const [expanded, setExpanded] = useState(false);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
+  const Icon = CATEGORY_ICONS[cat.id] ?? Layers;
 
   const visible = expanded ? cat.items : cat.items.slice(0, PREVIEW_COUNT);
 
@@ -257,39 +299,36 @@ function CategoryCard({ cat, index }: { cat: typeof categories[0]; index: number
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: (index % 3) * 0.1, ease: 'easeOut' }}
-      className="group relative flex flex-col bg-white rounded-[20px] border border-slate-100 overflow-hidden transition-all duration-300 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.25)] hover:-translate-y-1"
+      className="h-full"
     >
-      {/* Subtle top accent line */}
-      <div 
-        className="absolute top-0 left-0 right-0 h-[3px]" 
-        style={{ background: `linear-gradient(90deg, ${cat.color}, transparent)` }} 
-      />
-      
-      {/* Subtle glowing orb in the background on hover */}
-      <div 
-        className="absolute -top-24 -right-24 w-64 h-64 rounded-full blur-[60px] opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none"
-        style={{ background: cat.color }}
-      />
+      <GlowCard
+        color={cat.color}
+        className="p-7 md:p-8 h-full"
+        style={{ background: `linear-gradient(135deg, ${cat.bgColor}, rgba(255,255,255,0.02))` }}
+      >
+        {/* Top accent line */}
+        <div
+          className="-mx-7 -mt-7 md:-mx-8 md:-mt-8 mb-6 h-0.5 rounded-t-2xl"
+          style={{ background: `linear-gradient(90deg, transparent, ${cat.color}, transparent)` }}
+        />
 
-      <div className="p-8 flex flex-col h-full relative z-10">
         {/* Header */}
-        <Link href={`/services/${cat.id}`} className="block focus:outline-none mb-7">
-          <div className="flex items-start gap-5 cursor-pointer">
+        <Link href={`/services/${cat.id}`} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f172a] rounded-xl mb-6" style={{ ['--tw-ring-color' as string]: cat.color }}>
+          <div className="flex items-start gap-4">
             <div
-              className="flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center border transition-all duration-300 group-hover:scale-105 group-hover:shadow-md"
-              style={{ 
-                background: `linear-gradient(135deg, #ffffff, ${cat.bgColor})`, 
-                borderColor: `${cat.color}20`,
-                boxShadow: `0 4px 20px ${cat.color}10`
-              }}
+              className="flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
+              style={{ background: `${cat.color}18`, border: `1px solid ${cat.color}30` }}
             >
-              <img src={cat.icon} alt={cat.label} width={36} height={36} className="object-contain" loading="lazy" />
+              <Icon size={26} strokeWidth={2} color={cat.color} aria-hidden="true" />
             </div>
-            <div className="pt-1.5">
-              <h3 className="font-space text-[19px] font-bold text-navy mb-1.5 leading-tight group-hover:text-brand-blue transition-colors">
+            <div className="pt-1">
+              <h3
+                className="text-lg font-bold mb-1.5 leading-tight transition-colors"
+                style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc' }}
+              >
                 {cat.label}
               </h3>
-              <p className="text-[13px] text-slate-500 leading-relaxed font-medium">
+              <p className="text-[13px] leading-relaxed" style={{ color: '#94a3b8' }}>
                 {cat.tagline}
               </p>
             </div>
@@ -297,10 +336,10 @@ function CategoryCard({ cat, index }: { cat: typeof categories[0]; index: number
         </Link>
 
         {/* Divider */}
-        <div className="h-[1px] w-full bg-gradient-to-r from-slate-100 via-slate-100 to-transparent mb-6" />
+        <div className="h-px w-full mb-5" style={{ background: 'rgba(255,255,255,0.08)' }} />
 
         {/* Item list */}
-        <div className="flex flex-col flex-1 gap-1 mb-8">
+        <div className="flex flex-col flex-1 gap-0.5 mb-7">
           <AnimatePresence initial={false}>
             {visible.map((item, i) => (
               <motion.div
@@ -312,21 +351,24 @@ function CategoryCard({ cat, index }: { cat: typeof categories[0]; index: number
                 className="overflow-hidden"
               >
                 <div className="flex items-start gap-3 py-1.5 group/item cursor-default">
-                  <div className="relative mt-[5px] flex-shrink-0 w-4 h-4 flex items-center justify-center">
-                    {/* Default dot */}
-                    <div className="absolute inset-0 rounded-full opacity-100 group-hover/item:opacity-0 transition-all duration-300 flex items-center justify-center"
-                         style={{ background: `${cat.color}20` }}>
+                  <div className="relative mt-0.75 flex-shrink-0 w-4 h-4 flex items-center justify-center">
+                    <div
+                      className="absolute inset-0 rounded-full flex items-center justify-center opacity-100 group-hover/item:opacity-0 transition-opacity duration-300"
+                      style={{ background: `${cat.color}22` }}
+                    >
                       <div className="w-1.5 h-1.5 rounded-full" style={{ background: cat.color }} />
                     </div>
-                    {/* Hover checkmark */}
-                    <div className="absolute inset-0 rounded-full opacity-0 group-hover/item:opacity-100 transition-all duration-300 flex items-center justify-center"
-                         style={{ background: cat.color }}>
-                      <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3.5}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                      </svg>
+                    <div
+                      className="absolute inset-0 rounded-full flex items-center justify-center opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"
+                      style={{ background: cat.color }}
+                    >
+                      <Check size={10} strokeWidth={3.5} color="#0f172a" aria-hidden="true" />
                     </div>
                   </div>
-                  <span className="text-[14.5px] text-slate-600 font-medium group-hover/item:text-slate-900 transition-colors leading-snug">
+                  <span
+                    className="text-[14px] font-medium leading-snug transition-colors group-hover/item:text-[#f1f5f9]"
+                    style={{ color: '#94a3b8' }}
+                  >
                     {item}
                   </span>
                 </div>
@@ -336,32 +378,36 @@ function CategoryCard({ cat, index }: { cat: typeof categories[0]; index: number
         </div>
 
         {/* Actions */}
-        <div className="mt-auto flex items-center justify-between pt-5 border-t border-slate-100">
+        <div className="mt-auto flex items-center justify-between pt-5" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
           <button
             onClick={(e) => {
               e.preventDefault();
-              setExpanded(v => !v);
+              setExpanded((v) => !v);
             }}
-            className="flex items-center gap-1.5 text-[13px] font-semibold text-slate-400 hover:text-slate-800 transition-colors focus:outline-none"
+            className="flex items-center gap-1.5 text-[13px] font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f172a] rounded-md"
+            style={{ color: '#64748b' }}
+            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = '#f8fafc')}
+            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = '#64748b')}
           >
             <span>{expanded ? 'Collapse' : `View ${cat.items.length - PREVIEW_COUNT} More`}</span>
-            <svg 
-              className={`w-3.5 h-3.5 transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`} 
-              fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-            </svg>
+            <ChevronDown
+              size={14}
+              strokeWidth={2.5}
+              aria-hidden="true"
+              className={`transition-transform duration-300 ${expanded ? 'rotate-180' : ''}`}
+            />
           </button>
-          
-          <Link 
+
+          <Link
             href={`/services/${cat.id}`}
-            className="text-[14px] font-bold flex items-center gap-1.5 transition-all group/btn"
-            style={{ color: '#0f172a' }}
+            className="text-[13px] font-bold flex items-center gap-1.5 transition-all group/btn"
+            style={{ color: cat.color }}
           >
-            Explore <span className="text-slate-300 group-hover/btn:text-brand-blue group-hover/btn:translate-x-1.5 transition-all duration-300">→</span>
+            Explore
+            <span className="group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
           </Link>
         </div>
-      </div>
+      </GlowCard>
     </motion.div>
   );
 }
@@ -376,6 +422,8 @@ export default function ServicesPage() {
   const statsInView = useInView(statsRef, { once: true, margin: '-60px' });
   const gridRef = useRef(null);
   const gridInView = useInView(gridRef, { once: true, margin: '-60px' });
+  const ctaRef = useRef(null);
+  const ctaInView = useInView(ctaRef, { once: true, margin: '-80px' });
 
   return (
     <main>
@@ -474,13 +522,13 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── STATS BAR — white strip ── */}
+      {/* ── STATS BAR — dark strip, matches hero/section-dark theme ── */}
       <div
         ref={statsRef}
-        style={{ background: '#ffffff', borderBottom: '1px solid #e2e8f0' }}
+        style={{ background: '#0f172a', borderBottom: '1px solid rgba(255,255,255,0.07)' }}
       >
         <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-slate-100">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
             {[
               { n: '12', l: 'Solution Categories' },
               { n: '140+', l: 'Service Offerings' },
@@ -503,30 +551,39 @@ export default function ServicesPage() {
       </div>
 
       {/* ── CATEGORIES GRID ── */}
-      <section id="categories" className="section-pad" style={{ background: '#f8fafc' }}>
-        <div className="container-custom" ref={gridRef}>
+      <section id="categories" className="section-pad relative overflow-hidden" style={{ background: '#0f172a' }}>
+        {/* Radial background glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,102,255,0.08) 0%, transparent 70%)' }}
+        />
+
+        <div className="container-custom relative z-10" ref={gridRef}>
 
           {/* Section header */}
           <motion.div
-            className="text-center mb-14"
+            className="text-center max-w-3xl mx-auto mb-16"
             initial={{ opacity: 0, y: 16 }}
             animate={gridInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.45 }}
           >
-            <div className="section-label mx-auto" style={{ display: 'inline-flex' }}>
-              What We Build
-            </div>
-            <h2 className="section-title" style={{ marginTop: 12 }}>
+            <SectionBadge icon={Layers} label="What We Build" />
+            <h2
+              className="text-3xl md:text-5xl font-extrabold mb-5"
+              style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}
+            >
               Purpose-Built Solutions,{' '}
-              <span className="gradient-text">Not Generic Services</span>
+              <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                Not Generic Services
+              </span>
             </h2>
-            <p className="section-subtitle centered" style={{ marginTop: 12 }}>
+            <p className="text-base md:text-lg" style={{ color: '#64748b', lineHeight: 1.7 }}>
               Every offering below is a real deliverable — not a buzzword. Click any card to explore the full scope of that category.
             </p>
           </motion.div>
 
           {/* Card grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
             {categories.map((cat, i) => (
               <CategoryCard key={cat.id} cat={cat} index={i} />
             ))}
@@ -534,69 +591,114 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── BOTTOM CTA — brand gradient banner ── */}
-      <section className="section-pad" style={{ background: '#ffffff' }}>
-        <div className="container-custom">
+      {/* ── BOTTOM CTA — dark, matches FinalCTASection style ── */}
+      <section className="relative overflow-hidden py-24 md:py-32" style={{ background: '#0f172a' }} ref={ctaRef}>
+        {/* Animated background blobs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-60px' }}
+            animate={{ scale: [1, 1.15, 1], opacity: [0.12, 0.2, 0.12] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -top-40 -left-40 w-96 h-96 rounded-full"
+            style={{ background: 'radial-gradient(circle, #0066ff, transparent 70%)' }}
+          />
+          <motion.div
+            animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.18, 0.1] }}
+            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
+            className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full"
+            style={{ background: 'radial-gradient(circle, #6366f1, transparent 70%)' }}
+          />
+        </div>
+
+        <div className="container-custom relative z-10 text-center max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={ctaInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5 }}
-            className="cta-banner text-center"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 text-xs font-bold tracking-widest uppercase"
+            style={{ background: 'rgba(0,102,255,0.15)', border: '1px solid rgba(0,102,255,0.3)', color: '#60a5fa' }}
           >
-            <div className="relative z-10">
-              <p
-                style={{
-                  fontSize: 12,
-                  fontWeight: 700,
-                  letterSpacing: '0.15em',
-                  textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.7)',
-                  marginBottom: 12,
-                }}
-              >
-                Don&apos;t See What You Need?
-              </p>
-              <h3
-                style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: 'clamp(24px, 3.5vw, 40px)',
-                  fontWeight: 800,
-                  color: '#ffffff',
-                  letterSpacing: '-0.03em',
-                  lineHeight: 1.15,
-                  marginBottom: 16,
-                }}
-              >
-                We Build Anything Your Business Requires
-              </h3>
-              <p
-                style={{
-                  fontSize: 16,
-                  color: 'rgba(255,255,255,0.8)',
-                  lineHeight: 1.7,
-                  maxWidth: 520,
-                  margin: '0 auto 32px',
-                }}
-              >
-                Our engineering team handles entirely bespoke requirements. Share your idea
-                and we&apos;ll scope it out — no commitment needed.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/contact"
-                  className="btn-primary"
-                >
-                  Start a Conversation →
-                </Link>
-                <Link
-                  href="/portfolio"
-                  className="btn-secondary"
-                >
-                  View Our Work
-                </Link>
-              </div>
-            </div>
+            Don&apos;t See What You Need?
+          </motion.div>
+
+          <motion.h3
+            initial={{ opacity: 0, y: 24 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.08 }}
+            style={{
+              fontFamily: 'Space Grotesk, sans-serif',
+              fontSize: 'clamp(28px, 4vw, 44px)',
+              fontWeight: 800,
+              color: '#f8fafc',
+              letterSpacing: '-0.03em',
+              lineHeight: 1.15,
+              marginBottom: 16,
+            }}
+          >
+            We Build Anything Your Business Requires
+          </motion.h3>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.16 }}
+            style={{ fontSize: 17, color: '#94a3b8', lineHeight: 1.7, maxWidth: 520, margin: '0 auto 36px' }}
+          >
+            Our engineering team handles entirely bespoke requirements. Share your idea
+            and we&apos;ll scope it out — no commitment needed.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.24 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <MovingBorderButton href="/contact">
+              Start a Conversation
+              <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+            </MovingBorderButton>
+
+            <Link
+              href="/portfolio"
+              className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold"
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.15)',
+                color: '#cbd5e1',
+                textDecoration: 'none',
+                transition: 'border-color 0.3s, color 0.3s',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.35)';
+                (e.currentTarget as HTMLElement).style.color = '#f8fafc';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.15)';
+                (e.currentTarget as HTMLElement).style.color = '#cbd5e1';
+              }}
+            >
+              View Our Work
+              <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={ctaInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.4 }}
+            className="flex flex-wrap items-center justify-center gap-6 mt-12 text-xs font-semibold"
+            style={{ color: '#475569' }}
+          >
+            {[
+              { icon: Lock, label: 'NDA on request' },
+              { icon: Zap, label: 'Response in 24h' },
+              { icon: CheckCircle2, label: 'No commitment needed' },
+            ].map((item, i) => (
+              <span key={i} className="inline-flex items-center gap-1.5">
+                <item.icon size={13} strokeWidth={2.5} aria-hidden="true" />
+                {item.label}
+              </span>
+            ))}
           </motion.div>
         </div>
       </section>

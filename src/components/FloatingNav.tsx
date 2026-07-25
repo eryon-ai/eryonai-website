@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
 
 const navLinks = [
   { label: 'Services', href: '/services' },
@@ -29,8 +29,6 @@ const servicesDropdown = [
 
 export default function FloatingNav() {
   const { scrollYProgress } = useScroll();
-  const pathname = usePathname();
-  const isHome = pathname === '/';
   const [visible, setVisible] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
@@ -38,7 +36,7 @@ export default function FloatingNav() {
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     if (typeof window !== "undefined") {
       const currentScrollY = window.scrollY;
-      
+
       if (currentScrollY < 40) {
         setIsAtTop(true);
         setVisible(true);
@@ -70,22 +68,19 @@ export default function FloatingNav() {
           transition={{
             duration: 0.2,
           }}
-          className={`flex w-[95%] lg:w-auto lg:max-w-fit fixed inset-x-0 mx-auto rounded-full transition-all duration-300 z-[5000] px-3 lg:px-6 py-2 lg:py-3 items-center justify-between gap-4 lg:gap-10 ${
+          className={`w-[95%] lg:w-auto lg:max-w-fit fixed inset-x-0 mx-auto z-5000 transition-all duration-300 ${
             isAtTop ? 'top-14 lg:top-16' : 'top-4 lg:top-6'
-          } ${
-            isHome
-              ? 'bg-transparent border border-white/20 shadow-[0px_8px_32px_rgba(0,0,0,0.1)]'
-              : 'bg-white border border-slate-200 shadow-md ring-2 ring-brand-blue/10'
           }`}
         >
-
-
+          {/* Backdrop-blur lives on a non-transformed child — a `transform` (which
+              framer-motion always sets inline, even at rest) on the same element as
+              `backdrop-filter` makes Chromium/WebKit sample the wrong compositing
+              layer (renders the white <body> instead of the page behind it). */}
+          <div className="flex w-full rounded-full px-3 lg:px-6 py-2 lg:py-3 items-center justify-between gap-4 lg:gap-10 bg-white/4 backdrop-blur-xl border border-white/10 shadow-[0px_8px_32px_rgba(0,0,0,0.25)]">
           {/* Left Home Link */}
           <Link
             href="/"
-            className={`relative flex items-center justify-center rounded-full font-bold text-sm shrink-0 transition-colors ${
-              isHome ? 'text-white hover:text-cyan-300' : 'text-slate-800 hover:text-brand-blue'
-            }`}
+            className="relative flex items-center justify-center rounded-full font-bold text-sm shrink-0 text-white transition-colors hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
           >
             <span>Home</span>
           </Link>
@@ -98,37 +93,33 @@ export default function FloatingNav() {
                   <div key={`link=${idx}`} className="relative group/nav py-4">
                     <Link
                       href={navItem.href}
-                      className={`flex items-center gap-1 relative text-sm font-bold transition-colors ${
-                        isHome ? 'text-slate-200 hover:text-white' : 'text-slate-800 hover:text-brand-blue'
-                      }`}
+                      className="flex items-center gap-1 relative text-sm font-bold text-slate-200 transition-colors hover:text-white"
                     >
                       <span>{navItem.label}</span>
-                      <svg className="w-3.5 h-3.5 transition-transform group-hover/nav:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                      </svg>
+                      <ChevronDown size={14} strokeWidth={2.5} className="transition-transform group-hover/nav:rotate-180" aria-hidden="true" />
                     </Link>
-                    
+
                     {/* Desktop Dropdown */}
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-[540px] opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 transform translate-y-2 group-hover/nav:translate-y-0 z-[6000]">
-                      <div className="bg-white rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.15)] border border-slate-100 p-6 grid grid-cols-2 gap-x-6 gap-y-1 relative overflow-hidden">
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#0066ff] to-[#00b4d8]" />
-                        
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-135 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 transform translate-y-2 group-hover/nav:translate-y-0 z-6000">
+                      <div className="bg-[#0f172a] rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] border border-white/10 p-6 grid grid-cols-2 gap-x-6 gap-y-1 relative overflow-hidden backdrop-blur-xl">
+                        <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#0066ff] to-[#00b4d8]" />
+
                         {servicesDropdown.map((service, sIdx) => (
-                          <Link 
-                            key={sIdx} 
+                          <Link
+                            key={sIdx}
                             href={service.href}
-                            className="group/dropitem flex items-center gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors"
+                            className="group/dropitem flex items-center gap-3 p-2.5 rounded-xl hover:bg-white/5 transition-colors"
                           >
-                            <span className="w-1.5 h-1.5 rounded-full bg-brand-blue/20 group-hover/dropitem:bg-brand-blue transition-colors" />
-                            <span className="text-[13.5px] font-semibold text-slate-700 group-hover/dropitem:text-brand-blue transition-colors">
+                            <span className="w-1.5 h-1.5 rounded-full bg-brand-blue/30 group-hover/dropitem:bg-brand-blue transition-colors" />
+                            <span className="text-[13.5px] font-semibold text-slate-300 group-hover/dropitem:text-white transition-colors">
                               {service.label}
                             </span>
                           </Link>
                         ))}
-                        
-                        <div className="col-span-2 mt-3 pt-3 border-t border-slate-50 flex justify-center">
+
+                        <div className="col-span-2 mt-3 pt-3 border-t border-white/8 flex justify-center">
                           <Link href="/services" className="text-[13px] font-bold text-brand-blue hover:text-brand-blue/80 flex items-center gap-2 transition-colors">
-                            View All Services <span>→</span>
+                            View All Services <ArrowRight size={13} strokeWidth={2.5} aria-hidden="true" />
                           </Link>
                         </div>
                       </div>
@@ -141,9 +132,7 @@ export default function FloatingNav() {
                 <Link
                   key={`link=${idx}`}
                   href={navItem.href}
-                  className={`relative text-sm font-bold transition-colors py-4 ${
-                    isHome ? 'text-slate-200 hover:text-white' : 'text-slate-800 hover:text-brand-blue'
-                  }`}
+                  className="relative text-sm font-bold text-slate-200 transition-colors py-4 hover:text-white"
                 >
                   <span>{navItem.label}</span>
                 </Link>
@@ -154,28 +143,21 @@ export default function FloatingNav() {
           {/* Right CTA (Desktop & Mobile) */}
           <Link
             href="/contact"
-            className={`border text-[11px] lg:text-sm font-bold relative border-transparent px-3 py-2 lg:px-5 lg:py-2.5 rounded-full transition-colors shrink-0 ${
-              isHome ? 'bg-white text-navy hover:bg-slate-200' : 'bg-navy text-white hover:bg-slate-800'
-            }`}
+            className="border text-[11px] lg:text-sm font-bold relative border-transparent px-3 py-2 lg:px-5 lg:py-2.5 rounded-full transition-colors shrink-0 bg-white text-navy hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
           >
             <span>Get a Free Quote →</span>
           </Link>
 
           {/* Mobile Menu Toggle */}
           <button
-            className={`lg:hidden flex items-center justify-center w-10 h-10 rounded-full shrink-0 ${
-              isHome ? 'bg-white/10 text-white' : 'bg-slate-100 text-slate-800'
-            }`}
+            className="lg:hidden flex items-center justify-center w-10 h-10 rounded-full shrink-0 bg-white/10 text-white"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {mobileOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+            {mobileOpen ? <X size={20} strokeWidth={2} aria-hidden="true" /> : <Menu size={20} strokeWidth={2} aria-hidden="true" />}
           </button>
+          </div>
         </motion.div>
       </AnimatePresence>
 
@@ -186,9 +168,9 @@ export default function FloatingNav() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="fixed top-32 inset-x-4 z-[4900] backdrop-blur-xl border rounded-2xl shadow-2xl lg:hidden overflow-hidden bg-white/95 border-slate-200"
+            className="fixed top-32 inset-x-4 z-4900 lg:hidden"
           >
-            <div className="flex flex-col p-2 max-h-[70vh] overflow-y-auto">
+            <div className="flex flex-col p-2 max-h-[70vh] overflow-y-auto backdrop-blur-xl border rounded-2xl shadow-2xl bg-[#0f172a]/95 border-white/10">
               {navLinks.map((link) => {
                 if (link.label === 'Services') {
                   return (
@@ -196,7 +178,7 @@ export default function FloatingNav() {
                       <Link
                         href={link.href}
                         onClick={() => setMobileOpen(false)}
-                        className="px-4 py-3 text-base font-bold rounded-xl transition-colors text-center text-slate-800 bg-slate-50"
+                        className="px-4 py-3 text-base font-bold rounded-xl transition-colors text-center text-white bg-white/5"
                       >
                         {link.label}
                       </Link>
@@ -206,7 +188,7 @@ export default function FloatingNav() {
                             key={sIdx}
                             href={service.href}
                             onClick={() => setMobileOpen(false)}
-                            className="py-2 text-[14px] font-medium transition-colors text-center rounded-lg text-slate-600 hover:text-brand-blue hover:bg-blue-50"
+                            className="py-2 text-[14px] font-medium transition-colors text-center rounded-lg text-slate-300 hover:text-brand-blue hover:bg-white/5"
                           >
                             {service.label}
                           </Link>
@@ -221,7 +203,7 @@ export default function FloatingNav() {
                     key={link.label}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="px-4 py-3 text-base font-bold rounded-xl transition-colors text-center mb-1 text-slate-800 hover:text-brand-blue hover:bg-slate-50"
+                    className="px-4 py-3 text-base font-bold rounded-xl transition-colors text-center mb-1 text-slate-200 hover:text-brand-blue hover:bg-white/5"
                   >
                     {link.label}
                   </Link>

@@ -3,8 +3,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { Sparkles, Search, Telescope, Flame } from 'lucide-react';
 import BlogCard from '@/components/blog/BlogCard';
 import Newsletter from '@/components/blog/Newsletter';
+import GlowCard from '@/components/ui/GlowCard';
 import { blogPosts, categories, getFeaturedBlog, getTrendingBlogs } from '@/lib/blog-data';
 
 export default function BlogsPage() {
@@ -47,7 +49,7 @@ export default function BlogsPage() {
         }}
       />
 
-      <div className="min-h-screen bg-slate-50">
+      <div className="min-h-screen" style={{ background: '#0f172a' }}>
         {/* ═══ HERO ═══ */}
         <section
           className="relative overflow-hidden pt-36 pb-24"
@@ -80,7 +82,8 @@ export default function BlogsPage() {
               transition={{ duration: 0.5 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest text-blue-300 border border-blue-500/30 bg-blue-500/10 mb-6"
             >
-              ✦ ERYON AI PUBLICATION
+              <Sparkles size={13} strokeWidth={2.5} aria-hidden="true" />
+              ERYON AI PUBLICATION
             </motion.div>
 
             <motion.h1
@@ -113,7 +116,7 @@ export default function BlogsPage() {
               className="flex items-center max-w-lg mx-auto gap-3"
             >
               <div className="relative flex-1">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-300/60">🔍</span>
+                <Search size={16} strokeWidth={2} className="absolute left-4 top-1/2 -translate-y-1/2 text-blue-300/60" aria-hidden="true" />
                 <input
                   type="text"
                   placeholder="Search articles..."
@@ -142,10 +145,10 @@ export default function BlogsPage() {
             <section className="mb-16">
               <div className="flex items-center gap-3 mb-8">
                 <span className="w-1 h-6 rounded-full" style={{ background: 'linear-gradient(to bottom, #0066ff, #00b4d8)' }} />
-                <h2 className="text-2xl font-extrabold text-slate-900" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                <h2 className="text-2xl font-extrabold text-slate-50" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   Featured Article
                 </h2>
-                <span className="px-2.5 py-0.5 text-xs font-bold bg-blue-100 text-blue-700 rounded-full">Editor&apos;s Pick</span>
+                <span className="px-2.5 py-0.5 text-xs font-bold bg-blue-500/10 text-blue-300 border border-blue-500/20 rounded-full">Editor&apos;s Pick</span>
               </div>
               <BlogCard post={featured} featured />
             </section>
@@ -157,7 +160,7 @@ export default function BlogsPage() {
             {/* ── Main Content ── */}
             <div className="flex-1 min-w-0">
               {/* Category Filters */}
-              <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+              <div className="flex items-center gap-2 mb-8 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
                 {categories.map((cat) => (
                   <motion.button
                     key={cat}
@@ -167,9 +170,11 @@ export default function BlogsPage() {
                     className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all duration-200 ${
                       activeCategory === cat
                         ? 'text-white shadow-lg shadow-blue-500/30'
-                        : 'bg-white text-slate-600 border border-slate-200 hover:border-blue-300'
+                        : 'text-slate-400 border hover:border-blue-500/40 hover:text-slate-200'
                     }`}
-                    style={activeCategory === cat ? { background: 'linear-gradient(135deg, #0066ff, #00b4d8)' } : {}}
+                    style={activeCategory === cat
+                      ? { background: 'linear-gradient(135deg, #0066ff, #00b4d8)' }
+                      : { background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.08)' }}
                   >
                     {cat}
                   </motion.button>
@@ -180,8 +185,8 @@ export default function BlogsPage() {
               <div className="flex items-center justify-between mb-6">
                 <p className="text-sm text-slate-500">
                   {filtered.length} article{filtered.length !== 1 ? 's' : ''}
-                  {searchQuery && <span> for &quot;<strong>{searchQuery}</strong>&quot;</span>}
-                  {activeCategory !== 'All' && <span> in <strong>{activeCategory}</strong></span>}
+                  {searchQuery && <span> for &quot;<strong className="text-slate-400">{searchQuery}</strong>&quot;</span>}
+                  {activeCategory !== 'All' && <span> in <strong className="text-slate-400">{activeCategory}</strong></span>}
                 </p>
               </div>
 
@@ -205,12 +210,12 @@ export default function BlogsPage() {
                     animate={{ opacity: 1 }}
                     className="text-center py-20"
                   >
-                    <div className="text-5xl mb-4">🔭</div>
-                    <h3 className="text-xl font-bold text-slate-700 mb-2">No articles found</h3>
-                    <p className="text-slate-400 mb-6">Try a different search term or category.</p>
+                    <Telescope size={44} strokeWidth={1.5} className="mx-auto mb-4 text-slate-600" aria-hidden="true" />
+                    <h3 className="text-xl font-bold text-slate-200 mb-2">No articles found</h3>
+                    <p className="text-slate-500 mb-6">Try a different search term or category.</p>
                     <button
                       onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}
-                      className="px-5 py-2.5 rounded-xl text-sm font-semibold text-blue-600 border border-blue-200 hover:bg-blue-50 transition-colors"
+                      className="px-5 py-2.5 rounded-xl text-sm font-semibold text-blue-300 border border-blue-500/30 hover:bg-blue-500/10 transition-colors"
                     >
                       Clear filters
                     </button>
@@ -222,10 +227,10 @@ export default function BlogsPage() {
             {/* ── Sidebar ── */}
             <aside className="lg:w-72 xl:w-80 shrink-0">
               {/* Trending */}
-              <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-6 sticky top-28">
+              <GlowCard color="#f59e0b" className="p-6 mb-6 sticky top-28" style={{ background: 'rgba(255,255,255,0.03)' }}>
                 <div className="flex items-center gap-2 mb-5">
-                  <span className="text-orange-500 text-lg">🔥</span>
-                  <h3 className="text-base font-extrabold text-slate-900" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                  <Flame size={18} strokeWidth={2} className="text-orange-500" aria-hidden="true" />
+                  <h3 className="text-base font-extrabold text-slate-50" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                     Trending Tech Articles
                   </h3>
                 </div>
@@ -239,24 +244,24 @@ export default function BlogsPage() {
                       transition={{ delay: i * 0.08 }}
                     >
                       <Link href={`/blogs/${post.slug}`} className="flex gap-3 group items-start">
-                        <span className="text-2xl font-extrabold text-slate-100 shrink-0 leading-tight w-8">
+                        <span className="text-2xl font-extrabold shrink-0 leading-tight w-8" style={{ color: 'rgba(248,250,252,0.12)' }}>
                           {String(i + 1).padStart(2, '0')}
                         </span>
                         <div>
-                          <h4 className="text-sm font-semibold text-slate-800 group-hover:text-blue-600 transition-colors leading-snug line-clamp-2 mb-1">
+                          <h4 className="text-sm font-semibold text-slate-200 group-hover:text-blue-400 transition-colors leading-snug line-clamp-2 mb-1">
                             {post.title}
                           </h4>
-                          <p className="text-xs text-slate-400">{post.readTime} min read · {post.category}</p>
+                          <p className="text-xs text-slate-500">{post.readTime} min read · {post.category}</p>
                         </div>
                       </Link>
                     </motion.div>
                   ))}
                 </div>
-              </div>
+              </GlowCard>
 
               {/* Topics */}
-              <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6">
-                <h3 className="text-base font-extrabold text-slate-900 mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+              <GlowCard color="#0066ff" className="p-6" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                <h3 className="text-base font-extrabold text-slate-50 mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   Browse Topics
                 </h3>
                 <div className="flex flex-wrap gap-2">
@@ -264,13 +269,14 @@ export default function BlogsPage() {
                     <button
                       key={cat}
                       onClick={() => { setActiveCategory(cat); document.getElementById('articles')?.scrollIntoView({ behavior: 'smooth' }); }}
-                      className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-50 text-slate-600 hover:bg-blue-50 hover:text-blue-700 border border-slate-200 hover:border-blue-200 transition-colors"
+                      className="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 border hover:text-blue-300 hover:border-blue-500/40 transition-colors"
+                      style={{ background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.08)' }}
                     >
                       {cat}
                     </button>
                   ))}
                 </div>
-              </div>
+              </GlowCard>
             </aside>
           </div>
 

@@ -2,11 +2,13 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+import { Search, Compass, Laptop2, TestTube2, Rocket, LineChart, Settings, Check } from 'lucide-react';
+import SectionBadge from '@/components/ui/SectionBadge';
 
 const steps = [
   {
     number: '01',
-    icon: 'https://img.icons8.com/color/96/search.png',
+    icon: Search,
     title: 'Discovery & Strategy',
     description: 'We run deep discovery sessions to map your technical landscape, define success metrics, and align on a delivery strategy before a single line of code is written.',
     details: ['Technical audit', 'Stakeholder interviews', 'Risk mapping', 'ROI projections'],
@@ -14,7 +16,7 @@ const steps = [
   },
   {
     number: '02',
-    icon: 'https://img.icons8.com/color/96/drafting-compass.png',
+    icon: Compass,
     title: 'Architecture & Design',
     description: 'Our senior architects design systems built to scale — from data models and API contracts to infrastructure blueprints and design systems.',
     details: ['System design', 'UI/UX wireframes', 'API contracts', 'Tech stack selection'],
@@ -22,7 +24,7 @@ const steps = [
   },
   {
     number: '03',
-    icon: 'https://img.icons8.com/color/96/laptop.png',
+    icon: Laptop2,
     title: 'Agile Development',
     description: 'Two-week sprints with daily standups, continuous integration, and weekly demos. You see real progress every single week.',
     details: ['2-week sprints', 'Daily standups', 'Weekly demos', 'CI/CD from day one'],
@@ -30,7 +32,7 @@ const steps = [
   },
   {
     number: '04',
-    icon: 'https://img.icons8.com/color/96/test-tube.png',
+    icon: TestTube2,
     title: 'QA & Security',
     description: 'Every feature is tested across unit, integration, and E2E levels. Security audits and penetration testing are built into the delivery process.',
     details: ['E2E test suites', 'Pen testing', 'Load testing', 'Accessibility audit'],
@@ -38,7 +40,7 @@ const steps = [
   },
   {
     number: '05',
-    icon: 'https://img.icons8.com/color/96/rocket.png',
+    icon: Rocket,
     title: 'Zero-Downtime Deployment',
     description: 'Blue-green deployments, feature flags, and automated rollback ensure every launch is smooth — for both you and your users.',
     details: ['Blue-green deploy', 'Feature flags', 'Auto rollback', 'Monitoring & alerts'],
@@ -46,7 +48,7 @@ const steps = [
   },
   {
     number: '06',
-    icon: 'https://img.icons8.com/color/96/line-chart.png',
+    icon: LineChart,
     title: 'Scale & Optimize',
     description: 'Post-launch, we monitor performance, optimize infrastructure costs, and iterate based on real user data.',
     details: ['FinOps review', 'Performance tuning', 'Analytics setup', '24/7 support'],
@@ -74,10 +76,7 @@ export default function ProcessPipelineSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 text-xs font-semibold tracking-wider uppercase"
-            style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.25)', color: '#34d399' }}>
-            ⚙️ How We Work
-          </div>
+          <SectionBadge icon={Settings} label="How We Work" color="#10b981" />
           <h2 className="text-3xl md:text-5xl font-extrabold mb-5" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
             Engineering Excellence,{' '}
             <span style={{ background: 'linear-gradient(135deg, #10b981, #0066ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
@@ -126,7 +125,7 @@ export default function ProcessPipelineSection() {
                       zIndex: 3,
                     }}
                   >
-                    <img src={step.icon} alt={step.title} className="w-6 h-6 object-contain" />
+                    <step.icon size={22} strokeWidth={2} color={i === activeStep ? '#fff' : step.color} aria-hidden="true" />
                   </div>
                   <span
                     className="text-xs font-semibold whitespace-nowrap transition-colors duration-300"
@@ -152,7 +151,17 @@ export default function ProcessPipelineSection() {
             }}
           >
             <div>
-              <div className="mb-5"><img src={steps[activeStep].icon} alt="" className="w-12 h-12 object-contain" /></div>
+              {(() => {
+                const ActiveIcon = steps[activeStep].icon;
+                return (
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
+                    style={{ background: `${steps[activeStep].color}18`, border: `1px solid ${steps[activeStep].color}30` }}
+                  >
+                    <ActiveIcon size={26} strokeWidth={2} color={steps[activeStep].color} aria-hidden="true" />
+                  </div>
+                );
+              })()}
               <h3 className="text-2xl font-bold mb-3" style={{ color: '#f1f5f9', fontFamily: 'Space Grotesk, sans-serif' }}>
                 {steps[activeStep].title}
               </h3>
@@ -164,7 +173,7 @@ export default function ProcessPipelineSection() {
               {steps[activeStep].details.map((d, di) => (
                 <div key={di} className="flex items-center gap-2.5 p-3 rounded-xl"
                   style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                  <span style={{ color: steps[activeStep].color, fontWeight: 700 }}>✓</span>
+                  <Check size={15} strokeWidth={3} color={steps[activeStep].color} aria-hidden="true" />
                   <span className="text-sm font-medium" style={{ color: '#cbd5e1' }}>{d}</span>
                 </div>
               ))}
@@ -188,7 +197,7 @@ export default function ProcessPipelineSection() {
             >
               <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
                 style={{ background: `${step.color}18`, border: `1.5px solid ${step.color}40` }}>
-                <img src={step.icon} alt={step.title} className="w-5 h-5 object-contain" />
+                <step.icon size={18} strokeWidth={2} color={step.color} aria-hidden="true" />
               </div>
               <div>
                 <div className="text-xs font-semibold mb-1" style={{ color: step.color }}>{step.number}</div>

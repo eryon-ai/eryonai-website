@@ -1,7 +1,9 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
+import { Cpu } from 'lucide-react';
+import SectionBadge from '@/components/ui/SectionBadge';
 
 const techs = [
   { name: 'React', cat: 'Frontend', iconUrl: 'https://img.icons8.com/color/48/react-native.png', color: '#0066ff' },
@@ -28,12 +30,13 @@ const row2 = [...techs.slice(8, 16), ...techs.slice(8, 16)];
 function TechCard({ tech }: { tech: typeof techs[0] }) {
   return (
     <div
-      className="flex-shrink-0 card flex items-center gap-3"
+      className="flex-shrink-0 flex items-center gap-3"
       style={{
         minWidth: 158,
         padding: '14px 18px',
         borderRadius: 12,
-        transition: 'none',
+        background: '#1e293b',
+        border: '1px solid rgba(255,255,255,0.08)',
         cursor: 'default',
       }}
     >
@@ -45,16 +48,17 @@ function TechCard({ tech }: { tech: typeof techs[0] }) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: `${tech.color}12`,
-          border: `1px solid ${tech.color}20`,
+          background: `${tech.color}15`,
+          border: `1px solid ${tech.color}30`,
           flexShrink: 0,
         }}
+        aria-hidden="true"
       >
         <img src={tech.iconUrl} alt={tech.name} style={{ width: 22, height: 22, objectFit: 'contain' }} loading="lazy" />
       </span>
       <div>
-        <p style={{ fontSize: 13, fontWeight: 600, color: '#0f172a', lineHeight: 1.2 }}>{tech.name}</p>
-        <p style={{ fontSize: 11, color: '#94a3b8', marginTop: 1 }}>{tech.cat}</p>
+        <p style={{ fontSize: 13, fontWeight: 600, color: '#f8fafc', lineHeight: 1.2 }}>{tech.name}</p>
+        <p style={{ fontSize: 11, color: '#64748b', marginTop: 1 }}>{tech.cat}</p>
       </div>
     </div>
   );
@@ -62,31 +66,32 @@ function TechCard({ tech }: { tech: typeof techs[0] }) {
 
 export default function TechStackSection() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section id="tech-stack" className="section-pad" style={{ background: '#ffffff' }}>
+    <section id="tech-stack" className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0f172a' }}>
       <div ref={ref}>
         {/* Header */}
-        <div className="container-custom text-center mb-12">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}>
-            <div className="section-label mx-auto" style={{ display: 'inline-flex' }}>Technology</div>
+        <div className="container-custom text-center mb-14 max-w-2xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+            <SectionBadge icon={Cpu} label="Technology" color="#00b4d8" className="mx-auto" />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.08 }}
-            className="section-title"
-            style={{ marginTop: 12 }}
+            transition={{ delay: 0.08, duration: 0.6 }}
+            className="text-3xl md:text-5xl font-extrabold"
+            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}
           >
             Our <span className="gradient-text">Tech Arsenal</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.15 }}
-            className="section-subtitle centered"
-            style={{ marginTop: 12 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
+            className="mt-4 text-base md:text-lg"
+            style={{ color: '#94a3b8' }}
           >
             Battle-tested technologies chosen for reliability, performance, and future-readiness.
           </motion.p>
@@ -96,20 +101,30 @@ export default function TechStackSection() {
         <div className="relative overflow-hidden" style={{ padding: '8px 0' }}>
           {/* Fade edges */}
           <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-            style={{ background: 'linear-gradient(to right, #ffffff, transparent)' }} />
+            style={{ background: 'linear-gradient(to right, #0f172a, transparent)' }} />
           <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-            style={{ background: 'linear-gradient(to left, #ffffff, transparent)' }} />
+            style={{ background: 'linear-gradient(to left, #0f172a, transparent)' }} />
 
           {/* Row 1 — scroll left */}
-          <div className="flex gap-4 mb-4" style={{ animation: 'scroll-left 28s linear infinite' }}>
+          <motion.div
+            className="flex gap-4 mb-4"
+            animate={reduceMotion ? {} : { x: ['0%', '-50%'] }}
+            transition={{ duration: 28, ease: 'linear', repeat: reduceMotion ? 0 : Infinity }}
+            style={{ width: 'max-content' }}
+          >
             {row1.map((t, i) => <TechCard key={i} tech={t} />)}
-          </div>
+          </motion.div>
 
-<div style={{ marginBottom: 26 }} />
+          <div style={{ marginBottom: 26 }} />
           {/* Row 2 — scroll right */}
-          <div className="flex gap-9" style={{ animation: 'scroll-right 24s linear infinite' }}>
+          <motion.div
+            className="flex gap-9"
+            animate={reduceMotion ? {} : { x: ['-50%', '0%'] }}
+            transition={{ duration: 24, ease: 'linear', repeat: reduceMotion ? 0 : Infinity }}
+            style={{ width: 'max-content' }}
+          >
             {row2.map((t, i) => <TechCard key={i} tech={t} />)}
-          </div>
+          </motion.div>
         </div>
         <div style={{ marginBottom: 16 }} />
 
@@ -124,12 +139,14 @@ export default function TechStackSection() {
             {['Frontend', 'Backend', 'AI/ML', 'Mobile', 'Cloud', 'DevOps', 'Database', 'Security'].map((cat) => (
               <span
                 key={cat}
-                className="tag-blue"
                 style={{
                   fontSize: 12,
                   fontWeight: 600,
                   padding: '6px 14px',
                   borderRadius: 100,
+                  background: 'rgba(0,102,255,0.1)',
+                  color: '#3b9dff',
+                  border: '1px solid rgba(0,102,255,0.25)',
                 }}
               >
                 {cat}

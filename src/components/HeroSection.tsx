@@ -1,7 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { useRouter } from 'next/navigation';
+import { CheckCircle2 } from 'lucide-react';
+import MovingBorderButton from '@/components/ui/MovingBorderButton';
 
 
 
@@ -38,12 +40,22 @@ const TechLogos: { name: string; iconUrl: string }[] = [
 
 export default function HeroSection() {
   const router = useRouter();
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(0,102,255,0.10), transparent 70%)`;
+
+  function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left);
+    mouseY.set(e.clientY - rect.top);
+  }
 
   return (
     <section
       id="hero"
       className="hero-dark relative min-h-screen flex items-center"
       style={{ paddingTop: 140 }} // Space for floating nav
+      onMouseMove={handleMouseMove}
     >
       {/* Video Background */}
       <video
@@ -55,6 +67,9 @@ export default function HeroSection() {
       >
         <source src="/hero-bg.mp4" type="video/mp4" />
       </video>
+
+      {/* Cursor-tracked spotlight */}
+      <motion.div className="absolute inset-0 pointer-events-none hidden md:block" style={{ background: spotlight }} aria-hidden="true" />
 
       {/* Radial glow overlays */}
       <div className="absolute inset-0 pointer-events-none" style={{
@@ -124,29 +139,23 @@ export default function HeroSection() {
               transition={{ duration: 0.55, delay: 0.5 }}
               className="flex flex-col sm:flex-row flex-wrap gap-4 mb-10"
             >
-              <motion.button
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => router.push('/contact')}
-                className="btn-primary w-full sm:w-auto justify-center"
-                style={{ padding: '14px 40px', fontSize: 15 }}
-              >
+              <MovingBorderButton href="/contact" className="w-full sm:w-auto">
                 Start Your Project
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => router.push('/portfolio')}
-                className="btn-secondary w-full sm:w-auto justify-center"
-                style={{
-                  padding: '13px 28px',
-                  borderColor: 'rgba(255,255,255,0.2)',
-                  color: '#f8fafc',
-                  fontSize: 15,
-                }}
-              >
-                View Our Work →
-              </motion.button>
+              </MovingBorderButton>
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
+                <button
+                  onClick={() => router.push('/portfolio')}
+                  className="btn-secondary w-full sm:w-auto justify-center"
+                  style={{
+                    padding: '13px 28px',
+                    borderColor: 'rgba(255,255,255,0.2)',
+                    color: '#f8fafc',
+                    fontSize: 15,
+                  }}
+                >
+                  View Our Work →
+                </button>
+              </motion.div>
             </motion.div>
             <div style={{ marginBottom: 10 }} />
 
@@ -160,8 +169,8 @@ export default function HeroSection() {
               className="flex flex-wrap gap-x-10 gap-y-3"
             >
               {['ISO 27001 Compliant', 'Agile Delivery', '24/7 Support', 'NDA Protected'].map((f, i) => (
-                <div key={i} className="flex items-center gap-4" style={{ color: '#94a3b8', fontSize: 13 }}>
-                  <span style={{ color: '#0066ff', fontSize: 15, fontWeight: 'bold' }}>✓</span>
+                <div key={i} className="flex items-center gap-2" style={{ color: '#94a3b8', fontSize: 13 }}>
+                  <CheckCircle2 size={16} strokeWidth={2.5} color="#0066ff" aria-hidden="true" />
                   {f}
                 </div>
               ))}

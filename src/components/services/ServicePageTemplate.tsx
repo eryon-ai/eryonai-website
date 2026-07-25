@@ -5,10 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ServicePage } from '@/lib/service-page-data';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  ArrowRight, CheckCircle2, ChevronRight, Activity, Cpu, 
-  Globe, Shield, Sparkles, Layout, ListTodo, PhoneCall, Search
+import {
+  ArrowRight, CheckCircle2, ChevronRight, Activity, Cpu,
+  Globe, Shield, Sparkles, Layout, ListTodo, PhoneCall, Search,
+  BatteryFull, Layers, Building2, LayoutGrid, Route, TrendingUp, HelpCircle
 } from 'lucide-react';
+import SectionBadge from '@/components/ui/SectionBadge';
+import GlowCard from '@/components/ui/GlowCard';
+import MovingBorderButton from '@/components/ui/MovingBorderButton';
 
 interface ServicePageTemplateProps {
   data: ServicePage;
@@ -170,26 +174,26 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
               className="max-w-2xl text-left"
             >
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-blue/30 bg-brand-blue/10 text-brand-blue text-sm font-semibold tracking-wide mb-6 backdrop-blur-md">
-                <Sparkles className="w-4 h-4 text-brand-blue animate-pulse" />
+                <Sparkles className="w-4 h-4 text-brand-blue animate-pulse" aria-hidden="true" />
                 {data.hero.badge}
               </div>
-              
+
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-space font-bold leading-[1.1] mb-6 text-white tracking-tight">
                 {data.hero.headline} <br />
                 <span className="gradient-text bg-gradient-to-r from-brand-blue via-cyan-400 to-indigo-500 bg-clip-text text-transparent">
                   {data.hero.headlineGrad}
                 </span>
               </h1>
-              
-              <p className="text-lg md:text-xl text-slate-350 mb-10 leading-relaxed font-inter">
+
+              <p className="text-lg md:text-xl text-slate-300 mb-10 leading-relaxed font-inter">
                 {data.hero.description}
               </p>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Link href="/contact" className="btn-primary text-center flex items-center justify-center gap-2 group py-4 px-8 rounded-xl bg-brand-blue text-white hover:bg-brand-blue/90 shadow-[0_4px_20px_rgba(0,102,255,0.4)] transition-all duration-300 hover:translate-y-[-2px]">
+                <MovingBorderButton href="/contact">
                   Book Strategy Call
-                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+                </MovingBorderButton>
                 <Link href="#gallery" className="btn-secondary text-center text-white border-white/10 hover:bg-white/5 py-4 px-8 rounded-xl border hover:border-white/20 transition-all duration-300">
                   Explore Project Gallery
                 </Link>
@@ -236,7 +240,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                   {/* Floating Metric Tag */}
                   <div className="absolute bottom-6 left-6 p-4 rounded-xl border border-slate-800 bg-slate-900/90 backdrop-blur-md shadow-2xl flex items-center gap-3">
                     <div className="w-10 h-10 rounded-lg bg-brand-blue/20 flex items-center justify-center text-brand-blue">
-                      <Activity className="w-5 h-5" />
+                      <Activity className="w-5 h-5" aria-hidden="true" />
                     </div>
                     <div>
                       <div className="text-xs text-slate-400 font-medium font-inter">Average ROI Delivered</div>
@@ -255,8 +259,8 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">{data.buildLabel}</span>
-            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mt-6 mb-6 leading-tight">
+            <SectionBadge icon={Layers} label={data.buildLabel} className="justify-center" />
+            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mb-6 leading-tight">
               {data.buildTitle} <span className="gradient-text bg-gradient-to-r from-brand-blue to-cyan-400 bg-clip-text text-transparent">{data.buildTitleGrad}</span>
             </h2>
             <p className="text-base md:text-lg text-slate-400 font-inter">
@@ -272,28 +276,27 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
                 key={i}
-                className="bg-slate-900/40 p-7 rounded-2xl border border-slate-800/80 hover:border-brand-blue/40 shadow-lg hover:shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-all duration-300 flex flex-col group"
               >
-                <div 
-                  className="w-14 h-14 rounded-xl mb-6 flex items-center justify-center shadow-inner"
-                  style={{ backgroundColor: `${item.color}15` }}
-                >
-                  <Image src={item.icon} alt={item.title} width={32} height={32} className="object-contain" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3 font-space group-hover:text-brand-blue transition-colors duration-200">{item.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-6 font-inter flex-grow">
-                  {item.description}
-                </p>
-                <ul className="space-y-2 mt-auto pt-4 border-t border-slate-800">
-                  {item.features.map((feat, idx) => (
-                    <li key={idx} className="flex items-start text-xs font-semibold text-slate-300">
-                      <svg className="w-4 h-4 mr-2 text-brand-blue flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
+                <GlowCard color={item.color} className="p-7 bg-slate-900/40 shadow-lg">
+                  <div
+                    className="w-14 h-14 rounded-xl mb-6 flex items-center justify-center shadow-inner"
+                    style={{ backgroundColor: `${item.color}15` }}
+                  >
+                    <Image src={item.icon} alt={item.title} width={32} height={32} className="object-contain" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 font-space group-hover:text-brand-blue transition-colors duration-200">{item.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-6 font-inter flex-grow">
+                    {item.description}
+                  </p>
+                  <ul className="space-y-2 mt-auto pt-4 border-t border-slate-800">
+                    {item.features.map((feat, idx) => (
+                      <li key={idx} className="flex items-start text-xs font-semibold text-slate-300">
+                        <CheckCircle2 className="w-4 h-4 mr-2 text-brand-blue flex-shrink-0 mt-0.5" aria-hidden="true" />
+                        {feat}
+                      </li>
+                    ))}
+                  </ul>
+                </GlowCard>
               </motion.div>
             ))}
           </div>
@@ -304,8 +307,8 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">{data.industryLabel}</span>
-            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mt-6 mb-4">
+            <SectionBadge icon={Building2} label={data.industryLabel} className="justify-center" />
+            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mb-4">
               {data.industryTitle}
             </h2>
             <p className="text-slate-400 max-w-2xl mx-auto font-inter text-sm md:text-base">
@@ -321,28 +324,29 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 key={i}
-                className="bg-slate-900/30 p-6 rounded-2xl border border-slate-800 hover:border-slate-700/80 shadow-md hover:shadow-2xl transition-all duration-300 relative overflow-hidden group"
               >
-                {/* Glowing border top */}
-                <div className="absolute top-0 left-0 w-full h-1 opacity-40 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: ind.color }}></div>
-                
-                <div className="flex items-center gap-4 mb-5">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-slate-950 border border-slate-800">
-                    <Image src={ind.icon} alt={ind.name} width={28} height={28} className="object-contain" />
+                <GlowCard color={ind.color} className="p-6 bg-slate-900/30 shadow-md">
+                  {/* Glowing border top */}
+                  <div className="absolute top-0 left-0 w-full h-1 opacity-40 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: ind.color }} aria-hidden="true"></div>
+
+                  <div className="flex items-center gap-4 mb-5">
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-slate-950 border border-slate-800">
+                      <Image src={ind.icon} alt={ind.name} width={28} height={28} className="object-contain" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white font-space">{ind.name}</h3>
                   </div>
-                  <h3 className="text-lg font-bold text-white font-space">{ind.name}</h3>
-                </div>
-                
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-1">The Obstacle</p>
-                    <p className="text-xs text-slate-400 leading-relaxed font-inter">{ind.challenge}</p>
+
+                  <div className="space-y-4">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-wider text-slate-500 font-bold mb-1">The Obstacle</p>
+                      <p className="text-xs text-slate-400 leading-relaxed font-inter">{ind.challenge}</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: ind.color }}>Our Resolution</p>
+                      <p className="text-xs text-slate-200 font-medium leading-relaxed font-inter">{ind.solution}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[10px] uppercase tracking-wider font-bold mb-1" style={{ color: ind.color }}>Our Resolution</p>
-                    <p className="text-xs text-slate-200 font-medium leading-relaxed font-inter">{ind.solution}</p>
-                  </div>
-                </div>
+                </GlowCard>
               </motion.div>
             ))}
           </div>
@@ -353,8 +357,8 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-20 max-w-3xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">{data.featureLabel}</span>
-            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mt-6">Features Built for Execution</h2>
+            <SectionBadge icon={Sparkles} label={data.featureLabel} className="justify-center" />
+            <h2 className="text-3xl md:text-4xl font-space font-bold text-white">Features Built for Execution</h2>
           </div>
 
           <div className="space-y-28 lg:space-y-36">
@@ -375,14 +379,14 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                   <h3 className="text-3xl lg:text-4xl font-space font-bold text-white leading-tight">
                     {feat.title}
                   </h3>
-                  <p className="text-base md:text-lg text-slate-350 font-inter leading-relaxed">
+                  <p className="text-base md:text-lg text-slate-300 font-inter leading-relaxed">
                     {feat.description}
                   </p>
                   <ul className="space-y-3 pt-4">
                     {feat.bullets.map((bullet, idx) => (
                       <li key={idx} className="flex items-center text-slate-300 font-semibold font-inter text-sm">
                         <div className="w-5.5 h-5.5 rounded-full bg-brand-blue/10 border border-brand-blue/20 flex items-center justify-center mr-3 flex-shrink-0">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-brand-blue" />
+                          <CheckCircle2 className="w-3.5 h-3.5 text-brand-blue" aria-hidden="true" />
                         </div>
                         {bullet}
                       </li>
@@ -420,8 +424,8 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       <section id="gallery" className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">Section 05 — Project Gallery</span>
-            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mt-6 mb-4">Enterprise Case Studies & Demos</h2>
+            <SectionBadge icon={LayoutGrid} label="Section 05 — Project Gallery" className="justify-center" />
+            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mb-4">Enterprise Case Studies & Demos</h2>
             <p className="text-slate-400 max-w-2xl mx-auto font-inter text-sm md:text-base">
               Explore concrete examples of modern web systems, SaaS platforms, and enterprise dashboards built by our team.
             </p>
@@ -444,7 +448,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                     <span className="text-[10px] font-bold uppercase tracking-wider text-brand-blue mb-1">{proj.category}</span>
                     <span className="text-base font-bold text-white font-space">{proj.title}</span>
                   </div>
-                  <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${activeProject === proj.id ? 'translate-x-1 text-brand-blue' : 'text-slate-600'}`} />
+                  <ChevronRight className={`w-5 h-5 transition-transform duration-300 ${activeProject === proj.id ? 'translate-x-1 text-brand-blue' : 'text-slate-600'}`} aria-hidden="true" />
                 </button>
               ))}
             </div>
@@ -488,7 +492,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                   <div className="grid sm:grid-cols-2 gap-4 mb-8">
                     {currentProject.highlights.map((hl, index) => (
                       <div key={index} className="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
-                        <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" aria-hidden="true" />
                         <span>{hl}</span>
                       </div>
                     ))}
@@ -514,7 +518,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                     <div className="h-6 bg-slate-900 flex items-center justify-between px-6 flex-shrink-0 text-[10px] text-slate-400 font-mono">
                       <span>9:41</span>
                       <div className="w-16 h-3.5 rounded-full bg-slate-950 border border-slate-800 mx-auto"></div>
-                      <div className="flex gap-1">🔋</div>
+                      <BatteryFull className="w-4 h-4 text-slate-400" aria-hidden="true" />
                     </div>
                   )}
 
@@ -549,8 +553,8 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">Section 06 — Development Process</span>
-            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mt-6 mb-4">Our Collaborative Execution Timeline</h2>
+            <SectionBadge icon={Route} label="Section 06 — Development Process" className="justify-center" />
+            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mb-4">Our Collaborative Execution Timeline</h2>
             <p className="text-slate-400 max-w-2xl mx-auto font-inter text-sm md:text-base">
               From discovery to production support, we run structured agile sprints with full transparency.
             </p>
@@ -577,7 +581,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                         ? 'bg-brand-blue border-brand-blue shadow-[0_0_15px_rgba(0,102,255,0.4)] text-white scale-110' 
                         : 'bg-slate-950 border-slate-800 text-slate-400 group-hover:border-slate-700'
                     }`}>
-                      <IconComponent className="w-5 h-5" />
+                      <IconComponent className="w-5 h-5" aria-hidden="true" />
                     </div>
                     <span className={`text-xs font-bold font-space mt-3 transition-colors ${isSelected ? 'text-brand-blue' : 'text-slate-400 group-hover:text-slate-200'}`}>
                       Phase 0{step.step}
@@ -602,7 +606,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                     className="max-w-4xl mx-auto w-full bg-slate-900/35 border border-slate-800 p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-start backdrop-blur-xl"
                   >
                     <div className="w-16 h-16 rounded-2xl bg-brand-blue/15 border border-brand-blue/25 flex items-center justify-center flex-shrink-0 text-brand-blue">
-                      <IconComponent className="w-8 h-8" />
+                      <IconComponent className="w-8 h-8" aria-hidden="true" />
                     </div>
                     <div className="flex-grow text-left space-y-4">
                       <div className="flex flex-wrap justify-between items-center gap-3">
@@ -613,7 +617,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                           {step.duration}
                         </span>
                       </div>
-                      <p className="text-slate-350 text-base leading-relaxed font-inter">
+                      <p className="text-slate-300 text-base leading-relaxed font-inter">
                         {step.description}
                       </p>
                       <div className="pt-4 border-t border-slate-800/80">
@@ -635,8 +639,8 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">Section 07 — Technology Stack</span>
-            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mt-6 mb-4">Enterprise Architecture Stack</h2>
+            <SectionBadge icon={Cpu} label="Section 07 — Technology Stack" className="justify-center" />
+            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mb-4">Enterprise Architecture Stack</h2>
             <p className="text-slate-400 max-w-2xl mx-auto font-inter text-sm md:text-base">
               We leverage production-grade platforms and languages to ensure high scalability, speed, and cloud-native safety.
             </p>
@@ -650,8 +654,8 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                   key={group.category}
                   onClick={() => setActiveTechCategory(group.category)}
                   className={`px-6 py-2.5 rounded-xl text-sm font-bold font-space transition-all ${
-                    activeTechCategory === group.category 
-                      ? 'bg-brand-blue text-white shadow-lg' 
+                    activeTechCategory === group.category
+                      ? 'bg-brand-blue text-white shadow-lg'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -662,21 +666,28 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
 
             {/* Display Category Stack Details */}
             <div className="grid md:grid-cols-3 gap-6">
-              {data.techGroups.find(g => g.category === activeTechCategory)?.items.map((item, idx) => (
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.08 }}
-                  key={item.name}
-                  className="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-brand-blue/30 text-center flex flex-col items-center justify-center shadow-lg group transition-all duration-300"
-                >
-                  <div className="w-16 h-16 rounded-xl mb-4 bg-slate-950 border border-slate-800 flex items-center justify-center p-2 group-hover:scale-108 transition-transform duration-350">
-                    <Image src={item.icon} alt={item.name} width={48} height={48} className="object-contain" />
-                  </div>
-                  <h3 className="text-lg font-bold font-space text-white mb-2">{item.name}</h3>
-                  <span className="text-xs font-semibold text-slate-500 font-inter">Production Ready</span>
-                </motion.div>
-              ))}
+              {(() => {
+                const activeGroup = data.techGroups.find(g => g.category === activeTechCategory);
+                const groupColor = activeGroup?.color || '#0066ff';
+                return activeGroup?.items.map((item, idx) => (
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: idx * 0.08 }}
+                    key={item.name}
+                  >
+                    <GlowCard color={groupColor} className="p-6 bg-slate-900/40 shadow-lg">
+                      <div className="flex flex-col items-center justify-center text-center h-full">
+                        <div className="w-16 h-16 rounded-xl mb-4 bg-slate-950 border border-slate-800 flex items-center justify-center p-2 group-hover:scale-108 transition-transform duration-350">
+                          <Image src={item.icon} alt={item.name} width={48} height={48} className="object-contain" />
+                        </div>
+                        <h3 className="text-lg font-bold font-space text-white mb-2">{item.name}</h3>
+                        <span className="text-xs font-semibold text-slate-500 font-inter">Production Ready</span>
+                      </div>
+                    </GlowCard>
+                  </motion.div>
+                ));
+              })()}
             </div>
           </div>
         </div>
@@ -686,8 +697,8 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom">
           <div className="text-center mb-16 max-w-3xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">Section 08 — Business Benefits</span>
-            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mt-6 mb-4">Measurable Business Outcomes</h2>
+            <SectionBadge icon={TrendingUp} label="Section 08 — Business Benefits" className="justify-center" />
+            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mb-4">Measurable Business Outcomes</h2>
             <p className="text-slate-400 text-base md:text-lg font-inter">
               We focus on solving bottom-line operational problems, driving direct ROI, and improving workflows.
             </p>
@@ -701,18 +712,19 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 key={i}
-                className="bg-slate-900/35 border border-slate-800 p-8 rounded-2xl hover:border-slate-700/80 transition-all flex flex-col text-left group"
               >
-                <div className="flex items-center justify-between mb-6">
-                  <div className="text-4xl font-space font-extrabold tracking-tight group-hover:translate-x-1 transition-transform" style={{ color: ben.color }}>
-                    {ben.metric}
+                <GlowCard color={ben.color} className="p-8 bg-slate-900/35 text-left">
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="text-4xl font-space font-extrabold tracking-tight group-hover:translate-x-1 transition-transform" style={{ color: ben.color }}>
+                      {ben.metric}
+                    </div>
+                    <div className="w-10 h-10 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-center">
+                      <Image src={ben.icon} alt={ben.label} width={24} height={24} className="object-contain opacity-80" />
+                    </div>
                   </div>
-                  <div className="w-10 h-10 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-center">
-                    <Image src={ben.icon} alt={ben.label} width={24} height={24} className="object-contain opacity-80" />
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2 font-space">{ben.label}</h3>
-                <p className="text-slate-400 font-inter text-sm leading-relaxed">{ben.description}</p>
+                  <h3 className="text-xl font-bold text-white mb-2 font-space">{ben.label}</h3>
+                  <p className="text-slate-400 font-inter text-sm leading-relaxed">{ben.description}</p>
+                </GlowCard>
               </motion.div>
             ))}
           </div>
@@ -723,8 +735,8 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
       <section className="py-24 bg-[#0f172a] border-b border-slate-900">
         <div className="container-custom max-w-4xl">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-wider text-brand-blue border border-brand-blue/20 bg-brand-blue/5 px-3 py-1 rounded-full">Section 09 — FAQ</span>
-            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mt-6 mb-4">Frequently Asked Questions</h2>
+            <SectionBadge icon={HelpCircle} label="Section 09 — FAQ" className="justify-center" />
+            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mb-4">Frequently Asked Questions</h2>
             <p className="text-slate-400 font-inter text-sm max-w-xl mx-auto">
               Get detailed answers to deployment requirements, timeline scoping, integrations, and post-launch maintenance.
             </p>
@@ -742,11 +754,12 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                 >
                   <span className="font-bold text-white pr-8 font-space text-base md:text-lg">{faq.q}</span>
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors ${openFaq === index ? 'bg-brand-blue text-white' : 'bg-slate-950 border border-slate-800 text-slate-400'}`}>
-                    <svg 
-                      className={`w-4.5 h-4.5 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-white' : 'text-slate-400'}`} 
-                      fill="none" 
-                      viewBox="0 0 24 24" 
+                    <svg
+                      className={`w-4.5 h-4.5 transition-transform duration-300 ${openFaq === index ? 'rotate-180 text-white' : 'text-slate-400'}`}
+                      fill="none"
+                      viewBox="0 0 24 24"
                       stroke="currentColor"
+                      aria-hidden="true"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
                     </svg>
@@ -786,10 +799,10 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
               {data.ctaDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn-primary flex items-center justify-center gap-2 group py-4 px-8 rounded-xl bg-brand-blue text-white hover:bg-brand-blue/90 shadow-[0_4px_20px_rgba(0,102,255,0.4)] transition-all duration-300">
+              <MovingBorderButton href="/contact">
                 Book a Free Consultation
-                <PhoneCall className="w-4 h-4" />
-              </Link>
+                <PhoneCall className="w-4 h-4" aria-hidden="true" />
+              </MovingBorderButton>
               <Link href="/services" className="btn-secondary py-4 px-8 rounded-xl border border-slate-800 hover:bg-slate-900 text-white transition-all duration-300">
                 Explore All Services
               </Link>

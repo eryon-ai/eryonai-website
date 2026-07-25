@@ -2,40 +2,43 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { Building2, Zap, ShieldCheck, Rocket, Handshake, TrendingUp, Award } from 'lucide-react';
+import GlowCard from '@/components/ui/GlowCard';
+import SectionBadge from '@/components/ui/SectionBadge';
 
 const features = [
   {
-    iconUrl: 'https://img.icons8.com/color/48/building.png',
+    icon: Building2,
     title: 'Scalable Architecture',
     description: 'Microservices and cloud-native patterns designed to grow from 10 to 10 million users without rewrites.',
     color: '#0066ff',
   },
   {
-    iconUrl: 'https://img.icons8.com/color/48/flash-on.png',
+    icon: Zap,
     title: 'High Performance',
     description: 'Sub-second load times with edge caching, optimized queries, and Lighthouse scores of 95+.',
     color: '#f59e0b',
   },
   {
-    iconUrl: 'https://img.icons8.com/color/48/security-checked.png',
+    icon: ShieldCheck,
     title: 'Secure by Design',
     description: 'Zero-trust security, OWASP compliance, automated vulnerability scanning built into every sprint.',
     color: '#ef4444',
   },
   {
-    iconUrl: 'https://img.icons8.com/color/48/rocket.png',
+    icon: Rocket,
     title: 'Modern Tech Stack',
     description: 'Battle-tested, actively maintained technologies. No legacy baggage — maintainable code from day one.',
     color: '#6366f1',
   },
   {
-    iconUrl: 'https://img.icons8.com/color/48/handshake.png',
+    icon: Handshake,
     title: 'Transparent Delivery',
     description: 'Weekly demos, real-time dashboards, and Slack-based communication. You always know where things stand.',
     color: '#10b981',
   },
   {
-    iconUrl: 'https://img.icons8.com/color/48/graph.png',
+    icon: TrendingUp,
     title: 'ROI-Focused',
     description: 'Every feature decision is tied to business outcomes. We build what moves the needle, not what sounds cool.',
     color: '#00b4d8',
@@ -44,71 +47,62 @@ const features = [
 
 export default function WhyUsSection() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="why-us" className="section-pad" style={{ background: '#ffffff' }}>
-      <div className="container-custom" ref={ref}>
+    <section id="why-us" className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0f172a' }}>
+      {/* Background grid, matches MetricsSection */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+        backgroundSize: '48px 48px',
+      }} />
+
+      <div className="container-custom relative z-10" ref={ref}>
         {/* Header */}
-        
-        <div className="text-center mb-14">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}>
-            <div className="section-label mx-auto" style={{ display: 'inline-flex' }}>Why Choose Us</div>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.08 }}
-            className="section-title"
-            style={{ marginTop: 12 }}
-          >
-            Why Choose ERYON AI for <span className="gradient-text">Digital Transformation</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.15 }}
-            className="section-subtitle centered"
-            style={{ marginTop: 12 }}
-          >
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <SectionBadge icon={Award} label="Why Choose Us" />
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-5" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+            Why Choose ERYON AI for{' '}
+            <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              Digital Transformation
+            </span>
+          </h2>
+          <p className="text-base md:text-lg" style={{ color: '#94a3b8', lineHeight: 1.7 }}>
             Not just developers — experienced digital partners who deeply understand business.
-          </motion.p>
-          <div style={{ marginBottom: 16 }} />
-        </div>
+          </p>
+        </motion.div>
 
         {/* Feature grid */}
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-14">
           {features.map((f, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.45, delay: 0.06 * i }}
-              whileHover={{ y: -4 }}
-              className="card"
-              style={{ padding: '28px', cursor: 'default' }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
             >
-              <div
-                className="icon-box"
-                style={{
-                  background: `${f.color}10`,
-                  border: `1px solid ${f.color}20`,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center'
-                }}
-              >
-                <img src={f.iconUrl} alt={f.title} style={{ width: 28, height: 28, objectFit: 'contain' }} loading="lazy" />
-              </div>
-              <h3 style={{ fontFamily: 'Space Grotesk,sans-serif', fontSize: 16, fontWeight: 700, color: '#0f172a', marginBottom: 10 }}>
-                {f.title}
-              </h3>
-              <p style={{ fontSize: 14, color: '#64748b', lineHeight: 1.7 }}>{f.description}</p>
+              <GlowCard color={f.color} className="p-6 md:p-7">
+                <div
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-5"
+                  style={{ background: `${f.color}18`, border: `1px solid ${f.color}30` }}
+                >
+                  <f.icon size={22} strokeWidth={2} color={f.color} aria-hidden="true" />
+                </div>
+                <h3 className="text-lg font-bold mb-3" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc' }}>
+                  {f.title}
+                </h3>
+                <p className="text-sm" style={{ color: '#94a3b8', lineHeight: 1.7 }}>{f.description}</p>
+              </GlowCard>
             </motion.div>
           ))}
         </div>
 
-        {/* CTA Banner */}
-        <div style={{ marginBottom: 16 }} />
+        {/* CTA Banner — self-contained brand-gradient panel, unaffected by page bg */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}

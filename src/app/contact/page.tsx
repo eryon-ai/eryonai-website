@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main>
-      <div className="pt-20">
+      <div className="pt-20 bg-[#0f172a]">
         <ContactSection />
       </div>
     </main>

@@ -2,6 +2,10 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
+import FadeIn from '@/components/ui/FadeIn';
+import GlowCard from '@/components/ui/GlowCard';
+import MovingBorderButton from '@/components/ui/MovingBorderButton';
 
 // ─── Project data ────────────────────────────────────────────────────────────
 
@@ -479,7 +483,7 @@ export default async function CaseStudyPage({
   };
 
   return (
-    <div style={{ background: '#f8fafc', minHeight: '100vh', fontFamily: 'Inter, system-ui, sans-serif' }}>
+    <div style={{ background: '#0f172a', minHeight: '100vh', fontFamily: 'Inter, system-ui, sans-serif' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
@@ -489,16 +493,16 @@ export default async function CaseStudyPage({
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        background: 'rgba(255,255,255,0.92)',
+        background: 'rgba(15,23,42,0.85)',
         backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid #e2e8f0',
+        borderBottom: '1px solid rgba(255,255,255,0.08)',
         padding: '0 24px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         height: 60,
       }}>
-        <Link href="/portfolio" style={{
+        <Link href="/portfolio" className="group" style={{
           display: 'inline-flex',
           alignItems: 'center',
           gap: 8,
@@ -507,7 +511,7 @@ export default async function CaseStudyPage({
           fontWeight: 600,
           fontSize: 14,
         }}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <ArrowLeft size={16} strokeWidth={2.5} className="transition-transform duration-300 group-hover:-translate-x-1" aria-hidden="true" />
           Back to Portfolio
         </Link>
         <span style={{
@@ -519,8 +523,8 @@ export default async function CaseStudyPage({
           letterSpacing: '0.08em',
           textTransform: 'uppercase',
           color: p.color,
-          background: `${p.color}12`,
-          border: `1px solid ${p.color}25`,
+          background: `${p.color}18`,
+          border: `1px solid ${p.color}35`,
           padding: '4px 12px',
           borderRadius: 999,
         }}>
@@ -536,6 +540,12 @@ export default async function CaseStudyPage({
         position: 'relative',
         overflow: 'hidden',
       }}>
+        {/* per-project radial glow */}
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: `radial-gradient(ellipse 60% 50% at 50% 0%, ${p.color}22 0%, transparent 70%)`,
+          pointerEvents: 'none',
+        }} />
         {/* subtle grid */}
         <div style={{
           position: 'absolute', inset: 0,
@@ -544,71 +554,75 @@ export default async function CaseStudyPage({
           pointerEvents: 'none',
         }} />
         <div style={{ position: 'relative', maxWidth: 760, margin: '0 auto' }}>
-          <h1 style={{
-            fontFamily: 'Space Grotesk, sans-serif',
-            fontSize: 'clamp(32px, 5vw, 56px)',
-            fontWeight: 800,
-            color: '#f8fafc',
-            lineHeight: 1.15,
-            letterSpacing: '-0.02em',
-            margin: '0 0 12px',
-          }}>
-            {p.title}
-            <span style={
-              p.subtitleColor
-                ? { display: 'block', color: p.subtitleColor }
-                : {
-                    display: 'block',
-                    background: `linear-gradient(90deg, ${p.color}, ${p.color}99)`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                  }
-            }>
-              {p.subtitle}
-            </span>
-          </h1>
-          <p style={{ fontSize: 18, color: '#94a3b8', lineHeight: 1.6, margin: '0 0 40px' }}>
-            {p.tagline}
-          </p>
+          <FadeIn>
+            <h1 style={{
+              fontFamily: 'Space Grotesk, sans-serif',
+              fontSize: 'clamp(32px, 5vw, 56px)',
+              fontWeight: 800,
+              color: '#f8fafc',
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
+              margin: '0 0 12px',
+            }}>
+              {p.title}
+              <span style={
+                p.subtitleColor
+                  ? { display: 'block', color: p.subtitleColor }
+                  : {
+                      display: 'block',
+                      background: `linear-gradient(90deg, ${p.color}, ${p.color}99)`,
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }
+              }>
+                {p.subtitle}
+              </span>
+            </h1>
+            <p style={{ fontSize: 18, color: '#94a3b8', lineHeight: 1.6, margin: '0 0 40px' }}>
+              {p.tagline}
+            </p>
+          </FadeIn>
 
           {/* Metrics row */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center' }}>
-            {p.metrics.map((m) => (
-              <div key={m.label} style={{
-                background: 'rgba(255,255,255,0.06)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: 12,
-                padding: '16px 24px',
-                minWidth: 120,
-                textAlign: 'center',
-              }}>
-                <div style={
-                  p.subtitleColor
-                    ? {
-                        fontSize: 26,
-                        fontWeight: 800,
-                        fontFamily: 'Space Grotesk, sans-serif',
-                        color: p.subtitleColor,
-                        lineHeight: 1,
-                        marginBottom: 4,
-                      }
-                    : {
-                        fontSize: 26,
-                        fontWeight: 800,
-                        fontFamily: 'Space Grotesk, sans-serif',
-                        background: `linear-gradient(135deg, ${p.color}, ${p.color}bb)`,
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text',
-                        lineHeight: 1,
-                        marginBottom: 4,
-                      }
-                }>{m.value}</div>
-                <div style={{ fontSize: 11, color: '#64748b', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
-                  {m.label}
+            {p.metrics.map((m, i) => (
+              <FadeIn key={m.label} delay={0.15 + i * 0.08} y={16}>
+                <div style={{
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  borderRadius: 12,
+                  padding: '16px 24px',
+                  minWidth: 120,
+                  textAlign: 'center',
+                }}>
+                  <div style={
+                    p.subtitleColor
+                      ? {
+                          fontSize: 26,
+                          fontWeight: 800,
+                          fontFamily: 'Space Grotesk, sans-serif',
+                          color: p.subtitleColor,
+                          lineHeight: 1,
+                          marginBottom: 4,
+                        }
+                      : {
+                          fontSize: 26,
+                          fontWeight: 800,
+                          fontFamily: 'Space Grotesk, sans-serif',
+                          background: `linear-gradient(135deg, ${p.color}, ${p.color}bb)`,
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                          lineHeight: 1,
+                          marginBottom: 4,
+                        }
+                  }>{m.value}</div>
+                  <div style={{ fontSize: 11, color: '#64748b', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                    {m.label}
+                  </div>
                 </div>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -616,39 +630,44 @@ export default async function CaseStudyPage({
 
       {/* ── Screenshot gallery ── */}
       <section style={{ maxWidth: 1200, margin: '0 auto', padding: '64px 24px 48px' }}>
-        <h2 style={{
-          fontFamily: 'Space Grotesk, sans-serif',
-          fontSize: 22,
-          fontWeight: 700,
-          color: '#0f172a',
-          margin: '0 0 24px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: 10,
-        }}>
-          <span style={{ width: 4, height: 22, background: p.color, borderRadius: 2, display: 'inline-block' }} />
-          Project Screenshots
-        </h2>
+        <FadeIn>
+          <h2 style={{
+            fontFamily: 'Space Grotesk, sans-serif',
+            fontSize: 22,
+            fontWeight: 700,
+            color: '#f8fafc',
+            margin: '0 0 24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
+          }}>
+            <span style={{ width: 4, height: 22, background: p.color, borderRadius: 2, display: 'inline-block' }} />
+            Project Screenshots
+          </h2>
+        </FadeIn>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           {p.images.map((src, i) => (
-            <div key={i} style={{
-              position: 'relative',
-              borderRadius: 16,
-              overflow: 'hidden',
-              aspectRatio: '16/9',
-              boxShadow: '0 4px 24px rgba(0,0,0,0.1)',
-              border: '1px solid #e2e8f0',
-              background: '#e2e8f0',
-            }}>
-              <Image
-                src={src}
-                alt={`${p.title} screenshot ${i + 1}`}
-                fill
-                sizes="(max-width: 640px) 100vw, 50vw"
-                style={{ objectFit: 'cover', display: 'block' }}
-                priority={i < 2}
-              />
-            </div>
+            <FadeIn key={i} delay={i * 0.06} y={20}>
+              <div
+                className="group relative overflow-hidden"
+                style={{
+                  borderRadius: 16,
+                  aspectRatio: '16/9',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.35)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  background: '#1e293b',
+                }}
+              >
+                <Image
+                  src={src}
+                  alt={`${p.title} screenshot ${i + 1}`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority={i < 2}
+                />
+              </div>
+            </FadeIn>
           ))}
         </div>
       </section>
@@ -663,134 +682,119 @@ export default async function CaseStudyPage({
               { heading: 'Project Overview', body: p.overview },
               { heading: 'The Challenge', body: p.challenge },
               { heading: 'Our Solution', body: p.solution },
-            ].map(({ heading, body }) => (
-              <div key={heading} style={{
-                background: '#ffffff',
-                border: '1px solid #e2e8f0',
-                borderRadius: 16,
-                padding: '28px 32px',
-                marginBottom: 20,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-              }}>
-                <h3 style={{
-                  fontFamily: 'Space Grotesk, sans-serif',
-                  fontSize: 17,
-                  fontWeight: 700,
-                  color: '#0f172a',
-                  margin: '0 0 12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 8,
-                }}>
-                  <span style={{ width: 3, height: 18, background: p.color, borderRadius: 2, display: 'inline-block' }} />
-                  {heading}
-                </h3>
-                <p style={{ fontSize: 15, color: '#374151', lineHeight: 1.75, margin: 0 }}>
-                  {body}
-                </p>
-              </div>
+            ].map(({ heading, body }, i) => (
+              <FadeIn key={heading} delay={i * 0.1} className="mb-5">
+                <GlowCard color={p.color} className="p-7 md:p-8" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                  <h3 style={{
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontSize: 17,
+                    fontWeight: 700,
+                    color: '#f8fafc',
+                    margin: '0 0 12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 8,
+                  }}>
+                    <span style={{ width: 3, height: 18, background: p.color, borderRadius: 2, display: 'inline-block' }} />
+                    {heading}
+                  </h3>
+                  <p style={{ fontSize: 15, color: '#94a3b8', lineHeight: 1.75, margin: 0, whiteSpace: 'pre-line' }}>
+                    {body}
+                  </p>
+                </GlowCard>
+              </FadeIn>
             ))}
           </div>
 
           {/* Right: Tech Stack card */}
-          <div style={{
-            background: '#ffffff',
-            border: '1px solid #e2e8f0',
-            borderRadius: 16,
-            padding: '28px 28px',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-          }} className="static lg:sticky lg:top-[76px]">
-            <h3 style={{
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontSize: 17,
-              fontWeight: 700,
-              color: '#0f172a',
-              margin: '0 0 20px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
+          <FadeIn delay={0.15} className="static lg:sticky lg:top-19">
+            <div style={{
+              background: '#1e293b',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: 16,
+              padding: '28px 28px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
             }}>
-              <span style={{ width: 3, height: 18, background: p.color, borderRadius: 2, display: 'inline-block' }} />
-              Tech Stack
-            </h3>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-              {p.tech.map((t) => (
-                <span key={t} style={{
-                  fontSize: 12,
-                  fontWeight: 600,
-                  padding: '6px 14px',
-                  borderRadius: 999,
-                  background: `${p.color}10`,
-                  color: p.color,
-                  border: `1px solid ${p.color}25`,
-                }}>
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            {p.liveLink && (
-              <div style={{ marginTop: 24 }}>
-                <a href={p.liveLink} target="_blank" rel="noopener noreferrer" style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: 8,
-                  background: p.color,
-                  color: '#fff',
-                  fontWeight: 600,
-                  fontSize: 14,
-                  padding: '11px 22px',
-                  borderRadius: 10,
-                  textDecoration: 'none',
-                  boxShadow: `0 4px 14px ${p.color}40`,
-                }} className="hover:opacity-90 transition-opacity">
-                  Demo Live Site
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-              </div>
-            )}
-
-            {p.testCredentials && (
-              <div style={{
-                marginTop: 24,
-                padding: 16,
-                background: `${p.color}15`,
-                border: `1px solid ${p.color}40`,
-                borderRadius: 8,
-              }}>
-                <div style={{ color: p.color, fontWeight: 600, marginBottom: 8, fontSize: 13, textTransform: 'uppercase', letterSpacing: 1 }}>
-                  Test Credentials (Must be Highlighted)
-                </div>
-                <div style={{ fontSize: 14, color: '#e2e8f0' }}>
-                  <span style={{ opacity: 0.7 }}>ID:</span> <strong style={{ color: '#fff' }}>{p.testCredentials.id}</strong>
-                  <br />
-                  <span style={{ opacity: 0.7 }}>Password:</span> <strong style={{ color: '#fff' }}>{p.testCredentials.pass}</strong>
-                </div>
-              </div>
-            )}
-
-            <div style={{ marginTop: 28, paddingTop: 24, borderTop: '1px solid #f1f5f9' }}>
-              <p style={{ fontSize: 13, color: '#64748b', lineHeight: 1.65, margin: '0 0 16px' }}>
-                Interested in a similar solution for your business?
-              </p>
-              <Link href="/#contact" style={{
-                display: 'inline-flex',
+              <h3 style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontSize: 17,
+                fontWeight: 700,
+                color: '#f8fafc',
+                margin: '0 0 20px',
+                display: 'flex',
                 alignItems: 'center',
                 gap: 8,
-                background: `linear-gradient(135deg, #0066ff, #00b4d8)`,
-                color: '#fff',
-                fontWeight: 600,
-                fontSize: 14,
-                padding: '11px 22px',
-                borderRadius: 10,
-                textDecoration: 'none',
-                boxShadow: '0 4px 14px rgba(0,102,255,0.25)',
               }}>
-                Discuss Your Project
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </Link>
+                <span style={{ width: 3, height: 18, background: p.color, borderRadius: 2, display: 'inline-block' }} />
+                Tech Stack
+              </h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                {p.tech.map((t) => (
+                  <span key={t} style={{
+                    fontSize: 12,
+                    fontWeight: 600,
+                    padding: '6px 14px',
+                    borderRadius: 999,
+                    background: `${p.color}18`,
+                    color: p.color,
+                    border: `1px solid ${p.color}35`,
+                  }}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              {p.liveLink && (
+                <div style={{ marginTop: 24 }}>
+                  <a href={p.liveLink} target="_blank" rel="noopener noreferrer" style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    background: p.color,
+                    color: '#fff',
+                    fontWeight: 600,
+                    fontSize: 14,
+                    padding: '11px 22px',
+                    borderRadius: 10,
+                    textDecoration: 'none',
+                    boxShadow: `0 4px 14px ${p.color}40`,
+                  }} className="hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-mid" >
+                    Demo Live Site
+                    <ExternalLink size={16} strokeWidth={2} aria-hidden="true" />
+                  </a>
+                </div>
+              )}
+
+              {p.testCredentials && (
+                <div style={{
+                  marginTop: 24,
+                  padding: 16,
+                  background: `${p.color}15`,
+                  border: `1px solid ${p.color}40`,
+                  borderRadius: 8,
+                }}>
+                  <div style={{ color: p.color, fontWeight: 600, marginBottom: 8, fontSize: 13, textTransform: 'uppercase', letterSpacing: 1 }}>
+                    Test Credentials (Must be Highlighted)
+                  </div>
+                  <div style={{ fontSize: 14, color: '#e2e8f0' }}>
+                    <span style={{ opacity: 0.7 }}>ID:</span> <strong style={{ color: '#fff' }}>{p.testCredentials.id}</strong>
+                    <br />
+                    <span style={{ opacity: 0.7 }}>Password:</span> <strong style={{ color: '#fff' }}>{p.testCredentials.pass}</strong>
+                  </div>
+                </div>
+              )}
+
+              <div style={{ marginTop: 28, paddingTop: 24, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+                <p style={{ fontSize: 13, color: '#64748b', lineHeight: 1.65, margin: '0 0 16px' }}>
+                  Interested in a similar solution for your business?
+                </p>
+                <MovingBorderButton href="/#contact" className="px-6! py-2.5! text-[13px]">
+                  Discuss Your Project
+                  <ArrowRight size={14} strokeWidth={2.5} aria-hidden="true" />
+                </MovingBorderButton>
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </div>

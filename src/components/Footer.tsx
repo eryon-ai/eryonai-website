@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { CheckCircle2 } from 'lucide-react';
 import { getRecaptchaToken } from '@/lib/recaptcha-client';
 
 const navCols = [
@@ -189,8 +190,9 @@ export default function Footer() {
           </div>
           <div className="flex flex-col gap-2 w-full sm:w-auto">
             {subStatus === 'success' ? (
-              <p style={{ fontSize: 14, color: '#10b981', fontWeight: 600, padding: '10px 0' }}>
-                ✅ You&apos;re subscribed! We&apos;ll be in touch.
+              <p className="inline-flex items-center gap-1.5" style={{ fontSize: 14, color: '#10b981', fontWeight: 600, padding: '10px 0' }}>
+                <CheckCircle2 size={16} strokeWidth={2.5} aria-hidden="true" />
+                You&apos;re subscribed! We&apos;ll be in touch.
               </p>
             ) : (
               <div className="flex gap-2">

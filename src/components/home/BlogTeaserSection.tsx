@@ -3,6 +3,8 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import { Newspaper } from 'lucide-react';
+import SectionBadge from '@/components/ui/SectionBadge';
 import { blogPosts } from '@/lib/blog-data';
 
 const posts = blogPosts.slice(0, 3);
@@ -32,10 +34,7 @@ export default function BlogTeaserSection() {
           transition={{ duration: 0.6 }}
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4 text-xs font-semibold tracking-wider uppercase"
-              style={{ background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.25)', color: '#fbbf24' }}>
-              📰 Latest Insights
-            </div>
+            <SectionBadge icon={Newspaper} label="Latest Insights" color="#f59e0b" />
             <h2 className="text-3xl md:text-5xl font-extrabold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
               Thinking About{' '}
               <span style={{ background: 'linear-gradient(135deg, #f59e0b, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>

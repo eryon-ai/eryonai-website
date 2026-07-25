@@ -3,6 +3,8 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import { Briefcase } from 'lucide-react';
+import SectionBadge from '@/components/ui/SectionBadge';
 
 const caseStudies = [
   {
@@ -64,10 +66,7 @@ export default function CaseStudiesSection() {
           transition={{ duration: 0.6 }}
         >
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4 text-xs font-semibold tracking-wider uppercase"
-              style={{ background: 'rgba(99,102,241,0.1)', border: '1px solid rgba(99,102,241,0.25)', color: '#a5b4fc' }}>
-              💼 Featured Work
-            </div>
+            <SectionBadge icon={Briefcase} label="Featured Work" color="#6366f1" />
             <h2 className="text-3xl md:text-5xl font-extrabold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
               Projects That{' '}
               <span style={{ background: 'linear-gradient(135deg, #6366f1, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
