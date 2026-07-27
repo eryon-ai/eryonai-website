@@ -102,7 +102,7 @@ export default function FloatingNav() {
                     {/* Desktop Dropdown */}
                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-135 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300 transform translate-y-2 group-hover/nav:translate-y-0 z-6000">
                       <div className="bg-[#0f172a] rounded-2xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] border border-white/10 p-6 grid grid-cols-2 gap-x-6 gap-y-1 relative overflow-hidden backdrop-blur-xl">
-                        <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-[#0066ff] to-[#00b4d8]" />
+                        <div className="-mx-6 -mt-6 mb-4 h-1 bg-linear-to-r from-[#0066ff] to-[#00b4d8]" style={{ gridColumn: '1 / -1' }} />
 
                         {servicesDropdown.map((service, sIdx) => (
                           <Link

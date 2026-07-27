@@ -327,7 +327,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
               >
                 <GlowCard color={ind.color} className="p-6 bg-slate-900/30 shadow-md">
                   {/* Glowing border top */}
-                  <div className="absolute top-0 left-0 w-full h-1 opacity-40 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: ind.color }} aria-hidden="true"></div>
+                  <div className="-mx-6 -mt-6 mb-5 h-1 opacity-40 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: ind.color }} aria-hidden="true"></div>
 
                   <div className="flex items-center gap-4 mb-5">
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-slate-950 border border-slate-800">
@@ -790,8 +790,8 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
         <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-brand-blue/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
         <div className="container-custom relative z-10">
           <div className="p-8 md:p-14 rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900 to-[#0f172a] text-center max-w-4xl mx-auto shadow-2xl relative">
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-blue to-cyan-400"></div>
-            
+            <div className="-mx-8 -mt-8 md:-mx-14 md:-mt-14 mb-6 h-1 bg-gradient-to-r from-brand-blue to-cyan-400"></div>
+
             <h2 className="text-3xl md:text-5xl font-space font-bold text-white mb-6 tracking-tight">
               {data.ctaTitle}
             </h2>

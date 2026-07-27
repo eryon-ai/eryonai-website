@@ -127,7 +127,7 @@ export default function CapabilitiesSection() {
                 </div>
 
                 {/* Bottom accent line on hover */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl"
+                <div className="-mx-6 -mb-6 md:-mx-7 md:-mb-7 mt-5 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-b-2xl"
                   style={{ background: `linear-gradient(90deg, transparent, ${cap.color}, transparent)` }} />
               </GlowCard>
             </motion.div>

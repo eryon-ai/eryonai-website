@@ -73,6 +73,7 @@ export const siteContent = {
     { slug: 'marblemart-web', title: 'MarbleMart Web', summary: 'B2B digital catalog with 3D marble texture visualizations.' },
     { slug: 'edunexus-erp', title: 'EduNexus ERP', summary: 'Next-generation School ERP and Education Management Platform.' },
     { slug: 'atelier-clothing', title: 'Atelier Clothing', summary: 'Premium luxury fashion and streetwear e-commerce platform.' },
-    { slug: 'realist-crm', title: 'Realist CRM', summary: 'Luxury real estate property management and CRM solution.' }
+    { slug: 'realist-crm', title: 'Realist CRM', summary: 'Luxury real estate property management and CRM solution.' },
+    { slug: 'infra-erp', title: 'Construction AI ERP', summary: 'Enterprise construction management platform with AI estimation and automated ledgers.' }
   ],
 };

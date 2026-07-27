@@ -49,6 +49,7 @@ const caseStudies = [
     img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',
     gradient: 'linear-gradient(180deg, transparent 30%, rgba(99,102,241,0.9) 100%)',
   },
+
 ];
 
 export default function CaseStudiesSection() {

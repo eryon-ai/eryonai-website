@@ -101,6 +101,13 @@ const projects = [
     linkText: 'View Case Study',
   },
   {
+    title: 'AI-Powered Construction ERP',
+    description: 'Enterprise ERP for a leading infrastructure firm featuring AI-driven floor plan estimation and real-time ledger generation.',
+    imgSrc: '/portfolio/infra-0.png',
+    link: '/case-study/infra-erp',
+    linkText: 'View Case Study',
+  },
+  {
     title: 'Aura Planters — E-Commerce',
     description:
       'Full-stack MERN e-commerce platform with Redux state management, Razorpay payment gateway, and an admin dashboard.',
