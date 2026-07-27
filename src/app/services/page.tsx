@@ -303,15 +303,9 @@ function CategoryCard({ cat, index }: { cat: typeof categories[0]; index: number
     >
       <GlowCard
         color={cat.color}
-        className="p-7 md:p-8 h-full"
+        className="p-7 md:p-8 h-full relative"
         style={{ background: `linear-gradient(135deg, ${cat.bgColor}, rgba(255,255,255,0.02))` }}
       >
-        {/* Top accent line */}
-        <div
-          className="-mx-7 -mt-7 md:-mx-8 md:-mt-8 mb-6 h-0.5 rounded-t-2xl"
-          style={{ background: `linear-gradient(90deg, transparent, ${cat.color}, transparent)` }}
-        />
-
         {/* Header */}
         <Link href={`/services/${cat.id}`} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f172a] rounded-xl mb-6" style={{ ['--tw-ring-color' as string]: cat.color }}>
           <div className="flex items-start gap-4">

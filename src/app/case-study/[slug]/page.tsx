@@ -255,7 +255,6 @@ const projects: Record<string, Project> = {
       '/portfolio/infra-3.png',
       '/portfolio/infra-4.png',
     ],
-    client: 'Confidential Infrastructure Firm',
   },
   craverush: {
     slug: 'craverush',

@@ -325,10 +325,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                 transition={{ delay: i * 0.08 }}
                 key={i}
               >
-                <GlowCard color={ind.color} className="p-6 bg-slate-900/30 shadow-md">
-                  {/* Glowing border top */}
-                  <div className="-mx-6 -mt-6 mb-5 h-1 opacity-40 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: ind.color }} aria-hidden="true"></div>
-
+                <GlowCard color={ind.color} className="p-6 bg-slate-900/30 shadow-md relative overflow-hidden">
                   <div className="flex items-center gap-4 mb-5">
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-slate-950 border border-slate-800">
                       <Image src={ind.icon} alt={ind.name} width={28} height={28} className="object-contain" />
