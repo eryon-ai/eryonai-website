@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     images: ["/logo-full.jpg"],
   },
   verification: {
-    google: "W-9fsg7BGB0XCqERSrFS80qZXMrZunh70mot4rYL-8s",
+    google: "KXlOIYo51Qf47LJO6lz0zt9pi7UyH4RRk0a8Pvijarg",
   },
 };
 
