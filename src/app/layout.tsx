@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.eryonai.com'),
   title: "ERYON AI | Enterprise Custom Software Development & AI Solutions",
   description:
-    "ERYON AI is a premium software development agency specializing in custom Web Development, AI/ML integrations, Mobile Apps, and Cloud DevOps for modern enterprises.",
+    "ERYON AI is a premium software development agency — custom Web, AI/ML, Mobile Apps, and Cloud DevOps for modern enterprises.",
   keywords: [
     "ERYON AI",
     "IT services",

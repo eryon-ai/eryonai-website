@@ -12,7 +12,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'ERYON AI | Enterprise Custom Software Development & AI Solutions',
   description:
-    'ERYON AI is a premium enterprise software development agency specializing in custom Web Development, AI/ML integrations, Mobile Apps, SaaS platforms, and Cloud DevOps. 150+ projects delivered. Based in New Delhi, India — serving clients globally.',
+    'ERYON AI — premium software development agency in New Delhi. Custom Web, AI/ML, Mobile Apps & Cloud DevOps for enterprises worldwide.',
   keywords: [
     'ERYON AI', 'enterprise software development', 'AI solutions company',
     'custom web development India', 'mobile app development agency',

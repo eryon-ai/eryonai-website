@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'About ERYON AI | Enterprise Software Engineering Agency | New Delhi, India',
   description:
-    'ERYON AI is an enterprise software engineering agency in New Delhi, India, specializing in AI/ML solutions, cloud-native architectures, full-stack development, and cybersecurity. 150+ projects delivered, 80+ enterprise clients, 98% satisfaction rate.',
+    'ERYON AI is an enterprise software engineering agency in New Delhi — AI/ML, cloud-native architecture, full-stack development. 150+ projects, 80+ clients.',
   keywords: [
     'ERYON AI', 'software engineering agency India', 'AI ML development company',
     'cloud native development New Delhi', 'enterprise software company India',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About ERYON AI | Enterprise Software Engineering Agency',
     description:
-      'ERYON AI is an enterprise-grade software engineering partner in New Delhi, India. 150+ projects, 80+ clients, specializing in AI, cloud, and full-stack development.',
+      'Enterprise-grade software engineering partner in New Delhi. 150+ projects, 80+ clients — AI, cloud, and full-stack development.',
     url: 'https://www.eryonai.com/about',
     type: 'website',
     siteName: 'ERYON AI',

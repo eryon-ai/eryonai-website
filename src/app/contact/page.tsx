@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Contact Us | Get a Free Consultation | ERYON AI',
   description:
-    'Get in touch with ERYON AI for custom software development, AI/ML solutions, web applications, and mobile app development. Free consultation with response within 24 hours. Based in New Delhi, serving clients globally.',
+    'Get in touch with ERYON AI for custom software, AI/ML, web and mobile development. Free consultation, response within 24 hours.',
   keywords: [
     'contact ERYON AI', 'hire software developers India', 'custom software development quote',
     'AI development agency contact', 'web development consultation', 'free project consultation',
