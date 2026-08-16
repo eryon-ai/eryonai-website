@@ -93,7 +93,7 @@ export default function Footer() {
             {/* Socials */}
             <div className="flex gap-2">
               {[
-                { iconUrl: 'https://img.icons8.com/color/48/instagram-new.png', label: 'Instagram', href: 'https://www.instagram.com/eryonai.solutions' },
+                { iconUrl: 'https://img.icons8.com/color/48/instagram-new.png', label: 'Instagram', href: 'https://www.instagram.com/eryonaisoftwaresolutions?utm_source=qr' },
                 { iconUrl: 'https://img.icons8.com/color/48/linkedin.png', label: 'LinkedIn', href: 'https://www.linkedin.com/company/113904195' },
                 { iconUrl: 'https://img.icons8.com/color/48/github.png', label: 'GitHub', href: 'https://github.com/eryon-ai' },
               ].map((s, i) => (

@@ -85,7 +85,7 @@ export default function Home() {
     },
     sameAs: [
       'https://www.linkedin.com/company/113904195',
-      'https://www.instagram.com/eryonai.solutions',
+      'https://www.instagram.com/eryonaisoftwaresolutions?utm_source=qr',
       'https://github.com/eryon-ai',
     ],
     priceRange: '$$',
