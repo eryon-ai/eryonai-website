@@ -226,57 +226,59 @@ export default function BlogsPage() {
 
             {/* ── Sidebar ── */}
             <aside className="lg:w-72 xl:w-80 shrink-0">
-              {/* Trending */}
-              <GlowCard color="#f59e0b" className="p-6 mb-6 sticky top-28" style={{ background: 'rgba(255,255,255,0.03)' }}>
-                <div className="flex items-center gap-2 mb-5">
-                  <Flame size={18} strokeWidth={2} className="text-orange-500" aria-hidden="true" />
-                  <h3 className="text-base font-extrabold text-slate-50" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                    Trending Tech Articles
-                  </h3>
-                </div>
-                <div className="flex flex-col gap-4">
-                  {trending.map((post, i) => (
-                    <motion.div
-                      key={post.slug}
-                      initial={{ opacity: 0, x: 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.08 }}
-                    >
-                      <Link href={`/blogs/${post.slug}`} className="flex gap-3 group items-start">
-                        <span className="text-2xl font-extrabold shrink-0 leading-tight w-8" style={{ color: 'rgba(248,250,252,0.12)' }}>
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
-                        <div>
-                          <h4 className="text-sm font-semibold text-slate-200 group-hover:text-blue-400 transition-colors leading-snug line-clamp-2 mb-1">
-                            {post.title}
-                          </h4>
-                          <p className="text-xs text-slate-500">{post.readTime} min read · {post.category}</p>
-                        </div>
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              </GlowCard>
+              <div className="sticky top-28 space-y-6">
+                {/* Trending */}
+                <GlowCard color="#f59e0b" className="p-6" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                  <div className="flex items-center gap-2 mb-5">
+                    <Flame size={18} strokeWidth={2} className="text-orange-500" aria-hidden="true" />
+                    <h3 className="text-base font-extrabold text-slate-50" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                      Trending Tech Articles
+                    </h3>
+                  </div>
+                  <div className="flex flex-col gap-4">
+                    {trending.map((post, i) => (
+                      <motion.div
+                        key={post.slug}
+                        initial={{ opacity: 0, x: 20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.08 }}
+                      >
+                        <Link href={`/blogs/${post.slug}`} className="flex gap-3 group items-start">
+                          <span className="text-2xl font-extrabold shrink-0 leading-tight w-8" style={{ color: 'rgba(248,250,252,0.12)' }}>
+                            {String(i + 1).padStart(2, '0')}
+                          </span>
+                          <div>
+                            <h4 className="text-sm font-semibold text-slate-200 group-hover:text-blue-400 transition-colors leading-snug line-clamp-2 mb-1">
+                              {post.title}
+                            </h4>
+                            <p className="text-xs text-slate-500">{post.readTime} min read · {post.category}</p>
+                          </div>
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </div>
+                </GlowCard>
 
-              {/* Topics */}
-              <GlowCard color="#0066ff" className="p-6" style={{ background: 'rgba(255,255,255,0.03)' }}>
-                <h3 className="text-base font-extrabold text-slate-50 mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
-                  Browse Topics
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {categories.filter((c) => c !== 'All').map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => { setActiveCategory(cat); document.getElementById('articles')?.scrollIntoView({ behavior: 'smooth' }); }}
-                      className="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 border hover:text-blue-300 hover:border-blue-500/40 transition-colors"
-                      style={{ background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.08)' }}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-              </GlowCard>
+                {/* Topics */}
+                <GlowCard color="#0066ff" className="p-6" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                  <h3 className="text-base font-extrabold text-slate-50 mb-4" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                    Browse Topics
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {categories.filter((c) => c !== 'All').map((cat) => (
+                      <button
+                        key={cat}
+                        onClick={() => { setActiveCategory(cat); document.getElementById('articles')?.scrollIntoView({ behavior: 'smooth' }); }}
+                        className="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-400 border hover:text-blue-300 hover:border-blue-500/40 transition-colors"
+                        style={{ background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(255,255,255,0.08)' }}
+                      >
+                        {cat}
+                      </button>
+                    ))}
+                  </div>
+                </GlowCard>
+              </div>
             </aside>
           </div>
 
