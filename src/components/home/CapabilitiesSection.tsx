@@ -42,8 +42,8 @@ const capabilities = [
   {
     icon: ShieldCheck,
     title: 'Cybersecurity',
-    description: 'End-to-end security audits, penetration testing, zero-trust architecture, and compliance frameworks for ISO 27001 and SOC 2.',
-    tags: ['Pen Testing', 'Zero Trust', 'ISO 27001', 'SIEM'],
+    description: 'End-to-end security audits, penetration testing, zero-trust architecture, and compliance frameworks for MSME and SOC 2.',
+    tags: ['Pen Testing', 'Zero Trust', 'MSME Registered', 'SIEM'],
     color: '#f59e0b',
     gradient: 'linear-gradient(135deg, rgba(245,158,11,0.12), rgba(239,68,68,0.08))',
   },

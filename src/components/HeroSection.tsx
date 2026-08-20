@@ -168,7 +168,7 @@ export default function HeroSection() {
               transition={{ delay: 0.65 }}
               className="flex flex-wrap gap-x-10 gap-y-3"
             >
-              {['ISO 27001 Compliant', 'Agile Delivery', '24/7 Support', 'NDA Protected'].map((f, i) => (
+              {['MSME Registered', 'Agile Delivery', '24/7 Support', 'NDA Protected'].map((f, i) => (
                 <div key={i} className="flex items-center gap-2" style={{ color: '#94a3b8', fontSize: 13 }}>
                   <CheckCircle2 size={16} strokeWidth={2.5} color="#0066ff" aria-hidden="true" />
                   {f}

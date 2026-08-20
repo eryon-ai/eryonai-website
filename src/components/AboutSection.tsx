@@ -122,7 +122,7 @@ const techStack = [
 ];
 
 const certifications: { icon?: LucideIcon; iconUrl?: string; label: string; desc: string }[] = [
-  { icon: ShieldCheck, label: 'ISO 27001', desc: 'Information Security Mgmt' },
+  { icon: ShieldCheck, label: 'MSME Registered', desc: 'Govt. of India Recognized' },
   { icon: CheckCircle2, label: 'SOC 2 Type II', desc: 'Trust Services Criteria' },
   { icon: Lock, label: 'GDPR Ready', desc: 'EU Data Privacy Compliant' },
   { iconUrl: 'https://img.icons8.com/color/48/amazon-web-services.png', label: 'AWS Partner', desc: 'Advanced Cloud Solutions' },
@@ -202,7 +202,7 @@ const organizationSchema = {
     'DevOps', 'UI/UX Design', 'Software Engineering',
   ],
   areaServed: { '@type': 'GeoShape', name: 'Worldwide' },
-  hasCredential: ['ISO 27001', 'SOC 2 Type II', 'GDPR Compliant'],
+  hasCredential: ['MSME Registered', 'SOC 2 Type II', 'GDPR Compliant'],
 };
 
 /* ─── Main Section ───────────────────────────────────────────────────── */

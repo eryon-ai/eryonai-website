@@ -629,7 +629,7 @@ const devopsCloud: ServicePage = {
     { q: 'What is GitOps and should we use it?', a: 'GitOps treats your infrastructure and deployment configuration as code in Git. ArgoCD watches your Git repository and automatically syncs changes to your Kubernetes cluster. We recommend it for any team deploying to Kubernetes regularly.' },
     { q: 'Can you implement disaster recovery for our production systems?', a: 'Yes. We design and implement DR strategies including cross-region backups, failover automation, RTO/RPO analysis, and regular DR drills to validate recovery procedures.' },
     { q: 'How quickly can you set up a CI/CD pipeline?', a: 'A basic GitHub Actions pipeline for a containerized application can be set up in 1–2 days. A comprehensive pipeline with security scanning, multi-environment promotion, and automated testing takes 1–2 weeks.' },
-    { q: 'Do you support compliance frameworks like SOC 2 or ISO 27001?', a: 'Yes. We implement infrastructure controls aligned with SOC 2 Type II and ISO 27001 requirements, including audit logging, access control, encryption, vulnerability scanning, and evidence collection automation.' },
+    { q: 'Do you support compliance frameworks like SOC 2 or MSME standards?', a: 'Yes. We implement infrastructure controls aligned with SOC 2 Type II and MSME standards requirements, including audit logging, access control, encryption, vulnerability scanning, and evidence collection automation.' },
   ],
   ctaTitle: 'Ready to Upgrade Your Infrastructure?',
   ctaDescription: 'Share your current setup, pain points, and reliability or cost goals — we will design the right architecture and give you a migration plan.',
