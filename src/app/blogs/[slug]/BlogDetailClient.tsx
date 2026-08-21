@@ -134,13 +134,13 @@ export default function BlogDetailClient({ post, related }: BlogDetailClientProp
 
       {/* ─── Content + Sidebar ─── */}
       <div ref={contentRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col lg:flex-row gap-12">
+        <div className="flex flex-col md:flex-row gap-12">
 
           {/* ── Article Body ── */}
           <article className="flex-1 min-w-0">
             {/* Social Share */}
-            <div className="flex items-center gap-3 mb-10 pb-6" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-              <span className="text-sm font-semibold text-slate-400 mr-1">Share:</span>
+            <div className="flex flex-wrap items-center gap-2.5 mb-10 pb-6" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+              <span className="text-sm font-semibold text-slate-400 mr-1 w-full sm:w-auto">Share:</span>
               <a
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`}
                 target="_blank" rel="noopener noreferrer"
@@ -254,7 +254,7 @@ export default function BlogDetailClient({ post, related }: BlogDetailClientProp
 
           {/* ── Sidebar TOC ── */}
           {headings.length > 0 && (
-            <aside className="hidden lg:block lg:w-64 xl:w-72 shrink-0">
+            <aside className="hidden md:block md:w-56 lg:w-64 xl:w-72 shrink-0">
               <div className="sticky top-24">
                 <GlowCard color="#0066ff" className="p-5" style={{ background: 'rgba(255,255,255,0.03)' }}>
                   <h3 className="text-xs font-bold tracking-widest text-slate-500 uppercase mb-4">Table of Contents</h3>

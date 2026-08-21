@@ -164,6 +164,13 @@ export default function FloatingNav() {
       {/* Mobile Menu Dropdown */}
       <AnimatePresence>
         {mobileOpen && visible && (
+          <>
+            {/* Tap-outside backdrop */}
+            <div
+              className="fixed inset-0 z-4800 lg:hidden"
+              onClick={() => setMobileOpen(false)}
+              aria-hidden="true"
+            />
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -211,6 +218,7 @@ export default function FloatingNav() {
               })}
             </div>
           </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

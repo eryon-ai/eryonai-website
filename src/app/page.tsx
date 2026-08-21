@@ -101,6 +101,13 @@ export default function Home() {
       reviewCount: '80',
       bestRating: '5',
     },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      xpath: [
+        '/html/head/title',
+        '/html/head/meta[@name=\'description\']/@content'
+      ]
+    }
   };
 
   return (

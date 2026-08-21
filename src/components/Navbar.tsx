@@ -20,16 +20,16 @@ export default function Navbar() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan"></span>
               </span>
 
-              <p className="text-blue-100/80 text-[11px] sm:text-xs font-semibold tracking-wide uppercase">
+           <p className="text-blue-100/80 text-[10px] sm:text-[11px] md:text-xs font-semibold tracking-wide uppercase text-center">
                 Now Accepting Enterprise Clients
                 <span className="hidden sm:inline mx-2.5 text-brand-blue/40">|</span>
-                <span className="text-white group-hover:text-cyan-300 transition-colors duration-300 inline-flex items-center gap-1">
+                <span className="block sm:inline text-white group-hover:text-cyan-300 transition-colors duration-300 sm:inline-flex items-center gap-1">
                   Get a Free Consultation <span className="group-hover:translate-x-1 transition-transform duration-300">&rarr;</span>
                 </span>
               </p>
             </div>
 
-            <div className="hidden md:flex items-center gap-3 text-blue-200/60 text-[11px] font-semibold tracking-wider uppercase hover:text-white transition-colors">
+           <div className="hidden md:flex items-center gap-3 text-blue-200/60 text-[11px] font-semibold tracking-wider uppercase hover:text-white transition-colors">
               <span>connect@eryonai.com</span>
               <span className="text-brand-blue/40">|</span>
               <span>+91 78278 86571</span>

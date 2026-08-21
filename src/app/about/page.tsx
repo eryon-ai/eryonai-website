@@ -19,11 +19,13 @@ export const metadata: Metadata = {
     url: 'https://www.eryonai.com/about',
     type: 'website',
     siteName: 'ERYON AI',
+    images: [{ url: '/logo-full.jpg', width: 1200, height: 630, alt: 'About ERYON AI' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'About ERYON AI | Enterprise Software Engineering Agency',
     description: 'Enterprise-grade AI, cloud, and full-stack engineering. Based in New Delhi, serving clients worldwide.',
+    images: ['/logo-full.jpg'],
   },
   alternates: {
     canonical: 'https://www.eryonai.com/about',
@@ -33,6 +35,19 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.eryonai.com' },
+              { '@type': 'ListItem', position: 2, name: 'About Us', item: 'https://www.eryonai.com/about' },
+            ]
+          })
+        }}
+      />
       <div className="pt-20 bg-[#0f172a]">
         <AboutSection />
         <WhyUsSection />

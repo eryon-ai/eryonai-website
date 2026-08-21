@@ -164,7 +164,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
         
         <div className="container-custom relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             
             {/* Left: Text */}
             <motion.div
@@ -268,7 +268,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {data.buildItems.map((item, i) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -316,7 +316,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {data.industries.map((ind, i) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -486,7 +486,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
                     {currentProject.description}
                   </p>
 
-                  <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                     {currentProject.highlights.map((hl, index) => (
                       <div key={index} className="flex items-center gap-2.5 text-xs font-semibold text-slate-200">
                         <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" aria-hidden="true" />
@@ -662,7 +662,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
             </div>
 
             {/* Display Category Stack Details */}
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {(() => {
                 const activeGroup = data.techGroups.find(g => g.category === activeTechCategory);
                 const groupColor = activeGroup?.color || '#0066ff';
@@ -701,7 +701,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {data.benefits.map((ben, i) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

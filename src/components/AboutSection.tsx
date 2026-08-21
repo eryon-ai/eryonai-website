@@ -185,8 +185,10 @@ const organizationSchema = {
   numberOfEmployees: { '@type': 'QuantitativeValue', value: 50 },
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Connaught Place',
     addressLocality: 'New Delhi',
     addressRegion: 'Delhi',
+    postalCode: '110001',
     addressCountry: 'IN',
   },
   contactPoint: {
@@ -201,7 +203,14 @@ const organizationSchema = {
     'Web Development', 'Mobile App Development', 'Cybersecurity',
     'DevOps', 'UI/UX Design', 'Software Engineering',
   ],
-  areaServed: { '@type': 'GeoShape', name: 'Worldwide' },
+  areaServed: [
+    { '@type': 'Country', name: 'India' },
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'United Kingdom' },
+    { '@type': 'Country', name: 'United Arab Emirates' },
+    { '@type': 'Country', name: 'Australia' },
+    { '@type': 'Country', name: 'Canada' },
+  ],
   hasCredential: ['MSME Registered', 'SOC 2 Type II', 'GDPR Compliant'],
 };
 
@@ -349,7 +358,7 @@ export default function AboutSection() {
           {/* ═══════════════════════════════════════════════════════════
               BLOCK 4 — PROOF TRIPTYCH
           ═══════════════════════════════════════════════════════════ */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
             {/* Col 1: Performance Benchmarks */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}

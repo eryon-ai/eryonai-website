@@ -109,7 +109,7 @@ export default function WhyUsSection() {
           transition={{ delay: 0.45 }}
           className="cta-banner"
         >
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
                 Ready to Get Started?

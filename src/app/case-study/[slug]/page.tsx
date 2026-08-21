@@ -494,23 +494,42 @@ export default async function CaseStudyPage({
 
   const caseStudyJsonLd = {
     "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": `${p.title} - ${p.subtitle}`,
+    "@type": "TechArticle",
+    "headline": `${p.title} - ${p.subtitle}`,
     "description": p.tagline,
-    "creator": {
+    "datePublished": "2024-01-01T08:00:00+00:00",
+    "author": {
       "@type": "Organization",
       "name": "ERYON AI",
       "url": "https://www.eryonai.com"
     },
+    "publisher": {
+      "@type": "Organization",
+      "name": "ERYON AI",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.eryonai.com/logo-full.jpg"
+      }
+    },
     "keywords": p.tech.join(', '),
     "image": p.images[0]
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.eryonai.com" },
+      { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://www.eryonai.com/portfolio" },
+      { "@type": "ListItem", "position": 3, "name": p.title, "item": `https://www.eryonai.com/case-study/${slug}` }
+    ]
   };
 
   return (
     <div style={{ background: '#0f172a', minHeight: '100vh', fontFamily: 'Inter, system-ui, sans-serif' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(caseStudyJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([caseStudyJsonLd, breadcrumbJsonLd]) }}
       />
       {/* ── Top nav bar ── */}
       <nav style={{

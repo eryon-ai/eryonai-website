@@ -25,7 +25,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: data.meta.title,
     description: data.meta.description,
-    keywords: ['ERYON AI', data.hero.badge, ...data.hero.badge.split(' '), 'custom development', 'enterprise solutions'],
+    keywords: [
+      'ERYON AI',
+      data.hero.badge,
+      `${data.hero.badge} company`,
+      `${data.hero.badge} services`,
+      'enterprise software development',
+      'custom software engineering',
+      'digital transformation',
+      'software development agency',
+    ],
     openGraph: {
       title: data.meta.title,
       description: data.meta.description,
@@ -77,11 +86,21 @@ export default async function ServiceDynamicPage({ params }: { params: Promise<{
     }))
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.eryonai.com" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.eryonai.com/services" },
+      { "@type": "ListItem", "position": 3, "name": data.meta.title, "item": `https://www.eryonai.com/services/${resolvedParams.slug}` }
+    ]
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceJsonLd, faqJsonLd]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([serviceJsonLd, faqJsonLd, breadcrumbJsonLd]) }}
       />
       <ServicePageTemplate data={data} />
     </>

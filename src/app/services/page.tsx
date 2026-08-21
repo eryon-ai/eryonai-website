@@ -421,7 +421,19 @@ export default function ServicesPage() {
 
   return (
     <main>
-
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.eryonai.com' },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: 'https://www.eryonai.com/services' },
+            ]
+          })
+        }}
+      />
       {/* ── HERO — dark, matches site hero-dark style ── */}
       <section
         className="hero-dark relative"
@@ -577,7 +589,7 @@ export default function ServicesPage() {
           </motion.div>
 
           {/* Card grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {categories.map((cat, i) => (
               <CategoryCard key={cat.id} cat={cat} index={i} />
             ))}

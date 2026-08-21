@@ -55,7 +55,8 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.description,
     image: post.coverImage,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: new Date().toISOString(),
+    inLanguage: 'en',
     author: {
       '@type': 'Person',
       name: post.author.name,
@@ -64,7 +65,7 @@ export default async function BlogPostPage({ params }: Props) {
     publisher: {
       '@type': 'Organization',
       name: 'ERYON AI',
-      logo: { '@type': 'ImageObject', url: 'https://www.eryonai.com/logo.png' },
+      logo: { '@type': 'ImageObject', url: 'https://www.eryonai.com/logo-full.jpg' },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://www.eryonai.com/blogs/${post.slug}` },
     keywords: post.tags.join(', '),
@@ -72,11 +73,21 @@ export default async function BlogPostPage({ params }: Props) {
     timeRequired: `PT${post.readTime}M`,
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.eryonai.com' },
+      { '@type': 'ListItem', position: 2, name: 'Blogs', item: 'https://www.eryonai.com/blogs' },
+      { '@type': 'ListItem', position: 3, name: post.title, item: `https://www.eryonai.com/blogs/${post.slug}` },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([jsonLd, breadcrumbJsonLd]) }}
       />
       <BlogDetailClient post={post} related={related} />
     </>

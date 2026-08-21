@@ -77,10 +77,21 @@ export default function RootLayout({
               {
                 "@context": "https://schema.org",
                 "@type": "Organization",
+                "@id": "https://www.eryonai.com/#organization",
                 "name": "ERYON AI",
                 "url": "https://www.eryonai.com",
                 "logo": "https://www.eryonai.com/logo-full.jpg",
                 "description": "Premium software development agency specializing in Web Development, AI/ML integrations, and Mobile Apps.",
+                "priceRange": "$$",
+                "currenciesAccepted": "USD, GBP, EUR, INR",
+                "address": {
+                  "@type": "PostalAddress",
+                  "streetAddress": "Connaught Place",
+                  "addressLocality": "New Delhi",
+                  "addressRegion": "Delhi",
+                  "postalCode": "110001",
+                  "addressCountry": "IN"
+                },
                 "contactPoint": {
                   "@type": "ContactPoint",
                   "telephone": "+91-78278-86571",

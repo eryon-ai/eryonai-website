@@ -34,18 +34,28 @@ export default function BlogsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Blog',
-            name: 'ERYON AI Insights',
-            description: 'Latest articles on AI, Software Engineering, Cloud Infrastructure and Emerging Technologies.',
-            url: 'https://www.eryonai.com/blogs',
-            publisher: {
-              '@type': 'Organization',
-              name: 'ERYON AI',
-              logo: { '@type': 'ImageObject', url: 'https://www.eryonai.com/logo.png' },
+          __html: JSON.stringify([
+            {
+              '@context': 'https://schema.org',
+              '@type': 'Blog',
+              name: 'ERYON AI Insights',
+              description: 'Latest articles on AI, Software Engineering, Cloud Infrastructure and Emerging Technologies.',
+              url: 'https://www.eryonai.com/blogs',
+              publisher: {
+                '@type': 'Organization',
+                name: 'ERYON AI',
+                logo: { '@type': 'ImageObject', url: 'https://www.eryonai.com/logo-full.jpg' },
+              },
             },
-          }),
+            {
+              '@context': 'https://schema.org',
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.eryonai.com' },
+                { '@type': 'ListItem', position: 2, name: 'Blogs', item: 'https://www.eryonai.com/blogs' },
+              ],
+            }
+          ]),
         }}
       />
 
@@ -155,7 +165,7 @@ export default function BlogsPage() {
           )}
 
           {/* ═══ TRENDING SIDEBAR + CONTENT ═══ */}
-          <div className="flex flex-col lg:flex-row gap-10" id="articles">
+          <div className="flex flex-col md:flex-row gap-10" id="articles">
 
             {/* ── Main Content ── */}
             <div className="flex-1 min-w-0">
@@ -198,7 +208,7 @@ export default function BlogsPage() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+                    className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-6"
                   >
                     {filtered.map((post, i) => (
                       <BlogCard key={post.slug} post={post} index={i} />
@@ -225,7 +235,7 @@ export default function BlogsPage() {
             </div>
 
             {/* ── Sidebar ── */}
-            <aside className="lg:w-72 xl:w-80 shrink-0">
+            <aside className="md:w-60 lg:w-72 xl:w-80 shrink-0">
               <div className="sticky top-28 space-y-6">
                 {/* Trending */}
                 <GlowCard color="#f59e0b" className="p-6" style={{ background: 'rgba(255,255,255,0.03)' }}>

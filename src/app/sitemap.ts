@@ -39,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const caseStudySlugs = [
     'gym-dashboard', 'hospital-hrms', 'velorian-watches',
     'marblemart-crm', 'marblemart-web', 'edunexus-erp',
-    'atelier-clothing', 'realist-crm',
+    'atelier-clothing', 'realist-crm', 'infra-erp',
     'craverush', 'origin', 'hirestream', 'kyprox', 'auraplanters', 'echosync',
   ];
   const caseStudyRoutes = caseStudySlugs.map((slug) => ({

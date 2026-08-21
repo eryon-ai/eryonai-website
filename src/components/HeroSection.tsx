@@ -162,11 +162,10 @@ export default function HeroSection() {
 
             {/* Features row */}
             <motion.div
-
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.65 }}
-              className="flex flex-wrap gap-x-10 gap-y-3"
+              className="flex flex-wrap gap-x-6 sm:gap-x-10 gap-y-3"
             >
               {['MSME Registered', 'Agile Delivery', '24/7 Support', 'NDA Protected'].map((f, i) => (
                 <div key={i} className="flex items-center gap-2" style={{ color: '#94a3b8', fontSize: 13 }}>
