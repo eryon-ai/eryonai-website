@@ -68,10 +68,10 @@ export default function Footer() {
         {/* Main grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
             <Link
               href="/"
-              className="flex items-center gap-2 mb-5"
+              className="flex items-center justify-center md:justify-start gap-2 mb-5"
               style={{ textDecoration: 'none', padding: 0 }}
             >
               <Image src="/logo-removebg-preview.png" alt="ERYON AI" width={220} height={100} style={{ objectFit: 'contain' }} />
@@ -91,7 +91,7 @@ export default function Footer() {
             </p>
 
             {/* Socials */}
-            <div className="flex gap-2">
+            <div className="flex gap-2 justify-center md:justify-start">
               {[
                 { iconUrl: 'https://img.icons8.com/color/48/instagram-new.png', label: 'Instagram', href: 'https://www.instagram.com/eryonaisoftwaresolutions?utm_source=qr' },
                 { iconUrl: 'https://img.icons8.com/color/48/linkedin.png', label: 'LinkedIn', href: 'https://www.linkedin.com/company/113904195' },
@@ -125,7 +125,7 @@ export default function Footer() {
 
           {/* Nav columns */}
           {navCols.map((col, ci) => (
-            <div key={ci}>
+            <div key={ci} className="flex flex-col items-center md:items-start text-center md:text-left">
               <h5 style={{
                 fontFamily: 'Space Grotesk,sans-serif',
                 fontWeight: 700,
@@ -137,7 +137,7 @@ export default function Footer() {
               }}>
                 {col.title}
               </h5>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <ul className="flex flex-col gap-2.5 items-center md:items-start" style={{ listStyle: 'none', padding: 0 }}>
                 {col.links.map((link, li) => (
                   <li key={li}>
                     <Link
@@ -150,7 +150,6 @@ export default function Footer() {
                         color: '#64748b',
                         cursor: 'pointer',
                         transition: 'color 0.2s',
-                        textAlign: 'left',
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: 4,
@@ -171,31 +170,28 @@ export default function Footer() {
         {/* Newsletter */}
         <div style={{ marginBottom: 16 }} />
         <div
-          className="rounded-2xl p-6 mb-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5"
+          className="rounded-2xl p-6 mb-10 flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-left"
           style={{
             background: 'rgba(0,102,255,0.08)',
             border: '1px solid rgba(0,102,255,0.15)',
           }}
         >
-          
-          <div>
-            <div style={{ marginBottom: 16 }} />
-            <h5 style={{ fontFamily: 'Space Grotesk,sans-serif',marginLeft:16, fontWeight: 700, fontSize: 16, color: '#f1f5f9', marginBottom: 4 }}>
+          <div className="flex flex-col items-center md:items-start">
+            <h5 style={{ fontFamily: 'Space Grotesk,sans-serif', fontWeight: 700, fontSize: 16, color: '#f1f5f9', marginBottom: 4 }}>
               Stay Updated
             </h5>
-            <p style={{ fontSize: 13, color: '#64748b' ,marginLeft:16}}>
+            <p style={{ fontSize: 13, color: '#64748b' }}>
               AI trends, tech insights, and ERYON AI updates — in your inbox monthly.
             </p>
-            <div style={{ marginBottom: 10 }} />
           </div>
-          <div className="flex flex-col gap-2 w-full sm:w-auto">
+          <div className="flex flex-col gap-2 w-full md:w-auto items-center md:items-start">
             {subStatus === 'success' ? (
               <p className="inline-flex items-center gap-1.5" style={{ fontSize: 14, color: '#10b981', fontWeight: 600, padding: '10px 0' }}>
                 <CheckCircle2 size={16} strokeWidth={2.5} aria-hidden="true" />
                 You&apos;re subscribed! We&apos;ll be in touch.
               </p>
             ) : (
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                 <input
                   type="email"
                   placeholder="your@email.com"
@@ -218,8 +214,8 @@ export default function Footer() {
                 <button
                   onClick={handleSubscribe}
                   disabled={subStatus === 'loading'}
-                  className="btn-primary"
-                  style={{ padding: '10px 20px', marginRight: 10, fontSize: 13, whiteSpace: 'nowrap', opacity: subStatus === 'loading' ? 0.7 : 1 }}
+                  className="btn-primary justify-center"
+                  style={{ padding: '10px 20px', fontSize: 13, whiteSpace: 'nowrap', opacity: subStatus === 'loading' ? 0.7 : 1 }}
                 >
                   {subStatus === 'loading' ? '...' : 'Subscribe'}
                 </button>
@@ -231,15 +227,15 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 24 }}>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             <p style={{ fontSize: 13, color: '#475569' }}>
               © 2019 ERYON AI Software Solutions. All rights reserved.
             </p>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2">
               <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10b981', display: 'inline-block', animation: 'pulse-dot 2s ease-in-out infinite' }} />
               <span style={{ fontSize: 12, color: '#475569' }}>All systems operational</span>
             </div>
-            <div className="flex gap-5">
+            <div className="flex items-center justify-center gap-5">
               {['Privacy Policy', 'Terms', 'Cookies'].map((t, i) => (
                 <a key={i} href="#" style={{ fontSize: 13, color: '#475569', textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#00b4d8'; }}
