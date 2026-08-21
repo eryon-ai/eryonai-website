@@ -287,7 +287,7 @@ export default function AboutSection() {
           {/* ═══════════════════════════════════════════════════════════
               BLOCK 2 — STATS STRIP
           ═══════════════════════════════════════════════════════════ */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-16">
             {stats.map((s, i) => (
               <motion.div
                 key={i}

@@ -122,7 +122,7 @@ export default function CaseStudiesSection() {
                 </p>
 
                 {/* Metrics */}
-                <div className="grid grid-cols-3 gap-3 mb-5 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-5 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
                   {cs.metrics.map((m, mi) => (
                     <div key={mi} className="text-center">
                       <p className="text-base font-extrabold" style={{ color: cs.color, fontFamily: 'Space Grotesk, sans-serif' }}>{m.value}</p>

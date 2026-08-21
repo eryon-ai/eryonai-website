@@ -522,7 +522,7 @@ export default function ServicesPage() {
         style={{ background: '#0f172a', borderBottom: '1px solid rgba(255,255,255,0.07)' }}
       >
         <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-0 sm:divide-x divide-white/10">
             {[
               { n: '12', l: 'Solution Categories' },
               { n: '140+', l: 'Service Offerings' },

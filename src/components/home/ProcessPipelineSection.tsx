@@ -144,7 +144,7 @@ export default function ProcessPipelineSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}
-            className="rounded-2xl p-8 md:p-10 grid grid-cols-2 gap-10 items-center"
+            className="rounded-2xl p-6 sm:p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center"
             style={{
               background: `linear-gradient(135deg, ${steps[activeStep].color}10, rgba(255,255,255,0.03))`,
               border: `1px solid ${steps[activeStep].color}30`,
@@ -169,7 +169,7 @@ export default function ProcessPipelineSection() {
                 {steps[activeStep].description}
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {steps[activeStep].details.map((d, di) => (
                 <div key={di} className="flex items-center gap-2.5 p-3 rounded-xl"
                   style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>

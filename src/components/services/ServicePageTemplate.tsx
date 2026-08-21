@@ -200,7 +200,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
               </div>
               
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8 border-t border-slate-900 backdrop-blur-sm">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 pt-8 border-t border-slate-900 backdrop-blur-sm">
                 {data.hero.stats.map((stat, i) => (
                   <div key={i}>
                     <div className="text-2xl md:text-3xl font-space font-bold text-white mb-1">{stat.value}</div>
