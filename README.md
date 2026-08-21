@@ -23,7 +23,66 @@
 
 ## 📖 About
 
-This is the official marketing website for **[ERYON AI](https://www.eryonai.com)** — bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and built on the Next.js App Router.
+This is the official marketing website for **[ERYON AI](https://www.eryonai.com)** — an enterprise software engineering company delivering AI/ML solutions, cloud-native architecture, full-stack products, and cybersecurity for startups and global enterprises. The site is bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and built on the Next.js App Router.
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
+
+## 🖥️ Site Sections
+
+<div align="center">
+
+| Section | Route | Purpose |
+|---|---|---|
+| 🏠 **Home** | `/` | Hero, value proposition, service highlights |
+| ⚙️ **Services** | `/services` | AI/ML, cloud, mobile, cybersecurity, UI/UX offerings |
+| 🚀 **Portfolio** | `/portfolio` | Case studies and selected client work |
+| 🔄 **Process** | `/process` | Discovery → Architecture → Development → QA → Launch → Support |
+| 📝 **Blog** | `/blogs` | Engineering insights and company updates |
+| 📩 **Contact** | `/contact` | Project inquiries and lead capture |
+
+</div>
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
+
+## ✨ Key Features
+
+- 📱 **Fully responsive** — mobile-first layouts across every breakpoint
+- ⚡ **Optimized performance** — App Router, image optimization, and font optimization out of the box
+- 🎨 **Design-system driven UI** — consistent spacing, typography, and component patterns via Tailwind CSS
+- 🔍 **SEO-ready** — metadata, Open Graph tags, and semantic markup for discoverability
+- ♿ **Accessible by default** — WCAG-aligned markup and keyboard navigation
+- 🧩 **Modular components** — reusable sections for services, case studies, and testimonials
+- 📊 **Analytics-ready** — structured for conversion tracking and funnel analysis
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
+
+## 📁 Project Structure
+
+```
+eryon-ai-website/
+├── app/
+│   ├── page.tsx           # Home page
+│   ├── layout.tsx         # Root layout (fonts, metadata, providers)
+│   ├── services/          # Services section
+│   ├── portfolio/         # Portfolio / case studies
+│   ├── process/           # How-we-build section
+│   ├── blogs/              # Blog listing & posts
+│   └── contact/           # Contact / lead form
+├── components/            # Shared UI components
+├── public/                 # Static assets (logo, images, icons)
+├── styles/                 # Global styles / Tailwind config
+└── README.md
+```
+
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
+
+## 🛠️ Built With
+
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
 <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
 
