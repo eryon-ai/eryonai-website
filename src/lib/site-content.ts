@@ -63,6 +63,7 @@ export const siteContent = {
     { slug: 'craverush', title: 'CraveRush', summary: 'Event-driven food delivery platform with Spring Boot, Kafka, React, and Stripe.' },
     { slug: 'origin', title: 'Origin', summary: 'Immersive digital experience with Three.js, GSAP, and React Lenis.' },
     { slug: 'hirestream', title: 'HireStream', summary: 'Recruitment platform with Spring Boot, MySQL, and JWT security.' },
+    { slug: 'hirix', title: 'Hirix', summary: 'AI-proctored hiring platform with DeepSeek grading and candidate trust scoring.' },
     { slug: 'kyprox', title: 'Kyprox', summary: 'Music web experience with Three.js, GSAP, and Next.js.' },
     { slug: 'auraplanters', title: 'Aura Planters', summary: 'MERN e-commerce with Redux and Razorpay.' },
     { slug: 'echosync', title: 'EchoSync AI', summary: 'Real-time voice AI pipeline using FastAPI and WebSockets.' },
@@ -73,6 +74,7 @@ export const siteContent = {
     { slug: 'marblemart-web', title: 'MarbleMart Web', summary: 'B2B digital catalog with 3D marble texture visualizations.' },
     { slug: 'edunexus-erp', title: 'EduNexus ERP', summary: 'Next-generation School ERP and Education Management Platform.' },
     { slug: 'atelier-clothing', title: 'Atelier Clothing', summary: 'Premium luxury fashion and streetwear e-commerce platform.' },
+    { slug: 'atelier-mobile', title: 'Atelier Mobile', summary: 'React Native + Expo luxury streetwear shopping app with a full admin panel.' },
     { slug: 'realist-crm', title: 'Realist CRM', summary: 'Luxury real estate property management and CRM solution.' },
     { slug: 'infra-erp', title: 'Construction AI ERP', summary: 'Enterprise construction management platform with AI estimation and automated ledgers.' }
   ],

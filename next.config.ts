@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: 'https', hostname: 'images.unsplash.com' },
       { protocol: 'https', hostname: 'res.cloudinary.com' },
+      { protocol: 'https', hostname: 'f005.backblazeb2.com' },
       { protocol: 'https', hostname: 'img.icons8.com' },
       { protocol: 'https', hostname: 'api.dicebear.com' },
     ],

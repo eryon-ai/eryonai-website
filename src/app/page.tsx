@@ -1,4 +1,3 @@
-
 import HeroSection from '@/components/HeroSection';
 import TrustedBySection from '@/components/home/TrustedBySection';
 import CapabilitiesSection from '@/components/home/CapabilitiesSection';

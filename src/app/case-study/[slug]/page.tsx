@@ -29,11 +29,11 @@ const projects: Record<string, Project> = {
     tech: ['Next.js', 'React', 'Tailwind CSS', 'Supabase', 'Stripe', 'Framer Motion'],
     liveLink: 'https://gym-website-admin-panel.vercel.app',
     images: [
-      '/portfolio/gym-home.png',
-      '/portfolio/gym-membership.png',
-      '/portfolio/gym-crm-dashboard.png',
-      '/portfolio/gym-crm-analytics.png',
-      '/portfolio/gym-crm-expired.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/gym-home.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/gym-membership.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/gym-crm-dashboard.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/gym-crm-analytics.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/gym-crm-expired.png',
     ],
   },
   'hospital-hrms': {
@@ -55,11 +55,11 @@ const projects: Record<string, Project> = {
     tech: ['Next.js', 'Spring Boot', 'MongoDB', 'PostgreSQL', 'Redis', 'Docker', 'JWT with OAuth'],
     liveLink: 'https://medical-hospital-crm-website.vercel.app',
     images: [
-      '/portfolio/hrms-home.png',
-      '/portfolio/hrms-dashboard-light.png',
-      '/portfolio/hrms-appointments.png',
-      '/portfolio/hrms-patients.png',
-      '/portfolio/hrms-dashboard-dark.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/hrms-home.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/hrms-dashboard-light.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/hrms-appointments.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/hrms-patients.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/hrms-dashboard-dark.png',
     ],
   },
   'velorian-watches': {
@@ -81,11 +81,11 @@ const projects: Record<string, Project> = {
     tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Redis'],
     liveLink: 'https://velorian-luxury-store.vercel.app/',
     images: [
-      '/portfolio/velorian-home.png',
-      '/portfolio/velorian-1.png',
-      '/portfolio/velorian-2.png',
-      '/portfolio/velorian-3.png',
-      '/portfolio/velorian-4.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/velorian-home.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/velorian-1.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/velorian-2.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/velorian-3.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/velorian-4.png',
     ],
   },
   'marblemart-crm': {
@@ -111,11 +111,11 @@ const projects: Record<string, Project> = {
       pass: 'Admin@123456',
     },
     images: [
-      '/portfolio/marblemart-home.png',
-      '/portfolio/marblemart-1.png',
-      '/portfolio/marblemart-2.png',
-      '/portfolio/marblemart-3.png',
-      '/portfolio/marblemart-4.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/marblemart-home.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/marblemart-1.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/marblemart-2.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/marblemart-3.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/marblemart-4.png',
     ],
   },
   'marblemart-web': {
@@ -138,11 +138,11 @@ const projects: Record<string, Project> = {
     tech: ['Next.js', 'Vercel Edge', 'Tailwind CSS', 'Framer Motion', 'SEO Optimization'],
     liveLink: 'https://marble-mart-website.vercel.app',
     images: [
-      '/portfolio/marblemart-web-home.png',
-      '/portfolio/marblemart-web-1.png',
-      '/portfolio/marblemart-web-2.png',
-      '/portfolio/marblemart-web-3.png',
-      '/portfolio/marblemart-web-4.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/marblemart-web-home.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/marblemart-web-1.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/marblemart-web-2.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/marblemart-web-3.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/marblemart-web-4.png',
     ],
   },
   'edunexus-erp': {
@@ -164,13 +164,13 @@ const projects: Record<string, Project> = {
     tech: ['React', 'React Native', 'Java', 'Spring Boot', 'PostgreSQL', 'Twilio API', 'Stripe'],
     liveLink: 'https://edu-nexus-school-erp.vercel.app/login',
     images: [
-      '/portfolio/edunexus-home.png',
-      '/portfolio/edunexus-1.png',
-      '/portfolio/edunexus-2.png',
-      '/portfolio/edunexus-3.png',
-      '/portfolio/edunexus-4.png',
-      '/portfolio/edunexus-5.png',
-      '/portfolio/edunexus-6.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/edunexus-home.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/edunexus-1.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/edunexus-2.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/edunexus-3.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/edunexus-4.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/edunexus-5.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/edunexus-6.png',
     ],
   },
   'atelier-clothing': {
@@ -192,18 +192,60 @@ const projects: Record<string, Project> = {
     tech: ['Enterprise Architecture', 'Next.js', 'Spring Boot', 'PostgreSQL', 'MongoDB Atlas', 'Valkey', 'Docker', 'RabbitMQ', 'Clerk', 'Websocket'],
     liveLink: 'https://atelier-clothing-store-one.vercel.app',
     images: [
-      '/portfolio/atelier-home.png',
-      '/portfolio/atelier-1.png',
-      '/portfolio/atelier-2.png',
-      '/portfolio/atelier-3.png',
-      '/portfolio/atelier-4.png',
-      '/portfolio/atelier-5.png',
-      '/portfolio/atelier-6.png',
-      '/portfolio/atelier-7.png',
-      '/portfolio/atelier-8.png',
-      '/portfolio/atelier-9.png',
-      '/portfolio/atelier-10.png',
-      '/portfolio/atelier-11.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-home.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-1.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-2.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-3.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-4.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-5.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-6.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-7.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-8.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-9.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-10.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-11.png',
+    ],
+  },
+  'atelier-mobile': {
+    slug: 'atelier-mobile',
+    title: 'Atelier Mobile',
+    subtitle: 'Luxury Streetwear Mobile App',
+    category: 'Mobile App / E-Commerce',
+    color: '#ff4d00', // Atelier accent orange
+    tagline: 'A client-demo-ready React Native shopping app — 158/158 QA points verified.',
+    overview: 'A production-grade mobile e-commerce app built with React Native and Expo SDK 56, bringing the ATELIER luxury streetwear brand to iOS and Android. It ships with 480+ curated products across 20 collections, a 4-step checkout flow, real coupon validation, wishlist and cart persistence, and a full 6-tab admin panel — all running on a single Expo codebase for both platforms.',
+    challenge: 'The client needed a native-feeling shopping app that could be demoed instantly on any device via QR code, without a backend to stand up or maintain. It had to cover the full retail loop — browse, filter, wishlist, checkout, and store administration — while staying fast and stable enough for a live client walkthrough.',
+    solution: 'We built the app on Expo SDK 56 with React Navigation 7 (bottom tabs + native stacks) and Zustand for cart, wishlist, auth, search, and admin state, persisted via AsyncStorage. Performance work included React.memo on product/cart list items, useMemo for cart totals, React.lazy code-splitting across 19 screens, and an ErrorBoundary for crash isolation. A hidden admin panel (long-press the logo) exposes revenue analytics, order management, and customer data entirely from mock state — no backend required for the demo.',
+    metrics: [
+      { label: 'QA Pass Rate', value: '158/158 (100%)' },
+      { label: 'Product Catalog', value: '480+ Items' },
+      { label: 'Screens', value: '19 + 6 Admin' },
+      { label: 'Bundle (iOS)', value: '~11MB' },
+    ],
+    tech: ['React Native 0.85', 'Expo SDK 56', 'TypeScript', 'React Navigation 7', 'Zustand', 'AsyncStorage'],
+    testCredentials: {
+      id: 'alex@atelier.com',
+      pass: 'anything (6+ chars)',
+    },
+    mobileScreenshots: true,
+    images: [
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-home.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-products.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-product-detail.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-cart.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-checkout-1.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-checkout-4.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-order-confirmed.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-search.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-new-arrivals.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-community.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-login.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-signup.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-admin-overview.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-admin-products.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-admin-customers.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-admin-analytics.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/atelier-mobile-admin-settings.png',
     ],
   },
   'realist-crm': {
@@ -225,11 +267,11 @@ const projects: Record<string, Project> = {
     tech: ['React', 'FastAPI', 'Python', 'PostgreSQL', 'Mapbox', 'Twilio'],
     liveLink: 'https://real-estate-crm-xi-beryl.vercel.app/',
     images: [
-      '/portfolio/realist-home.png',
-      '/portfolio/realist-1.png',
-      '/portfolio/realist-2.png',
-      '/portfolio/realist-3.png',
-      '/portfolio/realist-4.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/realist-home.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/realist-1.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/realist-2.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/realist-3.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/realist-4.png',
     ],
   },
   'infra-erp': {
@@ -250,10 +292,10 @@ const projects: Record<string, Project> = {
     ],
     tech: ['Next.js 14', 'FastAPI', 'PostgreSQL', 'MinIO', 'Redis', 'Docker', 'Google Sheets API', 'AI Vision'],
     images: [
-      '/portfolio/infra-1.png',
-      '/portfolio/infra-2.png',
-      '/portfolio/infra-3.png',
-      '/portfolio/infra-4.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/infra-1.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/infra-2.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/infra-3.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/infra-4.png',
     ],
   },
   craverush: {
@@ -281,6 +323,9 @@ const projects: Record<string, Project> = {
       'https://res.cloudinary.com/dy4ngisxj/image/upload/v1775236621/WhatsApp_Image_2026-04-03_at_16.20.42_him1xd.jpg',
       'https://res.cloudinary.com/dy4ngisxj/image/upload/v1775241807/WhatsApp_Image_2026-04-04_at_00.13.03_pchy1n.jpg',
       'https://res.cloudinary.com/dy4ngisxj/image/upload/v1775241967/WhatsApp_Image_2026-04-04_at_00.15.57_f56tfb.jpg',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/craverush-admin-dashboard.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/craverush-fleet-dashboard.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/craverush-architecture.png',
     ],
   },
   origin: {
@@ -308,6 +353,38 @@ const projects: Record<string, Project> = {
       'https://res.cloudinary.com/dy4ngisxj/image/upload/v1775241111/Screenshot_2026-04-03_at_11.59.43_PM_lfwucy.png',
       'https://res.cloudinary.com/dy4ngisxj/image/upload/v1775241103/Screenshot_2026-04-03_at_11.59.24_PM_j9lryt.png',
       'https://res.cloudinary.com/dy4ngisxj/image/upload/v1775241106/Screenshot_2026-04-04_at_12.01.07_AM_qkdrh4.png',
+    ],
+  },
+  hirix: {
+    slug: 'hirix',
+    title: 'Hirix',
+    subtitle: 'AI-Powered Verified Hiring Platform',
+    category: 'Web / Enterprise',
+    color: '#3b82f6', // Blue
+    tagline: 'Bridging talented candidates and enterprise HR teams through AI-proctored skill verification and trust scoring.',
+    overview:
+      'Hirix is a high-end, trust-based hiring platform built on a multi-engine backend: an AI engine (DeepSeek) for resume parsing and subjective grading, a proctoring engine with tab-switch detection and escalating cooldowns, an anti-fraud engine that scans messages for bribe/scam attempts, and a trust engine that scores every candidate 0-100 from verified test performance and profile completeness.',
+    challenge:
+      'Enterprise HR teams have no reliable way to verify a candidate\'s claimed skills before an interview, and resume-only screening lets unverified or even fraudulent profiles through. The client needed proctored, AI-graded skill assessments tied to a single trust score, plus safeguards against test brute-forcing and in-platform scams.',
+    solution:
+      'We built a Spring Boot backend with a dedicated Code-Engine microservice: candidate code runs through Judge0 for synchronous test-case execution while DeepSeek grades algorithmic quality asynchronously via CompletableFuture, and the two scores merge into a final result. A custom FraudDetectionService scans messages for UPI/bank-detail requests, and TestEngineService enforces 7/14/21-day escalating cooldowns against repeated attempts. The Next.js frontend gives candidates, recruiters, and admins each a dedicated dashboard.',
+    metrics: [
+      { label: 'Trust Score Formula', value: '70% Test / 30% Profile' },
+      { label: 'Anti-Cheat', value: 'Tab-Switch Detection' },
+      { label: 'AI Grading', value: 'DeepSeek Async' },
+      { label: 'Cooldowns', value: '7 / 14 / 21-Day' },
+    ],
+    tech: ['Next.js', 'Spring Boot 3', 'Spring Security', 'Hibernate/JPA', 'MySQL', 'DeepSeek AI', 'Judge0', 'Stripe'],
+    testCredentials: {
+      id: 'dummy_pro@mysql.com',
+      pass: 'Password@123',
+    },
+    images: [
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/hirix-admin-dashboard.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/hirix-candidate-dashboard.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/hirix-candidate-msg.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/hirix-code-editor.png',
+      'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/hirix-testwindow.png',
     ],
   },
   hirestream: {
@@ -437,6 +514,7 @@ interface Project {
   metrics: Metric[];
   tech: string[];
   images: string[];
+  mobileScreenshots?: boolean;
   liveLink?: string;
   testCredentials?: {
     id: string;
@@ -688,14 +766,14 @@ export default async function CaseStudyPage({
             Project Screenshots
           </h2>
         </FadeIn>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <div className={p.mobileScreenshots ? 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4' : 'grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4'}>
           {p.images.map((src, i) => (
             <FadeIn key={i} delay={i * 0.06} y={20}>
               <div
                 className="group relative overflow-hidden"
                 style={{
                   borderRadius: 16,
-                  aspectRatio: '16/9',
+                  aspectRatio: p.mobileScreenshots ? '9/16' : '16/9',
                   boxShadow: '0 4px 24px rgba(0,0,0,0.35)',
                   border: '1px solid rgba(255,255,255,0.08)',
                   background: '#1e293b',
@@ -705,8 +783,8 @@ export default async function CaseStudyPage({
                   src={src}
                   alt={`${p.title} screenshot ${i + 1}`}
                   fill
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  sizes={p.mobileScreenshots ? '(max-width: 640px) 50vw, 25vw' : '(max-width: 640px) 100vw, 50vw'}
+                  className={p.mobileScreenshots ? 'object-contain transition-transform duration-700 group-hover:scale-105' : 'object-cover transition-transform duration-700 group-hover:scale-105'}
                   priority={i < 2}
                 />
               </div>
