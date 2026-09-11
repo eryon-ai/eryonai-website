@@ -44,15 +44,18 @@ const testimonials = [
   },
 ];
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
   const [current, setCurrent] = useState(0);
+  const activeItems: typeof testimonials = dict?.items
+    ? dict.items.map((t: any, i: number) => ({ ...testimonials[i], name: t.name, text: t.text, initials: t.initials }))
+    : testimonials;
 
-  const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
-  const next = () => setCurrent((c) => (c + 1) % testimonials.length);
+  const prev = () => setCurrent((c) => (c - 1 + activeItems.length) % activeItems.length);
+  const next = () => setCurrent((c) => (c + 1) % activeItems.length);
 
-  const getVisible = () => [0, 1, 2].map((offset) => testimonials[(current + offset) % testimonials.length]);
+  const getVisible = () => [0, 1, 2].map((offset) => activeItems[(current + offset) % activeItems.length]);
 
   return (
     <section id="testimonials" className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0f172a' }}>
@@ -66,7 +69,7 @@ export default function TestimonialsSection() {
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12">
           <div>
             <motion.div initial={{ opacity: 0, y: 16 }} animate={inView ? { opacity: 1, y: 0 } : {}}>
-              <SectionBadge icon={MessageSquareQuote} label="Client Stories" color="#6366f1" />
+              <SectionBadge icon={MessageSquareQuote} label={dict?.badge ?? "Client Stories"} color="#6366f1" />
             </motion.div>
             <motion.h2
               initial={{ opacity: 0, y: 16 }}
@@ -75,9 +78,9 @@ export default function TestimonialsSection() {
               className="text-3xl md:text-5xl font-extrabold"
               style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}
             >
-              Trusted by{' '}
+              {dict?.titlePrefix ?? 'Trusted by '}{' '}
               <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Industry Leaders
+                {dict?.titleGradient ?? 'Industry Leaders'}
               </span>
             </motion.h2>
           </div>
@@ -100,7 +103,7 @@ export default function TestimonialsSection() {
               <ChevronLeft size={18} strokeWidth={2} aria-hidden="true" />
             </button>
             <div className="flex gap-2">
-              {testimonials.map((_, i) => (
+              {activeItems.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
@@ -180,26 +183,26 @@ export default function TestimonialsSection() {
               exit={{ opacity: 0, x: -30 }}
               transition={{ duration: 0.3 }}
             >
-              <GlowCard color={testimonials[current].color} className="p-7" style={{ background: 'rgba(255,255,255,0.03)' }}>
+              <GlowCard color={activeItems[current].color} className="p-7" style={{ background: 'rgba(255,255,255,0.03)' }}>
                 <div className="flex gap-0.5 mb-4">
-                  {Array(testimonials[current].rating).fill(0).map((_, si) => (
+                  {Array(activeItems[current].rating).fill(0).map((_, si) => (
                     <span key={si} style={{ color: '#f59e0b', fontSize: 14 }}>★</span>
                   ))}
                 </div>
                 <p className="text-sm italic mb-5" style={{ color: '#cbd5e1', lineHeight: 1.75 }}>
-                  &quot;{testimonials[current].text}&quot;
+                  &quot;{activeItems[current].text}&quot;
                 </p>
                 <div className="flex items-center gap-3 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
                   <div
                     className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 text-[13px] font-extrabold text-white"
                     style={{
-                      background: `linear-gradient(135deg, ${testimonials[current].color}, ${testimonials[current].color}90)`,
+                      background: `linear-gradient(135deg, ${activeItems[current].color}, ${activeItems[current].color}90)`,
                       fontFamily: 'Space Grotesk,sans-serif',
                     }}
                   >
-                    {testimonials[current].initials}
+                    {activeItems[current].initials}
                   </div>
-                  <p className="text-sm font-bold" style={{ color: '#f8fafc' }}>{testimonials[current].name}</p>
+                  <p className="text-sm font-bold" style={{ color: '#f8fafc' }}>{activeItems[current].name}</p>
                 </div>
               </GlowCard>
             </motion.div>

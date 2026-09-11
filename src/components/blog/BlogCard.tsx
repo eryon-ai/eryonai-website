@@ -3,8 +3,11 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { Flame } from 'lucide-react';
 import { BlogPost } from '@/lib/blog-data';
+import { getLocaleFromPathname, getLocalizedPath } from '@/lib/layout-translations';
+import { getCategoryLabel } from '@/lib/blog-translations';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -52,6 +55,10 @@ function onCardHover(hovering: boolean) {
 }
 
 export default function BlogCard({ post, index = 0, featured = false }: BlogCardProps) {
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const blogHref = getLocalizedPath(`/blogs/${post.slug}`, locale);
+
   if (featured) {
     return (
       <motion.article
@@ -64,7 +71,7 @@ export default function BlogCard({ post, index = 0, featured = false }: BlogCard
         onMouseEnter={onCardHover(true)}
         onMouseLeave={onCardHover(false)}
       >
-        <Link href={`/blogs/${post.slug}`} className="block">
+        <Link href={blogHref} className="block">
           <div className="relative h-80 overflow-hidden">
             <Image
               src={post.coverImage}
@@ -76,7 +83,7 @@ export default function BlogCard({ post, index = 0, featured = false }: BlogCard
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${getCategoryGradient(post.category)} mb-3`}>
-                {post.category}
+                {getCategoryLabel(post.category, locale)}
               </span>
               <h2 className="text-2xl md:text-3xl font-bold text-white leading-tight mb-2 group-hover:text-blue-300 transition-colors">
                 {post.title}
@@ -121,7 +128,7 @@ export default function BlogCard({ post, index = 0, featured = false }: BlogCard
       onMouseEnter={onCardHover(true)}
       onMouseLeave={onCardHover(false)}
     >
-      <Link href={`/blogs/${post.slug}`} className="flex flex-col h-full">
+      <Link href={blogHref} className="flex flex-col h-full">
         <div className="relative h-52 overflow-hidden">
           <Image
             src={post.coverImage}
@@ -132,7 +139,7 @@ export default function BlogCard({ post, index = 0, featured = false }: BlogCard
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <span className={`absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${getCategoryGradient(post.category)}`}>
-            {post.category}
+            {getCategoryLabel(post.category, locale)}
           </span>
           {post.trending && (
             <span className="absolute top-4 right-4 px-2.5 py-1 rounded-full text-xs font-bold text-white bg-orange-500/90 backdrop-blur-sm flex items-center gap-1">

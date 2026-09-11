@@ -59,8 +59,11 @@ const metrics = [
   },
 ];
 
-export default function MetricsSection() {
+export default function MetricsSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
+  const activeItems: typeof metrics = dict?.items
+    ? dict.items.map((item: any, i: number) => ({ ...metrics[i], label: item.label, sub: item.sub }))
+    : metrics;
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
@@ -82,21 +85,21 @@ export default function MetricsSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <SectionBadge icon={BarChart3} label="By the Numbers" color="#00b4d8" />
+          <SectionBadge icon={BarChart3} label={dict?.badge ?? "By the Numbers"} color="#00b4d8" />
           <h2 className="text-3xl md:text-5xl font-extrabold mb-4" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em' }}>
-            Results That Speak{' '}
+            {dict?.titlePrefix ?? 'Results That Speak '}{' '}
             <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              For Themselves
+              {dict?.titleGradient ?? 'For Themselves'}
             </span>
           </h2>
           <p className="text-base md:text-lg max-w-xl mx-auto" style={{ color: '#64748b' }}>
-            Every metric below represents a real outcome delivered to a real client.
+            {dict?.subtitle ?? 'Every metric below represents a real outcome delivered to a real client.'}
           </p>
         </motion.div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {metrics.map((m, i) => (
+          {activeItems.map((m, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 32 }}

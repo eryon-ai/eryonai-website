@@ -1,0 +1,883 @@
+{
+  "locale": "fr",
+  "meta": {
+    "title": "ERYON AI | Développement Logiciel Sur Mesure & Solutions IA d'Entreprise",
+    "description": "ERYON AI est une agence technologique premium spécialisée dans le développement Web sur mesure, l'IA Générative, les Applications Mobiles et le Cloud DevOps."
+  },
+  "hero": {
+    "titlePrefix": "Logiciels Sur Mesure",
+    "titleGradient1": "de Niveau Entreprise",
+    "titleAnd": "&",
+    "titleGradient2": "Développement IA",
+    "description": "ERYON AI propose des applications web sur mesure, de l'IA générative, des applications mobiles et des solutions cloud de niveau entreprise, conçues pour la performance, la sécurité et la croissance à long terme.",
+    "ctaStart": "Démarrer votre projet",
+    "ctaWork": "Voir nos réalisations →",
+    "badges": [
+      "Enregistré MSME",
+      "Livraison agile",
+      "Support 24/7",
+      "Protégé par NDA"
+    ],
+    "trustedTech": "NOS Technologies & Plateformes de Confiance",
+    "stats": [
+      {
+        "value": "150+",
+        "label": "Projets livrés"
+      },
+      {
+        "value": "18+",
+        "label": "Clients entreprise"
+      },
+      {
+        "value": "8+",
+        "label": "Années d'excellence"
+      },
+      {
+        "value": "50+",
+        "label": "Ingénieurs experts"
+      }
+    ]
+  },
+  "homeServices": {
+    "badge": "Notre Expertise",
+    "titlePrefix": "Nos Services Clés en ",
+    "titleGradient": "Ingénierie Logicielle & IA",
+    "subtitle": "Des solutions digitales de bout en bout conçues pour l'échelle, la performance et un impact business mesurable.",
+    "learnMore": "En savoir plus",
+    "bottomTitle": "Vous ne trouvez pas ce qu'il vous faut ?",
+    "bottomDesc": "Nous proposons des solutions sur mesure. Discutons de vos besoins spécifiques.",
+    "bottomCta": "Parler à un expert →",
+    "items": [
+      {
+        "title": "Développement Web",
+        "description": "Applications web sur mesure hautement performantes et optimisées SEO, construites avec Next.js, React et des frameworks modernes. Des plateformes SaaS B2B responsives aux portails d'entreprise complexes.",
+        "features": [
+          "Next.js & React",
+          "TypeScript",
+          "API REST & GraphQL",
+          "Intégration CMS"
+        ]
+      },
+      {
+        "title": "Développement d'Applications Mobiles",
+        "description": "Applications mobiles natives et multiplateformes offrant une UX exceptionnelle. Solutions React Native & Flutter fonctionnant parfaitement sur iOS et Android.",
+        "features": [
+          "React Native",
+          "Flutter",
+          "iOS & Android",
+          "Offline-First"
+        ]
+      },
+      {
+        "title": "Solutions IA / ML",
+        "description": "Systèmes intelligents alimentés par le machine learning, l'IA générative, le NLP et la vision par ordinateur. Transformez vos données brutes en insights exploitables et créez des workflows automatisés basés sur des LLM sur mesure.",
+        "features": [
+          "Intégration LLM",
+          "Vision par Ordinateur",
+          "NLP & Chatbots",
+          "Analytique Prédictive"
+        ]
+      },
+      {
+        "title": "Cloud & DevOps",
+        "description": "Infrastructure cloud évolutive sur AWS, GCP et Azure avec pipelines CI/CD, orchestration Kubernetes et infrastructure as code pour des déploiements sans interruption.",
+        "features": [
+          "AWS / GCP / Azure",
+          "Docker & Kubernetes",
+          "Pipelines CI/CD",
+          "Terraform IaC"
+        ]
+      },
+      {
+        "title": "Cybersécurité",
+        "description": "Frameworks de sécurité zero-trust, conformité OWASP, analyse automatisée des vulnérabilités et tests de pénétration pour sécuriser vos systèmes à chaque niveau.",
+        "features": [
+          "Modèle Zero-Trust",
+          "Tests de Pénétration",
+          "Conformité OWASP",
+          "Audit SOC 2"
+        ]
+      },
+      {
+        "title": "Design UI/UX",
+        "description": "Un design produit axé sur la recherche qui convertit. Nous créons des interfaces intuitives fondées sur la recherche utilisateur, les normes d'accessibilité et des systèmes de design de classe mondiale.",
+        "features": [
+          "Prototypage Figma",
+          "Systèmes de Design",
+          "Accessibilité (WCAG)",
+          "Recherche Utilisateur"
+        ]
+      }
+    ]
+  },
+  "process": {
+    "badge": "Comment Nous Travaillons",
+    "titlePrefix": "Notre Processus Éprouvé en ",
+    "titleGradient": "6 Étapes",
+    "subtitle": "Une méthodologie de livraison transparente et structurée qui garantit la réussite de chaque projet — dans les délais et le budget.",
+    "avgTimeLabel": "Délai Moyen de Lancement",
+    "avgTimeValue": "8–12 Semaines",
+    "avgTimeSub": "Pour la plupart des projets d'entreprise",
+    "onTimeRate": "Taux de livraison dans les délais :",
+    "onTimeRateValue": "94%",
+    "steps": [
+      {
+        "title": "Découverte & Exigences",
+        "desc": "Nous commençons par des ateliers approfondis pour comprendre vos objectifs métier, vos contraintes techniques et les besoins des utilisateurs. Livrable : un document d'exigences détaillé et une feuille de route projet."
+      },
+      {
+        "title": "Architecture & Design",
+        "desc": "Nos architectes conçoivent des plans système évolutifs pendant que les designers créent des prototypes UI testés auprès des utilisateurs. Vous validez avant qu'une seule ligne de code ne soit écrite."
+      },
+      {
+        "title": "Développement Agile",
+        "desc": "Des sprints de deux semaines avec des démos hebdomadaires. Vous bénéficiez d'une visibilité totale via un tableau de bord projet en temps réel, un canal Slack et un chef de projet dédié."
+      },
+      {
+        "title": "Assurance Qualité",
+        "desc": "Des tests automatisés rigoureux, un contrôle qualité manuel, des audits de sécurité et un benchmarking des performances garantissent un produit livré sans compromis."
+      },
+      {
+        "title": "Déploiement & Lancement",
+        "desc": "Des déploiements CI/CD sans interruption avec possibilité de retour arrière. Nous configurons le monitoring, les alertes et les logs avant la mise en production."
+      },
+      {
+        "title": "Support Post-Lancement",
+        "desc": "Support dédié garanti par SLA, monitoring proactif, rapports de performance mensuels et revues stratégiques trimestrielles inclus dans tous nos engagements."
+      }
+    ]
+  },
+  "capabilities": {
+    "badge": "Compétences Clés",
+    "titlePrefix": "Tout ce dont vous avez besoin pour ",
+    "titleGradient": "Construire & Évoluer",
+    "subtitle": "De l'idéation au déploiement en production, nous couvrons tout le spectre de l'ingénierie digitale moderne.",
+    "items": [
+      {
+        "title": "IA & Machine Learning",
+        "description": "LLM sur mesure, pipelines RAG, vision par ordinateur, NLP et analytique prédictive générant un impact business mesurable.",
+        "tags": [
+          "Fine-tuning LLM",
+          "Base Vectorielle",
+          "MLOps",
+          "IA Agentique"
+        ]
+      },
+      {
+        "title": "Applications Web d'Entreprise",
+        "description": "Plateformes web hautement performantes et optimisées SEO, construites avec Next.js, React et TypeScript — des portails SaaS aux systèmes B2B.",
+        "tags": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "GraphQL"
+        ]
+      },
+      {
+        "title": "Développement Mobile",
+        "description": "Applications mobiles multiplateformes soignées offrant une UX exceptionnelle. Applications React Native et Flutter pour iOS et Android.",
+        "tags": [
+          "React Native",
+          "Flutter",
+          "iOS",
+          "Android"
+        ]
+      },
+      {
+        "title": "Cloud & DevOps",
+        "description": "Architecture multi-cloud, pipelines CI/CD, orchestration Kubernetes et stratégies FinOps qui rendent votre infrastructure légère et rapide.",
+        "tags": [
+          "AWS",
+          "GCP",
+          "Kubernetes",
+          "Terraform"
+        ]
+      },
+      {
+        "title": "Cybersécurité",
+        "description": "Audits de sécurité de bout en bout, tests de pénétration, architecture zero-trust et frameworks de conformité MSME et SOC 2.",
+        "tags": [
+          "Tests de Pénétration",
+          "Zero Trust",
+          "Enregistré MSME",
+          "SIEM"
+        ]
+      },
+      {
+        "title": "Design UI/UX",
+        "description": "Systèmes de design axés sur la recherche, prototypes interactifs et implémentations pixel-perfect qui convertissent les visiteurs en clients.",
+        "tags": [
+          "Figma",
+          "Systèmes de Design",
+          "Prototypage",
+          "Tests A/B"
+        ]
+      }
+    ]
+  },
+  "metrics": {
+    "badge": "En Chiffres",
+    "titlePrefix": "Des Résultats qui Parlent ",
+    "titleGradient": "d'Eux-Mêmes",
+    "subtitle": "Chaque indicateur ci-dessous représente un résultat réel livré à un client réel.",
+    "items": [
+      {
+        "label": "Projets Livrés",
+        "sub": "Dans les délais, dans le budget"
+      },
+      {
+        "label": "Disponibilité Assurée",
+        "sub": "Sur l'ensemble des systèmes en production"
+      },
+      {
+        "label": "Clients Entreprise",
+        "sub": "Répartis dans plus de 15 pays"
+      },
+      {
+        "label": "Réduction de Coûts Moy.",
+        "sub": "Grâce à l'automatisation par IA"
+      },
+      {
+        "label": "Années d'Excellence",
+        "sub": "Construction de systèmes d'entreprise"
+      },
+      {
+        "label": "Ingénieurs Experts",
+        "sub": "IA, Cloud & Mobile"
+      }
+    ]
+  },
+  "trusted": {
+    "heading": "Intégré aux outils auxquels les entreprises font le plus confiance"
+  },
+  "caseStudiesHome": {
+    "badge": "Projets Phares",
+    "titlePrefix": "Des Projets qui ont ",
+    "titleGradient": "Marqué l'Histoire",
+    "viewAll": "Voir toutes les études de cas",
+    "items": [
+      {
+        "tag": "FinTech",
+        "title": "Tableau de Bord de Trading en Temps Réel",
+        "description": "Reconstruction complète d'une plateforme de trading legacy — gérant 3× la charge de pointe avec une latence inférieure à 20 ms et un SLA de disponibilité de 99,99 %.",
+        "metrics": [
+          {
+            "value": "3×",
+            "label": "Capacité de Charge de Pointe"
+          },
+          {
+            "value": "<20ms",
+            "label": "Latence de Réponse"
+          },
+          {
+            "value": "99,99%",
+            "label": "SLA de Disponibilité"
+          }
+        ]
+      },
+      {
+        "tag": "HealthTech",
+        "title": "Système d'Admission de Patients par IA",
+        "description": "Transformation d'un processus d'admission hospitalière manuel en un système de triage piloté par l'IA, réduisant le temps de transmission infirmière de 32 %.",
+        "metrics": [
+          {
+            "value": "32%",
+            "label": "Temps Économisé"
+          },
+          {
+            "value": "4,8★",
+            "label": "Note des Patients"
+          },
+          {
+            "value": "2 Semaines",
+            "label": "Délai de Déploiement"
+          }
+        ]
+      },
+      {
+        "tag": "E-Commerce",
+        "title": "Moteur de Personnalisation IA",
+        "description": "Déploiement d'une couche de recommandation produit pilotée par ML, augmentant le taux de rachat de 21 % en 8 semaines après le lancement.",
+        "metrics": [
+          {
+            "value": "+21%",
+            "label": "Rachats"
+          },
+          {
+            "value": "8 Semaines",
+            "label": "Délai de Valorisation"
+          },
+          {
+            "value": "1,4M",
+            "label": "Utilisateurs Servis"
+          }
+        ]
+      }
+    ]
+  },
+  "processPipeline": {
+    "badge": "Comment Nous Travaillons",
+    "titlePrefix": "L'Excellence en Ingénierie, ",
+    "titleGradient": "à Chaque Étape",
+    "subtitle": "Un processus de livraison en 6 phases éprouvé, utilisé sur chaque mission — des MVP de startups aux plateformes d'entreprise.",
+    "steps": [
+      {
+        "title": "Découverte & Stratégie",
+        "description": "Nous menons des sessions de découverte approfondies pour cartographier votre paysage technique, définir les indicateurs de succès et nous aligner sur une stratégie de livraison avant qu'une seule ligne de code ne soit écrite.",
+        "details": [
+          "Audit technique",
+          "Entretiens avec les parties prenantes",
+          "Cartographie des risques",
+          "Projections de ROI"
+        ]
+      },
+      {
+        "title": "Architecture & Design",
+        "description": "Nos architectes seniors conçoivent des systèmes pensés pour évoluer — des modèles de données et contrats d'API aux plans d'infrastructure et systèmes de design.",
+        "details": [
+          "Conception système",
+          "Wireframes UI/UX",
+          "Contrats d'API",
+          "Choix de la stack technique"
+        ]
+      },
+      {
+        "title": "Développement Agile",
+        "description": "Sprints de deux semaines avec standups quotidiens, intégration continue et démos hebdomadaires. Vous constatez de réels progrès chaque semaine.",
+        "details": [
+          "Sprints de 2 semaines",
+          "Standups quotidiens",
+          "Démos hebdomadaires",
+          "CI/CD dès le premier jour"
+        ]
+      },
+      {
+        "title": "QA & Sécurité",
+        "description": "Chaque fonctionnalité est testée aux niveaux unitaire, intégration et E2E. Les audits de sécurité et tests de pénétration sont intégrés au processus de livraison.",
+        "details": [
+          "Suites de tests E2E",
+          "Tests de pénétration",
+          "Tests de charge",
+          "Audit d'accessibilité"
+        ]
+      },
+      {
+        "title": "Déploiement Sans Interruption",
+        "description": "Les déploiements blue-green, feature flags et rollback automatisé garantissent un lancement fluide — pour vous comme pour vos utilisateurs.",
+        "details": [
+          "Déploiement blue-green",
+          "Feature flags",
+          "Rollback automatique",
+          "Monitoring & alertes"
+        ]
+      },
+      {
+        "title": "Mise à l'Échelle & Optimisation",
+        "description": "Après le lancement, nous surveillons les performances, optimisons les coûts d'infrastructure et itérons sur la base de données utilisateurs réelles.",
+        "details": [
+          "Revue FinOps",
+          "Optimisation des performances",
+          "Configuration analytique",
+          "Support 24/7"
+        ]
+      }
+    ]
+  },
+  "blogTeaser": {
+    "badge": "Dernières Perspectives",
+    "titlePrefix": "Réfléchir à ",
+    "titleGradient": "l'Avenir",
+    "readAll": "Lire tous les articles"
+  },
+  "cta": {
+    "badge": "Nous accueillons actuellement des clients entreprise pour le T3 2026",
+    "titlePrefix": "Prêt à Construire",
+    "titleGradient": "Quelque Chose d'Exceptionnel ?",
+    "subtitle": "Que vous fassiez évoluer une plateforme existante ou construisiez à partir de zéro — nous apportons la rigueur d'ingénierie et l'expertise IA pour concrétiser votre projet.",
+    "ctaPrimary": "Démarrer votre projet",
+    "ctaSecondary": "Voir notre portfolio",
+    "trustIndicators": [
+      "NDA sur demande",
+      "Réponse sous 24h",
+      "Aucun engagement requis",
+      "Équipe remote-first"
+    ]
+  },
+  "about": {
+    "badge": "À Propos d'ERYON AI",
+    "titlePrefix": "Concevoir l'Intelligence, ",
+    "titleGradient": "Livrer l'Excellence",
+    "desc1": "ERYON AI est une agence d'ingénierie logicielle d'entreprise basée à New Delhi, en Inde, fournissant des solutions IA/ML, des architectures cloud-native, des produits full-stack et de la cybersécurité pour des startups et des entreprises mondiales depuis 2019.",
+    "desc2": "Des startups en phase d'amorçage construisant leur premier MVP aux entreprises du Fortune 500 modernisant leurs systèmes legacy — nous concevons des expériences digitales qui ne sont pas seulement fonctionnelles, mais transformatrices.",
+    "stats": [
+      {
+        "label": "Projets Livrés",
+        "caption": "Dans les délais, dans le budget"
+      },
+      {
+        "label": "Clients Entreprise",
+        "caption": "De l'amorçage au Fortune 500"
+      },
+      {
+        "label": "Années d'Excellence",
+        "caption": "Croissance constante depuis 2019"
+      },
+      {
+        "label": "Taux de Satisfaction",
+        "caption": "Vérifié sur toutes les missions"
+      }
+    ],
+    "missionVision": [
+      {
+        "title": "Notre Mission",
+        "text": "Démocratiser l'accès aux technologies de pointe — rendre l'ingénierie logicielle de classe mondiale accessible à chaque entreprise, des startups audacieuses aux entreprises établies, en leur donnant les moyens d'accomplir davantage grâce à des systèmes digitaux intelligents.",
+        "link": "Notre méthode de travail →"
+      },
+      {
+        "title": "Notre Vision",
+        "text": "Devenir la référence mondiale de la transformation digitale pilotée par l'IA — en créant des solutions qui ne se contentent pas de résoudre les problèmes d'aujourd'hui, mais qui conçoivent les systèmes qui définiront les industries de demain, établissant de nouveaux standards d'excellence en ingénierie.",
+        "link": "Nos réalisations →"
+      }
+    ],
+    "benchmarksTitle": "Indicateurs de Performance",
+    "benchmarks": [
+      "Satisfaction Client",
+      "Livraison dans les Délais",
+      "Taux de Réussite Projet",
+      "Score Qualité du Code"
+    ],
+    "techStackTitle": "Stack Technique Principale",
+    "certificationsTitle": "Certifications & Confiance",
+    "certifications": [
+      {
+        "label": "Enregistré MSME",
+        "desc": "Reconnu par le Gouvernement Indien"
+      },
+      {
+        "label": "SOC 2 Type II",
+        "desc": "Trust Services Criteria"
+      },
+      {
+        "label": "Conforme RGPD",
+        "desc": "Conforme à la protection des données de l'UE"
+      },
+      {
+        "label": "Partenaire AWS",
+        "desc": "Solutions Cloud Avancées"
+      },
+      {
+        "label": "SLA 99,9%",
+        "desc": "Disponibilité Garantie"
+      },
+      {
+        "label": "Certifié Agile",
+        "desc": "Scaled Agile Framework"
+      }
+    ],
+    "industriesTitle": "Secteurs que Nous Avons Transformés",
+    "industries": [
+      "FinTech",
+      "Santé",
+      "SaaS",
+      "E-Commerce",
+      "EdTech",
+      "Logistique",
+      "Legal Tech",
+      "Immobilier",
+      "InsureTech",
+      "RH & Personnel",
+      "IA & Robotique",
+      "Médias & OTT"
+    ],
+    "highlights": [
+      "Développement Agile & Itératif",
+      "Conforme à la Sécurité d'Entreprise",
+      "Performance de Chargement Sub-Seconde",
+      "Support Dédié 24/7",
+      "Livraison Mondiale, Équipes Locales",
+      "Modèle de Partenariat Long Terme"
+    ]
+  },
+  "whyUs": {
+    "badge": "Pourquoi Nous Choisir",
+    "titlePrefix": "Pourquoi Choisir ERYON AI pour votre ",
+    "titleGradient": "Transformation Digitale",
+    "subtitle": "Pas seulement des développeurs — des partenaires digitaux expérimentés qui comprennent profondément le business.",
+    "features": [
+      {
+        "title": "Architecture Évolutive",
+        "description": "Microservices et modèles cloud-native conçus pour passer de 10 à 10 millions d'utilisateurs sans réécriture."
+      },
+      {
+        "title": "Haute Performance",
+        "description": "Temps de chargement sub-seconde grâce au edge caching, aux requêtes optimisées et à des scores Lighthouse de 95+."
+      },
+      {
+        "title": "Sécurisé par Conception",
+        "description": "Sécurité zero-trust, conformité OWASP, analyse automatisée des vulnérabilités intégrées à chaque sprint."
+      },
+      {
+        "title": "Stack Technique Moderne",
+        "description": "Des technologies éprouvées et activement maintenues. Aucun héritage legacy — un code maintenable dès le premier jour."
+      },
+      {
+        "title": "Livraison Transparente",
+        "description": "Démos hebdomadaires, tableaux de bord en temps réel et communication via Slack. Vous savez toujours où en sont les choses."
+      },
+      {
+        "title": "Axé sur le ROI",
+        "description": "Chaque décision de fonctionnalité est liée à des résultats business. Nous construisons ce qui fait la différence, pas ce qui paraît impressionnant."
+      }
+    ],
+    "ctaLabel": "Prêt à Démarrer ?",
+    "ctaTitle": "Transformez votre entreprise avec des solutions digitales pilotées par l'IA",
+    "ctaDesc": "Consultation gratuite, sans engagement. Nous analyserons vos besoins et vous enverrons une proposition détaillée sous 24 heures.",
+    "ctaPrimary": "Démarrer une Conversation →",
+    "ctaSecondary": "Voir Nos Réalisations"
+  },
+  "testimonials": {
+    "badge": "Témoignages Clients",
+    "titlePrefix": "La Confiance des ",
+    "titleGradient": "Leaders du Secteur",
+    "items": [
+      {
+        "name": "Ananya Iyer",
+        "text": "ERYON AI a rationalisé notre flux d'admission et de triage des patients. Nous avons réduit le temps de transmission infirmière de 32 % et constaté une nette amélioration de la satisfaction des patients. L'équipe a communiqué clairement et livré dans les délais.",
+        "initials": "AI"
+      },
+      {
+        "name": "Rohit Mehta",
+        "text": "Ils ont reconstruit notre tableau de bord de trading en temps réel et le système gère désormais 3 fois la charge de pointe avec une latence plus fluide. Les décisions d'architecture étaient pragmatiques et pérennes.",
+        "initials": "RM"
+      },
+      {
+        "name": "Nisha Kulkarni",
+        "text": "Leur équipe produit nous a aidés à lancer une refonte de l'onboarding SaaS B2B qui a réduit le délai de première valeur de 38 %. L'UX était réfléchie et l'implémentation propre.",
+        "initials": "NK"
+      },
+      {
+        "name": "Michael Hart",
+        "text": "Nous avons fait appel à ERYON AI pour construire notre plateforme de détection des menaces, et les résultats ont dépassé nos attentes. La précision des alertes s'est améliorée d'environ 25 % sans surcharge opérationnelle supplémentaire.",
+        "initials": "MH"
+      },
+      {
+        "name": "Sanya Rao",
+        "text": "ERYON AI a construit une couche de personnalisation qui a augmenté le taux de rachat de 21 % en huit semaines. La stratégie était ancrée dans nos objectifs et le déploiement s'est déroulé sans accroc.",
+        "initials": "SR"
+      }
+    ]
+  },
+  "portfolio": {
+    "badge": "Portfolio",
+    "titlePrefix": "Un Travail qui ",
+    "titleGradient": "Parle de Lui-Même",
+    "subtitle": "Plus de 150 projets livrés dans la fintech, la santé, l'e-commerce et bien plus.",
+    "ctaText": "Ce ne sont là que quelques points forts — construisons ensemble votre prochaine réussite.",
+    "ctaButton": "Discuter de votre Projet",
+    "linkText": "Voir l'Étude de Cas",
+    "projects": [
+      {
+        "title": "Hirix — Plateforme de Recrutement Vérifiée par IA",
+        "description": "Plateforme de recrutement basée sur la confiance avec vérification des compétences supervisée par IA, évaluations notées par DeepSeek et un score de confiance candidat de 0 à 100."
+      },
+      {
+        "title": "Tableau de Bord de Gestion de Salle de Sport",
+        "description": "Un panneau d'administration complet conçu pour les salles de sport, avec suivi des membres, gestion des abonnements et analytique."
+      },
+      {
+        "title": "HRMS Hospitalier & CRM Médical",
+        "description": "CRM de santé d'entreprise conçu pour la gestion du personnel médical, les dossiers patients et les flux administratifs hospitaliers."
+      },
+      {
+        "title": "Atelier Mobile — Application Shopping Streetwear",
+        "description": "Application de streetwear de luxe React Native + Expo avec plus de 480 produits, un checkout en 4 étapes et un panneau d'administration à 6 onglets."
+      },
+      {
+        "title": "E-Commerce Montres de Luxe Velorian",
+        "description": "Boutique e-commerce premium pour montres de luxe avec une UI élégante, gestion du panier et parcours de paiement fluide."
+      },
+      {
+        "title": "CRM Personnalisé MarbleMart",
+        "description": "Tableau de bord opérationnel interne sur mesure gérant un inventaire de plusieurs millions de dollars et la logistique à travers des entrepôts internationaux."
+      },
+      {
+        "title": "Catalogue Corporate MarbleMart",
+        "description": "Un catalogue B2B luxueux avec des modèles 3D haute résolution et des images mises en cache en edge pour une performance ultra-rapide."
+      },
+      {
+        "title": "ERP Scolaire EduNexus",
+        "description": "Système complet de planification des ressources éducatives avec support multi-campus et portails parents."
+      },
+      {
+        "title": "E-Commerce Boutique Atelier",
+        "description": "Plateforme e-commerce premium de mode de luxe et streetwear offrant une expérience d'achat immersive."
+      },
+      {
+        "title": "Realist CRM",
+        "description": "Solution élégante de gestion immobilière et CRM pour les agences immobilières haut de gamme, avec filtrage avancé et annonces."
+      },
+      {
+        "title": "CraveRush — Plateforme de Livraison de Repas",
+        "description": "Architecture microservices événementielle construite avec Spring Boot, Apache Kafka, React et une intégration de paiement Stripe fluide."
+      },
+      {
+        "title": "Origin — Expérience Digitale",
+        "description": "Portfolio créatif immersif de style Awwwards utilisant Three.js WebGL, des animations de défilement GSAP et React Lenis."
+      },
+      {
+        "title": "HireStream — Portail d'Emploi en Ligne",
+        "description": "Plateforme de recrutement complète avec authentification JWT basée sur les rôles, analyse de CV et API REST Spring Boot sécurisées."
+      },
+      {
+        "title": "Kyprox — Expérience Web Musicale",
+        "description": "Plateforme interactive premium pour artistes avec effets de particules Three.js, animations GSAP et performance Next.js."
+      },
+      {
+        "title": "ERP de Construction Piloté par IA",
+        "description": "ERP d'entreprise pour un leader des infrastructures avec estimation de plans par IA et génération de registres en temps réel."
+      },
+      {
+        "title": "Aura Planters — E-Commerce",
+        "description": "Plateforme e-commerce full-stack MERN avec gestion d'état Redux, passerelle de paiement Razorpay et tableau de bord admin."
+      },
+      {
+        "title": "EchoSync — IA Vocale en Temps Réel",
+        "description": "Pipeline d'IA vocale en streaming avec logique de machine à états, latence sub-1s et orchestration d'appels WebSocket concurrents."
+      }
+    ]
+  },
+  "techStack": {
+    "badge": "Technologie",
+    "titlePrefix": "Notre ",
+    "titleGradient": "Arsenal Technique",
+    "subtitle": "Des technologies éprouvées choisies pour leur fiabilité, leur performance et leur pérennité.",
+    "cats": {
+      "Frontend": "Frontend",
+      "Language": "Langage",
+      "Backend": "Backend",
+      "AI/ML": "IA/ML",
+      "Database": "Base de Données",
+      "Cache": "Cache",
+      "Cloud": "Cloud",
+      "DevOps": "DevOps",
+      "IaC": "IaC",
+      "Streaming": "Streaming",
+      "API": "API",
+      "Mobile": "Mobile",
+      "Security": "Sécurité"
+    },
+    "categoryChips": [
+      "Frontend",
+      "Backend",
+      "IA/ML",
+      "Mobile",
+      "Cloud",
+      "DevOps",
+      "Base de Données",
+      "Sécurité"
+    ]
+  },
+  "contact": {
+    "badge": "Discutons",
+    "titlePrefix": "Démarrez Votre ",
+    "titleGradient": "Projet Aujourd'hui",
+    "subtitle": "Parlez-nous de votre vision — nous répondrons sous 24 heures avec une proposition sur mesure.",
+    "info": [
+      {
+        "label": "E-mail",
+        "value": "connect@eryonai.com"
+      },
+      {
+        "label": "Téléphone",
+        "value": "+91 78278 86571"
+      },
+      {
+        "label": "Localisation",
+        "value": "New Delhi, Inde"
+      },
+      {
+        "label": "Délai de Réponse",
+        "value": "Sous 24 heures"
+      }
+    ],
+    "nextStepsTitle": "Que se Passe-t-il Ensuite ?",
+    "nextSteps": [
+      "Nous examinons vos besoins",
+      "Planification d'un appel de découverte",
+      "Envoi d'une proposition détaillée",
+      "Démarrage du projet sous 1 semaine"
+    ],
+    "services": [
+      "Développement Web",
+      "Développement d'Applications Mobiles",
+      "Solutions IA / ML",
+      "Cloud & DevOps",
+      "Cybersécurité",
+      "Design UI/UX",
+      "Produit Full-Stack",
+      "Conseil"
+    ],
+    "budgets": {
+      "USD": [
+        "200 $ – 2 000 $",
+        "5 000 $ – 15 000 $",
+        "15 000 $ – 50 000 $",
+        "50 000 $ – 150 000 $",
+        "150 000 $+",
+        "À discuter"
+      ],
+      "INR": [
+        "10K ₹ – 1L ₹",
+        "4L ₹ – 12L ₹",
+        "12L ₹ – 40L ₹",
+        "40L ₹ – 1,2Cr ₹",
+        "1,2Cr ₹+",
+        "À discuter"
+      ]
+    },
+    "form": {
+      "heading": "Parlez-nous de Votre Projet",
+      "nameLabel": "Nom Complet",
+      "namePlaceholder": "Nom",
+      "emailLabel": "E-mail Professionnel",
+      "emailPlaceholder": "nom@entreprise.com",
+      "companyLabel": "Entreprise",
+      "companyPlaceholder": "Acme Corp",
+      "serviceLabel": "Service Requis",
+      "serviceSelectPlaceholder": "Sélectionnez un service...",
+      "budgetLabel": "Budget du Projet",
+      "messageLabel": "Détails du Projet",
+      "messagePlaceholder": "Décrivez les objectifs, le calendrier et les exigences de votre projet...",
+      "submitBtn": "Démarrer Votre Projet",
+      "submittingBtn": "Envoi en cours...",
+      "disclaimer": "Sans engagement. Évaluation de projet gratuite incluse.",
+      "errors": {
+        "name": "Nom requis",
+        "email": "E-mail valide requis",
+        "message": "Veuillez décrire le projet (min. 20 caractères)"
+      },
+      "serverError": "Une erreur s'est produite. Veuillez réessayer ou nous écrire directement.",
+      "networkError": "Erreur réseau. Veuillez vérifier votre connexion.",
+      "successTitle": "Message Envoyé !",
+      "successBody": "Merci, {name}. Notre équipe examinera vos informations et répondra sous 24 heures.",
+      "sendAnother": "Envoyer un Autre Message"
+    }
+  },
+  "services": {
+    "hero": {
+      "badge": "Nos Services",
+      "titlePrefix": "12 Catégories de Solutions. ",
+      "titleGradient": "140+ Services.",
+      "subtitle": "Des plateformes web sur mesure à l'automatisation par IA — découvrez toute notre gamme de services d'ingénierie logicielle pour entreprises."
+    },
+    "grid": {
+      "btnExplore": "Découvrir"
+    },
+    "cta": {
+      "btnPrimary": "Démarrer une Conversation →",
+      "btnSecondary": "Voir Notre Portfolio"
+    },
+    "categories": [
+      {
+        "label": "Applications Web",
+        "tagline": "Portails d'entreprise, plateformes évolutives, full-stack."
+      },
+      {
+        "label": "Applications Mobiles",
+        "tagline": "iOS, Android, multiplateforme, prêt pour l'entreprise."
+      },
+      {
+        "label": "Applications SaaS Sur Mesure",
+        "tagline": "Multi-tenant, évolutif, générateur de revenus."
+      },
+      {
+        "label": "CRM, ERP & Gestion d'Entreprise",
+        "tagline": "Centraliser, automatiser, faire évoluer les opérations."
+      },
+      {
+        "label": "Logiciels Immobiliers",
+        "tagline": "Gestion immobilière, CRM et portails d'annonces."
+      },
+      {
+        "label": "Logiciel de Gestion de Salle de Sport",
+        "tagline": "Adhésions, planification et plateformes de facturation."
+      },
+      {
+        "label": "Solutions E-Commerce",
+        "tagline": "B2B, B2C, marketplaces. Vendez à grande échelle."
+      },
+      {
+        "label": "Automatisation Métier",
+        "tagline": "Optimisation des processus. Automatisation des workflows."
+      },
+      {
+        "label": "Solutions IA & Automatisation",
+        "tagline": "LLM. Agents. Automatisation. Impact business réel."
+      },
+      {
+        "label": "Solutions Données & Analytique",
+        "tagline": "Des données brutes aux décisions de direction."
+      },
+      {
+        "label": "DevOps & Ingénierie Cloud",
+        "tagline": "Une infra qui évolue. Zéro interruption. Toujours active."
+      },
+      {
+        "label": "Design UI/UX",
+        "tagline": "Un design qui convertit. Des systèmes qui évoluent."
+      }
+    ],
+    "heroBadge2": "12 Catégories de Solutions · Plus de 140 Offres",
+    "statsLabels": [
+      "Catégories de Solutions",
+      "Offres de Services",
+      "Projets Livrés",
+      "Clients Entreprise"
+    ],
+    "gridBadge": "Ce Que Nous Construisons",
+    "gridTitlePrefix": "Des Solutions Sur Mesure, ",
+    "gridTitleGradient": "Pas des Services Génériques",
+    "gridSubtitle": "Chaque offre ci-dessous est un livrable réel — pas un simple mot à la mode. Cliquez sur une carte pour découvrir toute l'étendue de cette catégorie.",
+    "collapseLabel": "Réduire",
+    "viewMoreLabel": "Voir {n} de plus",
+    "bottomBadge": "Vous ne trouvez pas ce qu'il vous faut ?",
+    "bottomTitle": "Nous construisons tout ce dont votre entreprise a besoin",
+    "bottomSubtitle": "Notre équipe d'ingénierie prend en charge des besoins entièrement sur mesure. Partagez votre idée et nous l'évaluerons — sans engagement.",
+    "trustIndicators": [
+      "NDA sur demande",
+      "Réponse sous 24h",
+      "Aucun engagement requis"
+    ],
+    "exploreAllAnchor": "Découvrir tous nos services ↓"
+  },
+  "pageMeta": {
+    "about": {
+      "title": "À propos d'ERYON AI | Agence d'ingénierie logicielle d'entreprise | New Delhi",
+      "description": "ERYON AI est une agence d'ingénierie logicielle d'entreprise basée à New Delhi — IA/ML, architecture cloud-native, développement full-stack. 150+ projets, 80+ clients."
+    },
+    "contact": {
+      "title": "Contact | ERYON AI | Consultation gratuite",
+      "description": "Contactez ERYON AI pour vos projets de logiciels d'entreprise, IA/ML et ingénierie cloud. Consultation gratuite, réponse sous 24 heures."
+    },
+    "portfolio": {
+      "title": "Portfolio | ERYON AI | Plus de 150 projets livrés",
+      "description": "Découvrez le portfolio d'ERYON AI — applications web, systèmes d'IA, applications mobiles et plateformes d'entreprise pour la fintech, la santé et l'e-commerce."
+    },
+    "process": {
+      "title": "Notre Processus | ERYON AI | Comment nous développons vos logiciels",
+      "description": "Le processus d'ingénierie éprouvé en 6 étapes d'ERYON AI — de la découverte au déploiement, jusqu'au support SLA continu."
+    },
+    "techStack": {
+      "title": "Stack Technique | ERYON AI | Technologies utilisées",
+      "description": "La stack technique moderne qu'utilise ERYON AI pour créer des solutions web, mobiles, IA et cloud évolutives."
+    },
+    "services": {
+      "title": "Services | ERYON AI | Ingénierie Logicielle d'Entreprise",
+      "description": "Découvrez nos 12 catégories de solutions et plus de 140 services — des plateformes SaaS sur mesure à l'automatisation IA et l'infrastructure cloud."
+    },
+    "blog": {
+      "title": "Blog | Perspectives, Technologie & Innovation — ERYON AI",
+      "description": "Derniers articles sur l'IA, l'ingénierie logicielle, le développement produit, les startups, l'automatisation, l'infrastructure cloud et les technologies émergentes."
+    }
+  }
+}

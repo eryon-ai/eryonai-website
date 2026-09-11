@@ -3,8 +3,10 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Briefcase } from 'lucide-react';
 import SectionBadge from '@/components/ui/SectionBadge';
+import { getLocaleFromPathname, getLocalizedPath } from '@/lib/layout-translations';
 
 const caseStudies = [
   {
@@ -52,8 +54,13 @@ const caseStudies = [
 
 ];
 
-export default function CaseStudiesSection() {
+export default function CaseStudiesSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const activeItems: typeof caseStudies = dict?.items
+    ? dict.items.map((item: any, i: number) => ({ ...caseStudies[i], tag: item.tag, title: item.title, description: item.description, metrics: item.metrics }))
+    : caseStudies;
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
@@ -67,27 +74,27 @@ export default function CaseStudiesSection() {
           transition={{ duration: 0.6 }}
         >
           <div>
-            <SectionBadge icon={Briefcase} label="Featured Work" color="#6366f1" />
+            <SectionBadge icon={Briefcase} label={dict?.badge ?? "Featured Work"} color="#6366f1" />
             <h2 className="text-3xl md:text-5xl font-extrabold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-              Projects That{' '}
+              {dict?.titlePrefix ?? 'Projects That '}{' '}
               <span style={{ background: 'linear-gradient(135deg, #6366f1, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Made History
+                {dict?.titleGradient ?? 'Made History'}
               </span>
             </h2>
           </div>
-          <Link href="/portfolio" className="flex-shrink-0 group flex items-center gap-2 text-sm font-semibold transition-colors"
+          <Link href={getLocalizedPath("/portfolio", locale)} className="flex-shrink-0 group flex items-center gap-2 text-sm font-semibold transition-colors"
             style={{ color: '#64748b' }}
             onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#f8fafc'}
             onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#64748b'}
           >
-            View all case studies
+            {dict?.viewAll ?? 'View all case studies'}
             <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
           </Link>
         </motion.div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {caseStudies.map((cs, i) => (
+          {activeItems.map((cs, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 40 }}

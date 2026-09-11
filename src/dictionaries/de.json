@@ -1,0 +1,883 @@
+{
+  "locale": "de",
+  "meta": {
+    "title": "ERYON AI | Individuelle Softwareentwicklung & KI-Lösungen für Unternehmen",
+    "description": "ERYON AI ist Ihr führender Partner für individuelle Unternehmenssoftware: Webanwendungen, Generative KI, mobile Apps und Cloud DevOps."
+  },
+  "hero": {
+    "titlePrefix": "Individuelle Software &",
+    "titleGradient1": "KI-Entwicklung",
+    "titleAnd": "auf",
+    "titleGradient2": "Unternehmensniveau",
+    "description": "ERYON AI liefert individuelle Webanwendungen, Generative KI, mobile Apps und Cloud-Lösungen auf Unternehmensniveau — entwickelt für Leistung, Sicherheit und langfristiges Wachstum.",
+    "ctaStart": "Projekt starten",
+    "ctaWork": "Unsere Arbeit ansehen →",
+    "badges": [
+      "MSME-registriert",
+      "Agile Entwicklung",
+      "24/7-Support",
+      "NDA-geschützt"
+    ],
+    "trustedTech": "UNSERE bewährten Technologien & Plattformen",
+    "stats": [
+      {
+        "value": "150+",
+        "label": "Realisierte Projekte"
+      },
+      {
+        "value": "18+",
+        "label": "Unternehmenskunden"
+      },
+      {
+        "value": "8+",
+        "label": "Jahre Erfahrung"
+      },
+      {
+        "value": "50+",
+        "label": "Experten-Entwickler"
+      }
+    ]
+  },
+  "homeServices": {
+    "badge": "Unsere Expertise",
+    "titlePrefix": "Unsere Kern-",
+    "titleGradient": "Software-Engineering- & KI-Leistungen",
+    "subtitle": "End-to-End-Digitallösungen für Skalierbarkeit, Leistung und messbaren geschäftlichen Mehrwert.",
+    "learnMore": "Mehr erfahren",
+    "bottomTitle": "Nicht das Richtige dabei?",
+    "bottomDesc": "Wir bieten individuelle Lösungen. Sprechen wir über Ihre spezifischen Anforderungen.",
+    "bottomCta": "Mit unserem Experten sprechen →",
+    "items": [
+      {
+        "title": "Webentwicklung",
+        "description": "Hochperformante, SEO-optimierte individuelle Webanwendungen mit Next.js, React und modernen Frameworks. Von responsiven B2B-SaaS-Plattformen bis zu komplexen Unternehmensportalen.",
+        "features": [
+          "Next.js & React",
+          "TypeScript",
+          "REST- & GraphQL-APIs",
+          "CMS-Integration"
+        ]
+      },
+      {
+        "title": "Mobile App-Entwicklung",
+        "description": "Plattformübergreifende und native mobile Anwendungen mit herausragender UX. React Native- und Flutter-Lösungen, die nahtlos auf iOS und Android funktionieren.",
+        "features": [
+          "React Native",
+          "Flutter",
+          "iOS & Android",
+          "Offline-First"
+        ]
+      },
+      {
+        "title": "KI / ML-Lösungen",
+        "description": "Intelligente Systeme auf Basis von Machine Learning, generativer KI, NLP und Computer Vision. Verwandeln Sie Rohdaten in verwertbare Erkenntnisse und individuelle LLM-basierte automatisierte Workflows.",
+        "features": [
+          "LLM-Integration",
+          "Computer Vision",
+          "NLP & Chatbots",
+          "Predictive Analytics"
+        ]
+      },
+      {
+        "title": "Cloud & DevOps",
+        "description": "Skalierbare Cloud-Infrastruktur auf AWS, GCP und Azure mit CI/CD-Pipelines, Kubernetes-Orchestrierung und Infrastructure-as-Code für Zero-Downtime-Deployments.",
+        "features": [
+          "AWS / GCP / Azure",
+          "Docker & Kubernetes",
+          "CI/CD-Pipelines",
+          "Terraform IaC"
+        ]
+      },
+      {
+        "title": "Cybersicherheit",
+        "description": "Zero-Trust-Sicherheitsframeworks, OWASP-Konformität, automatisiertes Schwachstellen-Scanning und Penetrationstests, die Ihre Systeme auf jeder Ebene schützen.",
+        "features": [
+          "Zero-Trust-Modell",
+          "Penetrationstests",
+          "OWASP-Konformität",
+          "SOC-2-Audit"
+        ]
+      },
+      {
+        "title": "UI/UX-Design",
+        "description": "Forschungsbasiertes Produktdesign, das konvertiert. Wir gestalten intuitive Interfaces auf Basis von Nutzerforschung, Accessibility-Standards und erstklassigen Designsystemen.",
+        "features": [
+          "Figma-Prototyping",
+          "Designsysteme",
+          "Barrierefreiheit (WCAG)",
+          "Nutzerforschung"
+        ]
+      }
+    ]
+  },
+  "process": {
+    "badge": "Wie wir arbeiten",
+    "titlePrefix": "Unser bewährter ",
+    "titleGradient": "6-Stufen-Prozess",
+    "subtitle": "Eine transparente, strukturierte Liefermethodik, die jedes Projekt zum Erfolg führt — pünktlich und im Budget.",
+    "avgTimeLabel": "Durchschnittliche Zeit bis zum Launch",
+    "avgTimeValue": "8–12 Wochen",
+    "avgTimeSub": "Für die meisten Unternehmensprojekte",
+    "onTimeRate": "Pünktliche Lieferquote:",
+    "onTimeRateValue": "94%",
+    "steps": [
+      {
+        "title": "Discovery & Anforderungen",
+        "desc": "Wir starten mit intensiven Workshops, um Ihre Geschäftsziele, technischen Rahmenbedingungen und Nutzerbedürfnisse zu verstehen. Ergebnis: detailliertes Anforderungsdokument und Projekt-Roadmap."
+      },
+      {
+        "title": "Architektur & Design",
+        "desc": "Unsere Architekten entwerfen skalierbare Systemarchitekturen, während Designer nutzergetestete UI-Prototypen erstellen. Sie prüfen und genehmigen, bevor eine einzige Codezeile geschrieben wird."
+      },
+      {
+        "title": "Agile Entwicklung",
+        "desc": "Zweiwöchige Sprints mit wöchentlichen Demos. Sie haben volle Transparenz über ein Echtzeit-Projektdashboard, einen Slack-Kanal und einen dedizierten Projektmanager."
+      },
+      {
+        "title": "Qualitätssicherung",
+        "desc": "Rigorose automatisierte Tests, manuelle QA, Sicherheitsaudits und Performance-Benchmarking sichern eine kompromisslose Produktqualität."
+      },
+      {
+        "title": "Deployment & Launch",
+        "desc": "Zero-Downtime-CI/CD-Deployments mit Rollback-Möglichkeit. Wir richten Monitoring, Alerting und Logging vor dem Go-Live ein."
+      },
+      {
+        "title": "Support nach dem Launch",
+        "desc": "Dedizierter SLA-gestützter Support, proaktives Monitoring, monatliche Performance-Reports und vierteljährliche Strategie-Reviews in jedem Engagement enthalten."
+      }
+    ]
+  },
+  "capabilities": {
+    "badge": "Kernkompetenzen",
+    "titlePrefix": "Alles, was Sie zum ",
+    "titleGradient": "Bauen & Skalieren brauchen",
+    "subtitle": "Von der Idee bis zum Produktivbetrieb decken wir das gesamte Spektrum moderner digitaler Softwareentwicklung ab.",
+    "items": [
+      {
+        "title": "KI & Maschinelles Lernen",
+        "description": "Individuelle LLMs, RAG-Pipelines, Computer Vision, NLP und Predictive Analytics mit messbarem geschäftlichem Mehrwert.",
+        "tags": [
+          "LLM-Feinabstimmung",
+          "Vektordatenbank",
+          "MLOps",
+          "Agentische KI"
+        ]
+      },
+      {
+        "title": "Unternehmens-Webanwendungen",
+        "description": "Hochperformante, SEO-optimierte Webplattformen mit Next.js, React und TypeScript — von SaaS-Portalen bis zu B2B-Systemen.",
+        "tags": [
+          "Next.js",
+          "React",
+          "TypeScript",
+          "GraphQL"
+        ]
+      },
+      {
+        "title": "Mobile Entwicklung",
+        "description": "Ausgereifte, plattformübergreifende mobile Apps mit herausragender UX. React-Native- und Flutter-Apps für iOS und Android.",
+        "tags": [
+          "React Native",
+          "Flutter",
+          "iOS",
+          "Android"
+        ]
+      },
+      {
+        "title": "Cloud & DevOps",
+        "description": "Multi-Cloud-Architektur, CI/CD-Pipelines, Kubernetes-Orchestrierung und FinOps-Strategien, die Ihre Infrastruktur schlank und schnell halten.",
+        "tags": [
+          "AWS",
+          "GCP",
+          "Kubernetes",
+          "Terraform"
+        ]
+      },
+      {
+        "title": "Cybersicherheit",
+        "description": "End-to-End-Sicherheitsaudits, Penetrationstests, Zero-Trust-Architektur und Compliance-Frameworks für MSME und SOC 2.",
+        "tags": [
+          "Penetrationstests",
+          "Zero Trust",
+          "MSME-registriert",
+          "SIEM"
+        ]
+      },
+      {
+        "title": "UI/UX-Design",
+        "description": "Forschungsbasierte Designsysteme, interaktive Prototypen und pixelgenaue Umsetzungen, die Besucher in Kunden verwandeln.",
+        "tags": [
+          "Figma",
+          "Designsysteme",
+          "Prototyping",
+          "A/B-Tests"
+        ]
+      }
+    ]
+  },
+  "metrics": {
+    "badge": "In Zahlen",
+    "titlePrefix": "Ergebnisse, die für ",
+    "titleGradient": "sich selbst sprechen",
+    "subtitle": "Jede Kennzahl unten steht für ein reales Ergebnis, das wir einem echten Kunden geliefert haben.",
+    "items": [
+      {
+        "label": "Realisierte Projekte",
+        "sub": "Pünktlich, im Budget"
+      },
+      {
+        "label": "Gelieferte Verfügbarkeit",
+        "sub": "Über alle Produktivsysteme hinweg"
+      },
+      {
+        "label": "Unternehmenskunden",
+        "sub": "In über 15 Ländern"
+      },
+      {
+        "label": "Ø Kostensenkung",
+        "sub": "Durch KI-gestützte Automatisierung"
+      },
+      {
+        "label": "Jahre Erfahrung",
+        "sub": "Aufbau von Unternehmenssystemen"
+      },
+      {
+        "label": "Experten-Entwickler",
+        "sub": "Über KI, Cloud & Mobile hinweg"
+      }
+    ]
+  },
+  "trusted": {
+    "heading": "Integriert mit den Tools, denen Unternehmen am meisten vertrauen"
+  },
+  "caseStudiesHome": {
+    "badge": "Ausgewählte Projekte",
+    "titlePrefix": "Projekte, die ",
+    "titleGradient": "Geschichte geschrieben haben",
+    "viewAll": "Alle Fallstudien ansehen",
+    "items": [
+      {
+        "tag": "FinTech",
+        "title": "Echtzeit-Trading-Dashboard",
+        "description": "Legacy-Trading-Plattform von Grund auf neu gebaut — bewältigt die 3-fache Spitzenlast bei unter 20 ms Latenz und 99,99 % Verfügbarkeits-SLA.",
+        "metrics": [
+          {
+            "value": "3×",
+            "label": "Spitzenlast-Kapazität"
+          },
+          {
+            "value": "<20ms",
+            "label": "Antwortlatenz"
+          },
+          {
+            "value": "99,99%",
+            "label": "Verfügbarkeits-SLA"
+          }
+        ]
+      },
+      {
+        "tag": "HealthTech",
+        "title": "KI-Patientenaufnahmesystem",
+        "description": "Manuellen Krankenhaus-Aufnahmeprozess in ein KI-gestütztes Triage-System verwandelt, das die Übergabezeit des Pflegepersonals um 32 % reduziert hat.",
+        "metrics": [
+          {
+            "value": "32%",
+            "label": "Zeitersparnis"
+          },
+          {
+            "value": "4,8★",
+            "label": "Patientenbewertung"
+          },
+          {
+            "value": "2 Wochen",
+            "label": "Einführungszeit"
+          }
+        ]
+      },
+      {
+        "tag": "E-Commerce",
+        "title": "KI-Personalisierungs-Engine",
+        "description": "ML-gestützte Produktempfehlungsschicht eingeführt, die die Wiederkaufrate innerhalb von 8 Wochen nach Launch um 21 % gesteigert hat.",
+        "metrics": [
+          {
+            "value": "+21%",
+            "label": "Wiederkäufe"
+          },
+          {
+            "value": "8 Wochen",
+            "label": "Zeit bis zum Mehrwert"
+          },
+          {
+            "value": "1,4 Mio.",
+            "label": "Bediente Nutzer"
+          }
+        ]
+      }
+    ]
+  },
+  "processPipeline": {
+    "badge": "Wie wir arbeiten",
+    "titlePrefix": "Engineering-Exzellenz, ",
+    "titleGradient": "in jedem Schritt",
+    "subtitle": "Ein bewährter 6-Phasen-Lieferprozess, den wir bei jedem Projekt anwenden — vom Startup-MVP bis zur Unternehmensplattform.",
+    "steps": [
+      {
+        "title": "Discovery & Strategie",
+        "description": "Wir führen tiefgehende Discovery-Sessions durch, um Ihre technische Landschaft zu erfassen, Erfolgskennzahlen zu definieren und eine Lieferstrategie abzustimmen — bevor eine einzige Codezeile geschrieben wird.",
+        "details": [
+          "Technisches Audit",
+          "Stakeholder-Interviews",
+          "Risikoanalyse",
+          "ROI-Prognosen"
+        ]
+      },
+      {
+        "title": "Architektur & Design",
+        "description": "Unsere Senior-Architekten entwerfen skalierbare Systeme — von Datenmodellen und API-Verträgen bis zu Infrastrukturplänen und Designsystemen.",
+        "details": [
+          "Systemdesign",
+          "UI/UX-Wireframes",
+          "API-Verträge",
+          "Auswahl des Tech-Stacks"
+        ]
+      },
+      {
+        "title": "Agile Entwicklung",
+        "description": "Zweiwöchige Sprints mit täglichen Standups, kontinuierlicher Integration und wöchentlichen Demos. Sie sehen jede einzelne Woche echten Fortschritt.",
+        "details": [
+          "2-Wochen-Sprints",
+          "Tägliche Standups",
+          "Wöchentliche Demos",
+          "CI/CD von Tag eins an"
+        ]
+      },
+      {
+        "title": "QA & Sicherheit",
+        "description": "Jede Funktion wird auf Unit-, Integrations- und E2E-Ebene getestet. Sicherheitsaudits und Penetrationstests sind fester Bestandteil des Lieferprozesses.",
+        "details": [
+          "E2E-Testsuiten",
+          "Penetrationstests",
+          "Lasttests",
+          "Barrierefreiheits-Audit"
+        ]
+      },
+      {
+        "title": "Zero-Downtime-Deployment",
+        "description": "Blue-Green-Deployments, Feature-Flags und automatisches Rollback sorgen für einen reibungslosen Launch — für Sie und Ihre Nutzer.",
+        "details": [
+          "Blue-Green-Deployment",
+          "Feature-Flags",
+          "Automatisches Rollback",
+          "Monitoring & Alerts"
+        ]
+      },
+      {
+        "title": "Skalieren & Optimieren",
+        "description": "Nach dem Launch überwachen wir die Performance, optimieren Infrastrukturkosten und iterieren auf Basis realer Nutzerdaten.",
+        "details": [
+          "FinOps-Review",
+          "Performance-Tuning",
+          "Analytics-Setup",
+          "24/7-Support"
+        ]
+      }
+    ]
+  },
+  "blogTeaser": {
+    "badge": "Neueste Einblicke",
+    "titlePrefix": "Gedanken zur ",
+    "titleGradient": "Zukunft",
+    "readAll": "Alle Artikel lesen"
+  },
+  "cta": {
+    "badge": "Wir nehmen jetzt Unternehmenskunden für Q3 2026 an",
+    "titlePrefix": "Bereit, etwas",
+    "titleGradient": "Außergewöhnliches zu bauen?",
+    "subtitle": "Ob Sie eine bestehende Plattform skalieren oder von Grund auf neu bauen — wir bringen die Engineering-Disziplin und KI-Expertise, um es Wirklichkeit werden zu lassen.",
+    "ctaPrimary": "Projekt starten",
+    "ctaSecondary": "Unser Portfolio ansehen",
+    "trustIndicators": [
+      "NDA auf Anfrage",
+      "Antwort innerhalb von 24h",
+      "Keine Verpflichtung nötig",
+      "Remote-first-Team"
+    ]
+  },
+  "about": {
+    "badge": "Über ERYON AI",
+    "titlePrefix": "Intelligenz konstruieren, ",
+    "titleGradient": "Exzellenz liefern",
+    "desc1": "ERYON AI ist eine Software-Engineering-Agentur für Unternehmen mit Hauptsitz in New Delhi, Indien. Seit 2019 liefern wir KI/ML-Lösungen, cloud-native Architekturen, Full-Stack-Produkte und Cybersicherheit für Startups und globale Unternehmen.",
+    "desc2": "Von Seed-Stage-Startups, die ihr erstes MVP bauen, bis zu Fortune-500-Unternehmen, die Legacy-Systeme modernisieren — wir entwerfen digitale Erlebnisse, die nicht nur funktional, sondern transformativ sind.",
+    "stats": [
+      {
+        "label": "Realisierte Projekte",
+        "caption": "Pünktlich, im Budget"
+      },
+      {
+        "label": "Unternehmenskunden",
+        "caption": "Von Seed-Stage bis Fortune 500"
+      },
+      {
+        "label": "Jahre Erfahrung",
+        "caption": "Konstantes Wachstum seit 2019"
+      },
+      {
+        "label": "Zufriedenheitsrate",
+        "caption": "Über alle Projekte hinweg bestätigt"
+      }
+    ],
+    "missionVision": [
+      {
+        "title": "Unsere Mission",
+        "text": "Den Zugang zu modernster Technologie zu demokratisieren — Software-Engineering auf Weltklasse-Niveau für jedes Unternehmen zugänglich zu machen, von mutigen Startups bis zu etablierten Konzernen, damit sie durch intelligente digitale Systeme mehr erreichen.",
+        "link": "So arbeiten wir →"
+      },
+      {
+        "title": "Unsere Vision",
+        "text": "Der weltweite Maßstab für KI-gestützte digitale Transformation zu sein — Lösungen zu schaffen, die nicht nur die Probleme von heute lösen, sondern die Systeme entwerfen, die die Branchen von morgen definieren, und neue Standards für Engineering-Exzellenz setzen.",
+        "link": "Unsere Arbeit →"
+      }
+    ],
+    "benchmarksTitle": "Leistungskennzahlen",
+    "benchmarks": [
+      "Kundenzufriedenheit",
+      "Pünktliche Lieferung",
+      "Projekterfolgsrate",
+      "Code-Qualitätswert"
+    ],
+    "techStackTitle": "Kerntechnologiestack",
+    "certificationsTitle": "Zertifizierungen & Vertrauen",
+    "certifications": [
+      {
+        "label": "MSME-registriert",
+        "desc": "Von der indischen Regierung anerkannt"
+      },
+      {
+        "label": "SOC 2 Type II",
+        "desc": "Trust Services Criteria"
+      },
+      {
+        "label": "DSGVO-konform",
+        "desc": "EU-Datenschutz-konform"
+      },
+      {
+        "label": "AWS-Partner",
+        "desc": "Advanced Cloud Solutions"
+      },
+      {
+        "label": "SLA 99,9%",
+        "desc": "Garantierte Verfügbarkeit"
+      },
+      {
+        "label": "Agile-zertifiziert",
+        "desc": "Scaled Agile Framework"
+      }
+    ],
+    "industriesTitle": "Branchen, die wir transformiert haben",
+    "industries": [
+      "FinTech",
+      "Gesundheitswesen",
+      "SaaS",
+      "E-Commerce",
+      "EdTech",
+      "Logistik",
+      "Legal Tech",
+      "Immobilien",
+      "InsureTech",
+      "HR & Personalwesen",
+      "KI & Robotik",
+      "Medien & OTT"
+    ],
+    "highlights": [
+      "Agile & iterative Entwicklung",
+      "Unternehmenssicherheit konform",
+      "Ladezeiten unter einer Sekunde",
+      "24/7 dedizierter Support",
+      "Globale Lieferung, lokale Teams",
+      "Langfristiges Partnerschaftsmodell"
+    ]
+  },
+  "whyUs": {
+    "badge": "Warum wir",
+    "titlePrefix": "Warum ERYON AI für Ihre ",
+    "titleGradient": "digitale Transformation",
+    "subtitle": "Nicht nur Entwickler — erfahrene digitale Partner mit tiefem Geschäftsverständnis.",
+    "features": [
+      {
+        "title": "Skalierbare Architektur",
+        "description": "Microservices und cloud-native Muster, die ohne Neuentwicklung von 10 auf 10 Millionen Nutzer wachsen können."
+      },
+      {
+        "title": "Hohe Leistung",
+        "description": "Ladezeiten unter einer Sekunde durch Edge-Caching, optimierte Abfragen und Lighthouse-Werte von 95+."
+      },
+      {
+        "title": "Sicherheit von Grund auf",
+        "description": "Zero-Trust-Sicherheit, OWASP-Konformität und automatisiertes Schwachstellen-Scanning in jedem Sprint."
+      },
+      {
+        "title": "Moderner Technologiestack",
+        "description": "Bewährte, aktiv gepflegte Technologien. Kein Legacy-Ballast — wartbarer Code von Tag eins an."
+      },
+      {
+        "title": "Transparente Lieferung",
+        "description": "Wöchentliche Demos, Echtzeit-Dashboards und Slack-basierte Kommunikation. Sie wissen immer, wo Sie stehen."
+      },
+      {
+        "title": "ROI-fokussiert",
+        "description": "Jede Funktionsentscheidung ist an Geschäftsergebnisse geknüpft. Wir bauen, was wirkt — nicht, was cool klingt."
+      }
+    ],
+    "ctaLabel": "Bereit loszulegen?",
+    "ctaTitle": "Transformieren Sie Ihr Unternehmen mit KI-gestützten digitalen Lösungen",
+    "ctaDesc": "Kostenlose Beratung, keine Verpflichtung. Wir analysieren Ihre Anforderungen und senden innerhalb von 24 Stunden ein detailliertes Angebot.",
+    "ctaPrimary": "Gespräch beginnen →",
+    "ctaSecondary": "Unsere Arbeit ansehen"
+  },
+  "testimonials": {
+    "badge": "Kundenstimmen",
+    "titlePrefix": "Vertraut von ",
+    "titleGradient": "Branchenführern",
+    "items": [
+      {
+        "name": "Ananya Iyer",
+        "text": "ERYON AI hat unseren Patientenaufnahme- und Triage-Prozess optimiert. Wir haben die Übergabezeit des Pflegepersonals um 32 % reduziert und eine spürbare Verbesserung der Patientenzufriedenheit erzielt. Das Team kommunizierte klar und lieferte pünktlich.",
+        "initials": "AI"
+      },
+      {
+        "name": "Rohit Mehta",
+        "text": "Sie haben unser Echtzeit-Trading-Dashboard neu aufgebaut, und das System bewältigt jetzt die dreifache Spitzenlast bei geringerer Latenz. Die Architekturentscheidungen waren pragmatisch und zukunftssicher.",
+        "initials": "RM"
+      },
+      {
+        "name": "Nisha Kulkarni",
+        "text": "Ihr Produktteam half uns, ein B2B-SaaS-Onboarding neu zu gestalten, das die Zeit bis zum ersten Mehrwert um 38 % reduziert hat. Die UX war durchdacht und die Umsetzung sauber.",
+        "initials": "NK"
+      },
+      {
+        "name": "Michael Hart",
+        "text": "Wir haben ERYON AI beauftragt, unsere Bedrohungserkennungsplattform zu bauen, und die Ergebnisse übertrafen die Erwartungen. Die Alarmpräzision verbesserte sich um rund 25 %, ohne zusätzlichen Betriebsaufwand.",
+        "initials": "MH"
+      },
+      {
+        "name": "Sanya Rao",
+        "text": "ERYON AI hat eine Personalisierungsschicht entwickelt, die die Wiederkaufrate innerhalb von acht Wochen um 21 % gesteigert hat. Die Strategie war an unseren Zielen ausgerichtet und der Rollout verlief reibungslos.",
+        "initials": "SR"
+      }
+    ]
+  },
+  "portfolio": {
+    "badge": "Portfolio",
+    "titlePrefix": "Arbeit, die für ",
+    "titleGradient": "sich spricht",
+    "subtitle": "Über 150 Projekte realisiert in Fintech, Gesundheitswesen, E-Commerce und mehr.",
+    "ctaText": "Das sind nur ein paar Highlights — lassen Sie uns Ihre nächste Erfolgsgeschichte bauen.",
+    "ctaButton": "Projekt besprechen",
+    "linkText": "Fallstudie ansehen",
+    "projects": [
+      {
+        "title": "Hirix — KI-gestützte verifizierte Recruiting-Plattform",
+        "description": "Vertrauensbasierte Recruiting-Plattform mit KI-überwachter Kompetenzprüfung, DeepSeek-bewerteten Assessments und einem 0–100-Vertrauensscore für Kandidaten."
+      },
+      {
+        "title": "Fitnessstudio-Management-Dashboard",
+        "description": "Ein umfassendes Admin-Panel für Fitnessstudios mit Mitgliederverwaltung, Abo-Management und Analytik."
+      },
+      {
+        "title": "Krankenhaus-HRMS & Medizinisches CRM",
+        "description": "Unternehmens-CRM im Gesundheitswesen für die Verwaltung von medizinischem Personal, Patientenakten und Krankenhausabläufen."
+      },
+      {
+        "title": "Atelier Mobile — Streetwear-Shopping-App",
+        "description": "React Native + Expo Luxus-Streetwear-App mit über 480 Produkten, 4-Schritte-Checkout und einem 6-Tab-Admin-Panel."
+      },
+      {
+        "title": "Velorian Luxus-Uhren-E-Commerce",
+        "description": "Premium-E-Commerce-Shop für Luxusuhren mit elegantem UI, Warenkorbverwaltung und nahtlosem Checkout."
+      },
+      {
+        "title": "MarbleMart Individuelles CRM",
+        "description": "Maßgeschneidertes internes Betriebs-Dashboard zur Verwaltung von Millionen-Dollar-Lagerbeständen und Logistik über internationale Lager hinweg."
+      },
+      {
+        "title": "MarbleMart Unternehmenskatalog",
+        "description": "Ein luxuriöser B2B-Katalog mit hochauflösenden 3D-Modellen und edge-gecachten Bildern für blitzschnelle Performance."
+      },
+      {
+        "title": "EduNexus School ERP",
+        "description": "Umfassendes Bildungsressourcen-Planungssystem mit Unterstützung für mehrere Standorte und Eltern-Portalen."
+      },
+      {
+        "title": "Atelier Boutique E-Commerce",
+        "description": "Premium-E-Commerce-Plattform für Luxusmode und Streetwear mit immersivem Einkaufserlebnis."
+      },
+      {
+        "title": "Realist CRM",
+        "description": "Elegante Immobilienverwaltungs- und CRM-Lösung für gehobene Immobilienmakler mit erweiterten Filter- und Listungsfunktionen."
+      },
+      {
+        "title": "CraveRush — Essenslieferplattform",
+        "description": "Event-getriebene Microservices-Architektur mit Spring Boot, Apache Kafka, React und nahtloser Stripe-Zahlungsintegration."
+      },
+      {
+        "title": "Origin — Digitales Erlebnis",
+        "description": "Immersives Awwwards-Stil-Kreativportfolio mit Three.js WebGL, GSAP-Scrollanimationen und React Lenis."
+      },
+      {
+        "title": "HireStream — Online-Jobportal",
+        "description": "Umfassende Recruiting-Plattform mit rollenbasierter JWT-Authentifizierung, Lebenslaufanalyse und sicheren Spring Boot REST-APIs."
+      },
+      {
+        "title": "Kyprox — Musik-Web-Erlebnis",
+        "description": "Premium-interaktive Plattform für Künstler mit Three.js-Partikeleffekten, GSAP-Animationen und Next.js-Performance."
+      },
+      {
+        "title": "KI-gestütztes Bau-ERP",
+        "description": "Unternehmens-ERP für ein führendes Infrastrukturunternehmen mit KI-gestützter Grundrissschätzung und Echtzeit-Buchungsgenerierung."
+      },
+      {
+        "title": "Aura Planters — E-Commerce",
+        "description": "Full-Stack-MERN-E-Commerce-Plattform mit Redux-State-Management, Razorpay-Zahlungsgateway und Admin-Dashboard."
+      },
+      {
+        "title": "EchoSync — Echtzeit-Sprach-KI",
+        "description": "Streaming-Sprach-KI-Pipeline mit Zustandsautomaten-Logik, Latenz unter 1 Sekunde und gleichzeitiger WebSocket-Anrufsteuerung."
+      }
+    ]
+  },
+  "techStack": {
+    "badge": "Technologie",
+    "titlePrefix": "Unser ",
+    "titleGradient": "Technologie-Arsenal",
+    "subtitle": "Bewährte Technologien, ausgewählt für Zuverlässigkeit, Leistung und Zukunftssicherheit.",
+    "cats": {
+      "Frontend": "Frontend",
+      "Language": "Sprache",
+      "Backend": "Backend",
+      "AI/ML": "KI/ML",
+      "Database": "Datenbank",
+      "Cache": "Cache",
+      "Cloud": "Cloud",
+      "DevOps": "DevOps",
+      "IaC": "IaC",
+      "Streaming": "Streaming",
+      "API": "API",
+      "Mobile": "Mobile",
+      "Security": "Sicherheit"
+    },
+    "categoryChips": [
+      "Frontend",
+      "Backend",
+      "KI/ML",
+      "Mobile",
+      "Cloud",
+      "DevOps",
+      "Datenbank",
+      "Sicherheit"
+    ]
+  },
+  "contact": {
+    "badge": "Kontakt",
+    "titlePrefix": "Starten Sie Ihr ",
+    "titleGradient": "Projekt heute",
+    "subtitle": "Erzählen Sie uns von Ihrer Vision — wir antworten innerhalb von 24 Stunden mit einem maßgeschneiderten Angebot.",
+    "info": [
+      {
+        "label": "E-Mail",
+        "value": "connect@eryonai.com"
+      },
+      {
+        "label": "Telefon",
+        "value": "+91 78278 86571"
+      },
+      {
+        "label": "Standort",
+        "value": "New Delhi, Indien"
+      },
+      {
+        "label": "Antwortzeit",
+        "value": "Innerhalb von 24 Stunden"
+      }
+    ],
+    "nextStepsTitle": "Wie geht es weiter?",
+    "nextSteps": [
+      "Wir prüfen Ihre Anforderungen",
+      "Discovery-Call vereinbaren",
+      "Detailliertes Angebot senden",
+      "Projektstart innerhalb einer Woche"
+    ],
+    "services": [
+      "Webentwicklung",
+      "Mobile App-Entwicklung",
+      "KI / ML-Lösungen",
+      "Cloud & DevOps",
+      "Cybersicherheit",
+      "UI/UX-Design",
+      "Full-Stack-Produkt",
+      "Beratung"
+    ],
+    "budgets": {
+      "USD": [
+        "$200 – $2K",
+        "$5K – $15K",
+        "$15K – $50K",
+        "$50K – $150K",
+        "$150K+",
+        "Lassen Sie uns sprechen"
+      ],
+      "INR": [
+        "₹10K – ₹1L",
+        "₹4L – ₹12L",
+        "₹12L – ₹40L",
+        "₹40L – ₹1,2Cr",
+        "₹1,2Cr+",
+        "Lassen Sie uns sprechen"
+      ]
+    },
+    "form": {
+      "heading": "Erzählen Sie uns von Ihrem Projekt",
+      "nameLabel": "Vollständiger Name",
+      "namePlaceholder": "Name",
+      "emailLabel": "Geschäftliche E-Mail",
+      "emailPlaceholder": "name@unternehmen.de",
+      "companyLabel": "Unternehmen",
+      "companyPlaceholder": "Musterfirma GmbH",
+      "serviceLabel": "Benötigte Leistung",
+      "serviceSelectPlaceholder": "Leistung auswählen...",
+      "budgetLabel": "Projektbudget",
+      "messageLabel": "Projektdetails",
+      "messagePlaceholder": "Beschreiben Sie Ihre Projektziele, den Zeitplan und die Anforderungen...",
+      "submitBtn": "Projekt starten",
+      "submittingBtn": "Wird gesendet...",
+      "disclaimer": "Keine Verpflichtung. Kostenlose Projektbewertung inklusive.",
+      "errors": {
+        "name": "Name erforderlich",
+        "email": "Gültige E-Mail-Adresse erforderlich",
+        "message": "Bitte beschreiben Sie das Projekt (mind. 20 Zeichen)"
+      },
+      "serverError": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt eine E-Mail.",
+      "networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
+      "successTitle": "Nachricht gesendet!",
+      "successBody": "Vielen Dank, {name}. Unser Team wird Ihre Angaben prüfen und innerhalb von 24 Stunden antworten.",
+      "sendAnother": "Weitere Nachricht senden"
+    }
+  },
+  "services": {
+    "hero": {
+      "badge": "Unsere Leistungen",
+      "titlePrefix": "12 Lösungskategorien. ",
+      "titleGradient": "140+ Leistungen.",
+      "subtitle": "Von individuellen Webplattformen bis zur KI-Automatisierung — entdecken Sie unser gesamtes Angebot an Software-Engineering-Leistungen für Unternehmen."
+    },
+    "grid": {
+      "btnExplore": "Entdecken"
+    },
+    "cta": {
+      "btnPrimary": "Gespräch beginnen →",
+      "btnSecondary": "Unser Portfolio ansehen"
+    },
+    "categories": [
+      {
+        "label": "Webanwendungen",
+        "tagline": "Unternehmensportale, skalierbare Plattformen, Full-Stack."
+      },
+      {
+        "label": "Mobile Anwendungen",
+        "tagline": "iOS, Android, plattformübergreifend, unternehmenstauglich."
+      },
+      {
+        "label": "Individuelle SaaS-Anwendungen",
+        "tagline": "Mandantenfähig, skalierbar, umsatzgenerierend."
+      },
+      {
+        "label": "CRM, ERP & Geschäftsverwaltung",
+        "tagline": "Zentralisieren, automatisieren, Betrieb skalieren."
+      },
+      {
+        "label": "Immobiliensoftware",
+        "tagline": "Immobilienverwaltung, CRM und Listungsportale."
+      },
+      {
+        "label": "Fitnessstudio-Management-Software",
+        "tagline": "Mitgliedschaften, Terminplanung und Abrechnungsplattformen."
+      },
+      {
+        "label": "E-Commerce-Lösungen",
+        "tagline": "B2B, B2C, Marktplätze. Verkaufen im großen Maßstab."
+      },
+      {
+        "label": "Geschäftsprozessautomatisierung",
+        "tagline": "Prozessoptimierung. Workflow-Automatisierung."
+      },
+      {
+        "label": "KI- & Automatisierungslösungen",
+        "tagline": "LLMs. Agenten. Automatisierung. Echte Geschäftswirkung."
+      },
+      {
+        "label": "Daten- & Analytiklösungen",
+        "tagline": "Von Rohdaten zu Management-Entscheidungen."
+      },
+      {
+        "label": "DevOps & Cloud Engineering",
+        "tagline": "Infrastruktur, die skaliert. Kein Ausfall. Immer verfügbar."
+      },
+      {
+        "label": "UI/UX-Design",
+        "tagline": "Design, das konvertiert. Systeme, die skalieren."
+      }
+    ],
+    "heroBadge2": "12 Lösungskategorien · 140+ Angebote",
+    "statsLabels": [
+      "Lösungskategorien",
+      "Leistungsangebote",
+      "Realisierte Projekte",
+      "Unternehmenskunden"
+    ],
+    "gridBadge": "Was wir bauen",
+    "gridTitlePrefix": "Maßgeschneiderte Lösungen, ",
+    "gridTitleGradient": "keine generischen Leistungen",
+    "gridSubtitle": "Jedes Angebot unten ist ein reales Ergebnis — kein Schlagwort. Klicken Sie auf eine Karte, um den vollen Umfang dieser Kategorie zu entdecken.",
+    "collapseLabel": "Einklappen",
+    "viewMoreLabel": "{n} weitere anzeigen",
+    "bottomBadge": "Nicht das Richtige dabei?",
+    "bottomTitle": "Wir bauen alles, was Ihr Unternehmen braucht",
+    "bottomSubtitle": "Unser Engineering-Team übernimmt komplett maßgeschneiderte Anforderungen. Teilen Sie Ihre Idee mit uns und wir skizzieren sie — ohne Verpflichtung.",
+    "trustIndicators": [
+      "NDA auf Anfrage",
+      "Antwort innerhalb von 24h",
+      "Keine Verpflichtung nötig"
+    ],
+    "exploreAllAnchor": "Alle Leistungen entdecken ↓"
+  },
+  "pageMeta": {
+    "about": {
+      "title": "Über ERYON AI | Software-Engineering-Agentur für Unternehmen | New Delhi",
+      "description": "ERYON AI ist eine Software-Engineering-Agentur für Unternehmen mit Sitz in New Delhi — KI/ML, Cloud-native Architektur, Full-Stack-Entwicklung. 150+ Projekte, 80+ Kunden."
+    },
+    "contact": {
+      "title": "Kontakt | ERYON AI | Kostenlose Beratung anfragen",
+      "description": "Kontaktieren Sie ERYON AI für Unternehmenssoftware, KI/ML und Cloud-Engineering. Kostenlose Beratung, Antwort innerhalb von 24 Stunden."
+    },
+    "portfolio": {
+      "title": "Portfolio | ERYON AI | 150+ realisierte Projekte",
+      "description": "Entdecken Sie das Portfolio von ERYON AI — Webanwendungen, KI-Systeme, mobile Apps und Unternehmensplattformen für Fintech, Gesundheitswesen und E-Commerce."
+    },
+    "process": {
+      "title": "Unser Prozess | ERYON AI | So entwickeln wir Unternehmenssoftware",
+      "description": "Der bewährte 6-Stufen-Entwicklungsprozess von ERYON AI — von der Analyse über die Implementierung bis zum laufenden SLA-Support."
+    },
+    "techStack": {
+      "title": "Technologie-Stack | ERYON AI | Eingesetzte Technologien",
+      "description": "Der moderne Technologie-Stack, mit dem ERYON AI skalierbare Web-, Mobile-, KI- und Cloud-Lösungen entwickelt."
+    },
+    "services": {
+      "title": "Leistungen | ERYON AI | Software-Engineering für Unternehmen",
+      "description": "Entdecken Sie unsere 12 Lösungskategorien und über 140 Leistungen — von individuellen SaaS-Plattformen bis zu KI-Automatisierung und Cloud-Infrastruktur."
+    },
+    "blog": {
+      "title": "Blog | Einblicke, Technologie & Innovation — ERYON AI",
+      "description": "Aktuelle Artikel zu KI, Software-Engineering, Produktentwicklung, Startups, Automatisierung, Cloud-Infrastruktur und neuen Technologien."
+    }
+  }
+}

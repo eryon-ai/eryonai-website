@@ -23,19 +23,26 @@ const contactInfo = [
   { icon: Clock, label: 'Response Time', value: 'Within 24 hours', color: '#f59e0b' },
 ];
 
-export default function ContactSection() {
+export default function ContactSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const activeServices: string[] = dict?.services ?? services;
+  const activeBudgets: typeof budgets = dict?.budgets ?? budgets;
+  const activeContactInfo: typeof contactInfo = dict?.info
+    ? dict.info.map((it: any, i: number) => ({ ...contactInfo[i], label: it.label, value: it.value }))
+    : contactInfo;
+  const activeNextSteps: string[] = dict?.nextSteps ?? ['We review your requirements', 'Schedule a discovery call', 'Send a detailed proposal', 'Project kickoff within 1 week'];
+  const f = dict?.form;
   const [form, setForm] = useState<Form>({ name: '', email: '', company: '', service: '', budget: '', message: '' });
   const [errors, setErrors] = useState<Errors>({});
   const [focused, setFocused] = useState('');
   const [currency, setCurrency] = useState<'USD' | 'INR'>('USD');
 
   const handleCurrencyChange = (newCurrency: 'USD' | 'INR') => {
-    const oldIndex = budgets[currency].indexOf(form.budget);
+    const oldIndex = activeBudgets[currency].indexOf(form.budget);
     setCurrency(newCurrency);
     if (oldIndex !== -1) {
-      setForm(prev => ({ ...prev, budget: budgets[newCurrency][oldIndex] }));
+      setForm(prev => ({ ...prev, budget: activeBudgets[newCurrency][oldIndex] }));
     }
   };
   const [submitted, setSubmitted] = useState(false);
@@ -45,9 +52,9 @@ export default function ContactSection() {
 
   const validate = () => {
     const e: Errors = {};
-    if (!form.name.trim()) e.name = 'Name required';
-    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Valid email required';
-    if (!form.message.trim() || form.message.length < 20) e.message = 'Please describe project (min 20 chars)';
+    if (!form.name.trim()) e.name = f?.errors?.name ?? 'Name required';
+    if (!form.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = f?.errors?.email ?? 'Valid email required';
+    if (!form.message.trim() || form.message.length < 20) e.message = f?.errors?.message ?? 'Please describe project (min 20 chars)';
     setErrors(e);
     return !Object.keys(e).length;
   };
@@ -80,15 +87,15 @@ export default function ContactSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <SectionBadge icon={MessageSquare} label="Let's Talk" />
+          <SectionBadge icon={MessageSquare} label={dict?.badge ?? "Let's Talk"} />
           <h2 className="text-3xl md:text-5xl font-extrabold mb-5" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-            Start Your{' '}
+            {dict?.titlePrefix ?? 'Start Your '}{' '}
             <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Project Today
+              {dict?.titleGradient ?? 'Project Today'}
             </span>
           </h2>
           <p className="text-base md:text-lg" style={{ color: '#94a3b8', lineHeight: 1.7 }}>
-            Tell us about your vision — we&apos;ll respond within 24 hours with a tailored proposal.
+            {dict?.subtitle ?? "Tell us about your vision — we'll respond within 24 hours with a tailored proposal."}
           </p>
         </motion.div>
 
@@ -100,7 +107,7 @@ export default function ContactSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="lg:col-span-4 flex flex-col gap-4"
           >
-            {contactInfo.map((item, i) => (
+            {activeContactInfo.map((item, i) => (
               <GlowCard key={i} color={item.color} className="p-5" style={{ background: '#1e293b' }}>
                 <div className="flex items-center gap-4">
                   <div
@@ -120,15 +127,10 @@ export default function ContactSection() {
             {/* Why contact us */}
             <GlowCard color="#0066ff" className="p-5" style={{ background: 'linear-gradient(135deg, rgba(0,102,255,0.06), rgba(0,180,216,0.04))' }}>
               <h4 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 14, fontWeight: 700, color: '#f8fafc', marginBottom: 12 }}>
-                What Happens Next?
+                {dict?.nextStepsTitle ?? 'What Happens Next?'}
               </h4>
               <ul className="flex flex-col gap-2.5" style={{ listStyle: 'none', padding: 0 }}>
-                {[
-                  'We review your requirements',
-                  'Schedule a discovery call',
-                  'Send a detailed proposal',
-                  'Project kickoff within 1 week',
-                ].map((item, i) => (
+                {activeNextSteps.map((item, i) => (
                   <li key={i} className="flex items-center gap-2.5">
                     <CheckCircle2 size={15} strokeWidth={2.5} color="#00b4d8" aria-hidden="true" style={{ flexShrink: 0 }} />
                     <span style={{ fontSize: 13, color: '#94a3b8' }}>{item}</span>
@@ -158,10 +160,10 @@ export default function ContactSection() {
                     <CheckCircle2 size={36} strokeWidth={2} color="#10b981" aria-hidden="true" />
                   </div>
                   <h3 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 22, fontWeight: 800, color: '#f8fafc', marginBottom: 10 }}>
-                    Message Sent!
+                    {dict?.form?.successTitle ?? 'Message Sent!'}
                   </h3>
                   <p style={{ color: '#94a3b8', fontSize: 15, marginBottom: 24 }}>
-                    Thank you, <strong style={{ color: '#f1f5f9' }}>{form.name}</strong>. Our team will review your details and respond within 24 hours.
+                    {(dict?.form?.successBody ?? 'Thank you, {name}. Our team will review your details and respond within 24 hours.').split('{name}')[0]}<strong style={{ color: '#f1f5f9' }}>{form.name}</strong>{(dict?.form?.successBody ?? 'Thank you, {name}. Our team will review your details and respond within 24 hours.').split('{name}')[1]}
                   </p>
                   <button
                     type="button"
@@ -173,7 +175,7 @@ export default function ContactSection() {
                       transition: 'background 0.2s',
                     }}
                   >
-                    Send Another Message
+                    {dict?.form?.sendAnother ?? 'Send Another Message'}
                   </button>
                 </GlowCard>
               </motion.div>
@@ -208,25 +210,25 @@ export default function ContactSection() {
                           });
                         }
                       } else {
-                        setServerError('Something went wrong. Please try again or email us directly.');
+                        setServerError(f?.serverError ?? 'Something went wrong. Please try again or email us directly.');
                       }
                     } catch {
-                      setServerError('Network error. Please check your connection.');
+                      setServerError(f?.networkError ?? 'Network error. Please check your connection.');
                     } finally {
                       setSubmitting(false);
                     }
                   }}
                 >
                   <h3 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 18, fontWeight: 700, color: '#f8fafc', marginBottom: 24 }}>
-                    Tell Us About Your Project
+                    {dict?.form?.heading ?? 'Tell Us About Your Project'}
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
                       <label htmlFor="contact-name" style={{ fontSize: 13, fontWeight: 600, color: '#cbd5e1', display: 'block', marginBottom: 6 }}>
-                        Full Name <span style={{ color: '#ef4444' }}>*</span>
+                        {dict?.form?.nameLabel ?? 'Full Name'} <span style={{ color: '#ef4444' }}>*</span>
                       </label>
-                      <input id="contact-name" type="text" placeholder="Name" value={form.name}
+                      <input id="contact-name" type="text" placeholder={dict?.form?.namePlaceholder ?? "Name"} value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         onFocus={() => setFocused('name')} onBlur={() => setFocused('')}
                         aria-invalid={!!errors.name} aria-describedby={errors.name ? 'contact-name-error' : undefined}
@@ -236,9 +238,9 @@ export default function ContactSection() {
                     </div>
                     <div>
                       <label htmlFor="contact-email" style={{ fontSize: 13, fontWeight: 600, color: '#cbd5e1', display: 'block', marginBottom: 6 }}>
-                        Work Email <span style={{ color: '#ef4444' }}>*</span>
+                        {dict?.form?.emailLabel ?? 'Work Email'} <span style={{ color: '#ef4444' }}>*</span>
                       </label>
-                      <input id="contact-email" type="email" placeholder="Name@company.com" value={form.email}
+                      <input id="contact-email" type="email" placeholder={dict?.form?.emailPlaceholder ?? "Name@company.com"} value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                         onFocus={() => setFocused('email')} onBlur={() => setFocused('')}
                         aria-invalid={!!errors.email} aria-describedby={errors.email ? 'contact-email-error' : undefined}
@@ -250,8 +252,8 @@ export default function ContactSection() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label htmlFor="contact-company" style={{ fontSize: 13, fontWeight: 600, color: '#cbd5e1', display: 'block', marginBottom: 6 }}>Company</label>
-                      <input id="contact-company" type="text" placeholder="Acme Corp" value={form.company}
+                      <label htmlFor="contact-company" style={{ fontSize: 13, fontWeight: 600, color: '#cbd5e1', display: 'block', marginBottom: 6 }}>{dict?.form?.companyLabel ?? 'Company'}</label>
+                      <input id="contact-company" type="text" placeholder={dict?.form?.companyPlaceholder ?? "Acme Corp"} value={form.company}
                         onChange={(e) => setForm({ ...form, company: e.target.value })}
                         onFocus={() => setFocused('company')} onBlur={() => setFocused('')}
                         className="placeholder:text-[#64748b]"
@@ -259,26 +261,26 @@ export default function ContactSection() {
                     </div>
 
                     <div>
-                      <label htmlFor="contact-service" style={{ fontSize: 13, fontWeight: 600, color: '#cbd5e1', display: 'block', marginBottom: 6 }}>Service Needed</label>
+                      <label htmlFor="contact-service" style={{ fontSize: 13, fontWeight: 600, color: '#cbd5e1', display: 'block', marginBottom: 6 }}>{dict?.form?.serviceLabel ?? 'Service Needed'}</label>
                       <select id="contact-service" value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })}
                         onFocus={() => setFocused('service')} onBlur={() => setFocused('')}
                         style={{ ...inputStyle('service'), color: form.service ? '#f1f5f9' : '#64748b' }}>
-                        <option value="" style={{ color: '#0f172a' }}>Select a service...</option>
-                        {services.map((s) => <option key={s} value={s} style={{ color: '#0f172a' }}>{s}</option>)}
+                        <option value="" style={{ color: '#0f172a' }}>{dict?.form?.serviceSelectPlaceholder ?? 'Select a service...'}</option>
+                        {activeServices.map((s) => <option key={s} value={s} style={{ color: '#0f172a' }}>{s}</option>)}
                       </select>
                     </div>
                   </div>
 
                   <div className="mb-4">
                     <div className="flex items-center justify-between mb-3">
-                      <label style={{ fontSize: 13, fontWeight: 600, color: '#cbd5e1', margin: 0 }}>Project Budget</label>
+                      <label style={{ fontSize: 13, fontWeight: 600, color: '#cbd5e1', margin: 0 }}>{dict?.form?.budgetLabel ?? 'Project Budget'}</label>
                       <div style={{ display: 'flex', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 6, padding: 2 }}>
                         <button type="button" onClick={() => handleCurrencyChange('USD')} style={{ padding: '4px 10px', fontSize: 12, fontWeight: 600, borderRadius: 4, border: 'none', background: currency === 'USD' ? 'rgba(255,255,255,0.12)' : 'transparent', color: currency === 'USD' ? '#f8fafc' : '#64748b', cursor: 'pointer', transition: 'all 0.2s' }}>USD ($)</button>
                         <button type="button" onClick={() => handleCurrencyChange('INR')} style={{ padding: '4px 10px', fontSize: 12, fontWeight: 600, borderRadius: 4, border: 'none', background: currency === 'INR' ? 'rgba(255,255,255,0.12)' : 'transparent', color: currency === 'INR' ? '#f8fafc' : '#64748b', cursor: 'pointer', transition: 'all 0.2s' }}>INR (₹)</button>
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {budgets[currency].map((b) => (
+                      {activeBudgets[currency].map((b) => (
                         <button key={b} type="button" onClick={() => setForm({ ...form, budget: b })}
                           style={{
                             padding: '7px 14px', borderRadius: 8, fontSize: 13, fontWeight: 500, cursor: 'pointer',
@@ -295,9 +297,9 @@ export default function ContactSection() {
 
                   <div className="mb-6">
                     <label htmlFor="contact-message" style={{ fontSize: 13, fontWeight: 600, color: '#cbd5e1', display: 'block', marginBottom: 6 }}>
-                      Project Details <span style={{ color: '#ef4444' }}>*</span>
+                      {dict?.form?.messageLabel ?? 'Project Details'} <span style={{ color: '#ef4444' }}>*</span>
                     </label>
-                    <textarea id="contact-message" rows={4} value={form.message} placeholder="Describe your project goals, timeline, and requirements..."
+                    <textarea id="contact-message" rows={4} value={form.message} placeholder={dict?.form?.messagePlaceholder ?? "Describe your project goals, timeline, and requirements..."}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       onFocus={() => setFocused('message')} onBlur={() => setFocused('')}
                       aria-invalid={!!errors.message} aria-describedby={errors.message ? 'contact-message-error' : undefined}
@@ -327,12 +329,12 @@ export default function ContactSection() {
                     {submitting ? (
                       <>
                         <Loader2 size={18} strokeWidth={2.5} className="animate-spin" aria-hidden="true" />
-                        Sending...
+                        {dict?.form?.submittingBtn ?? 'Sending...'}
                       </>
                     ) : (
                       <>
                         <Rocket size={18} strokeWidth={2.5} aria-hidden="true" />
-                        Start Your Project
+                        {dict?.form?.submitBtn ?? 'Start Your Project'}
                       </>
                     )}
                   </motion.button>
@@ -340,7 +342,7 @@ export default function ContactSection() {
                     <p role="alert" style={{ textAlign: 'center', fontSize: 13, color: '#ef4444', marginTop: 10 }}>{serverError}</p>
                   )}
                   <p style={{ textAlign: 'center', fontSize: 12, color: '#64748b', marginTop: 10 }}>
-                    No commitment. Free project assessment included.
+                    {dict?.form?.disclaimer ?? 'No commitment. Free project assessment included.'}
                   </p>
                 </form>
               </GlowCard>

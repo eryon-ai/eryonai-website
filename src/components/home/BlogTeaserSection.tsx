@@ -3,18 +3,22 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Newspaper } from 'lucide-react';
 import SectionBadge from '@/components/ui/SectionBadge';
 import { blogPosts } from '@/lib/blog-data';
-
-const posts = blogPosts.slice(0, 3);
+import { getLocaleFromPathname, getLocalizedPath } from '@/lib/layout-translations';
+import { getLocalizedPosts, getCategoryLabel } from '@/lib/blog-translations';
 
 function formatDate(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-export default function BlogTeaserSection() {
+export default function BlogTeaserSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const posts = getLocalizedPosts(blogPosts.slice(0, 3), locale);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
@@ -34,20 +38,20 @@ export default function BlogTeaserSection() {
           transition={{ duration: 0.6 }}
         >
           <div>
-            <SectionBadge icon={Newspaper} label="Latest Insights" color="#f59e0b" />
+            <SectionBadge icon={Newspaper} label={dict?.badge ?? "Latest Insights"} color="#f59e0b" />
             <h2 className="text-3xl md:text-5xl font-extrabold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-              Thinking About{' '}
+              {dict?.titlePrefix ?? 'Thinking About '}{' '}
               <span style={{ background: 'linear-gradient(135deg, #f59e0b, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                the Future
+                {dict?.titleGradient ?? 'the Future'}
               </span>
             </h2>
           </div>
-          <Link href="/blogs" className="flex-shrink-0 group flex items-center gap-2 text-sm font-semibold transition-colors"
+          <Link href={getLocalizedPath("/blogs", locale)} className="flex-shrink-0 group flex items-center gap-2 text-sm font-semibold transition-colors"
             style={{ color: '#64748b' }}
             onMouseEnter={e => (e.currentTarget as HTMLElement).style.color = '#f8fafc'}
             onMouseLeave={e => (e.currentTarget as HTMLElement).style.color = '#64748b'}
           >
-            Read all articles
+            {dict?.readAll ?? 'Read all articles'}
             <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
           </Link>
         </motion.div>
@@ -61,7 +65,7 @@ export default function BlogTeaserSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.08 }}
             >
-              <Link href={`/blogs/${post.slug}`} className="group block h-full rounded-2xl overflow-hidden"
+              <Link href={getLocalizedPath(`/blogs/${post.slug}`, locale)} className="group block h-full rounded-2xl overflow-hidden"
                 style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', transition: 'border-color 0.3s, box-shadow 0.3s' }}
                 onMouseEnter={e => {
                   (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,102,255,0.3)';
@@ -83,7 +87,7 @@ export default function BlogTeaserSection() {
                   {/* Category */}
                   <div className="absolute bottom-3 left-4 px-2.5 py-1 rounded-full text-[10px] font-bold"
                     style={{ background: 'rgba(0,102,255,0.3)', border: '1px solid rgba(0,102,255,0.5)', color: '#93c5fd', backdropFilter: 'blur(8px)' }}>
-                    {post.category}
+                    {getCategoryLabel(post.category, locale)}
                   </div>
                 </div>
 

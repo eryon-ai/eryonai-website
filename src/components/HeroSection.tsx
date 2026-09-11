@@ -1,9 +1,23 @@
 'use client';
 
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { CheckCircle2 } from 'lucide-react';
 import MovingBorderButton from '@/components/ui/MovingBorderButton';
+import { getLocaleFromPathname, getLocalizedPath } from '@/lib/layout-translations';
+
+export interface HeroDict {
+  titlePrefix?: string;
+  titleGradient1?: string;
+  titleAnd?: string;
+  titleGradient2?: string;
+  description?: string;
+  ctaStart?: string;
+  ctaWork?: string;
+  badges?: string[];
+  trustedTech?: string;
+  stats?: { value: string; label: string }[];
+}
 
 
 
@@ -38,8 +52,10 @@ const TechLogos: { name: string; iconUrl: string }[] = [
   },
 ];
 
-export default function HeroSection() {
+export default function HeroSection({ dict }: { dict?: HeroDict } = {}) {
   const router = useRouter();
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(0,102,255,0.10), transparent 70%)`;
@@ -98,23 +114,23 @@ export default function HeroSection() {
                 marginBottom: 24,
               }}
             >
-              Enterprise-Grade{' '}
+              {dict?.titlePrefix ?? 'Enterprise-Grade'}{' '}
               <span style={{
                 background: 'linear-gradient(135deg, #0066ff, #00b4d8)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
               }}>
-                Custom Software
+                {dict?.titleGradient1 ?? 'Custom Software'}
               </span>
-              <br />&amp;{' '}
+              <br />{dict?.titleAnd ?? '&'}{' '}
               <span style={{
                 background: 'linear-gradient(135deg, #00b4d8, #6366f1)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
               }}>
-                AI Development
+                {dict?.titleGradient2 ?? 'AI Development'}
               </span>
             </motion.h1>
 
@@ -124,12 +140,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.35 }}
               style={{ fontSize: 18, color: '#94a3b8', lineHeight: 1.7, marginBottom: 36, maxWidth: 560 }}
             >
-              ERYON AI delivers enterprise-grade{' '}
-              <span style={{ color: '#00b4d8', fontWeight: 600 }}>Custom Web Applications</span>,{' '}
-              <span style={{ color: '#0066ff', fontWeight: 600 }}>Generative AI</span>,{' '}
-              <span style={{ color: '#6366f1', fontWeight: 600 }}>Mobile Apps</span> &{' '}
-              <span style={{ color: '#10b981', fontWeight: 600 }}>Cloud Solutions</span>{' '}
-              engineered for performance, security, and long-term growth.
+              {dict?.description ?? 'ERYON AI delivers enterprise-grade Custom Web Applications, Generative AI, Mobile Apps & Cloud Solutions engineered for performance, security, and long-term growth.'}
             </motion.p>
 
             {/* CTAs */}
@@ -139,12 +150,12 @@ export default function HeroSection() {
               transition={{ duration: 0.55, delay: 0.5 }}
               className="flex flex-col sm:flex-row flex-wrap gap-4 mb-10"
             >
-              <MovingBorderButton href="/contact" className="w-full sm:w-auto">
-                Start Your Project
+              <MovingBorderButton href={getLocalizedPath("/contact", locale)} className="w-full sm:w-auto">
+                {dict?.ctaStart ?? 'Start Your Project'}
               </MovingBorderButton>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
                 <button
-                  onClick={() => router.push('/portfolio')}
+                  onClick={() => router.push(getLocalizedPath("/portfolio", locale))}
                   className="btn-secondary w-full sm:w-auto justify-center"
                   style={{
                     padding: '13px 28px',
@@ -153,7 +164,7 @@ export default function HeroSection() {
                     fontSize: 15,
                   }}
                 >
-                  View Our Work →
+                  {dict?.ctaWork ?? 'View Our Work →'}
                 </button>
               </motion.div>
             </motion.div>
@@ -167,7 +178,7 @@ export default function HeroSection() {
               transition={{ delay: 0.65 }}
               className="flex flex-wrap gap-x-6 sm:gap-x-10 gap-y-3"
             >
-              {['MSME Registered', 'Agile Delivery', '24/7 Support', 'NDA Protected'].map((f, i) => (
+              {(dict?.badges ?? ['MSME Registered', 'Agile Delivery', '24/7 Support', 'NDA Protected']).map((f, i) => (
                 <div key={i} className="flex items-center gap-2" style={{ color: '#94a3b8', fontSize: 13 }}>
                   <CheckCircle2 size={16} strokeWidth={2.5} color="#0066ff" aria-hidden="true" />
                   {f}
@@ -263,12 +274,12 @@ export default function HeroSection() {
             border: '1px solid rgba(255,255,255,0.08)',
           }}
         >
-          {[
+          {(dict?.stats ?? [
             { value: '150+', label: 'Projects Delivered' },
             { value: '18+', label: 'Enterprise Clients' },
             { value: '8+', label: 'Years of Excellence' },
             { value: '50+', label: 'Expert Engineers' },
-          ].map((s, i) => (
+          ]).map((s, i) => (
             <div
               key={i}
               className={`stat-item ${
@@ -294,7 +305,7 @@ export default function HeroSection() {
         >
           <div style={{ marginBottom: 16 }} />
           <p className="text-center text-xs font-semibold mb-6" style={{ color: 'white', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-            OUR Trusted Technologies & Platforms
+            {dict?.trustedTech ?? 'OUR Trusted Technologies & Platforms'}
           </p>
           <div style={{ marginBottom: 16 }} />
           <div className="flex flex-wrap justify-center gap-4 p-6">

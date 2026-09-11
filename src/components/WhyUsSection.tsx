@@ -45,8 +45,11 @@ const features = [
   },
 ];
 
-export default function WhyUsSection() {
+export default function WhyUsSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
+  const activeFeatures = dict?.features
+    ? dict.features.map((f: any, i: number) => ({ ...features[i], title: f.title, description: f.description }))
+    : features;
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
@@ -65,21 +68,21 @@ export default function WhyUsSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <SectionBadge icon={Award} label="Why Choose Us" />
+          <SectionBadge icon={Award} label={dict?.badge ?? "Why Choose Us"} />
           <h2 className="text-3xl md:text-5xl font-extrabold mb-5" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-            Why Choose ERYON AI for{' '}
+            {dict?.titlePrefix ?? 'Why Choose ERYON AI for '}{' '}
             <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Digital Transformation
+              {dict?.titleGradient ?? 'Digital Transformation'}
             </span>
           </h2>
           <p className="text-base md:text-lg" style={{ color: '#94a3b8', lineHeight: 1.7 }}>
-            Not just developers — experienced digital partners who deeply understand business.
+            {dict?.subtitle ?? 'Not just developers — experienced digital partners who deeply understand business.'}
           </p>
         </motion.div>
 
         {/* Feature grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 mb-14">
-          {features.map((f, i) => (
+          {activeFeatures.map((f: any, i: number) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 24 }}
@@ -112,13 +115,13 @@ export default function WhyUsSection() {
           <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 13, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 12 }}>
-                Ready to Get Started?
+                {dict?.ctaLabel ?? 'Ready to Get Started?'}
               </p>
               <h3 style={{ fontFamily: 'Space Grotesk,sans-serif', fontSize: 28, fontWeight: 800, color: 'white', lineHeight: 1.25, marginBottom: 12 }}>
-                Transform your business with AI-powered digital solutions
+                {dict?.ctaTitle ?? 'Transform your business with AI-powered digital solutions'}
               </h3>
               <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: 15, lineHeight: 1.65 }}>
-                Free consultation, no commitment. We&apos;ll analyze your requirements and send a detailed proposal within 24 hours.
+                {dict?.ctaDesc ?? "Free consultation, no commitment. We'll analyze your requirements and send a detailed proposal within 24 hours."}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 lg:justify-end">
@@ -128,7 +131,7 @@ export default function WhyUsSection() {
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn-primary w-full sm:w-auto justify-center"
               >
-                Start a Conversation →
+                {dict?.ctaPrimary ?? 'Start a Conversation →'}
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.04 }}
@@ -136,7 +139,7 @@ export default function WhyUsSection() {
                 onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn-secondary w-full sm:w-auto justify-center"
               >
-                View Our Work
+                {dict?.ctaSecondary ?? 'View Our Work'}
               </motion.button>
             </div>
           </div>

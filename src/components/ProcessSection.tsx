@@ -51,9 +51,12 @@ const steps = [
   },
 ];
 
-export default function ProcessSection() {
+export default function ProcessSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const activeSteps: typeof steps = dict?.steps
+    ? dict.steps.map((s: any, i: number) => ({ ...steps[i], title: s.title, desc: s.desc }))
+    : steps;
 
   return (
     <section id="process" className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0f172a' }}>
@@ -71,7 +74,7 @@ export default function ProcessSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
             >
-              <SectionBadge icon={Compass} label="How We Work" color="#0066ff" />
+              <SectionBadge icon={Compass} label={dict?.badge ?? "How We Work"} color="#0066ff" />
             </motion.div>
 
             <motion.h2
@@ -81,9 +84,9 @@ export default function ProcessSection() {
               className="text-3xl md:text-5xl font-extrabold mb-5"
               style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}
             >
-              Our Proven{' '}
+              {dict?.titlePrefix ?? 'Our Proven '}{' '}
               <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                6-Step Process
+                {dict?.titleGradient ?? '6-Step Process'}
               </span>
             </motion.h2>
 
@@ -94,7 +97,7 @@ export default function ProcessSection() {
               className="text-base md:text-lg mb-8"
               style={{ color: '#94a3b8', lineHeight: 1.7 }}
             >
-              A transparent, structured delivery methodology that ensures every project succeeds — on time and on budget.
+              {dict?.subtitle ?? 'A transparent, structured delivery methodology that ensures every project succeeds — on time and on budget.'}
             </motion.p>
 
             <motion.div
@@ -110,17 +113,17 @@ export default function ProcessSection() {
               }}
             >
               <p style={{ fontSize: 13, fontWeight: 600, opacity: 0.85, marginBottom: 6, marginLeft: 8, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                Average Time to Launch
+                {dict?.avgTimeLabel ?? 'Average Time to Launch'}
               </p>
               <p style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 36, fontWeight: 800, lineHeight: 1, marginBottom: 6, marginLeft: 8 }}>
-                8–12 Weeks
+                {dict?.avgTimeValue ?? '8–12 Weeks'}
               </p>
               <p style={{ fontSize: 13, opacity: 0.8, marginTop: 8, marginBottom: 6, marginLeft: 8 }}>
-                For most enterprise projects
+                {dict?.avgTimeSub ?? 'For most enterprise projects'}
               </p>
               <div className="mt-4 pt-4" style={{ borderTop: '1px solid rgba(255,255,255,0.2)', marginBottom: 8, marginLeft: 8 }}>
                 <p style={{ fontSize: 13, opacity: 0.85 }}>
-                  On-time delivery rate: <strong>94%</strong>
+                  {dict?.onTimeRate ?? 'On-time delivery rate:'} <strong>{dict?.onTimeRateValue ?? '94%'}</strong>
                 </p>
               </div>
             </motion.div>
@@ -129,7 +132,7 @@ export default function ProcessSection() {
           {/* Right: Steps */}
           <div className="lg:col-span-8">
             <div className="space-y-5">
-              {steps.map((step, i) => (
+              {activeSteps.map((step, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 24 }}

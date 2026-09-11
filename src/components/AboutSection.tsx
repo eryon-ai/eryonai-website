@@ -185,7 +185,6 @@ const organizationSchema = {
   numberOfEmployees: { '@type': 'QuantitativeValue', value: 50 },
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Connaught Place',
     addressLocality: 'New Delhi',
     addressRegion: 'Delhi',
     postalCode: '110001',
@@ -215,9 +214,28 @@ const organizationSchema = {
 };
 
 /* ─── Main Section ───────────────────────────────────────────────────── */
-export default function AboutSection() {
+export default function AboutSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  const activeStats = dict?.stats
+    ? dict.stats.map((s: any, i: number) => ({ ...stats[i], label: s.label, caption: s.caption }))
+    : stats;
+  const activeBenchmarks = dict?.benchmarks
+    ? dict.benchmarks.map((label: string, i: number) => ({ ...benchmarks[i], label }))
+    : benchmarks;
+  const activeCertifications = dict?.certifications
+    ? dict.certifications.map((c2: any, i: number) => ({ ...certifications[i], label: c2.label, desc: c2.desc }))
+    : certifications;
+  const activeHighlights = dict?.highlights
+    ? dict.highlights.map((text: string, i: number) => ({ ...highlights[i], text }))
+    : highlights;
+  const activeIndustries = dict?.industries
+    ? dict.industries.map((label: string, i: number) => ({ ...industries[i], label }))
+    : industries;
+  const activeMissionVision = dict?.missionVision
+    ? dict.missionVision.map((mv: any, i: number) => ({ ...missionVision[i], title: mv.title, text: mv.text, link: mv.link }))
+    : missionVision;
 
   return (
     <>
@@ -250,7 +268,7 @@ export default function AboutSection() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5 }}
             >
-              <SectionBadge icon={Sparkles} label="About ERYON AI" />
+              <SectionBadge icon={Sparkles} label={dict?.badge ?? "About ERYON AI"} />
             </motion.div>
 
             <motion.h2
@@ -261,9 +279,9 @@ export default function AboutSection() {
               transition={{ duration: 0.55, delay: 0.08 }}
               style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}
             >
-              Engineering Intelligence,{' '}
+              {dict?.titlePrefix ?? 'Engineering Intelligence, '}{' '}
               <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-                Delivering Excellence
+                {dict?.titleGradient ?? 'Delivering Excellence'}
               </span>
             </motion.h2>
 
@@ -275,10 +293,7 @@ export default function AboutSection() {
               className="text-base md:text-lg mb-3"
               style={{ color: '#94a3b8', lineHeight: 1.8 }}
             >
-              ERYON AI is an enterprise software engineering agency headquartered in{' '}
-              <strong style={{ color: '#f8fafc', fontWeight: 700 }}>New Delhi, India</strong>, delivering{' '}
-              <strong style={{ color: '#f8fafc', fontWeight: 700 }}>AI/ML solutions, cloud-native architectures,
-              full-stack products, and cybersecurity</strong> for startups and global enterprises since 2019.
+              {dict?.desc1 ?? "ERYON AI is an enterprise software engineering agency headquartered in New Delhi, India, delivering AI/ML solutions, cloud-native architectures, full-stack products, and cybersecurity for startups and global enterprises since 2019."}
             </motion.p>
 
             <motion.p
@@ -288,8 +303,7 @@ export default function AboutSection() {
               className="text-sm max-w-xl mx-auto"
               style={{ color: '#94a3b8', lineHeight: 1.75 }}
             >
-              From seed-stage startups building their first MVP to Fortune 500 enterprises modernizing legacy systems —
-              we architect digital experiences that are not just functional, but transformative.
+              {dict?.desc2 ?? "From seed-stage startups building their first MVP to Fortune 500 enterprises modernizing legacy systems — we architect digital experiences that are not just functional, but transformative."}
             </motion.p>
           </div>
 
@@ -297,7 +311,7 @@ export default function AboutSection() {
               BLOCK 2 — STATS STRIP
           ═══════════════════════════════════════════════════════════ */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-16">
-            {stats.map((s, i) => (
+            {activeStats.map((s: any, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 32 }}
@@ -323,7 +337,7 @@ export default function AboutSection() {
               BLOCK 3 — MISSION + VISION
           ═══════════════════════════════════════════════════════════ */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-            {missionVision.map((item, i) => (
+            {activeMissionVision.map((item: any, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 24 }}
@@ -374,11 +388,11 @@ export default function AboutSection() {
                     <BarChart3 size={18} strokeWidth={2} color="#fff" aria-hidden="true" />
                   </div>
                   <h3 className="text-[15px] font-bold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc' }}>
-                    Performance Benchmarks
+                    {dict?.benchmarksTitle ?? 'Performance Benchmarks'}
                   </h3>
                 </div>
                 <div className="flex flex-col gap-4.5">
-                  {benchmarks.map((item, i) => (
+                  {activeBenchmarks.map((item: any, i: number) => (
                     <div key={i}>
                       <div className="flex justify-between mb-2">
                         <span className="text-[13px] font-medium" style={{ color: '#cbd5e1' }}>{item.label}</span>
@@ -406,7 +420,7 @@ export default function AboutSection() {
                     <Settings size={18} strokeWidth={2} color="#fff" aria-hidden="true" />
                   </div>
                   <h3 className="text-[15px] font-bold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc' }}>
-                    Core Technology Stack
+                    {dict?.techStackTitle ?? 'Core Technology Stack'}
                   </h3>
                 </div>
                 <div className="flex flex-wrap gap-2.5">
@@ -440,11 +454,11 @@ export default function AboutSection() {
                     <Medal size={18} strokeWidth={2} color="#fff" aria-hidden="true" />
                   </div>
                   <h3 className="text-[15px] font-bold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc' }}>
-                    Certifications &amp; Trust
+                    {dict?.certificationsTitle ?? 'Certifications & Trust'}
                   </h3>
                 </div>
                 <div className="flex flex-col gap-3">
-                  {certifications.map((cert, i) => (
+                  {activeCertifications.map((cert: any, i: number) => (
                     <motion.div
                       key={i}
                       whileHover={{ x: 4 }}
@@ -478,14 +492,14 @@ export default function AboutSection() {
           >
             <div className="text-center mb-4">
               <p className="text-[11px] font-bold uppercase" style={{ color: '#64748b', letterSpacing: '0.1em' }}>
-                Industries We&apos;ve Transformed
+                {dict?.industriesTitle ?? "Industries We've Transformed"}
               </p>
             </div>
             <div
               className="rounded-2xl py-5"
               style={{ background: '#1e293b', border: '1px solid rgba(255,255,255,0.07)' }}
             >
-              <InfiniteMarquee items={industries} />
+              <InfiniteMarquee items={activeIndustries} />
             </div>
           </motion.div>
 
@@ -493,7 +507,7 @@ export default function AboutSection() {
               BLOCK 6 — TRUST HIGHLIGHTS
           ═══════════════════════════════════════════════════════════ */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
-            {highlights.map((h, i) => (
+            {activeHighlights.map((h: any, i: number) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}

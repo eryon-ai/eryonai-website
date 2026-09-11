@@ -3,11 +3,15 @@
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Lock, Zap, CheckCircle2, Globe2 } from 'lucide-react';
 import MovingBorderButton from '@/components/ui/MovingBorderButton';
+import { getLocaleFromPathname, getLocalizedPath } from '@/lib/layout-translations';
 
-export default function FinalCTASection() {
+export default function FinalCTASection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const reduceMotion = useReducedMotion();
 
@@ -57,7 +61,7 @@ export default function FinalCTASection() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
           </span>
-          Now accepting enterprise clients for Q3 2026
+          {dict?.badge ?? 'Now accepting enterprise clients for Q3 2026'}
         </motion.div>
 
         {/* Headline */}
@@ -68,7 +72,7 @@ export default function FinalCTASection() {
           className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight"
           style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.04em' }}
         >
-          Ready to Build{' '}
+          {dict?.titlePrefix ?? 'Ready to Build'}{' '}
           <br className="hidden sm:block" />
           <span style={{
             background: 'linear-gradient(135deg, #0066ff 0%, #00b4d8 50%, #6366f1 100%)',
@@ -76,7 +80,7 @@ export default function FinalCTASection() {
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
           }}>
-            Something Exceptional?
+            {dict?.titleGradient ?? 'Something Exceptional?'}
           </span>
         </motion.h2>
 
@@ -88,8 +92,7 @@ export default function FinalCTASection() {
           className="text-lg md:text-xl mb-12 max-w-2xl mx-auto"
           style={{ color: '#64748b', lineHeight: 1.7 }}
         >
-          Whether you&apos;re scaling an existing platform or building from the ground up — 
-          we bring the engineering discipline and AI expertise to make it happen.
+          {dict?.subtitle ?? "Whether you're scaling an existing platform or building from the ground up — we bring the engineering discipline and AI expertise to make it happen."}
         </motion.p>
 
         {/* CTA Buttons */}
@@ -99,13 +102,13 @@ export default function FinalCTASection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <MovingBorderButton href="/contact">
-            Start Your Project
+          <MovingBorderButton href={getLocalizedPath("/contact", locale)}>
+            {dict?.ctaPrimary ?? 'Start Your Project'}
             <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
           </MovingBorderButton>
 
           <Link
-            href="/portfolio"
+            href={getLocalizedPath("/portfolio", locale)}
             className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold"
             style={{
               background: 'rgba(255,255,255,0.05)',
@@ -123,7 +126,7 @@ export default function FinalCTASection() {
               (e.currentTarget as HTMLElement).style.color = '#cbd5e1';
             }}
           >
-            View Our Portfolio
+            {dict?.ctaSecondary ?? 'View Our Portfolio'}
             <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
           </Link>
         </motion.div>
@@ -137,10 +140,10 @@ export default function FinalCTASection() {
           style={{ color: '#475569' }}
         >
           {[
-            { icon: Lock, label: 'NDA on request' },
-            { icon: Zap, label: 'Response in 24h' },
-            { icon: CheckCircle2, label: 'No commitment needed' },
-            { icon: Globe2, label: 'Remote-first team' },
+            { icon: Lock, label: dict?.trustIndicators?.[0] ?? 'NDA on request' },
+            { icon: Zap, label: dict?.trustIndicators?.[1] ?? 'Response in 24h' },
+            { icon: CheckCircle2, label: dict?.trustIndicators?.[2] ?? 'No commitment needed' },
+            { icon: Globe2, label: dict?.trustIndicators?.[3] ?? 'Remote-first team' },
           ].map((item, i) => (
             <span key={i} className="inline-flex items-center gap-1.5">
               <item.icon size={13} strokeWidth={2.5} aria-hidden="true" />

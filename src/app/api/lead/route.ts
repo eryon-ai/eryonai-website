@@ -15,6 +15,11 @@ function isEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+// Strip CR/LF so user input can't inject extra headers into the email (header injection).
+function sanitizeHeaderValue(value: string) {
+  return value.replace(/[\r\n]+/g, ' ').trim();
+}
+
 /* ─── Sync data to Google Sheets Webhook ───────────────────────────── */
 async function syncToGoogleSheet(data: Record<string, unknown>) {
   const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL;
@@ -103,7 +108,7 @@ export async function POST(req: NextRequest) {
       from: `"ERYON AI Chatbot" <${process.env.SMTP_USER}>`,
       to: process.env.LEAD_TO_EMAIL || 'connect@eryonai.com',
       replyTo: email,
-      subject: `🤖 New Chatbot Lead — ${name}`,
+      subject: `🤖 New Chatbot Lead — ${sanitizeHeaderValue(name)}`,
       html,
     });
     

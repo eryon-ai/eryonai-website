@@ -56,10 +56,13 @@ const steps = [
   },
 ];
 
-export default function ProcessPipelineSection() {
+export default function ProcessPipelineSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const [activeStep, setActiveStep] = useState(0);
+  const activeSteps: typeof steps = dict?.steps
+    ? dict.steps.map((s: any, i: number) => ({ ...steps[i], title: s.title, description: s.description, details: s.details }))
+    : steps;
 
   return (
     <section className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0f172a' }}>
@@ -76,15 +79,15 @@ export default function ProcessPipelineSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <SectionBadge icon={Settings} label="How We Work" color="#10b981" />
+          <SectionBadge icon={Settings} label={dict?.badge ?? "How We Work"} color="#10b981" />
           <h2 className="text-3xl md:text-5xl font-extrabold mb-5" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-            Engineering Excellence,{' '}
+            {dict?.titlePrefix ?? 'Engineering Excellence, '}{' '}
             <span style={{ background: 'linear-gradient(135deg, #10b981, #0066ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Every Step
+              {dict?.titleGradient ?? 'Every Step'}
             </span>
           </h2>
           <p className="text-base md:text-lg" style={{ color: '#64748b', lineHeight: 1.7 }}>
-            A battle-tested 6-phase delivery process used on every engagement — from startup MVPs to enterprise platforms.
+            {dict?.subtitle ?? 'A battle-tested 6-phase delivery process used on every engagement — from startup MVPs to enterprise platforms.'}
           </p>
         </motion.div>
 
@@ -96,15 +99,15 @@ export default function ProcessPipelineSection() {
             <div className="absolute left-0 right-0 h-px" style={{ top: 24, background: 'rgba(255,255,255,0.08)', zIndex: 0, pointerEvents: 'none' }} />
             <div className="absolute left-0 h-px transition-all duration-500" style={{
               top: 24,
-              background: `linear-gradient(90deg, ${steps[activeStep].color}, ${steps[activeStep].color}60)`,
-              width: `${((activeStep + 0.5) / steps.length) * 100}%`,
+              background: `linear-gradient(90deg, ${activeSteps[activeStep].color}, ${activeSteps[activeStep].color}60)`,
+              width: `${((activeStep + 0.5) / activeSteps.length) * 100}%`,
               zIndex: 0,
               pointerEvents: 'none',
             }} />
 
             {/* Buttons row — rendered AFTER lines so they sit on top */}
             <div className="flex items-start justify-between">
-              {steps.map((step, i) => (
+              {activeSteps.map((step, i) => (
                 <motion.button
                   key={i}
                   onClick={() => setActiveStep(i)}
@@ -146,34 +149,34 @@ export default function ProcessPipelineSection() {
             transition={{ duration: 0.35 }}
             className="rounded-2xl p-6 sm:p-8 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center"
             style={{
-              background: `linear-gradient(135deg, ${steps[activeStep].color}10, rgba(255,255,255,0.03))`,
-              border: `1px solid ${steps[activeStep].color}30`,
+              background: `linear-gradient(135deg, ${activeSteps[activeStep].color}10, rgba(255,255,255,0.03))`,
+              border: `1px solid ${activeSteps[activeStep].color}30`,
             }}
           >
             <div>
               {(() => {
-                const ActiveIcon = steps[activeStep].icon;
+                const ActiveIcon = activeSteps[activeStep].icon;
                 return (
                   <div
                     className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
-                    style={{ background: `${steps[activeStep].color}18`, border: `1px solid ${steps[activeStep].color}30` }}
+                    style={{ background: `${activeSteps[activeStep].color}18`, border: `1px solid ${activeSteps[activeStep].color}30` }}
                   >
-                    <ActiveIcon size={26} strokeWidth={2} color={steps[activeStep].color} aria-hidden="true" />
+                    <ActiveIcon size={26} strokeWidth={2} color={activeSteps[activeStep].color} aria-hidden="true" />
                   </div>
                 );
               })()}
               <h3 className="text-2xl font-bold mb-3" style={{ color: '#f1f5f9', fontFamily: 'Space Grotesk, sans-serif' }}>
-                {steps[activeStep].title}
+                {activeSteps[activeStep].title}
               </h3>
               <p className="text-base leading-relaxed" style={{ color: '#94a3b8' }}>
-                {steps[activeStep].description}
+                {activeSteps[activeStep].description}
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {steps[activeStep].details.map((d, di) => (
+              {activeSteps[activeStep].details.map((d, di) => (
                 <div key={di} className="flex items-center gap-2.5 p-3 rounded-xl"
                   style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                  <Check size={15} strokeWidth={3} color={steps[activeStep].color} aria-hidden="true" />
+                  <Check size={15} strokeWidth={3} color={activeSteps[activeStep].color} aria-hidden="true" />
                   <span className="text-sm font-medium" style={{ color: '#cbd5e1' }}>{d}</span>
                 </div>
               ))}
@@ -183,7 +186,7 @@ export default function ProcessPipelineSection() {
 
         {/* Mobile: vertical cards */}
         <div className="lg:hidden space-y-4">
-          {steps.map((step, i) => (
+          {activeSteps.map((step, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: -24 }}

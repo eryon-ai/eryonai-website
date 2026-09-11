@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ServicePage } from '@/lib/service-page-data';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import { getLocalizedPath, getLocaleFromPathname, contentUI } from '@/lib/layout-translations';
 import {
   ArrowRight, CheckCircle2, ChevronRight, Activity, Cpu,
   Globe, Shield, Sparkles, Layout, ListTodo, PhoneCall, Search,
@@ -143,6 +145,9 @@ const TIMELINE_STEPS = [
 ];
 
 export default function ServicePageTemplate({ data }: ServicePageTemplateProps) {
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const t = contentUI[locale];
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [activeProject, setActiveProject] = useState(GALLERY_PROJECTS[0].id);
   const [projectViewMode, setProjectViewMode] = useState<'desktop' | 'tablet' | 'mobile'>('desktop');
@@ -190,8 +195,8 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <MovingBorderButton href="/contact">
-                  Book Strategy Call
+                <MovingBorderButton href={getLocalizedPath("/contact", locale)}>
+                  {t.bookStrategyCall}
                   <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
                 </MovingBorderButton>
                 <Link href="#gallery" className="btn-secondary text-center text-white border-white/10 hover:bg-white/5 py-4 px-8 rounded-xl border hover:border-white/20 transition-all duration-300">
@@ -733,7 +738,7 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
         <div className="container-custom max-w-4xl">
           <div className="text-center mb-16">
             <SectionBadge icon={HelpCircle} label="Section 09 — FAQ" className="justify-center" />
-            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mb-4">Frequently Asked Questions</h2>
+            <h2 className="text-3xl md:text-4xl font-space font-bold text-white mb-4">{t.faqHeading}</h2>
             <p className="text-slate-400 font-inter text-sm max-w-xl mx-auto">
               Get detailed answers to deployment requirements, timeline scoping, integrations, and post-launch maintenance.
             </p>
@@ -796,12 +801,12 @@ export default function ServicePageTemplate({ data }: ServicePageTemplateProps) 
               {data.ctaDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <MovingBorderButton href="/contact">
-                Book a Free Consultation
+              <MovingBorderButton href={getLocalizedPath("/contact", locale)}>
+                {t.bookFreeConsultation}
                 <PhoneCall className="w-4 h-4" aria-hidden="true" />
               </MovingBorderButton>
-              <Link href="/services" className="btn-secondary py-4 px-8 rounded-xl border border-slate-800 hover:bg-slate-900 text-white transition-all duration-300">
-                Explore All Services
+              <Link href={getLocalizedPath("/services", locale)} className="btn-secondary py-4 px-8 rounded-xl border border-slate-800 hover:bg-slate-900 text-white transition-all duration-300">
+                {t.exploreAllServices}
               </Link>
             </div>
           </div>

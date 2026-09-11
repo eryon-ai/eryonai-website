@@ -4,29 +4,27 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { CheckCircle2 } from 'lucide-react';
 import { getRecaptchaToken } from '@/lib/recaptcha-client';
+import { getLocaleFromPathname, layoutTranslations, getLocalizedPath } from '@/lib/layout-translations';
 
-const navCols = [
-  {
-    title: 'Services',
-    links: ['Web Development', 'Mobile App Development', 'AI / ML Solutions', 'Cloud & DevOps', 'Cybersecurity', 'UI/UX Design'],
-    hrefs: ['/services', '/services', '/services', '/services', '/services', '/services'],
-  },
-  {
-    title: 'Company',
-    links: ['About Us', 'Portfolio', 'Our Process', 'Blogs', 'Careers', 'Contact'],
-    hrefs: ['/about', '/portfolio', '/process', '/blogs', '#', '/contact'],
-  },
-  {
-    title: 'Contact',
-    links: ['Get a Quote', 'Start a Project', 'Schedule a Call', 'Privacy Policy', 'Terms of Service', 'Sitemap'],
-    hrefs: ['/contact', '/contact', '/contact', '#', '#', '#'],
-  },
+const navColHrefs = [
+  ['/services', '/services', '/services', '/services', '/services', '/services'],
+  ['/about', '/portfolio', '/process', '/blogs', '#', '/contact'],
+  ['/contact', '/contact', '/contact', '/privacy', '/terms', '/sitemap.xml'],
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const t = layoutTranslations[locale].footer;
 
+  const navCols = [
+    { title: t.servicesTitle, links: t.servicesLinks, hrefs: navColHrefs[0] },
+    { title: t.companyTitle, links: t.companyLinks, hrefs: navColHrefs[1] },
+    { title: t.contactTitle, links: t.contactLinks, hrefs: navColHrefs[2] },
+  ];
 
   const [subEmail, setSubEmail] = useState('');
   const [subStatus, setSubStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -70,11 +68,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
             <Link
-              href="/"
+              href={getLocalizedPath("/", locale)}
               className="flex items-center justify-center md:justify-start gap-2 mb-5"
               style={{ textDecoration: 'none', padding: 0 }}
             >
-              <Image src="/logo-removebg-preview.png" alt="ERYON AI" width={220} height={100} style={{ objectFit: 'contain' }} />
+              <Image src="/logo-removebg-preview.png" alt="ERYON AI" width={220} height={100} style={{ objectFit: 'contain', height: 'auto' }} />
               {/* <span style={{
                 fontFamily: 'Space Grotesk,sans-serif',
                 fontSize: 20,
@@ -87,7 +85,7 @@ export default function Footer() {
             <div style={{ marginBottom: 16 }} />
 
             <p style={{ fontSize: 14, lineHeight: 1.7, marginBottom: 20, color: '#64748b' }}>
-              Building Scalable Digital Systems for Modern Businesses. AI, Web, Mobile & Cloud — engineered for excellence.
+              {t.tagline}
             </p>
 
             {/* Socials */}
@@ -141,7 +139,7 @@ export default function Footer() {
                 {col.links.map((link, li) => (
                   <li key={li}>
                     <Link
-                      href={col.hrefs[li]}
+                      href={col.hrefs[li].endsWith('.xml') ? col.hrefs[li] : getLocalizedPath(col.hrefs[li], locale)}
                       style={{
                         background: 'none',
                         border: 'none',
@@ -178,23 +176,23 @@ export default function Footer() {
         >
           <div className="flex flex-col items-center md:items-start">
             <h5 style={{ fontFamily: 'Space Grotesk,sans-serif', fontWeight: 700, fontSize: 16, color: '#f1f5f9', marginBottom: 4 }}>
-              Stay Updated
+              {t.newsletterTitle}
             </h5>
             <p style={{ fontSize: 13, color: '#64748b' }}>
-              AI trends, tech insights, and ERYON AI updates — in your inbox monthly.
+              {t.newsletterDesc}
             </p>
           </div>
           <div className="flex flex-col gap-2 w-full md:w-auto items-center md:items-start">
             {subStatus === 'success' ? (
               <p className="inline-flex items-center gap-1.5" style={{ fontSize: 14, color: '#10b981', fontWeight: 600, padding: '10px 0' }}>
                 <CheckCircle2 size={16} strokeWidth={2.5} aria-hidden="true" />
-                You&apos;re subscribed! We&apos;ll be in touch.
+                {t.subscribedMsg}
               </p>
             ) : (
               <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                 <input
                   type="email"
-                  placeholder="your@email.com"
+                  placeholder={t.emailPlaceholder}
                   value={subEmail}
                   onChange={(e) => { setSubEmail(e.target.value); setSubError(''); }}
                   onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
@@ -217,7 +215,7 @@ export default function Footer() {
                   className="btn-primary justify-center"
                   style={{ padding: '10px 20px', fontSize: 13, whiteSpace: 'nowrap', opacity: subStatus === 'loading' ? 0.7 : 1 }}
                 >
-                  {subStatus === 'loading' ? '...' : 'Subscribe'}
+                  {subStatus === 'loading' ? '...' : t.subscribeBtn}
                 </button>
               </div>
             )}
@@ -229,19 +227,23 @@ export default function Footer() {
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 24 }}>
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             <p style={{ fontSize: 13, color: '#475569' }}>
-              © 2019 ERYON AI Software Solutions. All rights reserved.
+              © 2019 ERYON AI Software Solutions. {t.allRightsReserved}
             </p>
             <div className="flex items-center justify-center gap-2">
               <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10b981', display: 'inline-block', animation: 'pulse-dot 2s ease-in-out infinite' }} />
               <span style={{ fontSize: 12, color: '#475569' }}>All systems operational</span>
             </div>
             <div className="flex items-center justify-center gap-5">
-              {['Privacy Policy', 'Terms', 'Cookies'].map((t, i) => (
-                <a key={i} href="#" style={{ fontSize: 13, color: '#475569', textDecoration: 'none', transition: 'color 0.2s' }}
+              {[
+                { label: 'Privacy Policy', href: getLocalizedPath('/privacy', locale) },
+                { label: 'Terms', href: getLocalizedPath('/terms', locale) },
+                { label: 'Cookies', href: `${getLocalizedPath('/privacy', locale)}#cookies` },
+              ].map((link, i) => (
+                <Link key={i} href={link.href} style={{ fontSize: 13, color: '#475569', textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#00b4d8'; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#475569'; }}>
-                  {t}
-                </a>
+                  {link.label}
+                </Link>
               ))}
             </div>
           </div>

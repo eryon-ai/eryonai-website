@@ -57,8 +57,11 @@ const capabilities = [
   },
 ];
 
-export default function CapabilitiesSection() {
+export default function CapabilitiesSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
+  const activeItems: typeof capabilities = dict?.items
+    ? dict.items.map((item: any, i: number) => ({ ...capabilities[i], title: item.title, description: item.description, tags: item.tags }))
+    : capabilities;
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
@@ -76,21 +79,21 @@ export default function CapabilitiesSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <SectionBadge icon={Zap} label="Core Capabilities" />
+          <SectionBadge icon={Zap} label={dict?.badge ?? "Core Capabilities"} />
           <h2 className="text-3xl md:text-5xl font-extrabold mb-5" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-            Everything You Need to{' '}
+            {dict?.titlePrefix ?? 'Everything You Need to '}{' '}
             <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
-              Build & Scale
+              {dict?.titleGradient ?? 'Build & Scale'}
             </span>
           </h2>
           <p className="text-base md:text-lg" style={{ color: '#64748b', lineHeight: 1.7 }}>
-            From ideation to production deployment, we cover the full spectrum of modern digital engineering.
+            {dict?.subtitle ?? 'From ideation to production deployment, we cover the full spectrum of modern digital engineering.'}
           </p>
         </motion.div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {capabilities.map((cap, i) => (
+          {activeItems.map((cap, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 32 }}

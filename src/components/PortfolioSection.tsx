@@ -2,10 +2,12 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import { FolderKanban } from 'lucide-react';
 import { ProjectCard } from '@/components/ui/project-card';
 import SectionBadge from '@/components/ui/SectionBadge';
 import MovingBorderButton from '@/components/ui/MovingBorderButton';
+import { getLocaleFromPathname, getLocalizedPath } from '@/lib/layout-translations';
 
 const projects = [
   {
@@ -141,9 +143,14 @@ const projects = [
   },
 ];
 
-export default function PortfolioSection() {
+export default function PortfolioSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const activeProjects: typeof projects = dict?.projects
+    ? dict.projects.map((p: any, i: number) => ({ ...projects[i], title: p.title, description: p.description, linkText: dict.linkText ?? projects[i].linkText }))
+    : projects;
 
   return (
     <section id="portfolio" className="relative overflow-hidden py-20 md:py-28" style={{ background: '#0f172a' }}>
@@ -155,18 +162,18 @@ export default function PortfolioSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <SectionBadge icon={FolderKanban} label="Portfolio" color="#0066ff" className="mx-auto" />
+          <SectionBadge icon={FolderKanban} label={dict?.badge ?? "Portfolio"} color="#0066ff" className="mx-auto" />
           <h2 className="text-3xl md:text-5xl font-extrabold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-            Work That <span className="gradient-text">Speaks</span>
+            {dict?.titlePrefix ?? 'Work That '}<span className="gradient-text">{dict?.titleGradient ?? 'Speaks'}</span>
           </h2>
           <p className="mt-4 text-base md:text-lg" style={{ color: '#94a3b8' }}>
-            150+ projects delivered across fintech, healthcare, e-commerce, and beyond.
+            {dict?.subtitle ?? '150+ projects delivered across fintech, healthcare, e-commerce, and beyond.'}
           </p>
         </motion.div>
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
+          {activeProjects.map((p, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 28 }}
@@ -177,7 +184,7 @@ export default function PortfolioSection() {
                 imgSrc={p.imgSrc}
                 title={p.title}
                 description={p.description}
-                link={p.link}
+                link={getLocalizedPath(p.link, locale)}
                 linkText={p.linkText}
                 className="h-full"
               />
@@ -193,10 +200,10 @@ export default function PortfolioSection() {
           className="text-center mt-16 pt-4"
         >
           <p style={{ color: '#94a3b8', marginBottom: 24, fontSize: 15 }}>
-            These are just a few highlights — let&apos;s build your next success story.
+            {dict?.ctaText ?? "These are just a few highlights — let's build your next success story."}
           </p>
-          <MovingBorderButton href="/contact">
-            Discuss Your Project
+          <MovingBorderButton href={getLocalizedPath("/contact", locale)}>
+            {dict?.ctaButton ?? 'Discuss Your Project'}
           </MovingBorderButton>
         </motion.div>
       </div>

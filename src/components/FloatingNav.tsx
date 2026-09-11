@@ -3,31 +3,31 @@
 import { useState } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
-
-const navLinks = [
-  { label: 'Services', href: '/services' },
-  { label: 'About', href: '/about' },
-  { label: 'Work', href: '/portfolio' },
-  { label: 'Process', href: '/process' },
-  { label: 'Blogs', href: '/blogs' },
-  { label: 'Contact', href: '/contact' },
-];
-
-const servicesDropdown = [
-  { label: 'Web Applications', href: '/services/web-applications' },
-  { label: 'Mobile Applications', href: '/services/mobile-applications' },
-  { label: 'Custom SaaS', href: '/services/custom-saas' },
-  { label: 'CRM & ERP', href: '/services/crm-erp-solutions' },
-  { label: 'E-Commerce', href: '/services/ecommerce-solutions' },
-  { label: 'Business Automation', href: '/services/business-automation' },
-  { label: 'AI Solutions', href: '/services/ai-solutions' },
-  { label: 'Data & Analytics', href: '/services/data-analytics' },
-  { label: 'DevOps & Cloud', href: '/services/devops-cloud' },
-  { label: 'UI/UX Design', href: '/services/ui-ux-design' },
-];
+import { getLocaleFromPathname, layoutTranslations, getLocalizedPath } from '@/lib/layout-translations';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function FloatingNav() {
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const t = layoutTranslations[locale];
+  const homePath = getLocalizedPath('/', locale);
+
+  const navLinks = [
+    { label: t.services, href: getLocalizedPath('/services', locale), key: 'services' },
+    { label: t.about, href: getLocalizedPath('/about', locale), key: 'about' },
+    { label: t.work, href: getLocalizedPath('/portfolio', locale), key: 'work' },
+    { label: t.process, href: getLocalizedPath('/process', locale), key: 'process' },
+    { label: t.blogs, href: getLocalizedPath('/blogs', locale), key: 'blogs' },
+    { label: t.contact, href: getLocalizedPath('/contact', locale), key: 'contact' },
+  ];
+
+  const servicesDropdown = t.servicesDropdown.map((s) => ({
+    label: s.label,
+    href: getLocalizedPath(s.href, locale),
+  }));
+
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -79,16 +79,16 @@ export default function FloatingNav() {
           <div className="flex w-full rounded-full px-3 lg:px-6 py-2 lg:py-3 items-center justify-between gap-4 lg:gap-10 bg-white/4 backdrop-blur-xl border border-white/10 shadow-[0px_8px_32px_rgba(0,0,0,0.25)]">
           {/* Left Home Link */}
           <Link
-            href="/"
+            href={homePath}
             className="relative flex items-center justify-center rounded-full font-bold text-sm shrink-0 text-white transition-colors hover:text-cyan-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
           >
-            <span>Home</span>
+            <span>{t.home}</span>
           </Link>
 
           {/* Middle Links (Desktop) */}
           <div className="hidden lg:flex items-center gap-8 lg:gap-10">
             {navLinks.map((navItem, idx: number) => {
-              if (navItem.label === 'Services') {
+              if (navItem.key === 'services') {
                 return (
                   <div key={`link=${idx}`} className="relative group/nav py-4">
                     <Link
@@ -118,8 +118,8 @@ export default function FloatingNav() {
                         ))}
 
                         <div className="col-span-2 mt-3 pt-3 border-t border-white/8 flex justify-center">
-                          <Link href="/services" className="text-[13px] font-bold text-brand-blue hover:text-brand-blue/80 flex items-center gap-2 transition-colors">
-                            View All Services <ArrowRight size={13} strokeWidth={2.5} aria-hidden="true" />
+                          <Link href={getLocalizedPath('/services', locale)} className="text-[13px] font-bold text-brand-blue hover:text-brand-blue/80 flex items-center gap-2 transition-colors">
+                            {t.viewAllServices} <ArrowRight size={13} strokeWidth={2.5} aria-hidden="true" />
                           </Link>
                         </div>
                       </div>
@@ -140,12 +140,23 @@ export default function FloatingNav() {
             })}
           </div>
 
-          {/* Right CTA (Desktop & Mobile) */}
+          {/* Right: Language Switcher + CTA (Desktop) */}
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
+            <LanguageSwitcher />
+            <Link
+              href={getLocalizedPath('/contact', locale)}
+              className="border text-[11px] lg:text-sm font-bold relative border-transparent px-3 py-2 lg:px-5 lg:py-2.5 rounded-full transition-colors shrink-0 bg-white text-navy hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+            >
+              <span>{t.quoteBtn}</span>
+            </Link>
+          </div>
+
+          {/* Right CTA (Mobile only) */}
           <Link
-            href="/contact"
-            className="border text-[11px] lg:text-sm font-bold relative border-transparent px-3 py-2 lg:px-5 lg:py-2.5 rounded-full transition-colors shrink-0 bg-white text-navy hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
+            href={getLocalizedPath('/contact', locale)}
+            className="lg:hidden border text-[11px] font-bold relative border-transparent px-3 py-2 rounded-full transition-colors shrink-0 bg-white text-navy hover:bg-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue"
           >
-            <span>Get a Free Quote →</span>
+            <span>{t.quoteBtn}</span>
           </Link>
 
           {/* Mobile Menu Toggle */}
@@ -178,10 +189,13 @@ export default function FloatingNav() {
             className="fixed top-32 inset-x-4 z-4900 lg:hidden"
           >
             <div className="flex flex-col p-2 max-h-[70vh] overflow-y-auto backdrop-blur-xl border rounded-2xl shadow-2xl bg-[#0f172a]/95 border-white/10">
+              <div className="flex justify-center py-2 mb-1 border-b border-white/8">
+                <LanguageSwitcher />
+              </div>
               {navLinks.map((link) => {
-                if (link.label === 'Services') {
+                if (link.key === 'services') {
                   return (
-                    <div key={link.label} className="flex flex-col mb-2">
+                    <div key={link.key} className="flex flex-col mb-2">
                       <Link
                         href={link.href}
                         onClick={() => setMobileOpen(false)}
@@ -207,7 +221,7 @@ export default function FloatingNav() {
 
                 return (
                   <Link
-                    key={link.label}
+                    key={link.key}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className="px-4 py-3 text-base font-bold rounded-xl transition-colors text-center mb-1 text-slate-200 hover:text-brand-blue hover:bg-white/5"

@@ -27,7 +27,7 @@ const techs = [
 const row1 = [...techs.slice(0, 8), ...techs.slice(0, 8)];
 const row2 = [...techs.slice(8, 16), ...techs.slice(8, 16)];
 
-function TechCard({ tech }: { tech: typeof techs[0] }) {
+function TechCard({ tech, dict }: { tech: typeof techs[0]; dict?: any }) {
   return (
     <div
       className="flex-shrink-0 flex items-center gap-3"
@@ -58,13 +58,13 @@ function TechCard({ tech }: { tech: typeof techs[0] }) {
       </span>
       <div>
         <p style={{ fontSize: 13, fontWeight: 600, color: '#f8fafc', lineHeight: 1.2 }}>{tech.name}</p>
-        <p style={{ fontSize: 11, color: '#64748b', marginTop: 1 }}>{tech.cat}</p>
+        <p style={{ fontSize: 11, color: '#64748b', marginTop: 1 }}>{dict?.cats?.[tech.cat] ?? tech.cat}</p>
       </div>
     </div>
   );
 }
 
-export default function TechStackSection() {
+export default function TechStackSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const reduceMotion = useReducedMotion();
@@ -75,7 +75,7 @@ export default function TechStackSection() {
         {/* Header */}
         <div className="container-custom text-center mb-14 max-w-2xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-            <SectionBadge icon={Cpu} label="Technology" color="#00b4d8" className="mx-auto" />
+            <SectionBadge icon={Cpu} label={dict?.badge ?? "Technology"} color="#00b4d8" className="mx-auto" />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
@@ -84,7 +84,7 @@ export default function TechStackSection() {
             className="text-3xl md:text-5xl font-extrabold"
             style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}
           >
-            Our <span className="gradient-text">Tech Arsenal</span>
+            {dict?.titlePrefix ?? 'Our '}<span className="gradient-text">{dict?.titleGradient ?? 'Tech Arsenal'}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
@@ -93,7 +93,7 @@ export default function TechStackSection() {
             className="mt-4 text-base md:text-lg"
             style={{ color: '#94a3b8' }}
           >
-            Battle-tested technologies chosen for reliability, performance, and future-readiness.
+            {dict?.subtitle ?? 'Battle-tested technologies chosen for reliability, performance, and future-readiness.'}
           </motion.p>
         </div>
 
@@ -112,7 +112,7 @@ export default function TechStackSection() {
             transition={{ duration: 28, ease: 'linear', repeat: reduceMotion ? 0 : Infinity }}
             style={{ width: 'max-content' }}
           >
-            {row1.map((t, i) => <TechCard key={i} tech={t} />)}
+            {row1.map((t, i) => <TechCard key={i} tech={t} dict={dict} />)}
           </motion.div>
 
           <div style={{ marginBottom: 26 }} />
@@ -123,7 +123,7 @@ export default function TechStackSection() {
             transition={{ duration: 24, ease: 'linear', repeat: reduceMotion ? 0 : Infinity }}
             style={{ width: 'max-content' }}
           >
-            {row2.map((t, i) => <TechCard key={i} tech={t} />)}
+            {row2.map((t, i) => <TechCard key={i} tech={t} dict={dict} />)}
           </motion.div>
         </div>
         <div style={{ marginBottom: 16 }} />
@@ -136,7 +136,7 @@ export default function TechStackSection() {
           className="container-custom mt-12"
         >
           <div className="flex flex-wrap justify-center gap-3">
-            {['Frontend', 'Backend', 'AI/ML', 'Mobile', 'Cloud', 'DevOps', 'Database', 'Security'].map((cat) => (
+            {(dict?.categoryChips ?? ['Frontend', 'Backend', 'AI/ML', 'Mobile', 'Cloud', 'DevOps', 'Database', 'Security']).map((cat: string) => (
               <span
                 key={cat}
                 style={{

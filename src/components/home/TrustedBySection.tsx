@@ -19,7 +19,7 @@ const brands = [
 
 const marqueeItems = [...brands, ...brands];
 
-export default function TrustedBySection() {
+export default function TrustedBySection({ dict }: { dict?: { heading?: string } } = {}) {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -32,7 +32,7 @@ export default function TrustedBySection() {
 
       <div className="text-center mb-8 md:mb-10 px-4">
         <p className="text-xs font-semibold tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.3)' }}>
-          Integrating with the tools enterprises trust most
+          {dict?.heading ?? 'Integrating with the tools enterprises trust most'}
         </p>
       </div>
 
