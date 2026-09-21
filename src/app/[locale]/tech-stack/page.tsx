@@ -21,13 +21,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: buildAlternates('/tech-stack', locale).canonical,
       type: 'website',
       siteName: 'ERYON AI',
-      images: [{ url: '/logo-full.jpg', width: 1200, height: 630, alt: 'ERYON AI Tech Stack' }],
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'ERYON AI Tech Stack' }],
     },
     twitter: {
       card: 'summary_large_image',
       title: meta.title,
       description: meta.description,
-      images: ['/logo-full.jpg'],
+      images: ['/og-image.jpg'],
     },
     alternates: buildAlternates('/tech-stack', locale),
   };

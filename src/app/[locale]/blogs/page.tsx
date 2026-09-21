@@ -51,7 +51,7 @@ export default function BlogsPage() {
               publisher: {
                 '@type': 'Organization',
                 name: 'ERYON AI',
-                logo: { '@type': 'ImageObject', url: 'https://www.eryonai.com/logo-full.jpg' },
+                logo: { '@type': 'ImageObject', url: 'https://www.eryonai.com/og-image.jpg' },
               },
             },
             {

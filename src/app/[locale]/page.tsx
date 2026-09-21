@@ -34,13 +34,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: buildAlternates('/', locale).canonical,
       type: 'website',
       siteName: 'ERYON AI',
-      images: [{ url: '/logo-full.jpg', width: 1200, height: 630, alt: 'ERYON AI — Enterprise Software & AI Solutions' }],
+      images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'ERYON AI — Enterprise Software & AI Solutions' }],
     },
     twitter: {
       card: 'summary_large_image',
       title: dict.meta.title,
       description: dict.meta.description,
-      images: ['/logo-full.jpg'],
+      images: ['/og-image.jpg'],
     },
     alternates: buildAlternates('/', locale),
   };
@@ -55,8 +55,8 @@ export default async function Home({ params }: Props) {
     '@type': 'ProfessionalService',
     name: 'ERYON AI',
     url: `https://www.eryonai.com${locale === 'en' ? '' : `/${locale}`}`,
-    logo: 'https://www.eryonai.com/logo-full.jpg',
-    image: 'https://www.eryonai.com/logo-full.jpg',
+    logo: 'https://www.eryonai.com/og-image.jpg',
+    image: 'https://www.eryonai.com/og-image.jpg',
     description:
       'ERYON AI is a premium enterprise software development agency specializing in custom Web Development, AI/ML integrations, Mobile Apps, SaaS platforms, and Cloud DevOps.',
     telephone: '+91-78278-86571',

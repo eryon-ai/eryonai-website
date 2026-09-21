@@ -587,7 +587,7 @@ export default async function CaseStudyPage({
       "name": "ERYON AI",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.eryonai.com/logo-full.jpg"
+        "url": "https://www.eryonai.com/og-image.jpg"
       }
     },
     "keywords": p.tech.join(', '),

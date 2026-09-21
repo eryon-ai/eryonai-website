@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }: Props) {
     publisher: {
       '@type': 'Organization',
       name: 'ERYON AI',
-      logo: { '@type': 'ImageObject', url: 'https://www.eryonai.com/logo-full.jpg' },
+      logo: { '@type': 'ImageObject', url: 'https://www.eryonai.com/og-image.jpg' },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `https://www.eryonai.com/blogs/${post.slug}` },
     keywords: post.tags.join(', '),
