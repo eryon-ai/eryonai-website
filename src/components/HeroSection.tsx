@@ -276,8 +276,8 @@ export default function HeroSection({ dict }: { dict?: HeroDict } = {}) {
         >
           {(dict?.stats ?? [
             { value: '150+', label: 'Projects Delivered' },
-            { value: '18+', label: 'Enterprise Clients' },
-            { value: '8+', label: 'Years of Excellence' },
+            { value: '80+', label: 'Enterprise Clients' },
+            { value: '7+', label: 'Years of Excellence' },
             { value: '50+', label: 'Expert Engineers' },
           ]).map((s, i) => (
             <div

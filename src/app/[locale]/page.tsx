@@ -5,6 +5,8 @@ import MetricsSection from '@/components/home/MetricsSection';
 import CaseStudiesSection from '@/components/home/CaseStudiesSection';
 import ProcessPipelineSection from '@/components/home/ProcessPipelineSection';
 import BlogTeaserSection from '@/components/home/BlogTeaserSection';
+import IndustriesSection from '@/components/home/IndustriesSection';
+import FAQSection from '@/components/home/FAQSection';
 import FinalCTASection from '@/components/home/FinalCTASection';
 import { Metadata } from 'next';
 import { getDictionary, Locale } from '@/lib/dictionary';
@@ -27,6 +29,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'cloud devops services', 'machine learning development',
       'digital transformation agency', 'SaaS development company',
       'Next.js development agency', 'React development company India',
+      'AI-native software development', 'agentic AI development company',
+      'digital transformation services India', 'cloud-native modernization',
+      'multi-cloud architecture consulting', 'cybersecurity services India',
+      'business workflow automation', 'data analytics and AI solutions',
+      'enterprise software development company New Delhi',
+      'healthcare software development', 'real estate CRM development',
     ],
     openGraph: {
       title: dict.meta.title,
@@ -104,12 +112,6 @@ export default async function Home({ params }: Props) {
       opens: '09:00',
       closes: '18:00',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '80',
-      bestRating: '5',
-    },
     speakable: {
       '@type': 'SpeakableSpecification',
       xpath: [
@@ -119,11 +121,22 @@ export default async function Home({ params }: Props) {
     }
   };
 
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: locale,
+    mainEntity: dict.faq.items.map((item: { q: string; a: string }) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  };
+
   return (
     <main lang={locale}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([homepageJsonLd, faqJsonLd]) }}
       />
       {/* 1. Hero */}
       <HeroSection dict={dict.hero} />
@@ -140,13 +153,19 @@ export default async function Home({ params }: Props) {
       {/* 5. Featured Case Studies */}
       <CaseStudiesSection dict={dict.caseStudiesHome} />
 
+      {/* 5b. Industries */}
+      <IndustriesSection dict={dict.industries} locale={locale} />
+
       {/* 6. Engineering Process Pipeline */}
       <ProcessPipelineSection dict={dict.processPipeline} />
 
       {/* 7. Blog Teaser */}
       <BlogTeaserSection dict={dict.blogTeaser} />
 
-      {/* 8. Final CTA */}
+      {/* 8. FAQ */}
+      <FAQSection dict={dict.faq} />
+
+      {/* 9. Final CTA */}
       <FinalCTASection dict={dict.cta} />
     </main>
   );

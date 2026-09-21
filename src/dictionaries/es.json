@@ -1,8 +1,8 @@
 {
   "locale": "es",
   "meta": {
-    "title": "ERYON AI | Desarrollo de Software a Medida y Soluciones de IA Empresarial",
-    "description": "ERYON AI es una agencia de software de primer nivel especializada en Desarrollo Web, IA Generativa, Aplicaciones Móviles y Cloud DevOps para empresas globales."
+    "title": "ERYON AI | Software a medida, IA y transformación digital",
+    "description": "Empresa de desarrollo de software en Nueva Delhi: apps web y móviles a medida, IA agéntica, modernización cloud, ciberseguridad y automatización de flujos de trabajo para empresas de todo el mundo."
   },
   "hero": {
     "titlePrefix": "Software a Medida",
@@ -25,11 +25,11 @@
         "label": "Proyectos Entregados"
       },
       {
-        "value": "18+",
+        "value": "80+",
         "label": "Clientes Empresariales"
       },
       {
-        "value": "8+",
+        "value": "7+",
         "label": "Años de Excelencia"
       },
       {
@@ -231,7 +231,7 @@
       },
       {
         "label": "Clientes Empresariales",
-        "sub": "En más de 15 países"
+        "sub": "En 6 países"
       },
       {
         "label": "Reducción de Costes Prom.",
@@ -879,5 +879,73 @@
       "title": "Blog | Perspectivas, Tecnología e Innovación — ERYON AI",
       "description": "Últimos artículos sobre IA, ingeniería de software, desarrollo de producto, startups, automatización, infraestructura cloud y tecnologías emergentes."
     }
+  },
+  "faq": {
+    "heading": "Preguntas frecuentes",
+    "items": [
+      {
+        "q": "¿A qué se dedica ERYON AI?",
+        "a": "ERYON AI es una agencia de desarrollo de software empresarial con sede en Nueva Delhi, India. Creamos aplicaciones web a medida, apps móviles, plataformas SaaS, sistemas CRM y ERP, soluciones de comercio electrónico, soluciones de IA y automatización, plataformas de análisis de datos e infraestructura cloud y DevOps, con diseño UI/UX en todos los casos."
+      },
+      {
+        "q": "¿Con clientes de qué países trabaja ERYON AI?",
+        "a": "Estamos en Nueva Delhi, India, y atendemos clientes en India, Estados Unidos, Reino Unido, Emiratos Árabes Unidos, Australia y Canadá. Los proyectos se ejecutan de forma remota, con sprints transparentes y demos semanales."
+      },
+      {
+        "q": "¿Qué tecnologías utiliza ERYON AI?",
+        "a": "Nuestro stack principal incluye React, Next.js, Node.js, Spring Boot y Python (FastAPI) para aplicaciones; PostgreSQL, MongoDB y Redis para datos; AWS, Google Cloud y Azure con Docker y Kubernetes para la infraestructura; React Native y Flutter para móvil; y OpenAI, TensorFlow y LangChain para IA."
+      },
+      {
+        "q": "¿Cómo es un proyecto con ERYON AI?",
+        "a": "Todos los proyectos siguen cinco etapas: descubrimiento y planificación, diseño y arquitectura, desarrollo y pruebas, despliegue y lanzamiento, y mantenimiento y crecimiento. El trabajo se entrega en sprints ágiles con revisiones de código, pruebas automatizadas y pipelines de CI/CD."
+      },
+      {
+        "q": "¿Cómo pido un presupuesto o inicio un proyecto?",
+        "a": "Envía tus requisitos por el formulario de contacto, escribe a connect@eryonai.com o llama al +91-78278-86571. Recibes una consulta gratuita y una propuesta a medida en 24 horas."
+      },
+      {
+        "q": "¿ERYON AI ofrece soporte después del lanzamiento?",
+        "a": "Sí. Tras el lanzamiento ofrecemos mantenimiento, monitorización y optimización continuos, incluidas nuevas funcionalidades a medida que tu producto crece."
+      }
+    ]
+  },
+  "industries": {
+    "heading": "Software diseñado para tu sector",
+    "subheading": "De hospitales a inmobiliarias y comercio, creamos software a medida según cómo trabaja realmente cada sector.",
+    "cta": "Ver casos de estudio",
+    "items": [
+      {
+        "title": "Salud",
+        "description": "HRMS hospitalario y gestión de personal con cumplimiento listo para HIPAA."
+      },
+      {
+        "title": "Educación",
+        "description": "ERP escolar y de campus con soporte multicampus."
+      },
+      {
+        "title": "Inmobiliario",
+        "description": "CRM y gestión de propiedades para equipos de inmobiliaria de lujo."
+      },
+      {
+        "title": "Retail y comercio electrónico",
+        "description": "Tiendas premium de moda y relojes con pagos, catálogos e inventario."
+      },
+      {
+        "title": "Manufactura y B2B",
+        "description": "CRM B2B empresarial y catálogos de producto con modelos 3D para fabricantes."
+      },
+      {
+        "title": "Fitness y bienestar",
+        "description": "Paneles de administración para gimnasios con pagos Stripe."
+      },
+      {
+        "title": "Reclutamiento y RR. HH.",
+        "description": "Portales de empleo con acceso por roles y autenticación JWT segura."
+      },
+      {
+        "title": "Comida y bajo demanda",
+        "description": "Plataformas de reparto de comida con arquitectura de microservicios."
+      }
+    ]
   }
 }

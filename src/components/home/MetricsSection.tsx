@@ -29,7 +29,7 @@ const metrics = [
     value: 80,
     suffix: '+',
     label: 'Enterprise Clients',
-    sub: 'Across 15+ countries',
+    sub: 'Across 6 countries',
     icon: Globe2,
     color: '#6366f1',
   },
@@ -42,7 +42,7 @@ const metrics = [
     color: '#10b981',
   },
   {
-    value: 8,
+    value: 7,
     suffix: '+',
     label: 'Years of Excellence',
     sub: 'Building enterprise systems',

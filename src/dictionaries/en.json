@@ -1,8 +1,8 @@
 {
   "locale": "en",
   "meta": {
-    "title": "ERYON AI | Enterprise Custom Software Development & AI Solutions",
-    "description": "ERYON AI — premium software development agency in New Delhi. Custom Web, AI/ML, Mobile Apps & Cloud DevOps for enterprises worldwide."
+    "title": "ERYON AI | Custom Software, AI & Digital Transformation, India",
+    "description": "New Delhi software company building custom web & mobile apps, agentic AI, cloud modernization, cybersecurity and workflow automation for enterprises worldwide."
   },
   "hero": {
     "titlePrefix": "Enterprise-Grade",
@@ -25,11 +25,11 @@
         "label": "Projects Delivered"
       },
       {
-        "value": "18+",
+        "value": "80+",
         "label": "Enterprise Clients"
       },
       {
-        "value": "8+",
+        "value": "7+",
         "label": "Years of Excellence"
       },
       {
@@ -231,7 +231,7 @@
       },
       {
         "label": "Enterprise Clients",
-        "sub": "Across 15+ countries"
+        "sub": "Across 6 countries"
       },
       {
         "label": "Avg. Cost Reduction",
@@ -879,5 +879,73 @@
       "title": "Blog | Insights, Technology & Innovation — ERYON AI",
       "description": "Latest articles on AI, Software Engineering, Product Development, Startups, Automation, Cloud Infrastructure and Emerging Technologies."
     }
+  },
+  "faq": {
+    "heading": "Frequently asked questions",
+    "items": [
+      {
+        "q": "What does ERYON AI do?",
+        "a": "ERYON AI is an enterprise software development agency based in New Delhi, India. We build custom web applications, mobile apps, SaaS platforms, CRM and ERP systems, e-commerce solutions, AI and automation solutions, data analytics platforms, and cloud and DevOps infrastructure, with UI/UX design across all of them."
+      },
+      {
+        "q": "Which countries does ERYON AI work with?",
+        "a": "We are based in New Delhi, India and serve clients in India, the USA, the UK, the UAE, Australia, and Canada. Projects are delivered remotely with transparent sprints and weekly demos."
+      },
+      {
+        "q": "What technologies does ERYON AI use?",
+        "a": "Our core stack includes React, Next.js, Node.js, Spring Boot, and Python (FastAPI) for applications; PostgreSQL, MongoDB, and Redis for data; AWS, Google Cloud, and Azure with Docker and Kubernetes for infrastructure; React Native and Flutter for mobile; and OpenAI, TensorFlow, and LangChain for AI."
+      },
+      {
+        "q": "How does a project with ERYON AI work?",
+        "a": "Every project follows five stages: Discovery & Planning, Design & Architecture, Development & Testing, Deployment & Launch, and Maintenance & Growth. Work is delivered in agile sprints with code reviews, automated testing, and CI/CD pipelines."
+      },
+      {
+        "q": "How do I get a quote or start a project?",
+        "a": "Send your requirements through the contact form, email connect@eryonai.com, or call +91-78278-86571. You get a free consultation and a tailored proposal within 24 hours."
+      },
+      {
+        "q": "Does ERYON AI provide support after launch?",
+        "a": "Yes. After launch we provide ongoing maintenance, monitoring, and optimization, including feature enhancements as your product grows."
+      }
+    ]
+  },
+  "industries": {
+    "heading": "Software built for your industry",
+    "subheading": "From hospitals to real estate and retail, we design custom software around how each industry actually works.",
+    "cta": "View our case studies",
+    "items": [
+      {
+        "title": "Healthcare",
+        "description": "Hospital HRMS and workforce management with HIPAA-ready compliance."
+      },
+      {
+        "title": "Education",
+        "description": "School and campus ERP with multi-campus support."
+      },
+      {
+        "title": "Real Estate",
+        "description": "CRM and property management for luxury real estate teams."
+      },
+      {
+        "title": "Retail & E-commerce",
+        "description": "Premium fashion and watch storefronts with payments, catalogs, and inventory."
+      },
+      {
+        "title": "Manufacturing & B2B",
+        "description": "Enterprise B2B CRM and product catalogs with 3D models for manufacturers."
+      },
+      {
+        "title": "Fitness & Wellness",
+        "description": "Gym and fitness admin dashboards with Stripe payments."
+      },
+      {
+        "title": "Recruitment & HR",
+        "description": "Job portals with role-based access and secure JWT authentication."
+      },
+      {
+        "title": "Food & On-Demand",
+        "description": "Food delivery platforms built on a microservices architecture."
+      }
+    ]
   }
 }

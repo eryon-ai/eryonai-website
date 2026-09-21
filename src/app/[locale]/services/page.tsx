@@ -18,6 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: [
       'Software Services', 'Web Development', 'Mobile App Development', 'Custom SaaS',
       'AI Solutions', 'Cloud Engineering', 'Enterprise Software', 'UI/UX Design',
+      'agentic AI development', 'digital transformation services', 'business workflow automation',
+      'cloud-native modernization', 'cybersecurity services', 'data analytics and AI solutions',
     ],
     openGraph: {
       title: meta.title,

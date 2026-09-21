@@ -87,3 +87,82 @@ Ready to start your project? Get a free consultation with a tailored proposal wi
 - **Email**: connect@eryonai.com
 - **Phone**: +91-78278-86571
 - **Website**: https://www.eryonai.com/contact
+
+## Key Pages
+
+- [Home](https://www.eryonai.com/)
+- [Services](https://www.eryonai.com/services)
+- [About](https://www.eryonai.com/about)
+- [Portfolio](https://www.eryonai.com/portfolio)
+- [Process](https://www.eryonai.com/process)
+- [Tech Stack](https://www.eryonai.com/tech-stack)
+- [Blog](https://www.eryonai.com/blogs)
+- [Contact](https://www.eryonai.com/contact)
+- [Privacy Policy](https://www.eryonai.com/privacy)
+- [Terms of Service](https://www.eryonai.com/terms)
+- [Sitemap](https://www.eryonai.com/sitemap.xml)
+
+## Languages
+
+The website is available in English (default, https://www.eryonai.com/), Japanese (https://www.eryonai.com/ja), German (https://www.eryonai.com/de), French (https://www.eryonai.com/fr), Spanish (https://www.eryonai.com/es), and Arabic (https://www.eryonai.com/ar). Every page has an equivalent under each language prefix, for example https://www.eryonai.com/ja/services.
+
+## Frequently Asked Questions
+
+**What does ERYON AI do?** ERYON AI is an enterprise software development agency based in New Delhi, India, building custom web applications, mobile apps, SaaS platforms, CRM and ERP systems, e-commerce solutions, AI and automation solutions, data analytics platforms, and cloud and DevOps infrastructure.
+
+**Which countries does ERYON AI work with?** Clients in India, the USA, the UK, the UAE, Australia, and Canada. Projects are delivered remotely with transparent sprints and weekly demos.
+
+**How do I get a quote?** Use the contact form at https://www.eryonai.com/contact, email connect@eryonai.com, or call +91-78278-86571. A free consultation and tailored proposal are provided within 24 hours.
+
+**Does ERYON AI support projects after launch?** Yes — ongoing maintenance, monitoring, and optimization.
+
+## Service Pages
+
+- https://www.eryonai.com/services/web-applications
+- https://www.eryonai.com/services/mobile-applications
+- https://www.eryonai.com/services/custom-saas
+- https://www.eryonai.com/services/crm-erp-solutions
+- https://www.eryonai.com/services/real-estate-software
+- https://www.eryonai.com/services/gym-management-software
+- https://www.eryonai.com/services/ecommerce-solutions
+- https://www.eryonai.com/services/business-automation
+- https://www.eryonai.com/services/ai-solutions
+- https://www.eryonai.com/services/data-analytics
+- https://www.eryonai.com/services/devops-cloud
+- https://www.eryonai.com/services/ui-ux-design
+
+## Case Study Pages
+
+- https://www.eryonai.com/case-study/gym-dashboard
+- https://www.eryonai.com/case-study/hospital-hrms
+- https://www.eryonai.com/case-study/velorian-watches
+- https://www.eryonai.com/case-study/marblemart-crm
+- https://www.eryonai.com/case-study/marblemart-web
+- https://www.eryonai.com/case-study/edunexus-erp
+- https://www.eryonai.com/case-study/atelier-clothing
+- https://www.eryonai.com/case-study/realist-crm
+- https://www.eryonai.com/case-study/infra-erp
+- https://www.eryonai.com/case-study/craverush
+- https://www.eryonai.com/case-study/origin
+- https://www.eryonai.com/case-study/hirestream
+- https://www.eryonai.com/case-study/kyprox
+- https://www.eryonai.com/case-study/auraplanters
+- https://www.eryonai.com/case-study/echosync
+
+## Blog Articles
+
+- [The Future of Artificial Intelligence: What 2026 and Beyond Holds](https://www.eryonai.com/blogs/future-of-artificial-intelligence-2026)
+- [The Rise of Agentic AI: How Autonomous Systems Are Redefining Software](https://www.eryonai.com/blogs/rise-of-agentic-ai-systems)
+- [Building Scalable SaaS Platforms: Architecture Patterns for 10M+ Users](https://www.eryonai.com/blogs/building-scalable-saas-platforms)
+- [Modern Cloud Architecture: Multi-Cloud, Serverless, and FinOps Best Practices](https://www.eryonai.com/blogs/modern-cloud-architecture-2026)
+- [Microservices vs. Monolith: The Decision That Defines Your Engineering Culture](https://www.eryonai.com/blogs/microservices-vs-monolith)
+- [The Future of Software Development: AI Copilots, Low-Code, and the 10x Engineer](https://www.eryonai.com/blogs/future-of-software-development)
+- [AI-Powered Startups: How Vertical AI is Creating the Next Trillion-Dollar Companies](https://www.eryonai.com/blogs/ai-powered-startups-2026)
+- [Generative AI in Business: From Experimentation to Production Deployment](https://www.eryonai.com/blogs/generative-ai-in-business)
+- [DevOps Best Practices in 2026: Platform Engineering, GitOps, and Observability](https://www.eryonai.com/blogs/devops-best-practices-2026)
+- [Building Production-Grade APIs: The Complete Engineering Guide](https://www.eryonai.com/blogs/building-production-grade-apis)
+- [Cybersecurity in 2026: AI-Powered Attacks, Zero Trust, and the Quantum Threat](https://www.eryonai.com/blogs/cybersecurity-in-2026)
+- [Edge Computing: Bringing Intelligence to the Last Mile](https://www.eryonai.com/blogs/edge-computing-revolution)
+- [Multi-Agent AI Systems: Designing Networks of Collaborative Intelligent Agents](https://www.eryonai.com/blogs/multi-agent-ai-systems)
+- [The Future of FinTech: How AI is Rebuilding Financial Services from the Ground Up](https://www.eryonai.com/blogs/future-of-fintech-ai)
+- [Intelligent Automation: Beyond RPA to AI-Powered Business Process Transformation](https://www.eryonai.com/blogs/intelligent-automation-rpa-ai)

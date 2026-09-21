@@ -102,8 +102,7 @@ const projects = [
     title: 'HireStream — Online Job Portal',
     description:
       'Comprehensive recruitment platform with role-based JWT authentication, resume parsing, and secure Spring Boot REST APIs.',
-    imgSrc:
-      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop',
+    imgSrc: 'https://f005.backblazeb2.com/file/eryonaiWebsiteImages/hirestream-hero.jpg',
     link: '/case-study/hirestream',
     linkText: 'View Case Study',
   },

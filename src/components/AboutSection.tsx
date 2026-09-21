@@ -70,7 +70,7 @@ function ProgressBar({ pct, color, delay }: { pct: number; color: string; delay:
 const stats = [
   { value: 150, suffix: '+', label: 'Projects Delivered', caption: 'Shipped on time, on budget', color: '#0066ff' },
   { value: 80, suffix: '+', label: 'Enterprise Clients', caption: 'From seed-stage to Fortune 500', color: '#6366f1' },
-  { value: 5, suffix: '+', label: 'Years of Excellence', caption: 'Consistent growth since 2019', color: '#00b4d8' },
+  { value: 7, suffix: '+', label: 'Years of Excellence', caption: 'Consistent growth since 2019', color: '#00b4d8' },
   { value: 98, suffix: '%', label: 'Satisfaction Rate', caption: 'Verified across all engagements', color: '#059669' },
 ];
 
