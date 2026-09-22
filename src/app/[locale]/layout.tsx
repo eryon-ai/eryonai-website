@@ -45,7 +45,7 @@ export const viewport: Viewport = {
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ChatWidget from "@/components/ChatWidget";
+import ChatWidgetLazy from "@/components/ChatWidgetLazy";
 
 export default async function RootLayout({
   children,
@@ -69,12 +69,11 @@ export default async function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        <ChatWidget />
+        <ChatWidgetLazy />
         {/* JSON-LD Schema */}
-        <Script
+        <script
           id="json-ld-global"
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify([
               {
@@ -118,7 +117,7 @@ export default async function RootLayout({
         {/* reCAPTCHA v3 — loaded globally so ContactSection + Footer can use it */}
         <Script
           src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         {/* Google Tag (gtag.js) */}
         <Script

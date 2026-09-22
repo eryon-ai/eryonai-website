@@ -30,6 +30,10 @@ const COUNTRY_LOCALE_MAP: Record<string, string> = {
   EG: 'ar',
 };
 
+// Real public/ assets and generated files. Any other path containing a dot (e.g. /index.html,
+// /wp-login.php) must NOT reach the [locale] route, where it was read as a locale and crashed with a 500.
+const STATIC_FILE = /\.(?:png|jpe?g|gif|webp|avif|svg|ico|mp4|webm|txt|xml|json|js|css|map|woff2?|ttf|otf|pdf)$/i;
+
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -38,7 +42,8 @@ export function proxy(request: NextRequest) {
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
     pathname.startsWith('/static') ||
-    pathname.includes('.')
+    pathname.startsWith('/.well-known') ||
+    STATIC_FILE.test(pathname)
   ) {
     return NextResponse.next();
   }
@@ -46,7 +51,8 @@ export function proxy(request: NextRequest) {
   // 2. Strip explicit /en prefix to keep English URLs clean (e.g. /en/about -> /about)
   if (pathname === '/en' || pathname.startsWith('/en/')) {
     const newPath = pathname.replace(/^\/en/, '') || '/';
-    return NextResponse.redirect(new URL(newPath, request.url));
+    // Permanent: /en/... and the bare URL are the same page, so consolidate signals on the bare one.
+    return NextResponse.redirect(new URL(newPath + request.nextUrl.search, request.url), 308);
   }
 
   // 3. Check if pathname starts with a non-en locale

@@ -2,7 +2,6 @@
 
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
-import Script from 'next/script';
 import {
   Sparkles, Target, Telescope, BarChart3, Settings, Medal,
   ShieldCheck, CheckCircle2, Lock, Zap, Trophy,
@@ -171,48 +170,6 @@ const missionVision = [
   },
 ];
 
-const organizationSchema = {
-  '@context': 'https://schema.org',
-  '@type': ['Organization', 'LocalBusiness', 'ProfessionalService'],
-  '@id': 'https://www.eryonai.com/#organization',
-  name: 'ERYON AI',
-  legalName: 'ERYON AI Technologies',
-  url: 'https://www.eryonai.com',
-  logo: 'https://www.eryonai.com/logo.png',
-  description:
-    'ERYON AI is an enterprise software engineering agency based in New Delhi, India, specializing in AI/ML solutions, cloud-native architectures, full-stack web development, mobile apps, and cybersecurity for startups and enterprises worldwide.',
-  foundingDate: '2019',
-  numberOfEmployees: { '@type': 'QuantitativeValue', value: 50 },
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'New Delhi',
-    addressRegion: 'Delhi',
-    postalCode: '110001',
-    addressCountry: 'IN',
-  },
-  contactPoint: {
-    '@type': 'ContactPoint',
-    telephone: '+91-78278-86571',
-    contactType: 'customer service',
-    availableLanguage: ['English', 'Hindi'],
-  },
-  email: 'connect@eryonai.com',
-  knowsAbout: [
-    'Artificial Intelligence', 'Machine Learning', 'Cloud Computing',
-    'Web Development', 'Mobile App Development', 'Cybersecurity',
-    'DevOps', 'UI/UX Design', 'Software Engineering',
-  ],
-  areaServed: [
-    { '@type': 'Country', name: 'India' },
-    { '@type': 'Country', name: 'United States' },
-    { '@type': 'Country', name: 'United Kingdom' },
-    { '@type': 'Country', name: 'United Arab Emirates' },
-    { '@type': 'Country', name: 'Australia' },
-    { '@type': 'Country', name: 'Canada' },
-  ],
-  hasCredential: ['MSME Registered', 'SOC 2 Type II', 'GDPR Compliant'],
-};
-
 /* ─── Main Section ───────────────────────────────────────────────────── */
 export default function AboutSection({ dict }: { dict?: any } = {}) {
   const ref = useRef(null);
@@ -239,13 +196,6 @@ export default function AboutSection({ dict }: { dict?: any } = {}) {
 
   return (
     <>
-      <Script
-        id="organization-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-        strategy="afterInteractive"
-      />
-
       <section
         id="about"
         aria-labelledby="about-heading"
@@ -271,7 +221,7 @@ export default function AboutSection({ dict }: { dict?: any } = {}) {
               <SectionBadge icon={Sparkles} label={dict?.badge ?? "About ERYON AI"} />
             </motion.div>
 
-            <motion.h2
+            <motion.h1
               id="about-heading"
               className="text-3xl md:text-5xl font-extrabold mb-5"
               initial={{ opacity: 0, y: 20 }}
@@ -283,7 +233,7 @@ export default function AboutSection({ dict }: { dict?: any } = {}) {
               <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 {dict?.titleGradient ?? 'Delivering Excellence'}
               </span>
-            </motion.h2>
+            </motion.h1>
 
             {/* GEO-optimized entity statement */}
             <motion.p

@@ -49,6 +49,8 @@ export const layoutTranslations: Record<
       { label: 'Mobile Applications', href: '/services/mobile-applications' },
       { label: 'Custom SaaS', href: '/services/custom-saas' },
       { label: 'CRM & ERP', href: '/services/crm-erp-solutions' },
+      { label: 'Real Estate Software', href: '/services/real-estate-software' },
+      { label: 'Gym Management Software', href: '/services/gym-management-software' },
       { label: 'E-Commerce', href: '/services/ecommerce-solutions' },
       { label: 'Business Automation', href: '/services/business-automation' },
       { label: 'AI Solutions', href: '/services/ai-solutions' },
@@ -68,7 +70,7 @@ export const layoutTranslations: Record<
       tagline: 'Enterprise-grade custom software engineering & generative AI solutions built for modern businesses worldwide.',
       allRightsReserved: 'All rights reserved.',
       servicesLinks: ['Web Development', 'Mobile App Development', 'AI / ML Solutions', 'Cloud & DevOps', 'Cybersecurity', 'UI/UX Design'],
-      companyLinks: ['About Us', 'Portfolio', 'Our Process', 'Blogs', 'Careers', 'Contact'],
+      companyLinks: ['About Us', 'Portfolio', 'Our Process', 'Blogs', 'Contact'],
       contactLinks: ['Get a Quote', 'Start a Project', 'Schedule a Call', 'Privacy Policy', 'Terms of Service', 'Sitemap'],
     },
   },
@@ -89,6 +91,8 @@ export const layoutTranslations: Record<
       { label: 'モバイルアプリケーション', href: '/services/mobile-applications' },
       { label: 'カスタムSaaS', href: '/services/custom-saas' },
       { label: 'CRM & ERP', href: '/services/crm-erp-solutions' },
+      { label: '不動産ソフトウェア', href: '/services/real-estate-software' },
+      { label: 'ジム管理ソフトウェア', href: '/services/gym-management-software' },
       { label: 'Eコマース', href: '/services/ecommerce-solutions' },
       { label: '業務自動化', href: '/services/business-automation' },
       { label: 'AIソリューション', href: '/services/ai-solutions' },
@@ -108,7 +112,7 @@ export const layoutTranslations: Record<
       tagline: '世界中の現代企業のために構築された、エンタープライズグレードのカスタムソフトウェア開発と生成AIソリューション。',
       allRightsReserved: 'All rights reserved.',
       servicesLinks: ['Web開発', 'モバイルアプリ開発', 'AI / ML ソリューション', 'クラウド & DevOps', 'サイバーセキュリティ', 'UI/UXデザイン'],
-      companyLinks: ['会社概要', '実績紹介', '開発プロセス', 'ブログ', '採用情報', 'お問い合わせ'],
+      companyLinks: ['会社概要', '実績紹介', '開発プロセス', 'ブログ', 'お問い合わせ'],
       contactLinks: ['見積もり依頼', 'プロジェクトを開始', '相談予約', 'プライバシーポリシー', '利用規約', 'サイトマップ'],
     },
   },
@@ -129,6 +133,8 @@ export const layoutTranslations: Record<
       { label: 'Mobile Anwendungen', href: '/services/mobile-applications' },
       { label: 'Individuelle SaaS', href: '/services/custom-saas' },
       { label: 'CRM & ERP', href: '/services/crm-erp-solutions' },
+      { label: 'Immobilien-Software', href: '/services/real-estate-software' },
+      { label: 'Fitnessstudio-Verwaltung', href: '/services/gym-management-software' },
       { label: 'E-Commerce', href: '/services/ecommerce-solutions' },
       { label: 'Geschäftsautomatisierung', href: '/services/business-automation' },
       { label: 'KI-Lösungen', href: '/services/ai-solutions' },
@@ -148,7 +154,7 @@ export const layoutTranslations: Record<
       tagline: 'Individuelle Software-Entwicklung und generative KI-Lösungen auf Unternehmensniveau für moderne Unternehmen weltweit.',
       allRightsReserved: 'Alle Rechte vorbehalten.',
       servicesLinks: ['Webentwicklung', 'Mobile App-Entwicklung', 'KI / ML-Lösungen', 'Cloud & DevOps', 'Cybersicherheit', 'UI/UX-Design'],
-      companyLinks: ['Über uns', 'Portfolio', 'Unser Prozess', 'Blog', 'Karriere', 'Kontakt'],
+      companyLinks: ['Über uns', 'Portfolio', 'Unser Prozess', 'Blog', 'Kontakt'],
       contactLinks: ['Angebot anfordern', 'Projekt starten', 'Termin vereinbaren', 'Datenschutz', 'AGB', 'Sitemap'],
     },
   },
@@ -169,6 +175,8 @@ export const layoutTranslations: Record<
       { label: 'Applications Mobiles', href: '/services/mobile-applications' },
       { label: 'SaaS sur mesure', href: '/services/custom-saas' },
       { label: 'CRM & ERP', href: '/services/crm-erp-solutions' },
+      { label: 'Logiciels immobiliers', href: '/services/real-estate-software' },
+      { label: 'Gestion de salles de sport', href: '/services/gym-management-software' },
       { label: 'E-Commerce', href: '/services/ecommerce-solutions' },
       { label: 'Automatisation métier', href: '/services/business-automation' },
       { label: 'Solutions IA', href: '/services/ai-solutions' },
@@ -188,7 +196,7 @@ export const layoutTranslations: Record<
       tagline: "Ingénierie logicielle sur mesure et solutions d'IA générative de niveau entreprise, conçues pour les entreprises modernes du monde entier.",
       allRightsReserved: 'Tous droits réservés.',
       servicesLinks: ['Développement Web', "Développement d'apps mobiles", 'Solutions IA / ML', 'Cloud & DevOps', 'Cybersécurité', 'Design UI/UX'],
-      companyLinks: ['À propos', 'Portfolio', 'Notre processus', 'Blog', 'Carrières', 'Contact'],
+      companyLinks: ['À propos', 'Portfolio', 'Notre processus', 'Blog', 'Contact'],
       contactLinks: ['Demander un devis', 'Démarrer un projet', 'Planifier un appel', 'Politique de confidentialité', "Conditions d'utilisation", 'Plan du site'],
     },
   },
@@ -209,6 +217,8 @@ export const layoutTranslations: Record<
       { label: 'Aplicaciones Móviles', href: '/services/mobile-applications' },
       { label: 'SaaS a medida', href: '/services/custom-saas' },
       { label: 'CRM y ERP', href: '/services/crm-erp-solutions' },
+      { label: 'Software inmobiliario', href: '/services/real-estate-software' },
+      { label: 'Software para gimnasios', href: '/services/gym-management-software' },
       { label: 'E-Commerce', href: '/services/ecommerce-solutions' },
       { label: 'Automatización empresarial', href: '/services/business-automation' },
       { label: 'Soluciones de IA', href: '/services/ai-solutions' },
@@ -228,7 +238,7 @@ export const layoutTranslations: Record<
       tagline: 'Ingeniería de software a medida y soluciones de IA generativa de nivel empresarial para negocios modernos en todo el mundo.',
       allRightsReserved: 'Todos los derechos reservados.',
       servicesLinks: ['Desarrollo Web', 'Desarrollo de apps móviles', 'Soluciones IA / ML', 'Cloud y DevOps', 'Ciberseguridad', 'Diseño UI/UX'],
-      companyLinks: ['Nosotros', 'Portafolio', 'Nuestro proceso', 'Blog', 'Empleo', 'Contacto'],
+      companyLinks: ['Nosotros', 'Portafolio', 'Nuestro proceso', 'Blog', 'Contacto'],
       contactLinks: ['Solicitar presupuesto', 'Iniciar un proyecto', 'Agendar una llamada', 'Política de privacidad', 'Términos de servicio', 'Mapa del sitio'],
     },
   },
@@ -249,6 +259,8 @@ export const layoutTranslations: Record<
       { label: 'تطبيقات الجوال', href: '/services/mobile-applications' },
       { label: 'حلول SaaS مخصصة', href: '/services/custom-saas' },
       { label: 'أنظمة CRM و ERP', href: '/services/crm-erp-solutions' },
+      { label: 'برمجيات العقارات', href: '/services/real-estate-software' },
+      { label: 'برمجيات إدارة النوادي الرياضية', href: '/services/gym-management-software' },
       { label: 'حلول التجارة الإلكترونية', href: '/services/ecommerce-solutions' },
       { label: 'أتمتة الأعمال والعمليات', href: '/services/business-automation' },
       { label: 'حلول الذكاء الاصطناعي', href: '/services/ai-solutions' },
@@ -268,7 +280,7 @@ export const layoutTranslations: Record<
       tagline: 'تطوير البرمجيات المخصصة للمؤسسات وحلول الذكاء الاصطناعي التوليدي للشركات الرائدة عالمياً.',
       allRightsReserved: 'جميع الحقوق محفوظة.',
       servicesLinks: ['تطوير الويب', 'تطبيقات الجوال', 'حلول الذكاء الاصطناعي', 'السحابة و DevOps', 'الأمن السيبراني', 'تصميم UI/UX'],
-      companyLinks: ['من نحن', 'أعمالنا', 'منهجية العمل', 'المدونة', 'الوظائف', 'تواصل معنا'],
+      companyLinks: ['من نحن', 'أعمالنا', 'منهجية العمل', 'المدونة', 'تواصل معنا'],
       contactLinks: ['طلب عرض سعر', 'بدء مشروع', 'حجز مكالمة', 'سياسة الخصوصية', 'الشروط والأحكام', 'خريطة الموقع'],
     },
   },
@@ -470,9 +482,20 @@ export function getLocalizedPath(path: string, locale: SupportedLocale): string 
 
 const ALL_LOCALES: SupportedLocale[] = ['en', 'ja', 'de', 'fr', 'es', 'ar'];
 
-/** Builds canonical + hreflang alternates for a locale-prefixed static route, e.g. buildAlternates('/about', 'ja'). */
-export function buildAlternates(path: string, locale: SupportedLocale) {
+/**
+ * Builds canonical + hreflang alternates for a locale-prefixed route, e.g. buildAlternates('/about', 'ja').
+ * Pass { translated: false } for pages whose body is not translated yet: hreflang would claim a language
+ * the content does not match, so only the self-referencing canonical is emitted.
+ */
+export function buildAlternates(
+  path: string,
+  locale: SupportedLocale,
+  opts: { translated?: boolean } = {},
+): { canonical: string; languages?: Record<string, string> } {
   const baseUrl = 'https://www.eryonai.com';
+  if (opts.translated === false) {
+    return { canonical: `${baseUrl}${getLocalizedPath(path, locale)}` };
+  }
   const languages: Record<string, string> = { 'x-default': `${baseUrl}${path}` };
   for (const l of ALL_LOCALES) {
     languages[l] = `${baseUrl}${getLocalizedPath(path, l)}`;

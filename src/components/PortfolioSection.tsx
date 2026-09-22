@@ -162,9 +162,9 @@ export default function PortfolioSection({ dict }: { dict?: any } = {}) {
           transition={{ duration: 0.6 }}
         >
           <SectionBadge icon={FolderKanban} label={dict?.badge ?? "Portfolio"} color="#0066ff" className="mx-auto" />
-          <h2 className="text-3xl md:text-5xl font-extrabold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+          <h1 className="text-3xl md:text-5xl font-extrabold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
             {dict?.titlePrefix ?? 'Work That '}<span className="gradient-text">{dict?.titleGradient ?? 'Speaks'}</span>
-          </h2>
+          </h1>
           <p className="mt-4 text-base md:text-lg" style={{ color: '#94a3b8' }}>
             {dict?.subtitle ?? '150+ projects delivered across fintech, healthcare, e-commerce, and beyond.'}
           </p>

@@ -2,6 +2,7 @@ import PortfolioSection from '@/components/PortfolioSection';
 import { Metadata } from 'next';
 import { getDictionary, Locale } from '@/lib/dictionary';
 import { buildAlternates, getLocalizedPath } from '@/lib/layout-translations';
+import { CASE_STUDY_SLUGS } from '@/lib/case-study-slugs';
 
 type Props = {
   params: Promise<{ locale: Locale }>;
@@ -32,13 +33,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: buildAlternates('/portfolio', locale),
   };
 }
-
-const CASE_STUDY_SLUGS = [
-  'gym-dashboard', 'hospital-hrms', 'velorian-watches',
-  'marblemart-crm', 'marblemart-web', 'edunexus-erp',
-  'atelier-clothing', 'realist-crm', 'infra-erp',
-  'craverush', 'origin', 'hirestream', 'kyprox', 'auraplanters', 'echosync',
-];
 
 export default async function PortfolioPage({ params }: Props) {
   const { locale } = await params;

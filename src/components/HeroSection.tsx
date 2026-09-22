@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
 import { CheckCircle2 } from 'lucide-react';
@@ -56,6 +57,18 @@ export default function HeroSection({ dict }: { dict?: HeroDict } = {}) {
   const router = useRouter();
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
+
+  // The background video is only worth its bytes on a desktop-class screen. Everyone else
+  // (phones, reduced-motion, data-saver) gets the poster frame and never downloads the video.
+  const [playVideo, setPlayVideo] = useState(false);
+  useEffect(() => {
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    setPlayVideo(
+      window.matchMedia('(min-width: 768px)').matches &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
+        !connection?.saveData
+    );
+  }, []);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const spotlight = useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(0,102,255,0.10), transparent 70%)`;
@@ -73,16 +86,29 @@ export default function HeroSection({ dict }: { dict?: HeroDict } = {}) {
       style={{ paddingTop: 140 }} // Space for floating nav
       onMouseMove={handleMouseMove}
     >
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-40"
-      >
-        <source src="/hero-bg.mp4" type="video/mp4" />
-      </video>
+      {/* Background: poster frame first (also the LCP element); video only where playVideo is true */}
+      {playVideo ? (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/hero-poster.jpg"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-40"
+        >
+          <source src="/hero-bg-720.mp4" type="video/mp4" />
+        </video>
+      ) : (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src="/hero-poster.jpg"
+          alt=""
+          aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-40"
+        />
+      )}
 
       {/* Cursor-tracked spotlight */}
       <motion.div className="absolute inset-0 pointer-events-none hidden md:block" style={{ background: spotlight }} aria-hidden="true" />

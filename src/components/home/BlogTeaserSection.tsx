@@ -81,6 +81,8 @@ export default function BlogTeaserSection({ dict }: { dict?: any } = {}) {
                   <img
                     src={post.coverImage}
                     alt={post.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(7,12,26,0.85) 100%)' }} />
@@ -111,7 +113,7 @@ export default function BlogTeaserSection({ dict }: { dict?: any } = {}) {
 
                   {/* Author */}
                   <div className="flex items-center gap-2.5 pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                    <img src={post.author.avatar} alt={post.author.name} className="w-7 h-7 rounded-full" />
+                    <img src={post.author.avatar} alt={post.author.name} loading="lazy" decoding="async" className="w-7 h-7 rounded-full" />
                     <div>
                       <p className="text-xs font-semibold" style={{ color: '#cbd5e1' }}>{post.author.name}</p>
                       <p className="text-[10px]" style={{ color: '#475569' }}>{post.author.role}</p>

@@ -529,6 +529,18 @@ export async function generateStaticParams() {
   return Object.keys(projects).map((slug) => ({ slug }));
 }
 
+// Meta description = first sentence(s) of the project overview, cut at a word boundary (~155 chars).
+function caseStudyDescription(overview: string): string {
+  const text = overview.replace(/\s+/g, ' ').trim();
+  if (text.length <= 155) return text;
+  const cut = text.slice(0, 155);
+  const sentenceEnd = cut.lastIndexOf('. ');
+  if (sentenceEnd > 80) return cut.slice(0, sentenceEnd + 1);
+  const comma = cut.lastIndexOf(', ');
+  const stop = comma > 100 ? comma : cut.lastIndexOf(' ');
+  return cut.slice(0, stop).replace(/[,;:]$/, '') + '…';
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -539,12 +551,12 @@ export async function generateMetadata({
   if (!p) return { title: 'Case Study Not Found' };
   return {
     title: `${p.title} — ${p.subtitle} | ERYON AI Case Study`,
-    description: `${p.tagline} Built with ${p.tech.slice(0, 4).join(', ')}. Read the full case study.`,
+    description: caseStudyDescription(p.overview),
     keywords: [...p.tech, p.category, 'ERYON AI', 'case study', p.title],
     openGraph: {
       title: `${p.title} — ${p.subtitle} | ERYON AI`,
       description: p.tagline,
-      url: buildAlternates(`/case-study/${slug}`, locale).canonical,
+      url: buildAlternates(`/case-study/${slug}`, locale, { translated: false }).canonical,
       type: 'article',
       siteName: 'ERYON AI',
       images: [{ url: p.images[0], width: 1200, height: 630, alt: `${p.title} — ${p.subtitle}` }],
@@ -555,7 +567,7 @@ export async function generateMetadata({
       description: p.tagline,
       images: [p.images[0]],
     },
-    alternates: buildAlternates(`/case-study/${slug}`, locale),
+    alternates: buildAlternates(`/case-study/${slug}`, locale, { translated: false }),
   };
 }
 
@@ -576,7 +588,6 @@ export default async function CaseStudyPage({
     "@type": "TechArticle",
     "headline": `${p.title} - ${p.subtitle}`,
     "description": p.tagline,
-    "datePublished": "2024-01-01T08:00:00+00:00",
     "author": {
       "@type": "Organization",
       "name": "ERYON AI",
@@ -598,9 +609,9 @@ export default async function CaseStudyPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.eryonai.com" },
-      { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://www.eryonai.com/portfolio" },
-      { "@type": "ListItem", "position": 3, "name": p.title, "item": `https://www.eryonai.com/case-study/${slug}` }
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": `https://www.eryonai.com${getLocalizedPath('/', locale)}` },
+      { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": `https://www.eryonai.com${getLocalizedPath('/portfolio', locale)}` },
+      { "@type": "ListItem", "position": 3, "name": p.title, "item": `https://www.eryonai.com${getLocalizedPath(`/case-study/${slug}`, locale)}` }
     ]
   };
 

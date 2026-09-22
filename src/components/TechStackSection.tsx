@@ -77,7 +77,7 @@ export default function TechStackSection({ dict }: { dict?: any } = {}) {
           <motion.div initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
             <SectionBadge icon={Cpu} label={dict?.badge ?? "Technology"} color="#00b4d8" className="mx-auto" />
           </motion.div>
-          <motion.h2
+          <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.08, duration: 0.6 }}
@@ -85,7 +85,7 @@ export default function TechStackSection({ dict }: { dict?: any } = {}) {
             style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}
           >
             {dict?.titlePrefix ?? 'Our '}<span className="gradient-text">{dict?.titleGradient ?? 'Tech Arsenal'}</span>
-          </motion.h2>
+          </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}

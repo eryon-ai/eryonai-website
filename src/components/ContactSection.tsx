@@ -88,12 +88,12 @@ export default function ContactSection({ dict }: { dict?: any } = {}) {
           transition={{ duration: 0.6 }}
         >
           <SectionBadge icon={MessageSquare} label={dict?.badge ?? "Let's Talk"} />
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-5" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
+          <h1 className="text-3xl md:text-5xl font-extrabold mb-5" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#f8fafc', letterSpacing: '-0.03em', lineHeight: 1.1 }}>
             {dict?.titlePrefix ?? 'Start Your '}{' '}
             <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
               {dict?.titleGradient ?? 'Project Today'}
             </span>
-          </h2>
+          </h1>
           <p className="text-base md:text-lg" style={{ color: '#94a3b8', lineHeight: 1.7 }}>
             {dict?.subtitle ?? "Tell us about your vision — we'll respond within 24 hours with a tailored proposal."}
           </p>

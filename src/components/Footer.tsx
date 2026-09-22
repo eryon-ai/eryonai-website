@@ -10,8 +10,9 @@ import { getRecaptchaToken } from '@/lib/recaptcha-client';
 import { getLocaleFromPathname, layoutTranslations, getLocalizedPath } from '@/lib/layout-translations';
 
 const navColHrefs = [
-  ['/services', '/services', '/services', '/services', '/services', '/services'],
-  ['/about', '/portfolio', '/process', '/blogs', '#', '/contact'],
+  // Order matches servicesLinks: Web, Mobile, AI/ML, Cloud & DevOps, Cybersecurity (no dedicated page yet), UI/UX
+  ['/services/web-applications', '/services/mobile-applications', '/services/ai-solutions', '/services/devops-cloud', '/services', '/services/ui-ux-design'],
+  ['/about', '/portfolio', '/process', '/blogs', '/contact'],
   ['/contact', '/contact', '/contact', '/privacy', '/terms', '/sitemap.xml'],
 ];
 

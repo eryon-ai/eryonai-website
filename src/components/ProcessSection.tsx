@@ -77,7 +77,7 @@ export default function ProcessSection({ dict }: { dict?: any } = {}) {
               <SectionBadge icon={Compass} label={dict?.badge ?? "How We Work"} color="#0066ff" />
             </motion.div>
 
-            <motion.h2
+            <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.08 }}
@@ -88,7 +88,7 @@ export default function ProcessSection({ dict }: { dict?: any } = {}) {
               <span style={{ background: 'linear-gradient(135deg, #0066ff, #00b4d8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                 {dict?.titleGradient ?? '6-Step Process'}
               </span>
-            </motion.h2>
+            </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}

@@ -238,15 +238,18 @@ export default function BlogDetailClient({ post, related }: BlogDetailClientProp
                       {children}
                     </blockquote>
                   ),
+                  // react-markdown already wraps fenced blocks in <pre>; the code renderer below adds the styled one.
+                  pre: ({ children }) => <>{children}</>,
                   code: (props) => {
                     const { children, className } = props;
-                    const isBlock = className?.includes('language-');
+                    // Fences without a language (tree diagrams etc.) have no language- class but contain newlines.
+                    const isBlock = className?.includes('language-') || String(children).includes('\n');
                     return isBlock ? (
-                      <pre className="bg-[#020617] border border-white/10 text-slate-100 rounded-xl p-5 my-6 overflow-x-auto text-sm font-mono leading-relaxed">
+                      <pre className="bg-[#020617] border border-white/10 text-slate-100 rounded-xl p-5 my-6 overflow-x-auto max-w-full text-sm font-mono leading-relaxed">
                         <code className={className}>{children}</code>
                       </pre>
                     ) : (
-                      <code className="px-1.5 py-0.5 rounded bg-white/10 text-cyan-300 text-sm font-mono">{children}</code>
+                      <code className="px-1.5 py-0.5 rounded bg-white/10 text-cyan-300 text-sm font-mono break-words">{children}</code>
                     );
                   },
                   ul: ({ children }) => <ul className="list-disc pl-6 mb-5 space-y-1.5 text-slate-300">{children}</ul>,
