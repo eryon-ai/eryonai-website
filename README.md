@@ -1,152 +1,105 @@
-<div align="center">
+# Eryon V3 website
 
-<img src="./public/logo.png" alt="ERYON AI logo" width="280"/>
-
-<br/><br/>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0066FF,50:6366F1,100:00B4D8&height=180&section=header&text=ERYON%20AI%20—%20Website&fontSize=42&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=Official%20marketing%20site%2C%20built%20on%20Next.js&descAlignY=62&descSize=16" width="100%"/>
-
-<a href="https://www.eryonai.com">
-  <img src="https://readme-typing-svg.demolab.com/?lines=Next.js+%2B+App+Router;Optimized+with+next%2Ffont+%26+Geist;Deployed+on+Vercel&font=Fira+Code&center=true&width=550&height=40&duration=2400&pause=900&color=0066FF&vCenter=true&size=18&weight=600" alt="Typing SVG" />
-</a>
-
-<br/><br/>
-
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
-
-</div>
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
-
-## 📖 About
-
-This is the official marketing website for **[ERYON AI](https://www.eryonai.com)** — an enterprise software engineering company delivering AI/ML solutions, cloud-native architecture, full-stack products, and cybersecurity for startups and global enterprises. The site is bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and built on the Next.js App Router.
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
-
-## 🖥️ Site Sections
-
-<div align="center">
-
-| Section | Route | Purpose |
-|---|---|---|
-| 🏠 **Home** | `/` | Hero, value proposition, service highlights |
-| ⚙️ **Services** | `/services` | AI/ML, cloud, mobile, cybersecurity, UI/UX offerings |
-| 🚀 **Portfolio** | `/portfolio` | Case studies and selected client work |
-| 🔄 **Process** | `/process` | Discovery → Architecture → Development → QA → Launch → Support |
-| 📝 **Blog** | `/blogs` | Engineering insights and company updates |
-| 📩 **Contact** | `/contact` | Project inquiries and lead capture |
-
-</div>
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
-
-## ✨ Key Features
-
-- 📱 **Fully responsive** — mobile-first layouts across every breakpoint
-- ⚡ **Optimized performance** — App Router, image optimization, and font optimization out of the box
-- 🎨 **Design-system driven UI** — consistent spacing, typography, and component patterns via Tailwind CSS
-- 🔍 **SEO-ready** — metadata, Open Graph tags, and semantic markup for discoverability
-- ♿ **Accessible by default** — WCAG-aligned markup and keyboard navigation
-- 🧩 **Modular components** — reusable sections for services, case studies, and testimonials
-- 📊 **Analytics-ready** — structured for conversion tracking and funnel analysis
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
-
-## 📁 Project Structure
-
-```
-eryon-ai-website/
-├── app/
-│   ├── page.tsx           # Home page
-│   ├── layout.tsx         # Root layout (fonts, metadata, providers)
-│   ├── services/          # Services section
-│   ├── portfolio/         # Portfolio / case studies
-│   ├── process/           # How-we-build section
-│   ├── blogs/              # Blog listing & posts
-│   └── contact/           # Contact / lead form
-├── components/            # Shared UI components
-├── public/                 # Static assets (logo, images, icons)
-├── styles/                 # Global styles / Tailwind config
-└── README.md
-```
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
-
-## 🛠️ Built With
-
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
-
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
-
-## 🚀 Getting Started
-
-Install dependencies, then run the development server:
+Next.js 16 (App Router) + TypeScript + Tailwind v4. 71 statically generated pages, no client state library, no animation library.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000
+npm run build && npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Hosting:** production runs on **Vercel** (same as the old site). A Docker image is available as a backup:
 
-You can start editing the page by modifying `app/page.tsx` — the page auto-updates as you edit the file.
+```bash
+docker compose up --build   # reads .env; serves on http://localhost:3000
+```
 
-<br/>
+## Where things live
 
-<div align="center">
+| What | File |
+| --- | --- |
+| Company facts, confirmed stats & credentials, Google Ads IDs | `src/lib/site.ts` |
+| 12 services (core copy, FAQs, SEO) | `src/lib/services.ts` |
+| Service offerings, segments, extra FAQs | `src/lib/service-extras.ts` |
+| 11 industries | `src/lib/industries.ts` + `src/lib/industry-extras.ts` |
+| 15 case studies | `src/lib/work.ts` |
+| Insights articles | `src/lib/insights.ts` + `src/lib/insights-migrated.ts` (old blog topics, rewritten) |
+| Open roles | `src/lib/careers.ts` |
+| Technology list (with proof links) | `src/lib/tech.ts` |
+| Design tokens / type scale | `src/app/globals.css` |
+| Shared UI + cards | `src/components/ui.tsx`, `src/components/cards.tsx` |
+| Screenshots (optimized WebP, source = Backblaze) | `public/img/` ← `scripts/image-sources.json` |
+| Translations (ja, de, fr, es, ar) | `src/i18n/messages/<lang>.ts`, `<lang>-data.ts`, `<lang>-articles*.ts` |
+| Page views shared by English and translated routes | `src/views/*.tsx` |
 
-| Command | What it does |
-|---|---|
-| `npm run dev` | Start the local dev server on port 3000 |
-| `npm run build` | Create a production build |
-| `npm run start` | Serve the production build locally |
-| `npm run lint` | Run linting checks |
+Add a page to the data file and its route, sitemap, search index and HTML sitemap update automatically (`src/lib/routes.ts`).
 
-</div>
+## Images
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
+Backblaze (`f005.backblazeb2.com/file/eryonaiWebsiteImages/`) is the master copy. The site serves optimized WebP copies from
+`public/img` because loading Backblaze through the Next.js image optimizer timed out.
 
-## 🔤 Fonts
+- Add or replace an image: upload it to Backblaze, put `"<name>.webp": "<Backblaze URL>"` in `scripts/image-sources.json`,
+  then run `npm run images` (new files only) or `npm run images -- --force` (re-download everything).
+- Origin and Kyprox screenshots currently come from the old site's Cloudinary URLs, and Aura Planters uses the old site's
+  Unsplash photos (not product screens). Upload real screenshots to Backblaze and change those URLs when available.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load **[Geist](https://vercel.com/font)**, Vercel's font family — no manual font-loading or layout shift to manage.
+## Languages
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
+English lives at the root (`src/app/(en)`). Japanese, German, French, Spanish and Arabic live under `/ja`, `/de`, `/fr`, `/es`, `/ar`
+(`src/app/[lang]`), the same set of pages the old site translated: home, about, services, process, technology, work, contact
+(+ success), insights + all 13 articles, privacy, terms and cookie policy. Service, industry and case-study detail pages are
+English only; translated pages link to them and say so.
 
-## 📚 Learn More
+- Strings: `src/i18n/messages/en.ts` is the source; every other language is typed `Messages`, so a missing key fails `tsc`.
+- Overlays such as article sections and case-study summaries are matched by position. Run `npm run i18n:check` after editing
+  English copy: it fails if any language has a different number of sections, list items or keys, or an empty string.
+- Each translated page has hreflang tags for all 6 languages plus x-default, and a self-canonical; `sitemap.xml` lists the alternates.
+- `src/proxy.ts` redirects only `/`: saved choice (`eryon_lang` cookie from the language switcher) → browser language →
+  country header (only when the browser sends no language). An English browser anywhere stays on English.
+- Arabic is right-to-left (`dir="rtl"`); use logical Tailwind classes (`ms-`, `pe-`, `border-s`…) rather than `ml-`/`pr-`/`border-l`.
 
-To learn more about Next.js, take a look at the following resources:
+## Tracking and consent
 
-- [Next.js Documentation](https://nextjs.org/docs) — learn about Next.js features and API
-- [Learn Next.js](https://nextjs.org/learn) — an interactive Next.js tutorial
-- [Next.js GitHub Repository](https://github.com/vercel/next.js) — feedback and contributions welcome
+Nothing is tracked until a visitor presses **Accept** in the cookie banner (`src/components/CookieBanner.tsx`).
+After that, `src/components/Analytics.tsx` loads the Google tag for Google Ads (`AW-18087795180`, same account as the old site)
+and, if `NEXT_PUBLIC_GA_ID` is set, GA4. `/contact/success` fires the Ads lead conversion. "Cookie settings" in the footer reopens the banner.
 
-<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0066FF,100:00B4D8&height=3&section=header" width="100%"/>
+## Old URLs
 
-## ☁️ Deploy on Vercel
+`next.config.ts` redirects every URL from the old site's sitemap — old service slugs, `/blogs/*`, `/case-study/*`,
+`/portfolio`, `/tech-stack` and all `/ja|de|fr|es|ar/*` translations — to the matching new page (verified: all 312 URLs in the old sitemap resolve).
 
-The easiest way to deploy this Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Environment
 
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Same variable names as the old site, so the existing Vercel settings carry over:
 
-<br/>
+```
+SMTP_USER=...                     # Gmail address used to send form notifications
+SMTP_PASS=...                     # Gmail app password
+LEAD_TO_EMAIL=...                 # optional, defaults to connect@eryonai.com
+GOOGLE_SHEET_WEBHOOK_URL=...      # Apps Script webhook; every enquiry, application and subscriber is mirrored here
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY=...# reCAPTCHA v3 (loads only when a visitor starts a form)
+RECAPTCHA_SECRET_KEY=...
+NEXT_PUBLIC_GA_ID=G-...           # optional GA4 (consent-gated)
+```
 
-<div align="center">
+**Forms:** `/api/contact`, `/api/apply` and `/api/subscribe` run honeypot, timing, rate-limit and (if configured) reCAPTCHA checks, then
+mirror the submission to the Google Sheet (`type: contact | application | subscription`, same keys as before) and email the team.
+If email fails but the Sheet is configured, a contact enquiry still succeeds. Applications need email because the CV is attached.
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00B4D8,50:6366F1,100:0066FF&height=150&section=footer&text=ERYON%20AI&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=55" width="100%"/>
+**Search Console:** the Google verification token from the old site is kept in `src/app/layout.tsx` — don't remove it.
 
-**[eryonai.com](https://www.eryonai.com)** &nbsp;·&nbsp; 📩 connect@eryonai.com
+**llms.txt:** `/llms.txt` and `/llms-full.txt` are generated from the same data files.
 
-</div>
+## Before launch
+
+- [ ] Confirm the 3 roles in `src/lib/careers.ts` are really open (they emit JobPosting schema).
+- [ ] Add real leadership names/photos on `/about` (see TODO) — no stock photography.
+- [ ] Confirm benefits list on `/careers` (TODO).
+- [ ] Legal review of `/privacy`, `/terms`, `/cookie-policy`, including the translated versions.
+- [ ] Have a native speaker review each translation, Arabic and Japanese first.
+- [ ] Confirm which case studies may name the client / link the live build.
+- [ ] Add the MSME Udyam number in `site.ts` if you want it displayed.
+- [ ] Remove the public demo admin login shown on the old site's MarbleMart case study.
+- [ ] Rate limiting is in-memory per instance (`src/lib/mail.ts`); use Redis if running several instances.

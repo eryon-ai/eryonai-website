@@ -1,0 +1,120 @@
+import type { ArticleT } from "./types";
+import { esArticles2 } from "./es-articles-2";
+
+export const esArticles: Record<string, ArticleT> = {
+  "modernize-legacy-system-without-downtime": {
+    title: "Modernizar un sistema heredado sin detener el negocio",
+    subtitle: "Por qué la sustitución gradual gana a la reescritura total, y en qué orden hacerla.",
+    summary: "Una reescritura completa promete empezar de cero y suele acabar en un proyecto largo y arriesgado. Sustituir un sistema heredado paso a paso mantiene el negocio en marcha y demuestra cada avance.",
+    imageAlt: "Panel operativo de una plataforma formada por servicios independientes",
+    takeaways: [
+      "Las reescrituras completas fracasan más por alcance y plazos que por la tecnología.",
+      "Poner primero una interfaz estable delante del sistema heredado y sustituir por detrás.",
+      "Sustituir una capacidad de negocio cada vez y probarla en producción antes de pasar a la siguiente.",
+      "Ejecutar lo antiguo y lo nuevo en paralelo y comparar resultados antes de mover el tráfico.",
+    ],
+    sections: [
+      { h: "Por qué se atascan las reescrituras completas", p: ["Un sistema heredado suele ser antiguo por una buena razón: funciona y el negocio depende de él. Contiene años de reglas, excepciones y correcciones, muchas sin documentar. Una reescritura tiene que redescubrirlas todas mientras el sistema antiguo sigue cambiando.", "El resultado sigue un patrón conocido. El sistema nuevo tarda más de lo previsto, el antiguo necesita cambios urgentes mientras tanto y la fecha de cambio se retrasa. Entretanto, la empresa paga dos sistemas y no aprovecha ninguno."] },
+      { h: "Empezar por una interfaz estable", p: ["El primer paso no es escribir código nuevo para el núcleo. Es poner una interfaz, normalmente una capa de API, delante del sistema existente, para que las demás aplicaciones hablen con esa interfaz y no directamente con la base de datos o las pantallas antiguas.", "Cuando los consumidores dependen de la interfaz y no de la implementación, se puede cambiar lo que hay detrás pieza a pieza. Es lo que suele llamarse patrón «strangler»: el sistema nuevo crece poco a poco alrededor del antiguo hasta que este puede apagarse."] },
+      { h: "Priorizar por capacidad de negocio", p: ["Elija la primera capacidad que sustituir según dos criterios: cuántos problemas causa hoy y lo aislada que está. Un buen primer candidato tiene entradas y salidas claras y pocas dependencias, como la generación de presupuestos, las notificaciones o los informes.", "No empiece por la parte más central y conectada del sistema. Las primeras fases deben generar confianza y un entendimiento compartido, no poner en juego todo el proyecto."], list: ["Listar las capacidades y los datos que posee cada una.", "Puntuar cada una según el problema de negocio y el acoplamiento.", "Empezar donde el problema es alto y el acoplamiento bajo.", "Dejar el núcleo del procesamiento transaccional para cuando el equipo conozca bien el dominio."] },
+      { h: "Demostrar cada paso en paralelo", p: ["Antes de cambiar una capacidad, ejecute la implementación antigua y la nueva en paralelo con las mismas entradas y compare los resultados. Las diferencias sacan a la luz reglas no documentadas más rápido que cualquier taller de requisitos.", "Mueva el tráfico de forma gradual, por sucursal, segmento de clientes o porcentaje, y mantenga un camino de vuelta documentado. Un paso de migración que no se puede revertir necesita todavía más preparación."] },
+      { h: "Tratar la migración de datos como un proyecto propio", p: ["Los datos sobreviven al código. Los datos heredados suelen contener duplicados, formatos incoherentes y campos usados para algo distinto de lo previsto. Planifique de forma explícita la limpieza, la correspondencia y la verificación, con recuentos y sumas de control que demuestren que no se ha perdido nada.", "Cuando migra la última capacidad, apagar el sistema heredado debería ser un trámite: todos los consumidores usan ya la nueva interfaz, todos los datos están verificados y el negocio lleva semanas trabajando con el sistema nuevo."] },
+    ],
+  },
+  "custom-crm-vs-off-the-shelf": {
+    title: "¿CRM a medida o estándar? Una guía práctica para decidir",
+    subtitle: "La pregunta no es cuál es mejor, sino dónde se aparta su proceso de lo habitual.",
+    summary: "Los CRM estándar son excelentes para pipelines comerciales comunes. Uno a medida solo compensa donde su proceso es realmente distinto. Así puede saber en qué situación está.",
+    imageAlt: "Panel CRM con leads, estado del inventario y presupuestos",
+    takeaways: [
+      "Si su proceso de ventas se parece al de todos, compre en lugar de construir.",
+      "Lo a medida compensa cuando el inventario, los precios o las aprobaciones son propios de su empresa.",
+      "Compare licencias, personalización y soluciones provisionales, no solo la licencia.",
+      "A menudo lo correcto es un híbrido: CRM estándar más un sistema operativo a medida.",
+    ],
+    sections: [
+      { h: "Partir del proceso, no del producto", p: ["La mayoría de las decisiones sobre CRM empiezan comparando productos. Es mejor describir primero el proceso real: cómo llega un lead, quién lo atiende, qué información se transmite, quién aprueba qué y qué recibe el cliente en cada fase.", "Con el proceso sobre el papel, compárelo con el modelo estándar de la mayoría de los CRM: contactos, empresas, oportunidades y fases. El tamaño de la diferencia debería guiar la decisión."] },
+      { h: "Cuándo un CRM estándar es la respuesta correcta", p: ["Si su proceso encaja con el modelo de contacto, oportunidad y fase, un CRM estándar ofrece desde el primer día funciones maduras, integraciones y apps móviles. Reconstruirlo a medida rara vez es una buena inversión."], list: ["Su pipeline es lineal y se parece al de otras empresas de su sector.", "Sus productos son estándar, con precios de tarifa o descuentos sencillos.", "La mayor parte del valor está en la gestión de contactos, el correo y los informes.", "Su equipo es pequeño y necesita empezar este mes."] },
+      { h: "Cuándo compensa lo a medida", p: ["El software a medida compensa cuando la parte más valiosa de su proceso queda fuera del modelo estándar y los equipos la gestionan en hojas de cálculo junto al CRM.", "En nuestro trabajo para un distribuidor de piedra natural, por ejemplo, cada losa es única y está en un almacén concreto. Reservar la losa correcta en el momento del presupuesto era la tarea más importante del sistema. Ningún objeto de oportunidad estándar podía hacerlo sin una personalización enorme."], list: ["El inventario es único, está reservado o depende de la ubicación.", "Los precios dependen de reglas, configuraciones o acuerdos con cada cliente.", "Las aprobaciones implican varios roles con lógica condicional.", "Ventas, operaciones y finanzas necesitan compartir los mismos datos en tiempo real."] },
+      { h: "Comparar con honestidad el coste total", p: ["El coste de licencia es la cifra visible. El coste total de un CRM estándar incluye el precio por usuario a medida que crece el equipo, los complementos de pago, el trabajo de personalización, el de integración y, a menudo lo más caro, el tiempo que el personal dedica a soluciones provisionales.", "Un sistema a medida cuesta más al principio y menos por cada usuario adicional. También necesita mantenimiento continuo. Compare ambos a lo largo de varios años antes de decidir."] },
+      { h: "La opción híbrida", p: ["Muchas empresas acaban con un CRM estándar para la gestión de contactos y el correo, y un sistema operativo a medida para lo que es propio de su negocio, conectados mediante APIs. Así se conservan las funciones maduras del producto y el proceso particular encuentra su sitio."] },
+    ],
+  },
+  "multi-tenant-saas-architecture": {
+    title: "Elegir el modelo multiinquilino adecuado para un SaaS B2B",
+    subtitle: "Tablas compartidas, esquemas separados o bases de datos separadas, y cómo cambiar de idea más adelante.",
+    summary: "La multitenencia es una de las decisiones más caras de deshacer en un producto SaaS. Una comparación práctica de los tres modelos habituales y de las señales que deben guiar la elección.",
+    imageAlt: "Panel de administración SaaS con planes de suscripción y facturación",
+    takeaways: [
+      "La mayoría de los productos B2B deberían empezar con una base compartida y aislamiento a nivel de fila.",
+      "Mover a inquilinos concretos a su propio esquema o base cuando lo exijan el cumplimiento normativo o el tamaño.",
+      "Imponer el contexto de inquilino en la capa de datos, no solo en el código de la aplicación.",
+      "Prever desde el principio exportaciones y copias de seguridad por inquilino.",
+    ],
+    sections: [
+      { h: "Los tres modelos habituales", p: ["Los sistemas multiinquilino suelen usar uno de tres modelos, que equilibran de forma distinta el aislamiento y la carga operativa."], list: ["Base compartida, tablas compartidas: cada fila lleva un identificador de inquilino. El más barato de operar y el más sencillo de desplegar, con el aislamiento más débil por defecto.", "Base compartida, esquema por inquilino: las tablas se duplican por inquilino dentro de una base. Mejor aislamiento, migraciones más complejas.", "Base por inquilino: el aislamiento más fuerte y la copia de seguridad por inquilino más sencilla, con la mayor carga operativa."] },
+      { h: "Una opción por defecto sensata", p: ["Para la mayoría de los productos B2B en fase inicial, tablas compartidas con un identificador de inquilino en cada fila son el punto de partida adecuado. La infraestructura sigue siendo sencilla y las tareas entre inquilinos (facturación, analítica, soporte) siguen siendo fáciles.", "El riesgo es una fuga de datos por un filtro olvidado. Afróntelo en la base de datos, no solo en el código: las políticas de seguridad a nivel de fila de PostgreSQL, por ejemplo, pueden obligar a que cada consulta se limite al inquilino actual aunque un desarrollador lo olvide."] },
+      { h: "Señales que justifican más aislamiento", p: ["Un aislamiento más fuerte compensa cuando aparecen ciertas condiciones. Rara vez tiene que aplicarse a todos los inquilinos."], list: ["Un gran cliente exige por contrato almacenamiento dedicado.", "La normativa obliga a guardar los datos en una región concreta.", "El volumen de datos de un inquilino perjudica el rendimiento de los demás.", "Los clientes necesitan copias y restauraciones independientes."] },
+      { h: "Prever un modelo híbrido", p: ["El diseño más práctico a largo plazo admite más de un modelo: la mayoría de los inquilinos comparten infraestructura y unos pocos grandes o regulados tienen su propia base. Solo es posible si la resolución del inquilino ocurre en un único sitio, normalmente una capa de enrutamiento que asocia cada petición con la conexión correcta.", "Construya esa capa de enrutamiento pronto, aunque al principio siempre devuelva la misma base. Cuesta poco ahora y ahorra mucho después."] },
+      { h: "Detalles operativos que importan", p: ["La multitenencia no se limita al esquema. La limitación de peticiones, los trabajos en segundo plano, las rutas de almacenamiento de archivos, las cachés y los registros necesitan el contexto de inquilino. También las funciones de cara al cliente, como la exportación de datos y la eliminación de cuentas, que los grandes clientes preguntarán durante la compra."] },
+    ],
+  },
+  "role-based-access-control-that-scales": {
+    title: "Control de acceso basado en roles que escala",
+    subtitle: "Permisos diseñados para la organización que llegará a ser, no solo para la de hoy.",
+    summary: "El control de acceso suele empezar con un indicador de «admin» y acabar en una maraña de casos especiales. Una estructura de roles, permisos y ámbitos que sigue siendo comprensible a medida que crece la organización.",
+    imageAlt: "Panel de administración de un sistema de RR. HH. hospitalario con navegación por roles",
+    takeaways: [
+      "Separar los roles (quién es alguien) de los permisos (lo que exige una acción).",
+      "Añadir los ámbitos (sede, departamento, propiedad) como segunda dimensión.",
+      "Comprobar el acceso en el servidor en cada petición; la interfaz solo oculta lo que no está permitido.",
+      "Registrar cada cambio de rol y cada acceso sensible.",
+    ],
+    sections: [
+      { h: "Cómo se degrada el control de acceso", p: ["La mayoría de los sistemas empiezan con dos tipos de usuario: administradores y todos los demás. Con el crecimiento llegan las excepciones: un responsable que puede aprobar pero no borrar, una sucursal que solo debe ver sus propios registros, un auditor que puede leerlo todo y no cambiar nada. Cada excepción se convierte en una condición en el código, y pronto nadie sabe con certeza quién puede hacer qué."] },
+      { h: "Roles y permisos son cosas distintas", p: ["Defina los permisos como las acciones que admite su sistema: crear una factura, aprobar un permiso, exportar un informe. Defina los roles como conjuntos con nombre de permisos que corresponden a funciones reales. El código comprueba permisos, nunca nombres de roles.", "Esta sola regla abarata los cambios. Cuando aparece una función nueva, crea un rol con permisos existentes en lugar de modificar el código en decenas de sitios."] },
+      { h: "El ámbito como segunda dimensión", p: ["Los permisos responden a «¿puede esta persona aprobar un permiso?». Los ámbitos responden a «¿para quién?». En un sistema hospitalario, un jefe de servicio solo aprueba para su servicio; en un colegio con varias sedes, el director solo ve su centro."], list: ["Ámbito organizativo: empresa, región, sucursal, departamento.", "Ámbito de propiedad: registros que el usuario creó o tiene asignados.", "Ámbito de relación: las familias solo ven los datos de sus propios hijos."] },
+      { h: "Aplicarlo en el servidor, siempre", p: ["Ocultar un botón es una medida de usabilidad, no un control de seguridad. Cada petición a la API debe comprobar el permiso y el ámbito en el servidor, idealmente en una capa común para que ningún endpoint pueda olvidarlo. Cuando la base de datos lo admite, las políticas a nivel de fila añaden una red de seguridad adicional."] },
+      { h: "Hacer el acceso auditable", p: ["Registre cada cambio de roles y asignaciones y cada acceso a registros sensibles. Cuando un cliente, un auditor o un regulador pregunte quién podía ver qué y cuándo, la respuesta debe salir de una consulta, no de la memoria de alguien."] },
+    ],
+  },
+  "what-good-discovery-produces": {
+    title: "Qué debe producir una buena fase de descubrimiento",
+    subtitle: "Los documentos que debería esperar antes de empezar cualquier desarrollo de software.",
+    summary: "En el descubrimiento se fija la mayor parte del coste y el riesgo de un proyecto de software. Una lista de lo que entrega un descubrimiento útil y cómo reconocer uno que no ayuda.",
+    imageAlt: "Panel de un ERP escolar con módulos de admisión y asistencia",
+    takeaways: [
+      "Un descubrimiento debe producir decisiones, no solo documentos.",
+      "Espere un mapa de procesos, un primer lanzamiento acotado, un esbozo de arquitectura y una estimación con supuestos.",
+      "Incluya a quienes hacen el trabajo, no solo a quienes lo gestionan.",
+      "Un buen descubrimiento a veces recomienda construir menos, o nada.",
+    ],
+    sections: [
+      { h: "Para qué sirve el descubrimiento", p: ["El descubrimiento sustituye supuestos por decisiones antes de que resulten caros. Responde a qué debe hacer el primer lanzamiento, para quién, con qué integraciones, con qué restricciones y cuánto costará de forma realista."] },
+      { h: "Lo que debería recibir", p: ["Un descubrimiento útil termina con unos pocos documentos que su equipo puede leer, cuestionar y aprobar."], list: ["Un mapa de cómo se trabaja hoy y de cómo se trabajará con el nuevo sistema.", "Los roles de usuario y lo que cada uno necesita ver y hacer.", "Un primer lanzamiento acotado, con lo que se deja deliberadamente para después.", "Un inventario de integraciones: cada sistema con el que deberá comunicarse el nuevo, y cómo.", "Un esbozo de arquitectura: modelo de datos, componentes, hosting y enfoque de seguridad.", "Una estimación y un plan, con los supuestos que los sustentan por escrito."] },
+      { h: "Quién tiene que estar en la mesa", p: ["Los responsables describen cómo debería funcionar un proceso. Quienes hacen el trabajo describen cómo funciona de verdad, incluidas las soluciones provisionales que el nuevo sistema tendrá que admitir o eliminar. Hacen falta ambas visiones, y en la segunda suelen esconderse los requisitos importantes."] },
+      { h: "Señales de alarma", list: ["Un documento de requisitos que enumera pantallas pero ningún flujo.", "Ningún supuesto por escrito detrás de la estimación.", "Ninguna conversación sobre migración de datos o integraciones.", "Todas las funciones solicitadas están en el primer lanzamiento."], p: ["Cada una de estas señales indica que las decisiones difíciles se han aplazado al desarrollo, donde cuestan más."] },
+      { h: "A veces la respuesta es construir menos", p: ["Un descubrimiento honesto recomienda a veces un producto estándar, un primer lanzamiento más pequeño o un cambio de proceso en lugar de software. Es un buen resultado: el código más barato es el que nunca hace falta escribir."] },
+    ],
+  },
+  "event-driven-order-systems": {
+    title: "Sistemas de pedidos orientados a eventos: mantener el pago en pie bajo carga",
+    subtitle: "Lecciones de una plataforma de reparto construida con Kafka y Spring Boot.",
+    summary: "Cuando pedidos, pagos, menús y despacho comparten una aplicación, un componente lento puede bloquear el pago. Cómo el diseño orientado a eventos aísla los fallos, y lo que cuesta.",
+    imageAlt: "Panel de despacho con repartos en curso y estado de los pedidos",
+    takeaways: [
+      "Aislar el recorrido que cobra el dinero de todo lo demás.",
+      "Usar eventos para el trabajo que no tiene que terminar antes de responder al cliente.",
+      "Cada servicio es dueño de sus datos; se comparten mediante eventos, no tablas comunes.",
+      "En cuanto las peticiones cruzan servicios, el trazado distribuido es imprescindible.",
+    ],
+    sections: [
+      { h: "El problema de los picos", p: ["La demanda de reparto de comida llega en picos bruscos en torno a las comidas. En una sola aplicación, la búsqueda en menús, las recomendaciones, el despacho y el pago compiten por los mismos hilos, conexiones y memoria. Una consulta lenta en una zona puede agotar los recursos que necesita el pago."] },
+      { h: "Proteger el recorrido que cobra", p: ["El primer principio de diseño era sencillo: pedidos y pagos deben seguir funcionando aunque todo lo demás esté degradado. Por eso se separaron en servicios propios con sus propios almacenes de datos, y cualquier otra interacción con ellos se hizo asíncrona."] },
+      { h: "Eventos para todo lo que puede esperar", p: ["Cuando se hace un pedido, el cliente necesita una confirmación inmediata. Avisar al restaurante, asignar un repartidor y actualizar la analítica puede ocurrir un momento después. Un evento «pedido realizado» publicado en Kafka permite que cada consumidor trabaje a su ritmo, y que falle sin afectar al pedido."], list: ["Servicio de pedidos: acepta el pedido y publica un evento.", "Servicio de restaurantes: consume el evento y actualiza la pantalla de cocina.", "Servicio de despacho: consume el evento y asigna un repartidor.", "Servicio de notificaciones: informa al cliente a medida que llegan los eventos de estado."] },
+      { h: "Cada servicio es dueño de sus datos", p: ["Pedidos y pagos necesitan transacciones, así que viven en PostgreSQL. Los menús son documentos cuya forma varía de un restaurante a otro, así que viven en MongoDB. Los servicios nunca leen las tablas de otros; mantienen actualizados los datos que necesitan mediante eventos."] },
+      { h: "Lo que cuesta", p: ["Los sistemas orientados a eventos son más difíciles de entender que una sola aplicación. Los datos son consistentes a la larga, los fallos pueden ocurrir entre servicios y depurar significa seguir una petición a través de varios procesos. El trazado distribuido, aquí con Zipkin, y los consumidores idempotentes son la inversión mínima para que esta arquitectura sea manejable.", "Para una pequeña herramienta interna sería sobreingeniería. Para una plataforma cuyos ingresos dependen de que el pago funcione en hora punta, es el equilibrio adecuado."] },
+    ],
+  },
+  ...esArticles2,
+};

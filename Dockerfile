@@ -1,44 +1,28 @@
-# Stage 1: Build
-FROM node:20-alpine AS builder
-
+# Backup deployment. Production runs on Vercel; this image runs the same app anywhere with Docker.
+FROM node:22-alpine AS deps
 WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
 
-# Copy package files
-COPY package.json package-lock.json* yarn.lock* pnpm-lock.yaml* ./
-
-# Install dependencies
-RUN npm install --frozen-lockfile || npm install
-
-# Copy source code
+FROM node:22-alpine AS build
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-# Build the app
+ENV NEXT_TELEMETRY_DISABLED=1
+# NEXT_PUBLIC_* values are baked in at build time.
+ARG NEXT_PUBLIC_GA_ID
+ARG NEXT_PUBLIC_RECAPTCHA_SITE_KEY
 RUN npm run build
 
-# Stage 2: Production
-FROM node:20-alpine
-
+FROM node:22-alpine AS run
 WORKDIR /app
-
-# Set environment to production
-ENV NODE_ENV=production
-
-# Copy package files
-COPY package.json package-lock.json* yarn.lock* pnpm-lock.yaml* ./
-
-# Install production dependencies only
-RUN npm install --frozen-lockfile --production || npm install --production
-
-# Copy built app from builder
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-
-# Expose port
+ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0
+RUN addgroup -S app && adduser -S app -G app
+COPY --from=build --chown=app:app /app/.next/standalone ./
+COPY --from=build --chown=app:app /app/.next/static ./.next/static
+COPY --from=build --chown=app:app /app/public ./public
+USER app
 EXPOSE 3000
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
-  CMD node -e "require('http').get('http://localhost:3000', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
-
-# Start the app
-CMD ["npm", "start"]
+HEALTHCHECK --interval=30s --timeout=3s --start-period=20s --retries=3 \
+  CMD wget -qO- http://127.0.0.1:3000/ >/dev/null || exit 1
+CMD ["node", "server.js"]
