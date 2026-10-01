@@ -1,0 +1,120 @@
+import type { ArticleT } from "./types";
+import { deArticles2 } from "./de-articles-2";
+
+export const deArticles: Record<string, ArticleT> = {
+  "modernize-legacy-system-without-downtime": {
+    title: "Ein Altsystem modernisieren, ohne das Geschäft anzuhalten",
+    subtitle: "Warum schrittweise Ablösung den großen Neubau schlägt – und in welcher Reihenfolge man vorgeht.",
+    summary: "Ein kompletter Neubau verspricht einen Neuanfang und liefert meist ein langes, riskantes Projekt. Ein Altsystem schrittweise abzulösen hält das Geschäft am Laufen und beweist jeden Schritt.",
+    imageAlt: "Operations-Dashboard einer Plattform aus unabhängigen Services",
+    takeaways: [
+      "Komplette Neubauten scheitern häufiger an Umfang und Timing als an der Technik.",
+      "Erst eine stabile Schnittstelle vor das Altsystem setzen, dann dahinter ersetzen.",
+      "Eine Geschäftsfunktion nach der anderen ersetzen und in Produktion beweisen, bevor die nächste folgt.",
+      "Alt und Neu parallel betreiben und Ergebnisse vergleichen, bevor der Verkehr umgeschaltet wird.",
+    ],
+    sections: [
+      { h: "Warum komplette Neubauten ins Stocken geraten", p: ["Ein Altsystem ist meist aus gutem Grund alt: Es funktioniert, und das Geschäft hängt davon ab. Jahre an Regeln, Ausnahmen und Korrekturen stecken darin, viele davon undokumentiert. Ein Neubau muss sie alle neu entdecken, während sich das alte System weiter verändert.", "Das Ergebnis ist ein bekanntes Muster. Das neue System dauert länger als geplant, das alte braucht zwischendurch dringende Änderungen, und der Umstellungstermin verschiebt sich. Währenddessen bezahlt das Unternehmen zwei Systeme und profitiert von keinem."] },
+      { h: "Mit einer stabilen Schnittstelle beginnen", p: ["Der erste Schritt ist nicht, neuen Code für den Kern zu schreiben. Er besteht darin, eine Schnittstelle – meist eine API-Schicht – vor das bestehende System zu setzen, sodass andere Anwendungen mit dieser Schnittstelle sprechen statt direkt mit der alten Datenbank oder den alten Masken.", "Sobald Nutzer von der Schnittstelle statt von der Implementierung abhängen, lässt sich dahinter Stück für Stück etwas ändern. Das nennt man oft Strangler-Pattern: Das neue System wächst nach und nach um das alte herum, bis das alte abgeschaltet werden kann."] },
+      { h: "Nach Geschäftsfunktionen priorisieren", p: ["Wählen Sie die erste abzulösende Funktion nach zwei Kriterien: wie viele Probleme sie heute verursacht und wie isoliert sie ist. Ein guter erster Kandidat hat klare Ein- und Ausgaben und wenige Abhängigkeiten – etwa die Angebotserstellung, Benachrichtigungen oder das Reporting.", "Beginnen Sie nicht mit dem zentralsten, am stärksten vernetzten Teil des Systems. Frühe Phasen sollen Vertrauen und gemeinsames Verständnis aufbauen, nicht das ganze Projekt aufs Spiel setzen."], list: ["Funktionen und die Daten, die jede besitzt, erfassen.", "Jede Funktion nach geschäftlichem Schmerz und Kopplung bewerten.", "Dort beginnen, wo der Schmerz hoch und die Kopplung gering ist.", "Den Kern der Transaktionsverarbeitung aufheben, bis das Team die Domäne gut kennt."] },
+      { h: "Jeden Schritt im Parallelbetrieb beweisen", p: ["Bevor eine Funktion umgestellt wird, laufen alte und neue Implementierung mit denselben Eingaben parallel, und die Ergebnisse werden verglichen. Abweichungen decken undokumentierte Regeln schneller auf als jeder Anforderungsworkshop.", "Schalten Sie den Verkehr schrittweise um – nach Filiale, Kundengruppe oder Prozentsatz – und halten Sie einen dokumentierten Weg zurück bereit. Ein Migrationsschritt, der sich nicht rückgängig machen lässt, braucht noch mehr Vorbereitung."] },
+      { h: "Datenmigration als eigenes Projekt behandeln", p: ["Daten überleben Code. Alte Daten enthalten oft Dubletten, uneinheitliche Formate und Felder, die für etwas anderes genutzt werden als vorgesehen. Planen Sie Bereinigung, Zuordnung und Prüfung ausdrücklich, mit Zählungen und Prüfsummen, die belegen, dass nichts verloren ging.", "Wenn die letzte Funktion umzieht, sollte die Abschaltung des Altsystems eine Formalität sein: Alle Nutzer verwenden bereits die neue Schnittstelle, alle Daten sind geprüft, und das Unternehmen arbeitet seit Wochen mit dem neuen System."] },
+    ],
+  },
+  "custom-crm-vs-off-the-shelf": {
+    title: "Individuelles CRM oder Standardlösung? Eine praktische Entscheidungshilfe",
+    subtitle: "Die Frage ist nicht, was besser ist, sondern wo Ihr Prozess vom Durchschnitt abweicht.",
+    summary: "Standard-CRMs sind hervorragend für übliche Vertriebs-Pipelines. Ein individuelles CRM lohnt sich nur dort, wo Ihr Prozess wirklich anders ist. So erkennen Sie, in welcher Lage Sie sind.",
+    imageAlt: "CRM-Dashboard mit Leads, Bestandsstatus und Angeboten",
+    takeaways: [
+      "Wenn Ihr Vertrieb aussieht wie der aller anderen: kaufen statt bauen.",
+      "Individuell lohnt sich, wenn Bestand, Preise oder Freigaben unternehmensspezifisch sind.",
+      "Vergleichen Sie Lizenzen plus Anpassungen plus Umwege – nicht nur die Lizenz.",
+      "Oft ist ein Hybrid richtig: Standard-CRM plus individuelles Betriebssystem.",
+    ],
+    sections: [
+      { h: "Mit dem Prozess beginnen, nicht mit dem Produkt", p: ["Die meisten CRM-Entscheidungen beginnen mit einem Produktvergleich. Besser ist es, den tatsächlichen Prozess aufzuzeichnen: wie ein Lead ankommt, wer ihn betreut, welche Informationen weitergegeben werden, was von wem freigegeben wird und was der Kunde in jeder Phase erhält.", "Liegt der Prozess auf dem Papier, vergleichen Sie ihn mit dem Standardmodell der meisten CRMs: Kontakte, Unternehmen, Deals und Phasen. Die Größe der Lücke sollte die Entscheidung bestimmen."] },
+      { h: "Wann ein Standard-CRM die richtige Antwort ist", p: ["Passt Ihr Prozess zum Modell aus Kontakt, Deal und Phase, bietet ein Standard-CRM sofort ausgereifte Funktionen, Integrationen und mobile Apps. Dasselbe individuell zu bauen, ist selten eine gute Investition."], list: ["Ihre Pipeline ist linear und ähnelt der anderer Unternehmen Ihrer Branche.", "Ihre Produkte sind standardisiert, mit Listenpreisen oder einfachen Rabatten.", "Der größte Nutzen liegt in Kontaktverwaltung, E-Mail und Reporting.", "Ihr Team ist klein und muss noch diesen Monat starten."] },
+      { h: "Wann sich eine Individuallösung lohnt", p: ["Individuelle Software lohnt sich, wenn der wertvolle Teil Ihres Prozesses außerhalb des Standardmodells liegt – und Teams ihn in Tabellen neben dem CRM betreiben.", "In unserer Arbeit für einen Natursteinhändler ist zum Beispiel jede Platte ein Unikat und liegt in einem bestimmten Lager. Die richtige Platte im Moment des Angebots zu reservieren, war die wichtigste Aufgabe des Systems. Kein Standard-Deal-Objekt konnte das ohne massive Anpassung abbilden."], list: ["Der Bestand ist einzigartig, reserviert oder standortgebunden.", "Preise hängen von Regeln, Konfigurationen oder kundenspezifischen Vereinbarungen ab.", "Freigaben betreffen mehrere Rollen mit bedingter Logik.", "Vertrieb, Betrieb und Finanzen müssen dieselben Live-Daten teilen."] },
+      { h: "Die Gesamtkosten ehrlich vergleichen", p: ["Die Lizenzkosten sind die sichtbare Zahl. Die Gesamtkosten eines Standard-CRMs umfassen Preise pro Nutzer bei wachsendem Team, kostenpflichtige Add-ons, Anpassungsarbeit, Integrationsarbeit und – oft der größte Posten – die Zeit, die Mitarbeiter mit Umwegen verbringen.", "Ein individuelles System hat höhere Anfangskosten und geringere Kosten pro zusätzlichem Nutzer. Es braucht außerdem laufende Wartung. Stellen Sie beides über mehrere Jahre nebeneinander, bevor Sie entscheiden."] },
+      { h: "Die Hybrid-Variante", p: ["Viele Unternehmen landen bei einem Standard-CRM für Kontaktverwaltung und E-Mail und einem individuellen Betriebssystem für die unternehmensspezifischen Teile, verbunden über APIs. So bleiben die ausgereiften Funktionen des Produkts erhalten, und der besondere Prozess bekommt ein richtiges Zuhause."] },
+    ],
+  },
+  "multi-tenant-saas-architecture": {
+    title: "Das richtige Mandantenmodell für ein B2B-SaaS-Produkt wählen",
+    subtitle: "Gemeinsame Tabellen, getrennte Schemas oder getrennte Datenbanken – und wie man später umschwenkt.",
+    summary: "Die Mandantenfähigkeit gehört zu den teuersten Entscheidungen, die man in einem SaaS-Produkt rückgängig machen kann. Ein praktischer Vergleich der drei gängigen Modelle und der Signale, die die Wahl bestimmen sollten.",
+    imageAlt: "SaaS-Admin-Dashboard mit Mitgliedschaftstarifen und Abrechnung",
+    takeaways: [
+      "Die meisten B2B-Produkte sollten mit gemeinsamer Datenbank und Isolation auf Zeilenebene starten.",
+      "Einzelne Mandanten in eigene Schemas oder Datenbanken verschieben, wenn Compliance oder Größe es verlangen.",
+      "Den Mandantenkontext in der Datenschicht erzwingen, nicht nur im Anwendungscode.",
+      "Exporte und Backups pro Mandant von Anfang an einplanen.",
+    ],
+    sections: [
+      { h: "Die drei gängigen Modelle", p: ["Mandantenfähige Systeme nutzen meist eines von drei Modellen, die Isolation und Betriebsaufwand jeweils anders gewichten."], list: ["Gemeinsame Datenbank, gemeinsame Tabellen: Jede Zeile trägt eine Mandanten-ID. Am günstigsten im Betrieb, am einfachsten zu deployen, standardmäßig die schwächste Isolation.", "Gemeinsame Datenbank, Schema pro Mandant: Tabellen werden pro Mandant in einer Datenbank dupliziert. Bessere Isolation, komplexere Migrationen.", "Datenbank pro Mandant: stärkste Isolation und einfachstes Backup pro Mandant, höchster Betriebsaufwand."] },
+      { h: "Eine sinnvolle Standardwahl", p: ["Für die meisten jungen B2B-Produkte sind gemeinsame Tabellen mit einer Mandanten-ID in jeder Zeile der richtige Start. Die Infrastruktur bleibt einfach, und mandantenübergreifende Aufgaben – Abrechnung, Analyse, Support – bleiben unkompliziert.", "Das Risiko ist ein Datenleck durch einen vergessenen Filter. Begegnen Sie ihm in der Datenbank, nicht nur im Code: Row-Level-Security-Policies in PostgreSQL können zum Beispiel erzwingen, dass jede Abfrage auf den aktuellen Mandanten beschränkt ist – auch wenn ein Entwickler es vergisst."] },
+      { h: "Signale für mehr Isolation", p: ["Stärkere Isolation lohnt sich, wenn bestimmte Bedingungen eintreten. Selten muss sie für jeden Mandanten gelten."], list: ["Ein Großkunde verlangt vertraglich eigenen Speicher.", "Regulierung verlangt Datenhaltung in einer bestimmten Region.", "Das Datenvolumen eines Mandanten beeinträchtigt die Leistung für andere.", "Kunden brauchen unabhängige Sicherung und Wiederherstellung."] },
+      { h: "Einen Hybrid einplanen", p: ["Das langfristig praktikabelste Design unterstützt mehr als ein Modell: Die meisten Mandanten teilen sich die Infrastruktur, einige große oder regulierte Mandanten erhalten eigene Datenbanken. Das geht nur, wenn die Mandantenzuordnung an einer Stelle passiert – meist in einer Routing-Schicht, die jede Anfrage der richtigen Verbindung zuordnet.", "Bauen Sie diese Routing-Schicht früh, auch wenn sie anfangs immer dieselbe Datenbank liefert. Das kostet jetzt wenig und spart später viel."] },
+      { h: "Betriebliche Details, die zählen", p: ["Mandantenfähigkeit betrifft mehr als das Schema. Ratenbegrenzung, Hintergrundjobs, Speicherpfade für Dateien, Caches und Logs brauchen alle den Mandantenkontext. Ebenso kundennahe Funktionen wie Datenexport und Kontolöschung, nach denen Großkunden in der Beschaffung fragen werden."] },
+    ],
+  },
+  "role-based-access-control-that-scales": {
+    title: "Rollenbasierte Zugriffskontrolle, die mitwächst",
+    subtitle: "Berechtigungen für die Organisation, die Sie sein werden – nicht nur für die, die Sie heute sind.",
+    summary: "Zugriffskontrolle beginnt oft als „Admin“-Flag und wird zu einem Geflecht aus Sonderfällen. Eine Struktur aus Rollen, Berechtigungen und Geltungsbereichen, die auch bei Wachstum verständlich bleibt.",
+    imageAlt: "Admin-Dashboard eines Krankenhaus-HR-Systems mit rollenbasierter Navigation",
+    takeaways: [
+      "Rollen (wer jemand ist) von Berechtigungen (was eine Aktion erfordert) trennen.",
+      "Geltungsbereiche – Standort, Abteilung, Zuständigkeit – als zweite Dimension hinzufügen.",
+      "Zugriff bei jeder Anfrage auf dem Server prüfen; die Oberfläche blendet nur aus, was nicht erlaubt ist.",
+      "Jede Rollenänderung und jeden sensiblen Zugriff protokollieren.",
+    ],
+    sections: [
+      { h: "Wie Zugriffskontrolle meist zerfällt", p: ["Die meisten Systeme beginnen mit zwei Nutzerarten: Administratoren und alle anderen. Mit dem Wachstum entstehen Ausnahmen – eine Führungskraft, die freigeben, aber nicht löschen darf, eine Filiale, die nur ihre eigenen Datensätze sehen soll, ein Prüfer, der alles lesen und nichts ändern darf. Jede Ausnahme wird zu einer if-Abfrage, und bald kann niemand mehr sicher sagen, wer was darf."] },
+      { h: "Rollen und Berechtigungen sind verschiedene Dinge", p: ["Definieren Sie Berechtigungen als die Aktionen, die Ihr System unterstützt – Rechnung anlegen, Urlaub genehmigen, Bericht exportieren. Definieren Sie Rollen als benannte Bündel von Berechtigungen, die echten Funktionen entsprechen. Der Code prüft Berechtigungen, niemals Rollennamen.", "Diese eine Regel macht Änderungen günstig. Entsteht eine neue Funktion, legen Sie eine Rolle aus vorhandenen Berechtigungen an, statt an Dutzenden Stellen Code zu ändern."] },
+      { h: "Geltungsbereich als zweite Dimension", p: ["Berechtigungen beantworten „Darf diese Person Urlaub genehmigen?“. Geltungsbereiche beantworten „Für wen?“. In einem Krankenhaussystem darf eine Abteilungsleitung nur für ihre Abteilung genehmigen; in einer Schule mit mehreren Standorten sieht die Schulleitung nur ihren Standort."], list: ["Organisatorischer Bereich: Unternehmen, Region, Filiale, Abteilung.", "Zuständigkeitsbereich: Datensätze, die der Nutzer angelegt hat oder betreut.", "Beziehungsbereich: Eltern sehen nur die Daten ihrer eigenen Kinder."] },
+      { h: "Auf dem Server durchsetzen – jedes Mal", p: ["Einen Button auszublenden ist eine Usability-Maßnahme, keine Sicherheitskontrolle. Jede API-Anfrage muss Berechtigung und Geltungsbereich auf dem Server prüfen, idealerweise in einer gemeinsamen Schicht, damit einzelne Endpunkte es nicht vergessen können. Wo die Datenbank es unterstützt, bieten Policies auf Zeilenebene ein zusätzliches Sicherheitsnetz."] },
+      { h: "Zugriff nachvollziehbar machen", p: ["Protokollieren Sie jede Änderung an Rollen und Zuweisungen und jeden Zugriff auf sensible Datensätze. Wenn ein Kunde, Prüfer oder eine Aufsichtsbehörde fragt, wer wann was sehen konnte, sollte die Antwort aus einer Abfrage kommen, nicht aus dem Gedächtnis."] },
+    ],
+  },
+  "what-good-discovery-produces": {
+    title: "Was eine gute Analysephase liefern sollte",
+    subtitle: "Die Dokumente, die Sie vor dem Start jeder Softwareentwicklung erwarten sollten.",
+    summary: "In der Analysephase werden Kosten und Risiken eines Softwareprojekts größtenteils festgelegt. Eine Checkliste dessen, was eine nützliche Analyse liefert – und woran man eine erkennt, die nicht hilft.",
+    imageAlt: "Schul-ERP-Dashboard mit Modulen für Aufnahme und Anwesenheit",
+    takeaways: [
+      "Eine Analyse sollte Entscheidungen hervorbringen, nicht nur Dokumente.",
+      "Erwarten Sie eine Prozesslandkarte, ein abgegrenztes erstes Release, eine Architekturskizze und eine Schätzung mit Annahmen.",
+      "Beziehen Sie die Menschen ein, die die Arbeit machen – nicht nur die, die sie steuern.",
+      "Eine gute Analyse empfiehlt manchmal, weniger oder gar nichts zu bauen.",
+    ],
+    sections: [
+      { h: "Wofür die Analyse da ist", p: ["Die Analyse ersetzt Annahmen durch Entscheidungen, bevor sie teuer werden. Sie beantwortet, was das erste Release leisten muss, für wen, mit welchen Integrationen, unter welchen Rahmenbedingungen – und was es realistischerweise kostet."] },
+      { h: "Was Sie erhalten sollten", p: ["Eine nützliche Analyse endet mit wenigen Dokumenten, die Ihr Team lesen, hinterfragen und freigeben kann."], list: ["Eine Prozesslandkarte, wie die Arbeit heute läuft und wie sie im neuen System laufen wird.", "Nutzerrollen und was jede sehen und tun muss.", "Ein abgegrenztes erstes Release mit dem, was bewusst später kommt.", "Integrationsübersicht: jedes System, mit dem das neue sprechen muss, und wie.", "Architekturskizze: Datenmodell, Komponenten, Hosting und Sicherheitsansatz.", "Schätzung und Plan mit den schriftlich festgehaltenen Annahmen dahinter."] },
+      { h: "Wer mit am Tisch sitzen muss", p: ["Führungskräfte beschreiben, wie ein Prozess laufen sollte. Die Menschen, die die Arbeit machen, beschreiben, wie er tatsächlich läuft – einschließlich der Umwege, die das neue System unterstützen oder beseitigen muss. Beide Sichten sind nötig, und in der zweiten verstecken sich meist die wichtigen Anforderungen."] },
+      { h: "Warnzeichen", list: ["Ein Anforderungsdokument, das Masken auflistet, aber keine Abläufe.", "Keine schriftlichen Annahmen hinter der Schätzung.", "Keine Diskussion über Datenmigration oder Integrationen.", "Jede gewünschte Funktion steckt im ersten Release."], p: ["Jedes dieser Zeichen deutet darauf hin, dass die schwierigen Entscheidungen in die Entwicklung verschoben wurden, wo sie mehr kosten."] },
+      { h: "Manchmal lautet die Antwort: weniger bauen", p: ["Eine ehrliche Analyse empfiehlt gelegentlich ein Standardprodukt, ein kleineres erstes Release oder eine Prozessänderung statt Software. Das ist ein gutes Ergebnis: Der günstigste Code ist der, der nie geschrieben werden muss."] },
+    ],
+  },
+  "event-driven-order-systems": {
+    title: "Eventgetriebene Bestellsysteme: den Checkout unter Last am Leben halten",
+    subtitle: "Erfahrungen aus dem Bau einer Lieferplattform mit Kafka und Spring Boot.",
+    summary: "Wenn Bestellungen, Zahlungen, Speisekarten und Disposition eine Anwendung teilen, kann eine langsame Komponente den Checkout lahmlegen. Wie eventgetriebenes Design Ausfälle isoliert – und was es kostet.",
+    imageAlt: "Dispositions-Dashboard mit laufenden Lieferungen und Bestellstatus",
+    takeaways: [
+      "Den Pfad, der Geld einnimmt, von allem anderen isolieren.",
+      "Events für Arbeit nutzen, die nicht vor der Antwort an den Kunden fertig sein muss.",
+      "Jeder Service besitzt seine Daten; geteilt wird über Events, nicht über gemeinsame Tabellen.",
+      "Sobald Anfragen Services überqueren, ist verteiltes Tracing Pflicht.",
+    ],
+    sections: [
+      { h: "Das Problem mit Spitzen", p: ["Die Nachfrage nach Essenslieferungen kommt in steilen Spitzen rund um die Mahlzeiten. In einer einzigen Anwendung konkurrieren Speisekarten-Suche, Empfehlungen, Disposition und Checkout um dieselben Threads, Verbindungen und denselben Speicher. Eine langsame Abfrage in einem Bereich kann Ressourcen aufbrauchen, die der Checkout braucht."] },
+      { h: "Den Pfad schützen, der Geld einnimmt", p: ["Das erste Designprinzip war einfach: Bestellung und Zahlung müssen weiterlaufen, auch wenn alles andere eingeschränkt ist. Deshalb wurden Bestellungen und Zahlungen in eigene Services mit eigenen Datenspeichern getrennt und jede andere Interaktion mit ihnen asynchron gestaltet."] },
+      { h: "Events für alles, was warten kann", p: ["Wenn eine Bestellung eingeht, braucht der Kunde sofort eine Bestätigung. Das Restaurant zu benachrichtigen, einen Fahrer zuzuweisen und Analysen zu aktualisieren, kann einen Moment später geschehen. Ein Event „Bestellung eingegangen“ in Kafka lässt jeden Abnehmer in seinem Tempo arbeiten – und ausfallen, ohne die Bestellung selbst zu beeinträchtigen."], list: ["Bestellservice: nimmt die Bestellung an und veröffentlicht ein Event.", "Restaurantservice: verarbeitet das Event und aktualisiert die Küchenansicht.", "Dispositionsservice: verarbeitet das Event und weist einen Fahrer zu.", "Benachrichtigungsservice: informiert den Kunden, sobald Status-Events eintreffen."] },
+      { h: "Jeder Service besitzt seine Daten", p: ["Bestellungen und Zahlungen brauchen Transaktionen und liegen daher in PostgreSQL. Speisekarten sind Dokumente, deren Form je Restaurant variiert, und liegen in MongoDB. Services lesen nie die Tabellen anderer, sondern halten die benötigten Daten über Events aktuell."] },
+      { h: "Was es kostet", p: ["Eventgetriebene Systeme sind schwerer zu durchschauen als eine einzelne Anwendung. Daten sind letztlich konsistent, Fehler können zwischen Services auftreten, und Debugging heißt, einer Anfrage über mehrere Prozesse zu folgen. Verteiltes Tracing – hier Zipkin – und idempotente Konsumenten sind die Mindestinvestition, die diese Architektur beherrschbar macht.", "Für ein kleines internes Werkzeug wäre das Over-Engineering. Für eine Plattform, deren Umsatz davon abhängt, dass der Checkout in Spitzenzeiten läuft, ist es die richtige Abwägung."] },
+    ],
+  },
+  ...deArticles2,
+};

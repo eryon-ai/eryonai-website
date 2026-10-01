@@ -1,253 +1,113 @@
-'use client';
+import Link from "next/link";
+import { site } from "@/lib/site";
+import { services } from "@/lib/services";
+import { industries } from "@/lib/industries";
+import { Logo } from "./ui";
+import { CookieSettingsButton } from "./CookieBanner";
+import Newsletter from "./Newsletter";
+import { lp, type Lang } from "@/i18n/config";
+import { getMessages, lIndustry, lService, lines } from "@/i18n";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useState } from 'react';
-import { usePathname } from 'next/navigation';
-import { CheckCircle2 } from 'lucide-react';
-import { getRecaptchaToken } from '@/lib/recaptcha-client';
-import { getLocaleFromPathname, layoutTranslations, getLocalizedPath } from '@/lib/layout-translations';
-
-const navColHrefs = [
-  // Order matches servicesLinks: Web, Mobile, AI/ML, Cloud & DevOps, Cybersecurity (no dedicated page yet), UI/UX
-  ['/services/web-applications', '/services/mobile-applications', '/services/ai-solutions', '/services/devops-cloud', '/services', '/services/ui-ux-design'],
-  ['/about', '/portfolio', '/process', '/blogs', '/contact'],
-  ['/contact', '/contact', '/contact', '/privacy', '/terms', '/sitemap.xml'],
-];
-
-export default function Footer() {
-  const pathname = usePathname();
-  const locale = getLocaleFromPathname(pathname);
-  const t = layoutTranslations[locale].footer;
-
-  const navCols = [
-    { title: t.servicesTitle, links: t.servicesLinks, hrefs: navColHrefs[0] },
-    { title: t.companyTitle, links: t.companyLinks, hrefs: navColHrefs[1] },
-    { title: t.contactTitle, links: t.contactLinks, hrefs: navColHrefs[2] },
-  ];
-
-  const [subEmail, setSubEmail] = useState('');
-  const [subStatus, setSubStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [subError, setSubError] = useState('');
-
-  const handleSubscribe = async () => {
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(subEmail)) {
-      setSubError('Please enter a valid email.');
-      return;
-    }
-    setSubStatus('loading');
-    setSubError('');
-    try {
-      const recaptchaToken = await getRecaptchaToken('subscribe').catch(() => '');
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: subEmail, recaptchaToken }),
-      });
-      if (res.ok) {
-        setSubStatus('success');
-        setSubEmail('');
-      } else {
-        setSubStatus('error');
-        setSubError('Something went wrong. Try again.');
-      }
-    } catch {
-      setSubStatus('error');
-      setSubError('Network error. Try again.');
-    }
-  };
-
+function Col({ title, links }: { title: string; links: { href: string; label: string }[] }) {
   return (
-    <footer style={{ background: '#0f172a', color: '#94a3b8' }}>
-      {/* Top gradient line */}
-      <div style={{ height: 3, background: 'linear-gradient(90deg, #0066ff, #00b4d8, #6366f1)' }} />
-
-      <div className="container-custom" style={{ paddingTop: 64, paddingBottom: 40 }}>
-        {/* Main grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          {/* Brand */}
-          <div className="lg:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
-            <Link
-              href={getLocalizedPath("/", locale)}
-              className="flex items-center justify-center md:justify-start gap-2 mb-5"
-              style={{ textDecoration: 'none', padding: 0 }}
-            >
-              <Image src="/logo-removebg-preview.png" alt="ERYON AI" width={220} height={100} style={{ objectFit: 'contain', height: 'auto' }} />
-              {/* <span style={{
-                fontFamily: 'Space Grotesk,sans-serif',
-                fontSize: 20,
-                fontWeight: 800,
-                color: '#f8fafc',
-              }}>
-                ERYON<span style={{ color: '#00b4d8' }}>AI</span>
-              </span> */}
+    <div>
+      <h2 className="t-meta text-white/50">{title}</h2>
+      <ul className="mt-5 space-y-1">
+        {links.map((l) => (
+          <li key={l.href}>
+            <Link href={l.href} className="inline-flex min-h-9 items-center text-[0.95rem] text-white/80 hover:text-white">
+              {l.label}
             </Link>
-            <div style={{ marginBottom: 16 }} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
-            <p style={{ fontSize: 14, lineHeight: 1.7, marginBottom: 20, color: '#64748b' }}>
-              {t.tagline}
-            </p>
-
-            {/* Socials */}
-            <div className="flex gap-2 justify-center md:justify-start">
-              {[
-                { iconUrl: 'https://img.icons8.com/color/48/instagram-new.png', label: 'Instagram', href: 'https://www.instagram.com/eryonaisoftwaresolutions?utm_source=qr' },
-                { iconUrl: 'https://img.icons8.com/color/48/linkedin.png', label: 'LinkedIn', href: 'https://www.linkedin.com/company/113904195' },
-                { iconUrl: 'https://img.icons8.com/color/48/github.png', label: 'GitHub', href: 'https://github.com/eryon-ai' },
-              ].map((s, i) => (
-                <motion.a
-                  key={i}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  aria-label={s.label}
-                  style={{
-                    width: 36, height: 36,
-                    borderRadius: 8,
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    background: 'rgba(255,255,255,0.05)',
-                    cursor: 'pointer',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    transition: 'border-color 0.2s',
-                    textDecoration: 'none',
-                  }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,180,216,0.4)'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.1)'; }}
-                >
-                  <img src={s.iconUrl} alt={s.label} style={{ width: 20, height: 20, objectFit: 'contain' }} loading="lazy" />
-                </motion.a>
-              ))}
-            </div>
-          </div>
-
-          {/* Nav columns */}
-          {navCols.map((col, ci) => (
-            <div key={ci} className="flex flex-col items-center md:items-start text-center md:text-left">
-              <h5 style={{
-                fontFamily: 'Space Grotesk,sans-serif',
-                fontWeight: 700,
-                fontSize: 12,
-                color: '#f1f5f9',
-                textTransform: 'uppercase',
-                letterSpacing: '0.1em',
-                marginBottom: 16,
-              }}>
-                {col.title}
-              </h5>
-              <ul className="flex flex-col gap-2.5 items-center md:items-start" style={{ listStyle: 'none', padding: 0 }}>
-                {col.links.map((link, li) => (
-                  <li key={li}>
-                    <Link
-                      href={col.hrefs[li].endsWith('.xml') ? col.hrefs[li] : getLocalizedPath(col.hrefs[li], locale)}
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        padding: 0,
-                        fontSize: 14,
-                        color: '#64748b',
-                        cursor: 'pointer',
-                        transition: 'color 0.2s',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: 4,
-                        textDecoration: 'none',
-                      }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#00b4d8'; }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#64748b'; }}
-                    >
-                      {link}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-
-        {/* Newsletter */}
-        <div style={{ marginBottom: 16 }} />
-        <div
-          className="rounded-2xl p-6 mb-10 flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-left"
-          style={{
-            background: 'rgba(0,102,255,0.08)',
-            border: '1px solid rgba(0,102,255,0.15)',
-          }}
-        >
-          <div className="flex flex-col items-center md:items-start">
-            <h5 style={{ fontFamily: 'Space Grotesk,sans-serif', fontWeight: 700, fontSize: 16, color: '#f1f5f9', marginBottom: 4 }}>
-              {t.newsletterTitle}
-            </h5>
-            <p style={{ fontSize: 13, color: '#64748b' }}>
-              {t.newsletterDesc}
-            </p>
-          </div>
-          <div className="flex flex-col gap-2 w-full md:w-auto items-center md:items-start">
-            {subStatus === 'success' ? (
-              <p className="inline-flex items-center gap-1.5" style={{ fontSize: 14, color: '#10b981', fontWeight: 600, padding: '10px 0' }}>
-                <CheckCircle2 size={16} strokeWidth={2.5} aria-hidden="true" />
-                {t.subscribedMsg}
-              </p>
-            ) : (
-              <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                <input
-                  type="email"
-                  placeholder={t.emailPlaceholder}
-                  value={subEmail}
-                  onChange={(e) => { setSubEmail(e.target.value); setSubError(''); }}
-                  onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
-                  disabled={subStatus === 'loading'}
-                  style={{
-                    flex: 1,
-                    minWidth: 200,
-                    padding: '10px 14px',
-                    borderRadius: 8,
-                    border: subError ? '1px solid #ef4444' : '1px solid rgba(255,255,255,0.1)',
-                    background: 'rgba(255,255,255,0.05)',
-                    color: '#f1f5f9',
-                    fontSize: 13,
-                    outline: 'none',
-                  }}
-                />
-                <button
-                  onClick={handleSubscribe}
-                  disabled={subStatus === 'loading'}
-                  className="btn-primary justify-center"
-                  style={{ padding: '10px 20px', fontSize: 13, whiteSpace: 'nowrap', opacity: subStatus === 'loading' ? 0.7 : 1 }}
-                >
-                  {subStatus === 'loading' ? '...' : t.subscribeBtn}
-                </button>
+export default function Footer({ lang = "en" }: { lang?: Lang }) {
+  const m = getMessages(lang);
+  const t = m.ui.footer;
+  const L = (href: string) => lp(href, lang);
+  const company = [
+    { href: L("/work"), label: t.links.work },
+    { href: L("/process"), label: t.links.process },
+    { href: L("/technology"), label: t.links.technology },
+    { href: L("/insights"), label: t.links.insights },
+    { href: L("/about"), label: t.links.about },
+    { href: "/careers", label: t.links.careers },
+    { href: L("/contact"), label: t.links.contact },
+  ];
+  const legal = [
+    { href: L("/privacy"), label: t.legal.privacy },
+    { href: L("/terms"), label: t.legal.terms },
+    { href: L("/cookie-policy"), label: t.legal.cookie },
+    { href: "/accessibility", label: t.legal.accessibility },
+    { href: "/site-map", label: t.legal.sitemap },
+  ];
+  return (
+    <footer className="bg-[#081629] text-white">
+      <div className="container-x pt-20">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <Logo light />
+            <p className="mt-6 max-w-sm text-white/70">{t.blurb}</p>
+            <dl className="mt-8 space-y-4 text-[0.95rem]">
+              <div>
+                <dt className="t-meta text-white/50">{t.email}</dt>
+                <dd><a href={`mailto:${site.email}`} className="text-white hover:underline">{site.email}</a></dd>
               </div>
-            )}
-            {subError && <p style={{ fontSize: 12, color: '#ef4444', marginTop: 2 }}>{subError}</p>}
+              <div>
+                <dt className="t-meta text-white/50">{t.phone}</dt>
+                <dd><a href={site.phoneHref} className="text-white hover:underline">{site.phone}</a></dd>
+              </div>
+              <div>
+                <dt className="t-meta text-white/50">{t.india}</dt>
+                <dd className="text-white/80">{site.postal}, {site.country}</dd>
+              </div>
+              <div>
+                <dt className="t-meta text-white/50">{t.global}</dt>
+                <dd className="text-white/80">{t.globalText}</dd>
+              </div>
+            </dl>
+          </div>
+          <div className="grid gap-10 sm:grid-cols-3 lg:col-span-8">
+            <Col title={t.services} links={services.map((s) => ({ href: `/services/${s.slug}`, label: lService(s, lang).nav }))} />
+            <Col title={t.industries} links={industries.map((i) => ({ href: `/industries/${i.slug}`, label: lIndustry(i, lang).name }))} />
+            <div className="space-y-10">
+              <Col title={t.company} links={company} />
+              <div>
+                <h2 className="t-meta text-white/50">{t.follow}</h2>
+                <ul className="mt-5 flex flex-wrap gap-5 text-[0.95rem]">
+                  <li><a href={site.social.linkedin} className="text-white/80 hover:text-white" rel="noopener" target="_blank">LinkedIn</a></li>
+                  <li><a href={site.social.github} className="text-white/80 hover:text-white" rel="noopener" target="_blank">GitHub</a></li>
+                  <li><a href={site.social.instagram} className="text-white/80 hover:text-white" rel="noopener" target="_blank">Instagram</a></li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Bottom bar */}
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 24 }}>
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
-            <p style={{ fontSize: 13, color: '#475569' }}>
-              © 2019 ERYON AI Software Solutions. {t.allRightsReserved}
-            </p>
-            <div className="flex items-center justify-center gap-2">
-              <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#10b981', display: 'inline-block', animation: 'pulse-dot 2s ease-in-out infinite' }} />
-              <span style={{ fontSize: 12, color: '#475569' }}>All systems operational</span>
-            </div>
-            <div className="flex items-center justify-center gap-5">
-              {[
-                { label: 'Privacy Policy', href: getLocalizedPath('/privacy', locale) },
-                { label: 'Terms', href: getLocalizedPath('/terms', locale) },
-                { label: 'Cookies', href: `${getLocalizedPath('/privacy', locale)}#cookies` },
-              ].map((link, i) => (
-                <Link key={i} href={link.href} style={{ fontSize: 13, color: '#475569', textDecoration: 'none', transition: 'color 0.2s' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.color = '#00b4d8'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.color = '#475569'; }}>
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+        <div className="mt-20 grid gap-6 border-t border-white/10 pt-12 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-5">
+            <h2 className="font-display text-2xl font-semibold text-white">{t.newsletterTitle}</h2>
+            <p className="mt-2 text-white/65">{t.newsletterText}</p>
           </div>
+          <div className="lg:col-span-6 lg:col-start-7"><Newsletter dark t={m.ui.newsletter} /></div>
+        </div>
+
+        <p className="font-display mt-20 border-t border-white/10 pt-12 text-[clamp(2rem,1rem+4vw,4.75rem)] font-bold leading-[1.02] tracking-[-0.035em] text-white">
+          {lines(t.statement)}
+        </p>
+
+        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 py-8 text-sm text-white/55 md:flex-row md:items-center md:justify-between">
+          <p>© {site.founded}–{new Date().getFullYear()} {site.legalName}. {t.rights}</p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {legal.map((l) => (
+              <li key={l.href}><Link href={l.href} className="hover:text-white">{l.label}</Link></li>
+            ))}
+            <li><CookieSettingsButton className="hover:text-white" label={t.cookieSettings} /></li>
+          </ul>
         </div>
       </div>
     </footer>

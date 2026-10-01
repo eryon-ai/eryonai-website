@@ -1,19 +1,11 @@
-version: '3.8'
-
 services:
-  app:
+  web:
     build:
       context: .
-      dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_GA_ID: ${NEXT_PUBLIC_GA_ID:-}
+        NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${NEXT_PUBLIC_RECAPTCHA_SITE_KEY:-}
     ports:
       - "3000:3000"
-    environment:
-      NODE_ENV: production
+    env_file: .env   # SMTP_USER, SMTP_PASS, LEAD_TO_EMAIL, GOOGLE_SHEET_WEBHOOK_URL, RECAPTCHA_SECRET_KEY
     restart: unless-stopped
-    # Uncomment for development with hot reload
-    # volumes:
-    #   - .:/app
-    #   - /app/node_modules
-    # environment:
-    #   NODE_ENV: development
-    # command: npm run dev

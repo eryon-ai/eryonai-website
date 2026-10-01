@@ -1,608 +1,147 @@
 @import "tailwindcss";
 
-/* ---- Tailwind v4 theme tokens (used by shadcn-style components) ---- */
+/* Eryon V3 design tokens — light, editorial, enterprise. One accent blue. */
 @theme {
-  --color-card: #ffffff;
-  --color-card-foreground: #0f172a;
-  --color-primary: #0066ff;
-  --color-primary-foreground: #ffffff;
-  --color-muted-foreground: #64748b;
-  --color-border: #e2e8f0;
+  --color-paper: #fafaf7;       /* warm white page */
+  --color-mist: #f1f3f6;        /* cool light gray surface */
+  --color-line: #e2e5ea;        /* thin borders */
+  --color-line-strong: #c9ced6;
+  --color-ink: #0e1726;         /* near-black text */
+  --color-body: #37414f;        /* body copy */
+  --color-muted: #5a6472;       /* metadata, 5.9:1 on paper */
+  --color-navy: #0b1f3a;        /* deep navy sections */
+  --color-navy-2: #12305a;
+  --color-steel: #3c5a7d;
+  --color-blue: #1f5fd1;        /* the Eryon accent */
+  --color-blue-dark: #174aa6;
+  --color-blue-soft: #e8effb;
 
-  --color-navy: #0f172a;
-  --color-navy-mid: #1e293b;
-  --color-navy-light: #334155;
-  --color-brand-blue: #0066ff;
-  --color-brand-blue-light: #3385ff;
-  --color-brand-blue-hover: #0052cc;
-  --color-brand-cyan: #00b4d8;
-  --color-brand-cyan-light: #0077b6;
-  --color-brand-purple: #6366f1;
+  --font-display: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #00b4d8;
-
-  --color-text-inverse-muted: #94a3b8;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
-
-/* ======================================
-   ERYON AI — Professional Design System
-   Clean corporate, white + navy + cyan
-   Inspired by RedBlink & enterprise IT
-   ====================================== */
-
-:root {
-  /* Backgrounds */
-  --white: #ffffff;
-  --bg-light: #f8fafc;
-  --bg-section: #f1f5f9;
-  --bg-dark: #0f172a;
-  --bg-darker: #080f1e;
-  --bg-card: #ffffff;
-
-  /* Brand colors */
-  --navy: #0f172a;
-  --navy-mid: #1e293b;
-  --navy-light: #334155;
-  --brand-blue: #0066ff;
-  --brand-blue-light: #3385ff;
-  --brand-blue-hover: #0052cc;
-  --brand-cyan: #00b4d8;
-  --brand-cyan-light: #0077b6;
-  --brand-purple: #6366f1;
-
-  /* Semantic status colors */
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #00b4d8;
-
-  /* Gradient */
-  --grad-brand: linear-gradient(135deg, #0066ff 0%, #00b4d8 100%);
-  --grad-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-
-  /* Text */
-  --text-dark: #0f172a;
-  --text-body: #334155;
-  /* --text-muted and --text-light are the same canonical muted gray, kept as
-     two names because both are referenced across components */
-  --text-muted: #64748b;
-  --text-light: #64748b;
-  --text-white: #f8fafc;
-  --text-inverse-muted: #94a3b8;
-
-  /* Borders */
-  --border: #e2e8f0;
-  --border-light: #f1f5f9;
-  --border-blue: rgba(0, 102, 255, 0.2);
-  --border-inverse: #334155;
-
-  /* Shadows */
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 10px 40px rgba(15, 23, 42, 0.1), 0 4px 16px rgba(15, 23, 42, 0.05);
-  --shadow-blue: 0 8px 32px rgba(0, 102, 255, 0.2);
-  --shadow-card: 0 2px 8px rgba(15, 23, 42, 0.06), 0 0 1px rgba(15, 23, 42, 0.06);
-  --shadow-card-hover: 0 16px 48px rgba(15, 23, 42, 0.08), 0 4px 16px rgba(15, 23, 42, 0.04);
-
-  /* Spacing */
-  --section-py: 96px;
-  --card-p: 32px;
-  --card-gap: 24px;
-
-  /* Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-full: 9999px;
-}
-
-/* ---- Reset ---- */
-/* Tailwind v4 preflight (included via @import "tailwindcss") already resets
-   box-sizing, margin, and padding inside @layer base. A duplicate unlayered
-   reset here would override Tailwind utility classes (p-6, mt-4, etc.) because
-   unlayered CSS wins over cascade-layered rules. Removed. */
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
-    background: var(--white);
-    color: var(--text-body);
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-    overflow-x: hidden;
+    background: var(--color-paper);
+    color: var(--color-body);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem; /* 17px */
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
   }
-}
 
-/* ---- Custom Scrollbar ---- */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: #f1f5f9; }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #0066ff, #00b4d8);
-  border-radius: 3px;
-}
-
-/* ---- Typography ---- */
-@layer base {
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
-    color: var(--text-dark);
-    line-height: 1.2;
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    letter-spacing: -0.025em;
+    line-height: 1.08;
     font-weight: 700;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  ::selection { background: var(--color-blue); color: #fff; }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 3px;
+    border-radius: 2px;
   }
 }
 
-/* ---- Layout ---- */
-.container-custom {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+@layer components {
+  /* Type scale (usable on non-heading elements too) */
+  .t-hero, .t-h1, .t-h2, .t-h3 { font-family: var(--font-display); font-weight: 700; text-wrap: balance; }
+  .t-hero { font-size: clamp(2.4rem, 1.3rem + 4vw, 5.25rem); letter-spacing: -0.035em; line-height: 1.02; }
+  .t-h1 { font-size: clamp(2.4rem, 1.4rem + 3.4vw, 4.5rem); letter-spacing: -0.032em; line-height: 1.04; }
+  .t-h2 { font-size: clamp(2rem, 1.35rem + 2vw, 3.25rem); letter-spacing: -0.03em; }
+  .t-h3 { font-size: clamp(1.4rem, 1.2rem + 0.6vw, 1.875rem); letter-spacing: -0.02em; line-height: 1.18; }
+  .t-lead { font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem); line-height: 1.65; }
+  .t-meta { font-family: var(--font-mono); font-size: 0.8125rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* rem, not px, so the layout grows with the visitor's browser font size instead of squeezing the text. */
+  .container-x { width: 100%; max-width: 85rem; margin-inline: auto; padding-inline: 1rem; }
+  @media (min-width: 768px) { .container-x { padding-inline: 2rem; } }
+  @media (min-width: 1200px) { .container-x { padding-inline: 3rem; } }
+  @media (min-width: 100rem) { .container-x { max-width: 95rem; padding-inline: 4rem; } }
+
+  /* Long-form article body */
+  .prose-e p { margin-top: 1.1em; }
+  .prose-e h2 { font-size: 1.75rem; margin-top: 2.2em; scroll-margin-top: 7rem; }
+  .prose-e ul { margin-top: 1em; padding-left: 1.2em; list-style: square; }
+  .prose-e li { margin-top: 0.45em; padding-left: 0.2em; }
+  .prose-e li::marker { color: var(--color-blue); }
+
+  /* Hover underline that grows from the left */
+  .link-u {
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0 1px;
+    transition: background-size 0.3s var(--ease-out);
+  }
+  .link-u:hover, .group:hover .link-u { background-size: 100% 1px; }
 }
 
-.section-pad {
-  padding: var(--section-py) 0;
+/* Section reveal — pure CSS scroll timeline, no JS. Browsers without support just show content. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+  @keyframes reveal-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: none; }
+  }
+  /* Hero motion is transform-only so the LCP text paints immediately. */
+  @keyframes hero-rise { from { transform: translateY(18px); } to { transform: none; } }
+  .hero-in { animation: hero-rise 0.8s var(--ease-out) both; }
+  .hero-in-2 { animation: hero-rise 0.8s 0.08s var(--ease-out) both; }
+  .hero-in-3 { animation: hero-rise 0.9s 0.16s var(--ease-out) both; }
 }
 
-.section-pad-sm {
-  padding: 64px 0;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
-@media (max-width: 1024px) {
-  .container-custom { padding: 0 20px; }
-  .section-pad { padding: 72px 0; }
-}
-
-@media (max-width: 768px) {
-  .container-custom { padding: 0 16px; }
-  .section-pad { padding: 56px 0; }
-  .section-pad-sm { padding: 48px 0; }
-}
-
-/* ---- Cards ---- */
-.card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: var(--card-p);
-  box-shadow: var(--shadow-card);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--border-blue);
-  transform: translateY(-3px);
-}
-
-/* ---- Gradient Text ---- */
-.gradient-text {
-  background: var(--grad-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ---- Buttons ---- */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--grad-brand);
-  color: #fff;
-  font-weight: 600;
-  font-size: 15px;
-  padding: 13px 28px;
-  border-radius: var(--radius-md);
-  border: none;
-  cursor: pointer;
-  transition: all 0.25s ease;
-  text-decoration: none;
-  white-space: nowrap;
-  box-shadow: 0 4px 16px rgba(0, 102, 255, 0.25);
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.1);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 102, 255, 0.35);
-}
-
-.btn-primary:hover::after { opacity: 1; }
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: transparent;
-  color: var(--brand-blue);
-  font-weight: 600;
-  font-size: 15px;
-  padding: 12px 27px;
-  border-radius: var(--radius-md);
-  border: 1.5px solid var(--brand-blue);
-  cursor: pointer;
-  transition: all 0.25s ease;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.btn-secondary:hover {
-  background: var(--brand-blue);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-blue);
-}
-
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: transparent;
-  color: var(--text-body);
-  font-weight: 500;
-  font-size: 14px;
-  padding: 8px 16px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.btn-ghost:hover {
-  background: var(--bg-light);
-  border-color: var(--brand-blue);
-  color: var(--brand-blue);
-}
-
-/* ---- Section Labels ---- */
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(0, 102, 255, 0.07);
-  color: var(--brand-blue);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(0, 102, 255, 0.15);
-  margin-bottom: 16px;
-}
-
-/* ---- Section Headings ---- */
-.section-title {
-  font-size: clamp(28px, 4vw, 44px);
-  font-weight: 800;
-  color: var(--text-dark);
-  line-height: 1.15;
-  margin-bottom: 16px;
-  letter-spacing: -0.02em;
-}
-
-.section-subtitle {
-  font-size: 17px;
-  color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 580px;
-}
-
-.section-subtitle.centered {
-  margin: 0 auto;
-  text-align: center;
-}
-
-/* ---- Service Icon Box ---- */
-.icon-box {
-  width: 52px;
-  height: 52px;
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  flex-shrink: 0;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease;
-}
-
-.card:hover .icon-box { transform: scale(1.1); }
-
-/* ---- Badge / Tag ---- */
-.tag {
-  display: inline-flex;
-  align-items: center;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 3px 10px;
-  border-radius: var(--radius-full);
-  background: var(--bg-section);
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-}
-
-.tag-blue {
-  background: rgba(0, 102, 255, 0.08);
-  color: var(--brand-blue);
-  border-color: rgba(0, 102, 255, 0.15);
-}
-
-/* ---- Divider ---- */
-.divider {
-  height: 1px;
-  background: var(--border);
-  margin: 0;
-}
-
-/* ---- Animations ---- */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.3); }
-}
-
-@keyframes scroll-left {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@keyframes scroll-right {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0); }
-}
-
-.animate-float { animation: float 5s ease-in-out infinite; }
-.animate-float-slow { animation: float 7s ease-in-out infinite; animation-delay: 1s; }
-.pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
-
-/* ---- Hero dark section ---- */
-.hero-dark {
-  background: var(--grad-hero);
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-dark::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+/* Faint drafting grid used behind heroes */
+.bg-grid {
   background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
+    linear-gradient(to right, rgb(14 23 38 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(14 23 38 / 0.045) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 
-/* ---- Stats bar ---- */
-.stat-item {
-  text-align: center;
-  padding: 24px 32px;
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+
+/* ---- Languages ---------------------------------------------------------------------------- */
+/* Arabic and Japanese fall back to good system fonts (Manrope/Inter have no glyphs for them).
+   Negative tracking and uppercase labels break Arabic joining and look wrong in Japanese. */
+:lang(ar) body, :lang(ar) h1, :lang(ar) h2, :lang(ar) h3, :lang(ar) h4,
+:lang(ar) .t-hero, :lang(ar) .t-h1, :lang(ar) .t-h2, :lang(ar) .t-h3, :lang(ar) .font-display {
+  font-family: var(--font-manrope), "Noto Sans Arabic", "Geeza Pro", "Segoe UI", Tahoma, sans-serif;
 }
-
-.stat-number {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 38px;
-  font-weight: 800;
-  background: var(--grad-brand);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-  margin-bottom: 4px;
+:lang(ja) body, :lang(ja) h1, :lang(ja) h2, :lang(ja) h3, :lang(ja) h4,
+:lang(ja) .t-hero, :lang(ja) .t-h1, :lang(ja) .t-h2, :lang(ja) .t-h3, :lang(ja) .font-display {
+  font-family: var(--font-manrope), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
 }
-
-.stat-label {
-  font-size: 14px;
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-/* ---- Process step ---- */
-.process-step {
-  position: relative;
-  padding-left: 56px;
-}
-
-.process-step::before {
-  content: '';
-  position: absolute;
-  left: 20px;
-  top: 48px;
-  bottom: -24px;
-  width: 2px;
-  background: linear-gradient(to bottom, var(--brand-blue), transparent);
-}
-
-.process-step:last-child::before { display: none; }
-
-.step-number {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 40px;
-  height: 40px;
-  background: var(--grad-brand);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: 700;
-  font-size: 14px;
-  font-family: 'Space Grotesk', sans-serif;
-  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
-}
-
-/* ---- Trust logos strip ---- */
-.logo-strip {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-}
-
-/* ---- CTA Banner ---- */
-.cta-banner {
-  background: var(--grad-brand);
-  border-radius: var(--radius-xl);
-  padding: 64px 48px;
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-banner::before {
-  content: '';
-  position: absolute;
-  right: -80px;
-  top: -80px;
-  width: 300px;
-  height: 300px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 50%;
-}
-
-.cta-banner::after {
-  content: '';
-  position: absolute;
-  left: -40px;
-  bottom: -60px;
-  width: 200px;
-  height: 200px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 50%;
-}
-
-.cta-banner .btn-primary {
-  background: #ffffff;
-  color: var(--brand-blue);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.cta-banner .btn-primary:hover {
-  background: #f8fafc;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
-}
-
-.cta-banner .btn-primary::after {
-  display: none;
-}
-
-.cta-banner .btn-secondary {
-  border-color: rgba(255, 255, 255, 0.5);
-  color: #ffffff;
-  background: transparent;
-}
-
-.cta-banner .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: none;
-  transform: translateY(-2px);
-}
-
-/* ---- Testimonial card ---- */
-.testimonial-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 32px;
-  box-shadow: var(--shadow-card);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ---- Dark section (alt) ---- */
-.section-dark {
-  background: var(--bg-dark);
-}
-
-.section-dark .section-title {
-  color: #f8fafc;
-}
-
-.section-dark .section-subtitle {
-  color: #94a3b8;
-}
-
-/* ---- Blog card ---- */
-.blog-card {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  background: var(--white);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-card);
-  transition: all 0.3s ease;
-}
-
-.blog-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-4px);
-}
-
-/* ---- Horizontal rule accent ---- */
-.accent-bar {
-  width: 48px;
-  height: 4px;
-  background: var(--grad-brand);
-  border-radius: 2px;
-  margin-bottom: 16px;
-}
-
-/* ---- Check list ---- */
-.check-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 12px;
-  font-size: 15px;
-  color: var(--text-body);
-}
-
-.check-list .check-icon {
-  width: 20px;
-  height: 20px;
-  background: rgba(0, 102, 255, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  margin-top: 2px;
-  color: var(--brand-blue);
-  font-size: 11px;
-  font-weight: bold;
-}
-
-
- .grecaptcha-badge { visibility: hidden; }
-
+:lang(ar) *, :lang(ja) * { letter-spacing: normal !important; }
+:lang(ar) .t-meta, :lang(ja) .t-meta { text-transform: none; }
+/* Plex Mono has no Arabic glyphs; the fallback puts wide gaps between words. */
+:lang(ar) .t-meta, :lang(ar) .font-mono { font-family: "Noto Sans Arabic", "Geeza Pro", "Segoe UI", Tahoma, sans-serif; }
+:lang(ja) { word-break: auto-phrase; line-break: strict; }
+:lang(ja) h1, :lang(ja) h2, :lang(ja) h3, :lang(ja) .t-hero, :lang(ja) .t-h1, :lang(ja) .t-h2 { line-height: 1.3; }
+:lang(ar) h1, :lang(ar) h2, :lang(ar) h3, :lang(ar) .t-hero, :lang(ar) .t-h1, :lang(ar) .t-h2 { line-height: 1.35; }
+/* Directional icons point the other way in right-to-left layouts. */
+[dir="rtl"] .lucide-arrow-right, [dir="rtl"] .lucide-arrow-up-right { scale: -1 1; }

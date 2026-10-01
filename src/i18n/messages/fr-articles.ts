@@ -1,0 +1,120 @@
+import type { ArticleT } from "./types";
+import { frArticles2 } from "./fr-articles-2";
+
+export const frArticles: Record<string, ArticleT> = {
+  "modernize-legacy-system-without-downtime": {
+    title: "Moderniser un système existant sans arrêter l'activité",
+    subtitle: "Pourquoi le remplacement progressif l'emporte sur la réécriture totale – et dans quel ordre procéder.",
+    summary: "Une réécriture complète promet un nouveau départ et produit le plus souvent un projet long et risqué. Remplacer un système existant pas à pas maintient l'activité et valide chaque étape.",
+    imageAlt: "Tableau de bord opérationnel d'une plateforme composée de services indépendants",
+    takeaways: [
+      "Les réécritures complètes échouent plus souvent à cause du périmètre et du calendrier que de la technique.",
+      "Placer d'abord une interface stable devant le système existant, puis remplacer derrière.",
+      "Remplacer une capacité métier à la fois et la valider en production avant de passer à la suivante.",
+      "Faire tourner l'ancien et le nouveau en parallèle et comparer les résultats avant de basculer le trafic.",
+    ],
+    sections: [
+      { h: "Pourquoi les réécritures complètes s'enlisent", p: ["Un système existant est généralement ancien pour une bonne raison : il fonctionne, et l'entreprise en dépend. Il contient des années de règles, d'exceptions et de correctifs, dont beaucoup ne sont pas documentés. Une réécriture doit tous les redécouvrir pendant que l'ancien système continue d'évoluer.", "Le résultat suit un schéma bien connu. Le nouveau système prend plus de temps que prévu, l'ancien nécessite entre-temps des changements urgents, et la date de bascule recule. Pendant ce temps, l'entreprise paie deux systèmes et ne profite d'aucun."] },
+      { h: "Commencer par une interface stable", p: ["La première étape n'est pas d'écrire du nouveau code pour le cœur du système. C'est de placer une interface – généralement une couche d'API – devant le système existant, afin que les autres applications dialoguent avec cette interface plutôt que directement avec l'ancienne base de données ou les anciens écrans.", "Dès que les consommateurs dépendent de l'interface et non de l'implémentation, on peut changer ce qui se trouve derrière, morceau par morceau. C'est ce qu'on appelle souvent le pattern « strangler » : le nouveau système grandit progressivement autour de l'ancien jusqu'à ce que celui-ci puisse être arrêté."] },
+      { h: "Prioriser par capacité métier", p: ["Choisissez la première capacité à remplacer selon deux critères : les problèmes qu'elle cause aujourd'hui et son degré d'isolement. Un bon premier candidat a des entrées et sorties claires et peu de dépendances – par exemple la génération de devis, les notifications ou le reporting.", "Ne commencez pas par la partie la plus centrale et la plus interconnectée du système. Les premières phases doivent construire la confiance et une compréhension partagée, pas mettre tout le projet en jeu."], list: ["Recenser les capacités et les données que chacune possède.", "Évaluer chacune selon la douleur métier et le couplage.", "Commencer là où la douleur est forte et le couplage faible.", "Garder le cœur du traitement transactionnel pour quand l'équipe connaîtra bien le domaine."] },
+      { h: "Valider chaque étape en parallèle", p: ["Avant de basculer une capacité, faites tourner l'ancienne et la nouvelle implémentation en parallèle sur les mêmes entrées et comparez les résultats. Les écarts révèlent les règles non documentées plus vite que n'importe quel atelier de spécification.", "Basculez le trafic progressivement – par agence, par segment de clientèle ou par pourcentage – et gardez un chemin de retour documenté. Une étape de migration impossible à annuler demande encore plus de préparation."] },
+      { h: "Traiter la migration des données comme un projet à part", p: ["Les données survivent au code. Les anciennes données contiennent souvent des doublons, des formats incohérents et des champs détournés de leur usage prévu. Prévoyez explicitement le nettoyage, la correspondance et la vérification, avec des comptages et des sommes de contrôle prouvant que rien n'a été perdu.", "Quand la dernière capacité migre, l'arrêt de l'ancien système devrait être une formalité : tous les consommateurs utilisent déjà la nouvelle interface, toutes les données sont vérifiées, et l'entreprise travaille sur le nouveau système depuis des semaines."] },
+    ],
+  },
+  "custom-crm-vs-off-the-shelf": {
+    title: "CRM sur mesure ou solution du marché ? Un guide de décision pratique",
+    subtitle: "La question n'est pas de savoir lequel est meilleur, mais où votre processus s'écarte de la norme.",
+    summary: "Les CRM du marché excellent pour les pipelines commerciaux classiques. Un CRM sur mesure ne se justifie que là où votre processus est réellement différent. Voici comment savoir dans quelle situation vous êtes.",
+    imageAlt: "Tableau de bord CRM avec leads, état du stock et devis",
+    takeaways: [
+      "Si vos ventes ressemblent à celles de tout le monde : achetez, ne développez pas.",
+      "Le sur-mesure se justifie quand le stock, les prix ou les validations sont propres à votre entreprise.",
+      "Comparez licences, personnalisation et contournements – pas seulement la licence.",
+      "La bonne réponse est souvent hybride : un CRM du marché plus un système opérationnel sur mesure.",
+    ],
+    sections: [
+      { h: "Partir du processus, pas du produit", p: ["La plupart des décisions CRM commencent par une comparaison de produits. Mieux vaut d'abord décrire le processus réel : comment un lead arrive, qui le prend en charge, quelles informations sont transmises, qui valide quoi et ce que le client reçoit à chaque étape.", "Une fois le processus sur papier, comparez-le au modèle standard de la plupart des CRM : contacts, entreprises, opportunités et étapes. L'ampleur de l'écart devrait guider la décision."] },
+      { h: "Quand un CRM du marché est la bonne réponse", p: ["Si votre processus correspond au modèle contact, opportunité et étape, un CRM du marché offre immédiatement des fonctionnalités matures, des intégrations et des applications mobiles. Reconstruire tout cela sur mesure est rarement un bon investissement."], list: ["Votre pipeline est linéaire et ressemble à celui des autres entreprises de votre secteur.", "Vos produits sont standardisés, avec des prix catalogue ou des remises simples.", "L'essentiel de la valeur tient à la gestion des contacts, à l'e-mail et au reporting.", "Votre équipe est petite et doit démarrer ce mois-ci."] },
+      { h: "Quand le sur-mesure se justifie", p: ["Le logiciel sur mesure se justifie quand la partie la plus précieuse de votre processus sort du modèle standard – et que les équipes la gèrent dans des tableurs à côté du CRM.", "Dans notre travail pour un négociant en pierre naturelle, par exemple, chaque dalle est unique et se trouve dans un entrepôt précis. Réserver la bonne dalle au moment du devis était la tâche la plus importante du système. Aucun objet « opportunité » standard ne pouvait le faire sans une personnalisation massive."], list: ["Le stock est unique, réservé ou lié à un emplacement.", "Les prix dépendent de règles, de configurations ou d'accords propres à chaque client.", "Les validations impliquent plusieurs rôles avec une logique conditionnelle.", "Ventes, opérations et finance doivent partager les mêmes données en temps réel."] },
+      { h: "Comparer honnêtement le coût total", p: ["Le coût de licence est le chiffre visible. Le coût total d'un CRM du marché inclut le prix par utilisateur à mesure que l'équipe grandit, les modules payants, le travail de personnalisation, le travail d'intégration et – souvent le poste le plus lourd – le temps que les collaborateurs passent en contournements.", "Un système sur mesure coûte plus cher au départ et moins cher par utilisateur supplémentaire. Il nécessite aussi une maintenance continue. Comparez les deux sur plusieurs années avant de décider."] },
+      { h: "L'option hybride", p: ["Beaucoup d'entreprises aboutissent à un CRM du marché pour la gestion des contacts et l'e-mail, et à un système opérationnel sur mesure pour ce qui leur est propre, reliés par des API. On conserve ainsi les fonctionnalités matures du produit, et le processus particulier trouve enfin sa place."] },
+    ],
+  },
+  "multi-tenant-saas-architecture": {
+    title: "Choisir le bon modèle multi-locataire pour un produit SaaS B2B",
+    subtitle: "Tables partagées, schémas séparés ou bases séparées – et comment changer d'avis plus tard.",
+    summary: "La multi-location est l'une des décisions les plus coûteuses à défaire dans un produit SaaS. Une comparaison concrète des trois modèles courants et des signaux qui doivent guider le choix.",
+    imageAlt: "Tableau de bord d'administration SaaS avec formules d'abonnement et facturation",
+    takeaways: [
+      "La plupart des produits B2B devraient démarrer avec une base partagée et une isolation au niveau des lignes.",
+      "Déplacer certains locataires vers leur propre schéma ou base quand la conformité ou la taille l'exige.",
+      "Imposer le contexte locataire dans la couche de données, pas seulement dans le code applicatif.",
+      "Prévoir dès le départ les exports et sauvegardes par locataire.",
+    ],
+    sections: [
+      { h: "Les trois modèles courants", p: ["Les systèmes multi-locataires utilisent généralement l'un de trois modèles, qui arbitrent différemment entre isolation et charge d'exploitation."], list: ["Base partagée, tables partagées : chaque ligne porte un identifiant de locataire. Le moins cher à exploiter, le plus simple à déployer, l'isolation la plus faible par défaut.", "Base partagée, schéma par locataire : les tables sont dupliquées par locataire dans une même base. Meilleure isolation, migrations plus complexes.", "Base par locataire : l'isolation la plus forte et la sauvegarde par locataire la plus simple, la charge d'exploitation la plus élevée."] },
+      { h: "Un choix par défaut raisonnable", p: ["Pour la plupart des jeunes produits B2B, des tables partagées avec un identifiant de locataire sur chaque ligne sont le bon point de départ. L'infrastructure reste simple, et les tâches transverses – facturation, analytique, support – restent faciles.", "Le risque est une fuite de données due à un filtre oublié. Traitez-le dans la base, pas seulement dans le code : les politiques de sécurité au niveau des lignes de PostgreSQL, par exemple, peuvent imposer que chaque requête soit limitée au locataire courant – même si un développeur l'oublie."] },
+      { h: "Les signaux qui justifient plus d'isolation", p: ["Une isolation plus forte se justifie lorsque certaines conditions apparaissent. Elle doit rarement s'appliquer à tous les locataires."], list: ["Un grand client exige contractuellement un stockage dédié.", "La réglementation impose de conserver les données dans une région précise.", "Le volume de données d'un locataire dégrade les performances des autres.", "Les clients ont besoin de sauvegardes et restaurations indépendantes."] },
+      { h: "Prévoir un modèle hybride", p: ["La conception la plus pragmatique à long terme prend en charge plusieurs modèles : la plupart des locataires partagent l'infrastructure, quelques grands locataires ou locataires réglementés ont leur propre base. Ce n'est possible que si la résolution du locataire se fait à un seul endroit – en général une couche de routage qui associe chaque requête à la bonne connexion.", "Construisez cette couche de routage tôt, même si au début elle renvoie toujours la même base. C'est peu coûteux maintenant et très utile plus tard."] },
+      { h: "Les détails d'exploitation qui comptent", p: ["La multi-location ne concerne pas que le schéma. La limitation de débit, les tâches en arrière-plan, les chemins de stockage des fichiers, les caches et les journaux ont tous besoin du contexte locataire. De même que les fonctions visibles par les clients comme l'export des données et la suppression de compte, que les grands comptes demanderont lors de l'achat."] },
+    ],
+  },
+  "role-based-access-control-that-scales": {
+    title: "Un contrôle d'accès par rôles qui passe à l'échelle",
+    subtitle: "Des permissions pensées pour l'organisation que vous deviendrez, pas seulement celle d'aujourd'hui.",
+    summary: "Le contrôle d'accès commence souvent par un simple indicateur « admin » et finit en enchevêtrement de cas particuliers. Une structure de rôles, permissions et périmètres qui reste lisible à mesure que l'organisation grandit.",
+    imageAlt: "Tableau de bord d'administration d'un SIRH hospitalier avec navigation par rôles",
+    takeaways: [
+      "Séparer les rôles (qui est quelqu'un) des permissions (ce qu'exige une action).",
+      "Ajouter les périmètres – site, service, propriété – comme seconde dimension.",
+      "Vérifier l'accès côté serveur à chaque requête ; l'interface ne fait que masquer ce qui n'est pas autorisé.",
+      "Journaliser chaque changement de rôle et chaque accès sensible.",
+    ],
+    sections: [
+      { h: "Comment le contrôle d'accès se dégrade", p: ["La plupart des systèmes démarrent avec deux types d'utilisateurs : les administrateurs et tous les autres. Avec la croissance viennent les exceptions – un manager qui peut valider mais pas supprimer, une agence qui ne doit voir que ses propres dossiers, un auditeur qui peut tout lire et rien modifier. Chaque exception devient une condition dans le code, et bientôt personne ne sait plus avec certitude qui peut faire quoi."] },
+      { h: "Rôles et permissions sont deux choses différentes", p: ["Définissez les permissions comme les actions que votre système prend en charge – créer une facture, valider un congé, exporter un rapport. Définissez les rôles comme des ensembles nommés de permissions correspondant à de vraies fonctions. Le code vérifie des permissions, jamais des noms de rôles.", "Cette seule règle rend les changements peu coûteux. Quand une nouvelle fonction apparaît, vous créez un rôle à partir de permissions existantes au lieu de modifier le code à des dizaines d'endroits."] },
+      { h: "Le périmètre comme seconde dimension", p: ["Les permissions répondent à « cette personne peut-elle valider un congé ? ». Les périmètres répondent à « pour qui ? ». Dans un système hospitalier, un chef de service ne valide que pour son service ; dans une école multi-sites, le directeur ne voit que son établissement."], list: ["Périmètre organisationnel : entreprise, région, agence, service.", "Périmètre de propriété : les dossiers que l'utilisateur a créés ou qui lui sont attribués.", "Périmètre relationnel : les parents ne voient que les données de leurs propres enfants."] },
+      { h: "Appliquer côté serveur – à chaque fois", p: ["Masquer un bouton est une mesure d'ergonomie, pas un contrôle de sécurité. Chaque requête d'API doit vérifier la permission et le périmètre côté serveur, idéalement dans une couche commune pour qu'aucun endpoint ne puisse l'oublier. Lorsque la base de données le permet, des politiques au niveau des lignes offrent un filet de sécurité supplémentaire."] },
+      { h: "Rendre l'accès auditable", p: ["Journalisez chaque changement de rôle et d'affectation, ainsi que chaque accès à des dossiers sensibles. Quand un client, un auditeur ou un régulateur demande qui pouvait voir quoi et quand, la réponse doit venir d'une requête, pas de la mémoire de quelqu'un."] },
+    ],
+  },
+  "what-good-discovery-produces": {
+    title: "Ce qu'une bonne phase de découverte doit produire",
+    subtitle: "Les documents à attendre avant de lancer tout développement logiciel.",
+    summary: "C'est en phase de découverte que se fixent l'essentiel des coûts et des risques d'un projet logiciel. Une liste de ce qu'une découverte utile livre – et comment reconnaître celle qui n'aide pas.",
+    imageAlt: "Tableau de bord d'un ERP scolaire avec modules d'admission et de présence",
+    takeaways: [
+      "Une découverte doit produire des décisions, pas seulement des documents.",
+      "Attendez une cartographie des processus, un premier livrable délimité, une esquisse d'architecture et une estimation avec hypothèses.",
+      "Impliquez les personnes qui font le travail, pas seulement celles qui le pilotent.",
+      "Une bonne découverte recommande parfois de construire moins, voire rien.",
+    ],
+    sections: [
+      { h: "À quoi sert la découverte", p: ["La découverte remplace les hypothèses par des décisions avant qu'elles ne coûtent cher. Elle répond à ce que le premier livrable doit faire, pour qui, avec quelles intégrations, sous quelles contraintes – et à ce qu'il coûtera de façon réaliste."] },
+      { h: "Ce que vous devez recevoir", p: ["Une découverte utile se termine par quelques documents que votre équipe peut lire, contester et valider."], list: ["Une cartographie de la façon dont le travail se fait aujourd'hui et se fera dans le nouveau système.", "Les rôles utilisateurs et ce que chacun doit voir et faire.", "Un premier livrable délimité, avec ce qui est volontairement reporté.", "Un inventaire des intégrations : chaque système avec lequel le nouveau devra communiquer, et comment.", "Une esquisse d'architecture : modèle de données, composants, hébergement et approche de sécurité.", "Une estimation et un plan, avec les hypothèses sous-jacentes écrites."] },
+      { h: "Qui doit être autour de la table", p: ["Les managers décrivent comment un processus devrait fonctionner. Les personnes qui font le travail décrivent comment il fonctionne vraiment – y compris les contournements que le nouveau système devra prendre en charge ou supprimer. Les deux points de vue sont nécessaires, et c'est généralement dans le second que se cachent les exigences importantes."] },
+      { h: "Les signaux d'alerte", list: ["Un cahier des charges qui liste des écrans mais aucun flux.", "Aucune hypothèse écrite derrière l'estimation.", "Aucune discussion sur la migration des données ou les intégrations.", "Toutes les fonctionnalités demandées figurent dans le premier livrable."], p: ["Chacun de ces signaux indique que les décisions difficiles ont été reportées au développement, où elles coûtent plus cher."] },
+      { h: "Parfois, la réponse est de construire moins", p: ["Une découverte honnête recommande parfois un produit du marché, un premier livrable plus petit ou un changement de processus plutôt qu'un logiciel. C'est un bon résultat : le code le moins cher est celui qu'on n'a jamais besoin d'écrire."] },
+    ],
+  },
+  "event-driven-order-systems": {
+    title: "Systèmes de commande orientés événements : garder le paiement disponible sous la charge",
+    subtitle: "Retour d'expérience sur une plateforme de livraison construite avec Kafka et Spring Boot.",
+    summary: "Quand commandes, paiements, menus et dispatch partagent une seule application, un composant lent peut bloquer le paiement. Comment une conception orientée événements isole les pannes – et ce qu'elle coûte.",
+    imageAlt: "Tableau de bord de dispatch avec livraisons en cours et statut des commandes",
+    takeaways: [
+      "Isoler le parcours qui encaisse l'argent de tout le reste.",
+      "Utiliser des événements pour le travail qui n'a pas à être terminé avant de répondre au client.",
+      "Chaque service possède ses données ; le partage passe par des événements, pas par des tables communes.",
+      "Dès que les requêtes traversent plusieurs services, le traçage distribué est indispensable.",
+    ],
+    sections: [
+      { h: "Le problème des pics", p: ["La demande de livraison de repas arrive en pics abrupts autour des heures de repas. Dans une application unique, la recherche dans les menus, les recommandations, le dispatch et le paiement se disputent les mêmes threads, connexions et mémoire. Une requête lente dans un domaine peut épuiser les ressources dont le paiement a besoin."] },
+      { h: "Protéger le parcours qui encaisse l'argent", p: ["Le premier principe de conception était simple : commande et paiement doivent continuer à fonctionner même si tout le reste est dégradé. Les commandes et les paiements ont donc été séparés en services dédiés, avec leurs propres stockages, et toute autre interaction avec eux a été rendue asynchrone."] },
+      { h: "Des événements pour tout ce qui peut attendre", p: ["Quand une commande est passée, le client a besoin d'une confirmation immédiate. Prévenir le restaurant, affecter un livreur et mettre à jour les statistiques peut se faire un instant plus tard. Un événement « commande passée » publié dans Kafka permet à chaque consommateur de travailler à son rythme – et de tomber en panne sans affecter la commande elle-même."], list: ["Service de commande : accepte la commande et publie un événement.", "Service restaurant : consomme l'événement et met à jour l'écran de cuisine.", "Service de dispatch : consomme l'événement et affecte un livreur.", "Service de notification : informe le client à mesure que les événements de statut arrivent."] },
+      { h: "Chaque service possède ses données", p: ["Les commandes et paiements exigent des transactions et vivent donc dans PostgreSQL. Les menus sont des documents dont la forme varie d'un restaurant à l'autre et vivent dans MongoDB. Les services ne lisent jamais les tables des autres ; ils maintiennent les données dont ils ont besoin à jour grâce aux événements."] },
+      { h: "Ce que cela coûte", p: ["Les systèmes orientés événements sont plus difficiles à comprendre qu'une application unique. Les données sont cohérentes à terme, les pannes peuvent survenir entre les services et déboguer signifie suivre une requête à travers plusieurs processus. Le traçage distribué – ici Zipkin – et des consommateurs idempotents sont l'investissement minimal qui rend cette architecture gérable.", "Pour un petit outil interne, ce serait de la sur-ingénierie. Pour une plateforme dont le chiffre d'affaires dépend d'un paiement disponible aux heures de pointe, c'est le bon compromis."] },
+    ],
+  },
+  ...frArticles2,
+};
