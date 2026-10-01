@@ -45,7 +45,7 @@ export const organizationLd = {
   name: site.legalName,
   alternateName: site.name,
   url: site.url,
-  logo: abs("/icon.svg"),
+  logo: abs("/brand/eryon-cosmic.png"),
   foundingDate: String(site.founded),
   email: site.email,
   telephone: site.phone,
