@@ -257,7 +257,7 @@ export const es: Messages = {
     projectExtra: ["Equipo de ingeniería dedicado", "Otra cosa"],
     budgets: ["Menos de 2.000 USD (≈ 1,7 lakh ₹)", "2.000–5.000 USD (≈ 1,7–4 lakh ₹)", "5.000–15.000 USD (≈ 4–12 lakh ₹)", "15.000–50.000 USD (≈ 12–40 lakh ₹)", "50.000–150.000 USD (≈ 40 lakh–1,25 crore ₹)", "Más de 150.000 USD", "Hablémoslo"],
     timelines: ["Lo antes posible", "En 3 meses", "De 3 a 6 meses", "Solo estoy explorando"],
-    other: { title: "Otras formas de contacto", email: "Correo", phone: "Teléfono", location: "Ubicación", locationValue: "Nueva Delhi, India", remote: "Colaboración remota con clientes de todo el mundo.", credentials: "Certificaciones", nda: "NDA disponible bajo petición" },
+    other: { title: "Otras formas de contacto", email: "Correo", phone: "Teléfono", location: "Ubicación", locationValue: "Nueva Delhi, India", remote: "Colaboración remota con clientes de todo el mundo.", credentials: "Certificaciones" },
     next: {
       eyebrow: "Qué pasa después", title: "Después de pulsar Enviar.",
       items: [

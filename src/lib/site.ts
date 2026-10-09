@@ -36,10 +36,6 @@ export const stats = [
 
 export const credentials = [
   { title: "MSME Registered", text: "Registered with the Government of India." },
-  { title: "SOC 2 Type II", text: "Controls assessed against the Trust Services Criteria." },
-  { title: "AWS Partner", text: "Member of the AWS Partner Network." },
-  { title: "GDPR Ready", text: "Data handling designed for EU and UK privacy law." },
-  { title: "Agile Certified", text: "Delivery practices certified in agile methods." },
 ] as const;
 
 export const primaryNav = [

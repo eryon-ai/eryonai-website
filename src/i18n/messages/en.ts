@@ -263,7 +263,7 @@ export const en = {
     projectExtra: ["Dedicated engineering team", "Something else"],
     budgets: ["Under US$2,000 (≈ ₹1.7 lakh)", "US$2,000–5,000 (≈ ₹1.7–4 lakh)", "US$5,000–15,000 (≈ ₹4–12 lakh)", "US$15,000–50,000 (≈ ₹12–40 lakh)", "US$50,000–150,000 (≈ ₹40 lakh–1.25 crore)", "Above US$150,000", "Let's discuss"],
     timelines: ["As soon as possible", "Within 3 months", "3–6 months", "Just exploring"],
-    other: { title: "Other ways to reach us", email: "Email", phone: "Phone", location: "Location", locationValue: "New Delhi, India", remote: "Remote delivery for clients worldwide.", credentials: "Credentials", nda: "NDA on request" },
+    other: { title: "Other ways to reach us", email: "Email", phone: "Phone", location: "Location", locationValue: "New Delhi, India", remote: "Remote delivery for clients worldwide.", credentials: "Credentials" },
     next: {
       eyebrow: "What Happens Next", title: "After you press send.",
       items: [

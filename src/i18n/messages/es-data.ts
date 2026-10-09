@@ -59,10 +59,6 @@ export const esData: Messages["data"] = {
   stats: ["Proyectos entregados", "Clientes en 6 países", "Satisfacción de clientes", "Ingenieros y diseñadores", "Años en activo, desde 2019"],
   credentials: [
     { title: "Registrada como MSME", text: "Registrada ante el Gobierno de la India." },
-    { title: "SOC 2 Type II", text: "Controles auditados según los Trust Services Criteria." },
-    { title: "Partner de AWS", text: "Miembro de la AWS Partner Network." },
-    { title: "Preparada para el RGPD", text: "Tratamiento de datos diseñado para la normativa de protección de datos de la UE y el Reino Unido." },
-    { title: "Certificación ágil", text: "Prácticas ágiles certificadas en la entrega." },
   ],
   techGroups: {
     frontend: { title: "Frontend", text: "Interfaces accesibles renderizadas en servidor, con componentes tipados." },

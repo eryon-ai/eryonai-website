@@ -69,7 +69,6 @@ export default function ContactView({ lang }: { lang: Lang }) {
               {credentials.map((c, i) => (
                 <li key={c.title} className="rounded-[3px] border border-line bg-white px-3 py-1.5 font-mono text-xs text-ink">{m.data.credentials[i].title}</li>
               ))}
-              <li className="rounded-[3px] border border-line bg-white px-3 py-1.5 font-mono text-xs text-ink">{t.other.nda}</li>
             </ul>
           </div>
         </aside>

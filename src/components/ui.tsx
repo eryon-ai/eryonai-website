@@ -19,7 +19,9 @@ export function Logo({ light = false }: { light?: boolean }) {
     <Image src="/brand/eryon-cosmic.png" alt="Eryon AI Software Solutions" width={500} height={500} className="h-44 w-44" />
   ) : (
     // Header: visible on every page load — the one logo instance worth preloading.
-    <Image src="/brand/eryon-wordmark.png" alt="Eryon AI Software Solutions" width={226} height={76} className="h-12 w-auto" priority />
+    // Wide lockup (4.3:1) — kept small through phone/tablet widths so it never crowds the
+    // search/menu icons next to it; only grows once the full desktop nav has room at xl.
+    <Image src="/brand/eryon-wordmark.png" alt="Eryon AI Software Solutions" width={1535} height={360} className="h-9 w-auto xl:h-14" priority />
   );
 }
 

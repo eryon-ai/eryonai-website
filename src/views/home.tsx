@@ -4,11 +4,9 @@ import {
   HeartPulse, Hotel, Landmark, Layers, Network, PenTool, ShieldCheck, ShoppingBag, Truck, Workflow, Zap, type LucideIcon,
 } from "lucide-react";
 import { ButtonLink, ArrowLink, CtaBand, DesktopFrame, Eyebrow, Faq, JsonLd, PhoneFrame, SectionHeader, Section, TabletFrame } from "@/components/ui";
-import { PreviewCard, CaseStudyFeature, InsightCard } from "@/components/cards";
-import { credentials, processSteps, stats } from "@/lib/site";
-import CountUp from "@/components/CountUp";
+import { InsightCard } from "@/components/cards";
+import { processSteps } from "@/lib/site";
 import { industries } from "@/lib/industries";
-import { projectsBy } from "@/lib/work";
 import { articles } from "@/lib/insights";
 import { faqLd, pageMeta } from "@/lib/seo";
 import { techGroups } from "@/lib/tech";
@@ -18,15 +16,6 @@ import { getMessages, lIndustry, lines } from "@/i18n";
 const B = "/img/"; // self-hosted WebP copies of project screenshots
 
 export const homeMeta = (lang: Lang) => pageMeta({ ...getMessages(lang).meta.home, path: "/", lang });
-
-const buildLinks = [
-  { href: "/services/custom-software-development", image: B + "infra-1.webp" },
-  { href: "/services/web-applications", image: B + "hrms-dashboard-light.webp" },
-  { href: "/services/mobile-applications", image: "", phones: [B + "atelier-mobile-products.webp", B + "atelier-mobile-admin-overview.webp", B + "atelier-mobile-checkout-1.webp"] },
-  { href: "/services/saas-development", image: B + "gym-crm-dashboard.webp" },
-  { href: "/services/crm-erp-development", image: B + "edunexus-1.webp" },
-  { href: "/services/ecommerce-development", image: B + "atelier-home.webp" },
-];
 
 const capabilityLinks: { href: string; span: string; dark?: boolean; icon: LucideIcon }[] = [
   { href: "/services/saas-development", span: "lg:col-span-7 lg:row-span-2", dark: true, icon: Boxes },
@@ -50,9 +39,7 @@ export default function HomeView({ lang }: { lang: Lang }) {
   const h = m.home;
   const L = (href: string) => lp(href, lang);
   const sp = lang === "ja" ? "" : " "; // Japanese has no word spaces
-  const featured = projectsBy(["marblemart-crm", "hospital-hrms", "edunexus-erp"]);
   const homeTech = techGroups.flatMap((g) => g.items).filter((t) => t.home);
-  const builds = buildLinks.map((b, i) => ({ ...b, ...h.build.cards[i], alt: `${h.build.cards[i].title} ${h.build.previewAlt}` }));
   const capabilities = capabilityLinks.map((c, i) => ({ ...c, ...h.capabilities.items[i] }));
 
   return (
@@ -102,40 +89,6 @@ export default function HomeView({ lang }: { lang: Lang }) {
         </div>
       </section>
 
-      {/* By the numbers — confirmed company figures */}
-      <section aria-labelledby="numbers-h" className="border-b border-line bg-white">
-        <div className="container-x py-16 md:py-20">
-          <h2 id="numbers-h" className="t-meta text-steel">{h.numbers}</h2>
-          <dl className="mt-10 grid grid-cols-2 gap-y-10 md:grid-cols-5">
-            {stats.map((st, i) => (
-              <div key={st.label} className={`md:px-6 ${i ? "md:border-s md:border-line" : "md:ps-0"}`}>
-                <dt className="sr-only">{m.data.stats[i]}</dt>
-                <dd className="font-display text-5xl font-bold tracking-[-0.03em] text-ink md:text-6xl"><CountUp to={st.value} suffix={st.suffix} /></dd>
-                <dd className="mt-2 text-[0.95rem] text-muted">{m.data.stats[i]}</dd>
-              </div>
-            ))}
-          </dl>
-          <ul className="mt-12 flex flex-wrap gap-2 border-t border-line pt-8" aria-label={h.credentialsLabel}>
-            {credentials.map((c, i) => (
-              <li key={c.title} className="rounded-[3px] border border-line bg-paper px-3 py-1.5 font-mono text-xs uppercase tracking-wider text-ink">{m.data.credentials[i].title}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* What we build */}
-      <Section>
-        <SectionHeader
-          eyebrow={h.build.eyebrow}
-          title={h.build.title}
-          intro={h.build.intro}
-          action={<ArrowLink href={L("/services")}>{h.build.cta}</ArrowLink>}
-        />
-        <div className="mt-16 grid gap-x-10 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
-          {builds.map((b) => <PreviewCard key={b.href} {...b} />)}
-        </div>
-      </Section>
-
       {/* Built around your business */}
       <Section tone="white">
         <SectionHeader eyebrow={h.around.eyebrow} title={h.around.title} />
@@ -172,14 +125,6 @@ export default function HomeView({ lang }: { lang: Lang }) {
               <p className={`mt-6 max-w-md ${c.dark ? "t-lead text-white/75" : "text-muted"}`}>{c.text}</p>
             </Link>
           ))}
-        </div>
-      </Section>
-
-      {/* Selected work */}
-      <Section tone="white">
-        <SectionHeader eyebrow={h.work.eyebrow} title={h.work.title} action={<ArrowLink href={L("/work")}>{h.work.cta}</ArrowLink>} intro={h.work.intro} />
-        <div className="mt-12">
-          {featured.map((p, i) => <CaseStudyFeature key={p.slug} p={p} flip={i % 2 === 1} lang={lang} />)}
         </div>
       </Section>
 

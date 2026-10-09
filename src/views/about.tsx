@@ -139,9 +139,9 @@ export default function AboutView({ lang }: { lang: Lang }) {
 
       <Section tone="mist">
         <SectionHeader eyebrow={t.trust.eyebrow} title={t.trust.title} />
-        <ul className="mt-14 grid gap-px overflow-hidden rounded-md border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
+        <ul className="mt-14 flex flex-wrap gap-px overflow-hidden rounded-md border border-line bg-line">
           {credentials.map((c, i) => (
-            <li key={c.title} className="bg-paper p-7">
+            <li key={c.title} className="w-full bg-paper p-7 sm:w-80">
               <h3 className="font-display text-lg font-semibold">{m.data.credentials[i].title}</h3>
               <p className="mt-2 text-[0.95rem] text-muted">{m.data.credentials[i].text}</p>
             </li>

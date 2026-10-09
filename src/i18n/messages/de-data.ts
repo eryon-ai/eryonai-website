@@ -59,10 +59,6 @@ export const deData: Messages["data"] = {
   stats: ["Umgesetzte Projekte", "Kunden in 6 Ländern", "Kundenzufriedenheit", "Entwickler und Designer", "Jahre am Markt, seit 2019"],
   credentials: [
     { title: "MSME-registriert", text: "Bei der indischen Regierung registriert." },
-    { title: "SOC 2 Type II", text: "Kontrollen nach den Trust Services Criteria geprüft." },
-    { title: "AWS-Partner", text: "Mitglied im AWS Partner Network." },
-    { title: "DSGVO-konform", text: "Datenverarbeitung ausgelegt auf EU- und britisches Datenschutzrecht." },
-    { title: "Agil zertifiziert", text: "Zertifizierte agile Vorgehensweisen in der Umsetzung." },
   ],
   techGroups: {
     frontend: { title: "Frontend", text: "Serverseitig gerenderte, barrierefreie Oberflächen mit typisierten Komponenten." },
