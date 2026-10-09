@@ -19,9 +19,11 @@ export function Logo({ light = false }: { light?: boolean }) {
     <Image src="/brand/eryon-cosmic.png" alt="Eryon AI Software Solutions" width={500} height={500} className="h-44 w-44" />
   ) : (
     // Header: visible on every page load — the one logo instance worth preloading.
-    // Wide lockup (4.3:1) — kept small through phone/tablet widths so it never crowds the
-    // search/menu icons next to it; only grows once the full desktop nav has room at xl.
-    <Image src="/brand/eryon-wordmark.png" alt="Eryon AI Software Solutions" width={1535} height={360} className="h-9 w-auto xl:h-14" priority />
+    // Wide lockup (4.3:1) — kept small through phone/tablet AND the xl nav (1280–1535px),
+    // where the full 7-item menu + icon cluster already fills the row; growing it there
+    // pushed the header past viewport width and caused page-wide horizontal scroll.
+    // Only grows at 2xl (≥1536px), where there's confirmed slack.
+    <Image src="/brand/eryon-wordmark.png" alt="Eryon AI Software Solutions" width={1535} height={360} className="h-9 w-auto 2xl:h-14" priority />
   );
 }
 
